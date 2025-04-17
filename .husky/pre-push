@@ -1,0 +1,12 @@
+
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Ejecuta pruebas antes de hacer push
+npm run test
+
+# Verificación completa de tipos
+npm run typecheck
+
+# Verificación de linting en todo el proyecto
+npm run lint
