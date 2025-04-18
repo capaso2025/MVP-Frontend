@@ -1,20 +1,20 @@
-import type { ButtonHTMLAttributes, FC } from "react";
-import { forwardRef } from "react";
+import type { ButtonHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
 
 /**
  * Variantes de estilos para botones
  */
 export type TButtonVariant =
-  | "primary"
-  | "secondary"
-  | "outline"
-  | "ghost"
-  | "danger";
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'danger';
 
 /**
  * Tamaños de botón disponibles
  */
-export type TButtonSize = "sm" | "md" | "lg";
+export type TButtonSize = 'sm' | 'md' | 'lg';
 
 /**
  * Props específicas para el componente Button
@@ -68,14 +68,14 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   (
     {
-      variant = "primary",
-      size = "md",
+      variant = 'primary',
+      size = 'md',
       fullWidth = false,
       isLoading = false,
       disabled = false,
       leftIcon,
       rightIcon,
-      className = "",
+      className = '',
       children,
       ...rest
     },
@@ -83,33 +83,33 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   ) => {
     // Mapeo de variantes a clases CSS
     const variantClasses: Record<TButtonVariant, string> = {
-      primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+      primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
       secondary:
-        "bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500",
+        'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
       outline:
-        "bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500",
+        'bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500',
       ghost:
-        "bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500",
-      danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
+        'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
+      danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
     };
 
     // Mapeo de tamaños a clases CSS
     const sizeClasses: Record<TButtonSize, string> = {
-      sm: "text-xs py-1 px-2",
-      md: "text-sm py-2 px-4",
-      lg: "text-base py-3 px-6",
+      sm: 'text-xs py-1 px-2',
+      md: 'text-sm py-2 px-4',
+      lg: 'text-base py-3 px-6',
     };
 
     // Construcción de la clase combinada
     const buttonClasses = [
-      "inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
+      'inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
       variantClasses[variant],
       sizeClasses[size],
-      fullWidth ? "w-full" : "",
+      fullWidth ? 'w-full' : '',
       className,
     ]
       .filter(Boolean)
-      .join(" ");
+      .join(' ');
 
     return (
       <button
@@ -149,4 +149,4 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 );
 
 // Definir displayName para DevTools
-Button.displayName = "Button";
+Button.displayName = 'Button';
