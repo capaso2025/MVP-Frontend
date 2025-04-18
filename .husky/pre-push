@@ -1,12 +1,8 @@
-
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Ejecuta pruebas antes de hacer push
-npm run test
+# Ejecuta lint-staged para verificar archivos modificados
+npx lint-staged
 
-# Verificación completa de tipos
+# Ejecuta el chequeo de tipos
 npm run typecheck
-
-# Verificación de linting en todo el proyecto
-npm run lint

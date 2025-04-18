@@ -2,6 +2,7 @@
   "name": "capo-frontend",
   "private": true,
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
     "prepare": "husky install",
     "dev": "vite",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.14.1",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.30.1",
