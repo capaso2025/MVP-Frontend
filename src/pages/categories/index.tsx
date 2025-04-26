@@ -1,199 +1,137 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useQuestionnaireStore } from '@features/questionnaire/model/questionnaire-store';
 import type { ISkillCategory } from '@features/questionnaire/model/questionnaire-types';
-import {
-  CategoryGrid,
-  MessageScreen,
-  QuestionnaireLayout,
-  Typography,
-} from '@shared/ui';
-import type { ICategoryItem } from '@shared/ui/organisms/CategoryGrid/CategoryGrid';
+import { CategoryCard } from './components/CategoryCard';
+import { QuestionnaireLayout } from '@shared/ui';
+
+/**
+ * Interfaz para subcategorías de habilidades
+ */
+interface ISubSkill {
+  id: string;
+  name: string;
+}
+
+/**
+ * Interfaz para categoría con subcategorías
+ */
+interface ISkillCategoryWithSubSkills extends ISkillCategory {
+  subSkills: ISubSkill[];
+}
 
 /**
  * Página de selección de categorías
- * Permite al usuario seleccionar la categoría para iniciar un cuestionario
+ * Permite al usuario seleccionar la categoría de habilidad para su desarrollo
  */
 const CategoriesPage: FC = () => {
   const navigate = useNavigate();
-
-  // Acceso al estado global del cuestionario
-  const setCategory = useQuestionnaireStore((state) => state.setCategory);
   const resetQuestionnaire = useQuestionnaireStore(
     (state) => state.resetQuestionnaire,
   );
+  const setCategory = useQuestionnaireStore((state) => state.setCategory);
 
-  // Estado local para categorías
-  const [categories, setCategories] = useState<ISkillCategory[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] =
-    useState<ISkillCategory | null>(null);
+  // Estado para manejar el hover
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  // Cargar categorías disponibles
-  useEffect(() => {
-    // Aquí normalmente se haría una llamada a la API
-    // Simulamos con datos estáticos por ahora
-    const fetchCategories = () => {
-      try {
-        setIsLoading(true);
+  // Datos de las categorías (en un proyecto real vendrían de una API)
+  const categories: ISkillCategoryWithSubSkills[] = [
+    {
+      id: 'soft-skills',
+      name: 'Hoy comienza tu transformación',
+      imageUrl: '/assets/icons/soft-skills.svg',
+      subSkills: [
+        { id: 'comm', name: 'Comunicación efectiva' },
+        { id: 'team', name: 'Trabajo en equipo' },
+        { id: 'adapt', name: 'Adaptabilidad y resiliencia' },
+        { id: 'creative', name: 'Creatividad e innovación' },
+      ],
+    },
+    {
+      id: 'social-wellness',
+      name: 'Bienestar social',
+      imageUrl: '/assets/icons/social-wellness.svg',
+      subSkills: [
+        { id: 'self-care', name: 'Autocuidado y límites saludables' },
+        { id: 'gratitude', name: 'Gratitud y reciprocidad' },
+        { id: 'social-adapt', name: 'Adaptabilidad social' },
+        { id: 'empathy', name: 'Empatía y conexión humana' },
+      ],
+    },
+    {
+      id: 'time-management',
+      name: 'Optimización de tiempo',
+      imageUrl: '/assets/icons/time-management.svg',
+      subSkills: [
+        { id: 'prioritization', name: 'Priorización inteligente' },
+        { id: 'planning', name: 'Planificación efectiva' },
+        { id: 'anti-procrastination', name: 'Técnicas anti procrastinación' },
+      ],
+    },
+    {
+      id: 'emotional-control',
+      name: 'Control de emociones',
+      imageUrl: '/assets/icons/emotional-control.svg',
+      subSkills: [
+        { id: 'emotional-awareness', name: 'Autoconciencia emocional' },
+        { id: 'discomfort-tolerance', name: 'Tolerancia al malestar' },
+        { id: 'self-compassion', name: 'Autocompasión' },
+        { id: 'positive-emotions', name: 'Cultivo de emociones positivas' },
+      ],
+    },
+  ];
 
-        // Datos simulados de categorías
-        const mockCategories: ISkillCategory[] = [
-          {
-            id: 'eng',
-            name: 'Inglés',
-            imageUrl: '/assets/flags/us.svg',
-            subtitle: '41.7 M de estudiantes',
-            languageCode: 'en',
-          },
-          {
-            id: 'fr',
-            name: 'Francés',
-            imageUrl: '/assets/flags/fr.svg',
-            subtitle: '7.6 M de estudiantes',
-            languageCode: 'fr',
-          },
-          {
-            id: 'pt',
-            name: 'Portugués',
-            imageUrl: '/assets/flags/br.svg',
-            subtitle: '19.4 M de estudiantes',
-            languageCode: 'pt',
-          },
-          {
-            id: 'it',
-            name: 'Italiano',
-            imageUrl: '/assets/flags/it.svg',
-            subtitle: '4.7 M de estudiantes',
-            languageCode: 'it',
-          },
-          {
-            id: 'de',
-            name: 'Alemán',
-            imageUrl: '/assets/flags/de.svg',
-            subtitle: '2.8 M de estudiantes',
-            languageCode: 'de',
-          },
-          {
-            id: 'ru',
-            name: 'Ruso',
-            imageUrl: '/assets/flags/ru.svg',
-            subtitle: '1.7 M de estudiantes',
-            languageCode: 'ru',
-          },
-          {
-            id: 'ca',
-            name: 'Catalán',
-            imageUrl: '/assets/flags/catalonia.svg',
-            subtitle: '1.3 M de estudiantes',
-            languageCode: 'ca',
-          },
-          {
-            id: 'sv',
-            name: 'Sueco',
-            imageUrl: '/assets/flags/se.svg',
-            subtitle: '731 mil estudiantes',
-            languageCode: 'sv',
-          },
-        ];
-
-        setCategories(mockCategories);
-        setIsLoading(false);
-      } catch (error) {
-        console.error(error);
-        setError(
-          'Error al cargar las categorías. Por favor, intenta de nuevo.',
-        );
-        setIsLoading(false);
-      }
-    };
-
-    // Limpiar estado anterior del cuestionario
+  /**
+   * Maneja la selección de una categoría
+   */
+  const handleCategorySelect = (category: ISkillCategoryWithSubSkills) => {
+    // Limpiar estado anterior
     resetQuestionnaire();
 
-    // Cargar categorías
-    fetchCategories();
-  }, [resetQuestionnaire]);
+    // Establecer la categoría seleccionada
+    setCategory({
+      id: category.id,
+      name: category.name,
+      imageUrl: category.imageUrl,
+    });
 
-  // Manejar la selección de categoría
-  const handleCategorySelect = (category: ICategoryItem) => {
-    // Encontrar la categoría completa según el ID
-    const fullCategory = categories.find((c) => c.id === category.id);
-
-    if (fullCategory) {
-      setSelectedCategory(fullCategory);
-      console.log(selectedCategory);
-      setCategory(fullCategory);
-
-      // Navegar a la página de subcategorías o directamente al cuestionario
-      // Por ahora, vamos directamente al cuestionario
-      navigate('/questionnaire');
-    }
+    // Navegar al cuestionario
+    navigate('/questionnaire');
   };
 
-  // Manejar la salida
+  /**
+   * Maneja la salida/cancelación
+   */
   const handleExit = () => {
     resetQuestionnaire();
     navigate('/');
   };
 
-  // Mapear categorías al formato del componente
-  /*  const categoryItems: ICategoryItem[] = categories.map((category) => ({
-    id: category.id,
-    name: category.name,
-    imageUrl: category.imageUrl,
-    subtitle: category.subtitle,
-  })); */
-
-  // Mostrar mensaje de error si ocurrió alguno
-  if (error) {
-    return (
-      <QuestionnaireLayout onExit={handleExit}>
-        <MessageScreen
-          message="Error"
-          submessage={error}
-          characterMood="confused"
-          onContinue={handleExit}
-          continueButtonText="Volver al inicio"
-        />
-      </QuestionnaireLayout>
-    );
-  }
-
-  // Mostrar pantalla de carga
-  if (isLoading) {
-    return (
-      <QuestionnaireLayout showExitButton={false}>
-        <div className="flex min-h-screen flex-col items-center justify-center">
-          <div className="border-primary mb-4 h-12 w-12 animate-spin rounded-full border-4 border-t-transparent"></div>
-          <p className="text-lg">Cargando categorías...</p>
-        </div>
-      </QuestionnaireLayout>
-    );
-  }
-
-  // Renderizar la página de categorías
   return (
-    <QuestionnaireLayout title="Selecciona un idioma" onExit={handleExit}>
+    <QuestionnaireLayout title="Selección de habilidades" onExit={handleExit}>
       <div className="flex flex-col items-center px-4 py-8 md:px-6">
         <div className="mx-auto w-full max-w-4xl">
-          <Typography variant="h3" component="h1" className="mb-8 text-center">
-            Quiero aprender:
-          </Typography>
+          <h1 className="mb-8 text-center text-3xl font-bold">
+            Quiero ser un CAPO en...
+          </h1>
 
-          <CategoryGrid
-            categories={[]} //TODO: Validar arreglo de categorias
-            onSelectCategory={handleCategorySelect}
-            columns={4}
-            showBorders={true}
-          />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {categories.map((category) => (
+              <CategoryCard
+                key={category.id}
+                category={category}
+                isActive={activeCategory === category.id}
+                onMouseEnter={() => setActiveCategory(category.id)}
+                onMouseLeave={() => setActiveCategory(null)}
+                onClick={() => handleCategorySelect(category)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </QuestionnaireLayout>
   );
 };
 
-// Exportar como default para facilitar la carga dinámica
 export default CategoriesPage;

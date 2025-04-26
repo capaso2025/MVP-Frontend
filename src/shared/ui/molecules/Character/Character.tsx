@@ -103,7 +103,7 @@ export const Character = forwardRef<HTMLDivElement, ICharacterProps>(
       }
 
       // Estas rutas son ilustrativas, deberías configurarlas según la estructura de tu proyecto
-      return `/assets/characters/owl-${mood}.svg`;
+      return `/assets/characters/capito-${mood}.png`;
     };
 
     // Clases para la animación del personaje

@@ -133,7 +133,11 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
       >
         <div
           className={`${progressBarClasses} transition-all duration-300 ease-in-out`}
-          style={{ width: `${percentage}%` }}
+          style={{
+            width: `${percentage}%`,
+            height: '100%',
+            backgroundColor: `var(--color-primary)`,
+          }} //TODO: Corregir para altura y fondo
         />
         {showLabel && (
           <div className="mt-1 text-center text-xs font-medium">

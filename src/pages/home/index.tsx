@@ -2,43 +2,46 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
-  useAuthStore,
   selectIsAuthenticated,
+  useAuthStore,
 } from '@features/auth/model/auth-store';
 import { WelcomeScreen } from '@shared/ui';
 
 /**
  * Página de inicio (Home)
- * Página principal que muestra la bienvenida y opciones para comenzar
+ * Implementación según mockup para mostrar la bienvenida y opciones para comenzar
  */
 const HomePage: FC = () => {
   const navigate = useNavigate();
   const isAuthenticated = useAuthStore(selectIsAuthenticated);
 
-  // Si el usuario no está autenticado, mostrar la pantalla de bienvenida
-  if (!isAuthenticated) {
+  // Si el usuario ya está autenticado, redirigir al dashboard
+  if (isAuthenticated) {
     return (
-      <WelcomeScreen
-        title="¡La forma divertida, efectiva y gratis de aprender!"
-        characterImage="/assets/characters/owl-happy.svg"
-        decorativeImageUrl="/assets/illustrations/welcome-illustration.svg"
-        primaryButtonText="Empezar ahora"
-        secondaryButtonText="Ya tengo una cuenta"
-        onPrimaryButtonClick={() => navigate('/categories')}
-        onSecondaryButtonClick={() => navigate('/login')}
-      />
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <h1 className="mb-4 text-3xl font-bold">Bienvenido de vuelta</h1>
+          <p className="mb-6 text-gray-600">
+            Tu dashboard personalizado está listo.
+          </p>
+          {/* Componente existente para dashboard */}
+        </div>
+      </div>
     );
   }
 
-  // Si el usuario está autenticado, se accede a la vista de usuario logueado
-  // Este componente ya está implementado en el código base proporcionado
-  // Por lo que simplemente se reutiliza aquí
-
+  // Pantalla de bienvenida para usuarios nuevos basada en el mockup
   return (
-    <div>
-      {/* Este contenido será manejado por el componente HomePage existente */}
-      {/* que muestra el dashboard del usuario autenticado */}
-    </div>
+    <WelcomeScreen
+      title="¡Hoy comienza tu transformación!"
+      subtitle="¿Listo para convertirte en un CAPO?"
+      characterImage="/assets/characters/capito-happy.png"
+      decorativeImageUrl="/assets/illustrations/welcome-illustration.svg"
+      primaryButtonText="COMENZAR"
+      secondaryButtonText="TENGO UNA CUENTA"
+      onPrimaryButtonClick={() => navigate('/categories')}
+      onSecondaryButtonClick={() => navigate('/login')}
+    />
   );
 };
 

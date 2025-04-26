@@ -73,10 +73,10 @@ export const getMockQuestions = (categoryId: string): IQuestion[] => {
     },
     {
       id: 'motivation',
-      title: '¿Por qué quieres aprender este idioma?',
+      title: '¿Por qué quieres aprender [Habilidad Blanda]',
       type: 'single-choice',
       characterMessage:
-        'Cuéntame, ¿por qué te interesa este idioma en particular?',
+        'Cuéntame, ¿por qué te interesa esta [Habilidad Blanda] en particular?',
       characterMood: 'thinking',
       options: [
         {
@@ -127,9 +127,9 @@ export const getMockQuestions = (categoryId: string): IQuestion[] => {
     },
     {
       id: 'proficiency',
-      title: '¿Cuánto conoces de este idioma?',
+      title: '¿Cuánto conoces de esta [Habilidad Blanda]?',
       type: 'single-choice',
-      characterMessage: '¿Cuánto sabes de este idioma?',
+      characterMessage: '¿Cuánto sabes de esta [Habilidad Blanda]?',
       characterMood: 'thinking',
       options: [
         {
@@ -199,7 +199,7 @@ export const getMockQuestions = (categoryId: string): IQuestion[] => {
     },
     {
       id: 'goal_feedback',
-      title: '¡Perfecto! Aprenderás 75 palabras en tu primera semana.',
+      title: '¡Perfecto! Aprenderás [Habilidad Blanda] en tu primera semana.',
       type: 'informative',
       characterMessage:
         '¡Genial! Con esa dedicación, conseguirás resultados muy pronto.',
@@ -245,19 +245,20 @@ export const getMockQuestions = (categoryId: string): IQuestion[] => {
   if (categoryId === 'fr') {
     baseQuestions.splice(5, 0, {
       id: 'french_specific',
-      title: '¿Has visitado Francia alguna vez?',
+      title: '¿Has usado [Habilidad Blanda] alguna vez?',
       type: 'single-choice',
-      characterMessage: '¿Has tenido la oportunidad de visitar Francia?',
+      characterMessage:
+        '¿Has tenido la oportunidad de  usar [Habilidad Blanda]?',
       characterMood: 'thinking',
       options: [
         {
           id: 'fr_visit_yes',
-          text: 'Sí, he visitado Francia',
+          text: 'Sí',
           icon: 'flag',
         },
         {
           id: 'fr_visit_no',
-          text: 'No, nunca he estado en Francia',
+          text: 'No, nunca',
           icon: 'close',
         },
       ],
@@ -314,7 +315,7 @@ export const generateMockResult = (
     recommendations: [
       {
         id: 'rec1',
-        title: 'Lecciones básicas de vocabulario',
+        title: 'Lecciones básicas de [Habilidad Blanda]',
         description:
           'Aprende las palabras más comunes para construir una base sólida.',
         priority: 'high',
