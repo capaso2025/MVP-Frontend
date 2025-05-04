@@ -61,7 +61,15 @@ export interface ITypographyProps extends HTMLAttributes<HTMLElement> {
    * @default undefined (hereda del padre)
    */
   color?:
-    | ('primary' | 'secondary' | 'disabled' | 'error' | 'success')
+    | (
+        | 'primary'
+        | 'secondary'
+        | 'disabled'
+        | 'error'
+        | 'success'
+        | 'black'
+        | 'white'
+      )
     | undefined;
 }
 
@@ -77,7 +85,7 @@ export const Typography = forwardRef<HTMLElement, ITypographyProps>(
       bold = false,
       truncate = false,
       lines,
-      color,
+      color = 'black',
       className = '',
       children,
       ...restProps
@@ -108,11 +116,13 @@ export const Typography = forwardRef<HTMLElement, ITypographyProps>(
       NonNullable<ITypographyProps['color']>,
       string
     > = {
-      primary: 'text-text-primary',
-      secondary: 'text-text-secondary',
-      disabled: 'text-text-disabled',
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      disabled: 'text-disabled',
       error: 'text-error',
       success: 'text-success',
+      black: 'text-gray-900',
+      white: 'text-white',
     };
 
     // Construir las clases combinadas

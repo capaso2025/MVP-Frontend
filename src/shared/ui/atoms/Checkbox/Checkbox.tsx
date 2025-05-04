@@ -85,58 +85,53 @@ export const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
 
     return (
       <div className={containerClasses}>
-        <div className="group relative flex items-center">
-          <input
-            ref={ref}
-            type="checkbox"
-            id={inputId}
-            disabled={disabled}
-            className="absolute h-5 w-5 cursor-pointer opacity-0 disabled:cursor-not-allowed"
-            {...restProps}
-          />
-          <div className={checkboxClasses}>
-            {restProps.checked && (
-              <Icon
-                name="check"
-                size="sm"
-                className={disabled ? 'text-gray-500' : 'text-primary'}
+        <div className="flex flex-col">
+          <label
+            htmlFor={inputId}
+            className={`text-sm font-medium ${disabled ? 'text-gray-400' : error ? 'text-error' : 'text-gray-700'} cursor-pointer`}
+          >
+            <div className="group relative flex items-center">
+              <input
+                ref={ref}
+                type="checkbox"
+                id={inputId}
+                disabled={disabled}
+                className="absolute h-5 w-5 cursor-pointer opacity-0 disabled:cursor-not-allowed"
+                {...restProps}
               />
-            )}
-          </div>
+              <div className={checkboxClasses}>
+                {restProps.checked && (
+                  <Icon
+                    name="check"
+                    size="sm"
+                    className={disabled ? 'text-gray-500' : 'text-primary'}
+                  />
+                )}
+              </div>
+            </div>
+            {label || ''}
+          </label>
+
+          {helpText && !error && (
+            <Typography
+              variant="caption"
+              color="secondary"
+              className={compact ? 'mt-0.5' : 'mt-1'}
+            >
+              {helpText}
+            </Typography>
+          )}
+
+          {error && errorMessage && (
+            <Typography
+              variant="caption"
+              color="error"
+              className={compact ? 'mt-0.5' : 'mt-1'}
+            >
+              {errorMessage}
+            </Typography>
+          )}
         </div>
-
-        {(label || helpText || errorMessage) && (
-          <div className="flex flex-col">
-            {label && (
-              <label
-                htmlFor={inputId}
-                className={`text-sm font-medium ${disabled ? 'text-gray-400' : error ? 'text-error' : 'text-gray-700'} cursor-pointer`}
-              >
-                {label}
-              </label>
-            )}
-
-            {helpText && !error && (
-              <Typography
-                variant="caption"
-                color="secondary"
-                className={compact ? 'mt-0.5' : 'mt-1'}
-              >
-                {helpText}
-              </Typography>
-            )}
-
-            {error && errorMessage && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={compact ? 'mt-0.5' : 'mt-1'}
-              >
-                {errorMessage}
-              </Typography>
-            )}
-          </div>
-        )}
       </div>
     );
   },

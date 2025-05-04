@@ -2,15 +2,18 @@
 @import 'tailwindcss';
 
 /* Variables CSS personalizadas */
-:root {
+@theme {
   /* Colores principales */
-  --color-primary: #4ade80;
-  --color-primary-light: #86efac;
-  --color-primary-dark: #22c55e;
+  --color-primary: #162335;
+  --color-primary-light: #34406c;
+  --color-primary-lighter: #ccd1da;
+  --color-primary-dark: #0a1018;
 
   --color-secondary: #78716c;
   --color-secondary-light: #a8a29e;
   --color-secondary-dark: #57534e;
+
+  --color-primary-2: #c3a780;
 
   /* Estados funcionales */
   --color-success: #22c55e;
