@@ -9,6 +9,7 @@ function SectionCard(props: {
   onClick: () => void;
   detailsRoute: string;
   isActive?: boolean;
+  image?: string;
 }) {
   const {
     title,
@@ -17,6 +18,7 @@ function SectionCard(props: {
     onClick,
     detailsRoute,
     isActive = false,
+    image,
   } = props;
   return (
     <div
@@ -43,10 +45,11 @@ function SectionCard(props: {
       <div className="grid grid-rows-[50px_auto] place-content-center gap-2">
         <SpeechBubble text={bubbleText} />
         <img
-          src="/src/assets/wolf.png"
-          className="mx-auto text-center"
+          src={image}
+          className="mx-auto h-[150px] w-auto object-cover text-center"
           alt="capo logo"
           width={150}
+          height={150}
         />
       </div>
     </div>

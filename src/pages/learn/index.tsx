@@ -1,13 +1,13 @@
 import { Typography } from '@/shared/ui';
 import SectionCard from './components/SectionCard';
 import CustomCalendar from '@/pages/learn/components/Calendar';
-import DailyTasks from './components/DailyTasks';
+import DailyTasks from './components/daily-tasks/DailyTasks';
 import CreateProfile from './components/CreateProfile';
 import { CARDS_SECTIONS } from './dummy';
 
 function Learn() {
   return (
-    <div className="grid grid-cols-[60%_auto] gap-8">
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-[60%_auto]">
       <div className="grid grid-rows-[70px_auto] gap-2">
         <Typography variant="h2" className="py-2">
           Habilidades Blandas

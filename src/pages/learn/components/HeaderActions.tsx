@@ -41,8 +41,7 @@ function HeaderActions() {
         trigger={() => <img src="/src/assets/world.png" width={22} />}
         optionsList={[
           {
-            label: 'Control de Emociones',
-            icon: '/src/assets/brain.png',
+            label: 'Inglés',
             onClick: () => {},
           },
         ]}

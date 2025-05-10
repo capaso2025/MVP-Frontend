@@ -83,56 +83,52 @@ export const Radio = forwardRef<HTMLInputElement, IRadioProps>(
 
     return (
       <div className={containerClasses}>
-        <div className="group relative flex items-center">
-          <input
-            ref={ref}
-            type="radio"
-            id={inputId}
-            disabled={disabled}
-            className="absolute h-5 w-5 cursor-pointer opacity-0 disabled:cursor-not-allowed"
-            {...restProps}
-          />
-          <div className={radioClasses}>
-            {restProps.checked && (
-              <div
-                className={`h-2.5 w-2.5 rounded-full ${disabled ? 'bg-gray-500' : 'bg-primary'} `}
+        <div className="flex flex-col">
+          <label
+            htmlFor={inputId}
+            className={`flex items-center gap-2 text-sm font-medium ${disabled ? 'text-gray-400' : error ? 'text-error' : 'text-gray-700'} cursor-pointer`}
+          >
+            <div className="group relative flex items-center">
+              <input
+                ref={ref}
+                type="radio"
+                id={inputId}
+                disabled={disabled}
+                className="absolute h-5 w-5 cursor-pointer opacity-0 disabled:cursor-not-allowed"
+                {...restProps}
               />
-            )}
-          </div>
+              <div className={radioClasses}>
+                {restProps.checked && (
+                  <div
+                    className={`h-3 w-3 rounded-full ${disabled ? 'bg-gray-500' : 'bg-primary'} `}
+                  />
+                )}
+              </div>
+            </div>
+
+            {label || ''}
+          </label>
+
+          {helpText && !error && (
+            <Typography
+              variant="caption"
+              color="secondary"
+              className={compact ? 'mt-0.5' : 'mt-1'}
+            >
+              {helpText}
+            </Typography>
+          )}
+
+          {error && errorMessage && (
+            <Typography
+              variant="caption"
+              color="error"
+              className={compact ? 'mt-0.5' : 'mt-1'}
+            >
+              {errorMessage}
+            </Typography>
+          )}
         </div>
-
-        {(label || helpText || errorMessage) && (
-          <div className="flex flex-col">
-            {label && (
-              <label
-                htmlFor={inputId}
-                className={`text-sm font-medium ${disabled ? 'text-gray-400' : error ? 'text-error' : 'text-gray-700'} cursor-pointer`}
-              >
-                {label}
-              </label>
-            )}
-
-            {helpText && !error && (
-              <Typography
-                variant="caption"
-                color="secondary"
-                className={compact ? 'mt-0.5' : 'mt-1'}
-              >
-                {helpText}
-              </Typography>
-            )}
-
-            {error && errorMessage && (
-              <Typography
-                variant="caption"
-                color="error"
-                className={compact ? 'mt-0.5' : 'mt-1'}
-              >
-                {errorMessage}
-              </Typography>
-            )}
-          </div>
-        )}
       </div>
     );
   },

@@ -15,6 +15,7 @@ function CustomCalendar(props: { selectedDays: Date[] }) {
         required
         animate
         mode="multiple"
+        lang="es"
         selected={selected}
         onSelect={(v) => setSelected(v || [])}
         footer={

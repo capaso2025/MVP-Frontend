@@ -54,7 +54,14 @@ function Login(props: { onClickSignup?: () => void }) {
               />
             }
           />
-          <Button size="lg" variant="primary" className="w-full">
+          <Button
+            size="lg"
+            variant="primary"
+            className="w-full"
+            onClick={() => {
+              console.log(values);
+            }}
+          >
             <Typography
               variant="subtitle1"
               className="ml-2 font-bold text-white"

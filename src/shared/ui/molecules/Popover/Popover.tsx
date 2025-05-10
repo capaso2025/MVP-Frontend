@@ -7,7 +7,7 @@ function Popover(props: {
   triggerClassName?: string;
   optionsList?: {
     label: string;
-    icon: string;
+    icon?: string;
     onClick: () => void;
   }[];
 }) {
