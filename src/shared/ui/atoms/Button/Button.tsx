@@ -83,14 +83,11 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   ) => {
     // Mapeo de variantes a clases CSS
     const variantClasses: Record<TButtonVariant, string> = {
-      primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-      secondary:
-        'bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-500',
-      outline:
-        'bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500',
-      ghost:
-        'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-500',
-      danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+      primary: 'bg-primary text-white',
+      secondary: 'bg-primary-lighter text-gray-900 ',
+      outline: 'bg-transparent border border-primary-light text-primary',
+      ghost: 'bg-transparent text-gray-700 ',
+      danger: 'bg-red-600 text-white',
     };
 
     // Mapeo de tamaños a clases CSS
@@ -102,7 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 
     // Construcción de la clase combinada
     const buttonClasses = [
-      'inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
+      'inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-95',
       variantClasses[variant],
       sizeClasses[size],
       fullWidth ? 'w-full' : '',
@@ -120,7 +117,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       >
         {isLoading && (
           <svg
-            className="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+            className="mr-2 -ml-1 h-4 w-4 animate-spin text-current"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
