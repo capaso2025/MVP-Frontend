@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   useAuthStore,
   selectCurrentUser,
-} from '@features/auth/model/auth-store';
+} from '@/features/auth/auth-store';
 import { useQuestionnaireStore } from '@features/questionnaire/model/questionnaire-store';
 import { Button, Card, Typography, Icon } from '@shared/ui';
 

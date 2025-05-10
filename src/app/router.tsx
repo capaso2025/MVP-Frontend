@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import {
   selectIsAuthenticated,
   useAuthStore,
-} from '@features/auth/model/auth-store';
+} from '@/features/auth/auth-store';
 import MenuLayout from '@/shared/ui/layouts/menu-layout';
 
 // Importación de componentes de página con code splitting

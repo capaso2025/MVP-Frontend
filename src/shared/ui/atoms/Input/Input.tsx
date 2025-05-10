@@ -28,7 +28,7 @@ export interface IInputProps
   /**
    * Mensaje de error a mostrar
    */
-  errorMessage?: string;
+  errorMessage?: string | undefined;
 
   /**
    * Icono al inicio del input
@@ -161,7 +161,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       isFocused && !disabled && !error
         ? 'border-primary ring-1 ring-primary/30'
         : '',
-      error ? 'border-error' : 'border-gray-300',
+      error ? 'border-error !bg-error-light' : 'border-gray-300',
       sizeClasses[size],
     ]
       .filter(Boolean)

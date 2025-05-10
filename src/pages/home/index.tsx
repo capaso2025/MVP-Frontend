@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   selectIsAuthenticated,
   useAuthStore,
-} from '@features/auth/model/auth-store';
+} from '@/features/auth/auth-store';
 import { WelcomeScreen } from '@shared/ui';
 
 /**
