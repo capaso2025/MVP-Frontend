@@ -20,7 +20,7 @@ const QuestionnaireResultsPage = lazy(
 const DashboardPage = lazy(() => import('@pages/dashboard'));
 
 // ROADMAP
-const LearnPage = lazy(() => import('@pages/learn'));
+const SectionsPage = lazy(() => import('@/pages/sections'));
 const CalendarPage = lazy(() => import('@pages/calendar'));
 const ShopPage = lazy(() => import('@pages/shop'));
 const ProfilePage = lazy(() => import('@pages/profile'));
@@ -43,7 +43,7 @@ const PublicOnlyRoute = ({ element }: { element: React.ReactNode }) => {
   const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   if (isAuthenticated) {
-    return <Navigate to="/learn" replace />;
+    return <Navigate to="/sections" replace />;
   }
 
   return <>{element}</>;
@@ -74,7 +74,7 @@ function AppRouter() {
           element={<QuestionnaireResultsPage />}
         />
         <Route path="/" element={<MenuLayout />}>
-          <Route path="/learn" element={<LearnPage />} />
+          <Route path="/sections" element={<SectionsPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />

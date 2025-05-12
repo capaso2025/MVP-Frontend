@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from './sidebar';
 import { TimerFloating } from '@/pages/timer/components/TimerFloating';
-import HeaderActions from '@/pages/learn/components/HeaderActions';
+import HeaderActions from '@/pages/sections/components/organisms/HeaderActions';
 
 function MenuLayout() {
   return (
