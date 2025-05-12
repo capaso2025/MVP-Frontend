@@ -1,5 +1,5 @@
 import { useRenderStore } from '@/shared/store/render-store';
-import DailyTasksListModalContent from './DailyTasksListModalContent';
+import DailyTasksListModalContent from '../templates/DailyTasksListModalContent';
 
 function DailyTasks() {
   const setModalData = useRenderStore((state) => state.setModalData);

@@ -1,17 +1,24 @@
-import { useState } from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { Input } from '../../atoms/Input/Input';
 import { Typography } from '../../atoms/Typography/Typography';
 import { Icon } from '../../atoms/Icon/Icon';
+import { useForm } from '@/shared/lib/hooks/useForm';
+import { LoginData } from '@/features/auth/login/types/loginData.types';
+import { validateLogin } from '@/features/auth/login/loginValidator';
+import { usePassword } from '@/shared/lib/hooks/usePassword';
+import { useLogin } from '@/features/auth/login/hooks/useLogin';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
-  const [values, setValues] = useState({
-    email: '',
-    password: '',
-  });
+  const { executeLogin } = useLogin();
+  const { showPassword, togglePasswordVisibility } = usePassword();
+  const { errors, values, handleSubmit, setValue } = useForm<LoginData>({
+    validator: validateLogin,
+    keysList: ['email', 'password'],
+    initialValues: {},
+    onSubmit: executeLogin,
+  })
+
   return (
     <>
       <Button
@@ -24,7 +31,12 @@ function Login(props: { onClickSignup?: () => void }) {
         </Typography>
       </Button>
       <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
-        <div className="mx-auto -mt-8 w-full place-content-center px-4">
+        <form className="mx-auto -mt-8 w-full place-content-center px-4" onSubmit={
+          (ev) => {
+            ev.preventDefault();
+            handleSubmit();
+          }
+        }>
           <Typography variant="h2" className="text-primary mb-12">
             Ingresa tus credenciales para{' '}
             <span className="text-primary-2">iniciar sesión</span>
@@ -33,17 +45,17 @@ function Login(props: { onClickSignup?: () => void }) {
             startIcon="mail"
             type="email"
             value={values.email}
-            onChange={(ev) => setValues({ ...values, email: ev.target.value })}
+            onChange={(ev) => setValue('email', ev.target.value)}
             placeholder="Correo electrónico"
             className="mt-4"
+            errorMessage={errors?.email}
+            error={!!errors?.email}
           />
           <Input
             startIcon="lock"
             type={showPassword ? 'text' : 'password'}
             value={values.password}
-            onChange={(ev) =>
-              setValues({ ...values, password: ev.target.value })
-            }
+            onChange={(ev) => setValue('password', ev.target.value)}
             placeholder="Contraseña"
             className="mt-4 mb-8"
             endContent={
@@ -53,14 +65,14 @@ function Login(props: { onClickSignup?: () => void }) {
                 onClick={togglePasswordVisibility}
               />
             }
+            errorMessage={errors?.password}
+            error={!!errors?.password}
           />
           <Button
             size="lg"
             variant="primary"
             className="w-full"
-            onClick={() => {
-              console.log(values);
-            }}
+            type='submit'
           >
             <Typography
               variant="subtitle1"
@@ -69,15 +81,15 @@ function Login(props: { onClickSignup?: () => void }) {
               Ingresar
             </Typography>
           </Button>
-          <div>
+          {/* <div>
             <Typography
               variant="subtitle2"
               className="text-primary mt-4 cursor-pointer text-right"
             >
               Olvidaste tu contraseña?
             </Typography>
-          </div>
-        </div>
+          </div> */}
+        </form>
         <div className="hidden md:block">
           <img
             src="/src/assets/wolf.png"

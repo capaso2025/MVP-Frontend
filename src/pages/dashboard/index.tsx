@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import {
   useAuthStore,
-  selectCurrentUser,
-} from '@features/auth/model/auth-store';
+} from '@/features/auth/auth-store';
 import { useQuestionnaireStore } from '@features/questionnaire/model/questionnaire-store';
 import { Button, Card, Typography, Icon } from '@shared/ui';
 
@@ -14,7 +13,7 @@ import { Button, Card, Typography, Icon } from '@shared/ui';
  */
 const DashboardPage: FC = () => {
   const navigate = useNavigate();
-  const user = useAuthStore(selectCurrentUser);
+  const user = useAuthStore(state => state.user);
   const lastResult = useQuestionnaireStore((state) => state.lastResult);
   const selectedCategory = useQuestionnaireStore(
     (state) => state.selectedCategory,
@@ -54,7 +53,7 @@ const DashboardPage: FC = () => {
               leftIcon="user"
               onClick={() => navigate('/profile')}
             >
-              {user?.firstName || 'Perfil'}
+              {user?.email || 'Perfil'}
             </Button>
           </div>
         </div>
@@ -64,7 +63,7 @@ const DashboardPage: FC = () => {
         {/* Encabezado de bienvenida */}
         <div className="mb-8">
           <Typography variant="h3" component="h1" className="mb-2">
-            ¡Bienvenido a tu dashboard, {user?.firstName || 'CAPO'}!
+            ¡Bienvenido a tu dashboard, {user?.email || 'CAPO'}!
           </Typography>
           <Typography variant="body1" color="secondary">
             Aquí puedes ver tu progreso y recomendaciones personalizadas.

@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/features/auth/auth-store';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button } from '@/shared/ui';
 import Auth from '@/shared/ui/templates/Auth';
@@ -8,6 +9,7 @@ import {
 
 function CreateProfile() {
   const setModalData = useRenderStore((state) => state.setModalData);
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   const handleAuthClick = (initialScreen?: AuthScreen) => {
     setModalData({
@@ -15,6 +17,9 @@ function CreateProfile() {
       fullScreen: true,
     });
   };
+
+  if (isAuthenticated) return <></>
+
   return (
     <div className="rounded-lg border border-gray-200 p-6">
       <div className="space-y-4">

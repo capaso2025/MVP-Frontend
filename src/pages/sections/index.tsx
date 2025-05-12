@@ -1,8 +1,8 @@
 import { Typography } from '@/shared/ui';
-import SectionCard from './components/SectionCard';
-import CustomCalendar from '@/pages/learn/components/Calendar';
-import DailyTasks from './components/daily-tasks/DailyTasks';
-import CreateProfile from './components/CreateProfile';
+import SectionCard from './components/organisms/SectionCard';
+import CustomCalendar from '@/pages/sections/components/atoms/Calendar';
+import DailyTasks from './components/organisms/DailyTasks';
+import CreateProfile from './components/organisms/CreateProfile';
 import { CARDS_SECTIONS } from './dummy';
 
 function Learn() {

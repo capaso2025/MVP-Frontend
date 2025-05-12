@@ -28,7 +28,6 @@ export function TaskList() {
   }, [tasks, filter]);
 
   const toggleTaskCompleted = (taskId: string) => {
-    console.log(tasks, taskId);
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
         task.id === taskId ? { ...task, completed: !task.completed } : task,

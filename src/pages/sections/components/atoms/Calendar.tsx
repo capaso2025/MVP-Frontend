@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/style.css';
 
 function CustomCalendar(props: { selectedDays: Date[] }) {
   const { selectedDays } = props;

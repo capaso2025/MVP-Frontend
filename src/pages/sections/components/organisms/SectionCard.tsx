@@ -1,6 +1,6 @@
 import { Button, Progress, Typography } from '@/shared/ui';
 import { Link } from 'react-router-dom';
-import SpeechBubble from './SpeechBubble';
+import SpeechBubble from '../../../../shared/ui/atoms/speech-bubble/SpeechBubble';
 
 function SectionCard(props: {
   title: string;
@@ -35,7 +35,7 @@ function SectionCard(props: {
           <Progress value={progress} />
         </div>
         <Button
-          onClick={isActive ? onClick : () => {}}
+          onClick={isActive ? onClick : () => { }}
           variant={isActive ? 'primary' : 'outline'}
           disabled={!isActive}
         >
