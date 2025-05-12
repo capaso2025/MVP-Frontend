@@ -14,6 +14,9 @@ interface RenderState {
   modalData: ModalData;
   setModalData: (value: ModalData) => void;
   closeModal: () => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
+  toggleLoading: () => void;
 }
 
 const initialModalData: ModalData = {
@@ -37,4 +40,7 @@ export const useRenderStore = create<RenderState>()((set) => ({
       modalData: initialModalData,
     }));
   },
+  loading: false,
+  setLoading: (loading: boolean) => set(() => ({ loading })),
+  toggleLoading: () => set((state) => ({ loading: !state.loading })),
 }));

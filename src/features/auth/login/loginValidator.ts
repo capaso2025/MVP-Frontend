@@ -1,5 +1,5 @@
 import { validationEmptyKeys } from '@/shared/lib/utils';
-import { LoginData } from './loginData.types';
+import { LoginData } from './types/loginData.types';
 import { EMAIL_REGEX, PASSWORD_REGEX } from '@/shared/constants/regex';
 
 export const validateLogin = (data: LoginData, keysList: string[]) => {

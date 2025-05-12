@@ -1,18 +1,10 @@
-import { ApiErrorData } from './types/error.types';
-
 export class ApiError extends Error {
   status: number;
-  data?: ApiErrorData;
 
-  constructor(options: {
-    status: number;
-    message: string;
-    data?: ApiErrorData;
-  }) {
+  constructor(options: { status: number; message: string }) {
     super(options.message);
     this.name = 'ApiError';
     this.status = options.status;
-    this.data = options.data;
   }
 
   isNotFound(): boolean {

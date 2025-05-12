@@ -2,7 +2,6 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
-  selectIsAuthenticated,
   useAuthStore,
 } from '@/features/auth/auth-store';
 import { WelcomeScreen } from '@shared/ui';
@@ -13,7 +12,7 @@ import { WelcomeScreen } from '@shared/ui';
  */
 const HomePage: FC = () => {
   const navigate = useNavigate();
-  const isAuthenticated = useAuthStore(selectIsAuthenticated);
+  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
 
   // Si el usuario ya está autenticado, redirigir al dashboard
   if (isAuthenticated) {

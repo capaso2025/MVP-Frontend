@@ -189,7 +189,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
           </label>
         )}
 
-        {/* Input con iconos */}
         <div className={inputWrapperClasses}>
           {/* Icono/Contenido inicial */}
           {(startIcon || startContent) && (

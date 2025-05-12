@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { Input } from '../../atoms/Input/Input';
 import { Typography } from '../../atoms/Typography/Typography';
@@ -6,28 +5,20 @@ import { Icon } from '../../atoms/Icon/Icon';
 import { useForm } from '@/shared/lib/hooks/useForm';
 import { SignupData } from '@/features/auth/signup/signupData.types';
 import { validateSignup } from '@/features/auth/signup/signupValidator';
-import { signup } from '@/features/auth/signup/signupHttpCall';
+import { DatePicker } from '../../molecules/DatePicker/DatePicker';
+import { usePassword } from '@/shared/lib/hooks/usePassword';
+import { useSignup } from '@/features/auth/signup/hooks/useSignup';
 
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const { executeSignup } = useSignup()
+  const { showPassword, togglePasswordVisibility } = usePassword();
   const { errors, values, handleSubmit, setValue } = useForm<SignupData>({
     validator: validateSignup,
     keysList: ['email', 'password', 'name', 'lastName', 'birthdate', 'confirmPassword'],
-    onSubmit
+    onSubmit: executeSignup
   })
-  async function onSubmit(values: SignupData) {
-    const response = await signup({
-      email: values.email,
-      password: values.password,
-      name: values.name,
-      lastName: values.lastName,
-      birthdate: values.birthdate,
-      confirmPassword: values.confirmPassword
-    })
-    console.log(response)
-  }
+
   return (
     <>
       <Button
@@ -75,6 +66,11 @@ function Signup(props: { onClickLogin?: () => void }) {
               error={!!errors?.lastName}
             />
           </div>
+          <DatePicker className='mt-4'
+            onChange={(date) => setValue('birthdate', date)}
+            placeholder="Fecha de nacimiento"
+            errorMessage={errors?.birthdate}
+          />
           <Input
             startIcon="mail"
             type="email"
@@ -85,37 +81,39 @@ function Signup(props: { onClickLogin?: () => void }) {
             errorMessage={errors?.email}
             error={!!errors?.email}
           />
-          <Input
-            startIcon="lock"
-            type={showPassword ? 'text' : 'password'}
-            value={values.password}
-            onChange={(ev) =>
-              setValue('password', ev.target.value)
-            }
-            placeholder="Contraseña"
-            className="mt-4"
-            endContent={
-              <Icon
-                name={showPassword ? 'eye' : 'eye-off'}
-                className="text-gray-500"
-                onClick={togglePasswordVisibility}
-              />
-            }
-            errorMessage={errors?.password}
-            error={!!errors?.password}
-          />
-          <Input
-            startIcon="lock"
-            type={showPassword ? 'text' : 'password'}
-            value={values.confirmPassword}
-            onChange={(ev) =>
-              setValue('confirmPassword', ev.target.value)
-            }
-            placeholder="Repite tu Contraseña"
-            className="mt-4 mb-8"
-            errorMessage={errors?.confirmPassword}
-            error={!!errors?.confirmPassword}
-          />
+          <div className="grid grid-cols-2 gap-4">
+            <Input
+              startIcon="lock"
+              type={showPassword ? 'text' : 'password'}
+              value={values.password}
+              onChange={(ev) =>
+                setValue('password', ev.target.value)
+              }
+              placeholder="Contraseña"
+              className="mt-4"
+              endContent={
+                <Icon
+                  name={showPassword ? 'eye' : 'eye-off'}
+                  className="text-gray-500"
+                  onClick={togglePasswordVisibility}
+                />
+              }
+              errorMessage={errors?.password}
+              error={!!errors?.password}
+            />
+            <Input
+              startIcon="lock"
+              type={showPassword ? 'text' : 'password'}
+              value={values.confirmPassword}
+              onChange={(ev) =>
+                setValue('confirmPassword', ev.target.value)
+              }
+              placeholder="Repite tu Contraseña"
+              className="mt-4 mb-8"
+              errorMessage={errors?.confirmPassword}
+              error={!!errors?.confirmPassword}
+            />
+          </div>
           <Button size="lg" variant="primary" className="w-full" type='submit'>
             <Typography
               variant="subtitle1"

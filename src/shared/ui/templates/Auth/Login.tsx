@@ -1,30 +1,24 @@
-import { useState } from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { Input } from '../../atoms/Input/Input';
 import { Typography } from '../../atoms/Typography/Typography';
 import { Icon } from '../../atoms/Icon/Icon';
-import { login } from '@/features/auth/login/loginHttpCall';
 import { useForm } from '@/shared/lib/hooks/useForm';
-import { LoginData } from '@/features/auth/login/loginData.types';
+import { LoginData } from '@/features/auth/login/types/loginData.types';
 import { validateLogin } from '@/features/auth/login/loginValidator';
+import { usePassword } from '@/shared/lib/hooks/usePassword';
+import { useLogin } from '@/features/auth/login/hooks/useLogin';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => setShowPassword(!showPassword);
+  const { executeLogin } = useLogin();
+  const { showPassword, togglePasswordVisibility } = usePassword();
   const { errors, values, handleSubmit, setValue } = useForm<LoginData>({
     validator: validateLogin,
     keysList: ['email', 'password'],
     initialValues: {},
-    onSubmit
+    onSubmit: executeLogin,
   })
-  async function onSubmit(values: LoginData) {
-    const response = await login({
-      email: values.email,
-      password: values.password
-    })
-    console.log(response)
-  }
+
   return (
     <>
       <Button
@@ -87,14 +81,14 @@ function Login(props: { onClickSignup?: () => void }) {
               Ingresar
             </Typography>
           </Button>
-          <div>
+          {/* <div>
             <Typography
               variant="subtitle2"
               className="text-primary mt-4 cursor-pointer text-right"
             >
               Olvidaste tu contraseña?
             </Typography>
-          </div>
+          </div> */}
         </form>
         <div className="hidden md:block">
           <img

@@ -9,6 +9,7 @@ export type TButtonVariant =
   | 'secondary'
   | 'outline'
   | 'ghost'
+  | 'input'
   | 'danger';
 
 /**
@@ -86,8 +87,9 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       primary: 'bg-primary text-white',
       secondary: 'bg-primary-lighter text-gray-900 ',
       outline: 'bg-transparent border border-primary-light text-primary',
-      ghost: 'bg-transparent text-gray-700 ',
+      ghost: 'bg-transparent text-gray-700',
       danger: 'bg-red-600 text-white',
+      input: 'bg-gray-100 bg-white border border-gray-300 text-text-primary disabled:text-text-disabled active:scale-100',
     };
 
     // Mapeo de tamaños a clases CSS

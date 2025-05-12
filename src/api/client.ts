@@ -23,17 +23,16 @@ export class ApiClient {
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
+      console.log('🏝️ ~ ApiClient ~ errorData:', errorData);
       throw new ApiError({
         status: response.status,
-        message: errorData.message ?? response.statusText,
-        data: errorData,
+        message: errorData.description ?? response.statusText,
       });
     }
 
     if (response.status === 204) {
       return {} as T;
     }
-
     return response.json();
   }
   async get<T>(baseUrl: string, options?: HttpRequestOptions): Promise<T> {
@@ -53,7 +52,6 @@ export class ApiClient {
     options?: HttpRequestOptions,
   ): Promise<T> {
     const headers = this.getHeaders({ optHeaders: options?.headers });
-
     const response = await fetch(baseUrl, {
       method: 'POST',
       headers,

@@ -1,20 +1,15 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-
-import type { IUser } from "@entities/user/api/user-api";
-
-/**
- * Interfaz para el estado de autenticación
- */
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+interface IUser {
+  email: string;
+  roleId: string;
+}
 export interface IAuthState {
-  // Estado
   isAuthenticated: boolean;
   user: IUser | null;
   token: string | null;
   isLoading: boolean;
   error: string | null;
-
-  // Acciones
   login: (token: string, user: IUser) => void;
   logout: () => void;
   setUser: (user: IUser) => void;
@@ -22,21 +17,15 @@ export interface IAuthState {
   setError: (error: string | null) => void;
 }
 
-/**
- * Store de Zustand para gestionar el estado de autenticación
- * Usa persistencia para mantener la sesión entre recargas
- */
 export const useAuthStore = create<IAuthState>()(
   persist(
     (set) => ({
-      // Estado inicial
       isAuthenticated: false,
       user: null,
       token: null,
       isLoading: false,
       error: null,
 
-      // Acciones
       login: (token, user) =>
         set({
           isAuthenticated: true,
@@ -59,7 +48,7 @@ export const useAuthStore = create<IAuthState>()(
       setError: (error) => set({ error }),
     }),
     {
-      name: "auth-storage", // Nombre para localStorage
+      name: 'auth-storage', // Nombre para localStorage
       partialize: (state) => ({
         isAuthenticated: state.isAuthenticated,
         token: state.token,
@@ -68,32 +57,3 @@ export const useAuthStore = create<IAuthState>()(
     },
   ),
 );
-
-/**
- * Selector para verificar autenticación
- */
-export const selectIsAuthenticated = (state: IAuthState) =>
-  state.isAuthenticated;
-
-/**
- * Selector para obtener el usuario actual
- */
-export const selectCurrentUser = (state: IAuthState) => state.user;
-
-/**
- * Selector para obtener el token
- */
-export const selectAuthToken = (state: IAuthState) => state.token;
-
-/**
- * Ejemplo de uso en un componente:
- *
- * import { useAuthStore, selectIsAuthenticated } from '@features/auth/model/auth-store';
- *
- * const MyComponent = () => {
- *   const isAuthenticated = useAuthStore(selectIsAuthenticated);
- *   const { login, logout } = useAuthStore();
- *
- *   // ...
- * }
- */
