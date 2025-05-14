@@ -2,10 +2,16 @@ interface MenuItem {
   label: string;
   icon: string;
   path: string;
+  include?: string[];
 }
 
 export const MENU_ITEMS: MenuItem[] = [
-  { label: 'Objetivos', icon: '/src/assets/home.svg', path: '/learn' },
+  {
+    label: 'Objetivos',
+    icon: '/src/assets/home.svg',
+    path: '/sections',
+    include: ['/learn'],
+  },
   {
     label: 'Calendario',
     icon: '/src/assets/calendar.png',

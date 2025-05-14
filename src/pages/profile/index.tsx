@@ -17,7 +17,7 @@ export default function ProfilePage() {
   if (!profile) return <></>
 
   return (
-    <>
+    <div>
       <Typography variant="h2" className="py-2">
         Perfil
       </Typography>
@@ -142,6 +142,6 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

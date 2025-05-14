@@ -4,11 +4,11 @@ import { MENU_ITEMS } from './menu-items';
 
 function Sidebar() {
   const location = useLocation();
-  const sidebarItemIsSelected = (path: string) => {
-    return location.pathname === path;
+  const sidebarItemIsSelected = (path: string, include?: string[]) => {
+    return location.pathname === path || !!include?.some((el) => location.pathname.includes(el));
   };
   return (
-    <aside className="bg-primary shadow-secondary-dark grid grid-rows-[100px_auto] gap-2 rounded-r-2xl px-4 py-8 text-white shadow-xl">
+    <aside className="fixed bg-gradient-to-br h-screen from-primary to-primary-dark shadow-secondary-dark grid grid-rows-[100px_auto] gap-2 rounded-r-2xl px-4 py-8 text-white shadow-xl min-w-[300px]">
       <img
         alt="Capo logo"
         src="/src/assets/capo-logo.png"
@@ -20,7 +20,7 @@ function Sidebar() {
           <MenuItem
             key={el.label}
             {...el}
-            isSelected={sidebarItemIsSelected(el.path)}
+            isSelected={sidebarItemIsSelected(el.path, el.include)}
           />
         ))}
       </div>

@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import {
   useAuthStore,
 } from '@/features/auth/auth-store';
-import MenuLayout from '@/shared/ui/layouts/menu-layout';
+import MainLayout from '@/shared/ui/layouts/main-layout';
 import Spinner from '@/shared/ui/atoms/Spinner/Spinner';
 
 const HomePage = lazy(() => import('@pages/home'));
@@ -19,12 +19,16 @@ const QuestionnaireResultsPage = lazy(
 );
 const DashboardPage = lazy(() => import('@pages/dashboard'));
 
-// ROADMAP
+// INITIAL HOME WITH SIDEBAR
 const SectionsPage = lazy(() => import('@/pages/sections'));
+const LearnPage = lazy(() => import('@/pages/learn'));
 const CalendarPage = lazy(() => import('@pages/calendar'));
 const ShopPage = lazy(() => import('@pages/shop'));
 const ProfilePage = lazy(() => import('@pages/profile'));
 const TimerPage = lazy(() => import('@pages/timer'));
+
+// LESSON
+const LessonPage = lazy(() => import('@pages/lesson'));
 
 // NOT FOUND
 const NotFoundPage = lazy(() => import('@pages/not-found'));
@@ -73,13 +77,15 @@ function AppRouter() {
           path="/questionnaire/results"
           element={<QuestionnaireResultsPage />}
         />
-        <Route path="/" element={<MenuLayout />}>
+        <Route path="/" element={<MainLayout />}>
           <Route path="/sections" element={<SectionsPage />} />
+          <Route path="/learn" element={<LearnPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
         </Route>
+        <Route path="/lesson" element={<LessonPage />} />
 
         {/* Redirección a la página de inicio */}
 
@@ -94,10 +100,6 @@ function AppRouter() {
         />
 
         {/* Rutas privadas */}
-        <Route
-          path="/profile"
-          element={<PrivateRoute element={<ProfilePage />} />}
-        />
         <Route
           path="/dashboard"
           element={<PrivateRoute element={<DashboardPage />} />}

@@ -15,7 +15,7 @@ export default function TimerPage() {
   const progress = ((getMaxTime(mode) - timeLeft) / getMaxTime(mode)) * 100;
 
   return (
-    <div className="grid grid-cols-[60%_auto] gap-8">
+    <section>
       <div className="mx-auto flex flex-col items-center p-4">
         <div className="mb-8 w-max">
           <Tabs
@@ -47,6 +47,6 @@ export default function TimerPage() {
       <div className="mt-4 max-h-[800px] overflow-y-auto rounded-lg border border-gray-200 p-6">
         <TaskList />
       </div>
-    </div>
+    </section>
   );
 }
