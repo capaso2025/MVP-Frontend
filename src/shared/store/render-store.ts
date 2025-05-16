@@ -16,6 +16,7 @@ type AlertDialogData = {
   onConfirm?: () => void;
   onlyCloseAction?: boolean;
   onClose?: () => void;
+  onCancel?: () => void;
   confirmButtonProps?: Record<string, unknown>;
   show: boolean;
 };
@@ -46,6 +47,8 @@ const initialAlertDialogData = {
   confirmText: '',
   description: '',
   onClose: () => {},
+  onConfirm: () => {},
+  onCancel: () => {},
   show: false,
 };
 export const useRenderStore = create<RenderState>()((set) => ({

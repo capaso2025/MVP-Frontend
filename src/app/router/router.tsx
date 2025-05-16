@@ -1,10 +1,9 @@
 import { Suspense, lazy } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import {
-  useAuthStore,
-} from '@/features/auth/auth-store';
+import { Route, Routes } from 'react-router-dom';
 import MainLayout from '@/shared/ui/layouts/main-layout';
 import Spinner from '@/shared/ui/atoms/Spinner/Spinner';
+import { PublicOnlyRoute } from './public-route';
+import { PrivateRoute } from './private-route';
 
 const HomePage = lazy(() => import('@pages/home'));
 const LoginPage = lazy(() => import('@pages/login'));
@@ -33,26 +32,6 @@ const LessonPage = lazy(() => import('@pages/lesson'));
 // NOT FOUND
 const NotFoundPage = lazy(() => import('@pages/not-found'));
 
-const PrivateRoute = ({ element }: { element: React.ReactNode }) => {
-  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return <>{element}</>;
-};
-
-const PublicOnlyRoute = ({ element }: { element: React.ReactNode }) => {
-  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
-
-  if (isAuthenticated) {
-    return <Navigate to="/sections" replace />;
-  }
-
-  return <>{element}</>;
-};
-
 function AppRouter() {
   return (
     <Suspense
@@ -79,15 +58,13 @@ function AppRouter() {
         />
         <Route path="/" element={<MainLayout />}>
           <Route path="/sections" element={<SectionsPage />} />
-          <Route path="/learn" element={<LearnPage />} />
+          <Route path="/modules/:section" element={<LearnPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
         </Route>
-        <Route path="/lesson" element={<LessonPage />} />
-
-        {/* Redirección a la página de inicio */}
+        <Route path="/lesson/:module/:lesson" element={<LessonPage />} />
 
         {/* Rutas públicas solo cuando no está autenticado */}
         <Route

@@ -10,7 +10,7 @@ export const MENU_ITEMS: MenuItem[] = [
     label: 'Objetivos',
     icon: '/src/assets/home.svg',
     path: '/sections',
-    include: ['/learn'],
+    include: ['/modules'],
   },
   {
     label: 'Calendario',

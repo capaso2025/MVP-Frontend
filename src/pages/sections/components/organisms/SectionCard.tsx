@@ -7,7 +7,6 @@ function SectionCard(props: {
   bubbleText: string;
   progress: number;
   onClick: () => void;
-  detailsRoute: string;
   isActive?: boolean;
   image?: string;
 }) {
@@ -16,7 +15,6 @@ function SectionCard(props: {
     bubbleText,
     progress,
     onClick,
-    detailsRoute,
     isActive = false,
     image,
   } = props;
@@ -26,7 +24,7 @@ function SectionCard(props: {
     >
       <div className="grid grid-rows-[auto_max-content]">
         <div>
-          <Link className="text-primary text-sm" to={detailsRoute}>
+          <Link className="text-primary text-sm" to="/" >
             Ver detalles
           </Link>
           <Typography variant="h4" className="mt-4 mb-4 font-bold">

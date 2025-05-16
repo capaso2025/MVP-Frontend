@@ -1,6 +1,6 @@
 import { TimerProvider } from '@/pages/timer/context';
 import { QueryProvider } from './providers/query-provider';
-import AppRouter from './router';
+import AppRouter from './router/router';
 import Modal from '@/shared/ui/molecules/Modal/Modal';
 import { ToastContainer } from 'react-toastify';
 import Loading from '@/shared/ui/templates/Loading/Loading';

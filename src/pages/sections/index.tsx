@@ -1,9 +1,9 @@
 import { Typography } from '@/shared/ui';
 import SectionCard from './components/organisms/SectionCard';
-import { CARDS_SECTIONS } from './dummy';
+import { SOFT_SKILLS_SECTIONS } from '../../data/soft-skills';
 import { useNavigate } from 'react-router-dom';
 
-function Learn() {
+function Sections() {
   const navigate = useNavigate();
   return (
     <section className="grid grid-rows-[70px_auto] gap-2">
@@ -11,9 +11,9 @@ function Learn() {
         Habilidades Blandas
       </Typography>
       <div className="flex flex-col gap-8">
-        {CARDS_SECTIONS.map((values) => (
+        {SOFT_SKILLS_SECTIONS.map((values) => (
           <SectionCard {...values} onClick={() => {
-            navigate("/learn")
+            navigate(`/modules/${encodeURIComponent(values.title)}`,)
           }} />
         ))}
       </div>
@@ -21,4 +21,4 @@ function Learn() {
   );
 }
 
-export default Learn;
+export default Sections;

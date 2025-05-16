@@ -19,7 +19,7 @@ export const useLogin = () => {
         email: values.email,
         password: values.password,
       });
-      navigate('/learn');
+      navigate('/sections');
       closeModal();
       loginStore(response.token, response.user);
       localStorage.setItem('t', response.token);

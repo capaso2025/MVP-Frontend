@@ -21,9 +21,7 @@ const DashboardPage: FC = () => {
 
   // Redireccionar si no hay resultado (cuando accede directamente)
   useEffect(() => {
-    if (!lastResult && !user) {
-      navigate('/categories');
-    }
+
   }, [lastResult, user, navigate]);
 
   return (

@@ -1,6 +1,5 @@
 import { Typography } from "@/shared/ui";
 import LearnButton from "../../atoms/button/LearnButton";
-import { useModal } from "@/shared/lib/hooks/useModal";
 import PopoverStartLesson from "../../molecules/PopoverStartLesson";
 import { useNavigate } from "react-router-dom";
 
@@ -10,9 +9,10 @@ function LearnLesson(props: {
   currentModule: string;
   title: string;
   position?: string;
+  changeClickedLesson: (lesson: string) => void;
+  clickedLesson: string;
 }) {
-  const { level, currentLevel, currentModule, title, position = "" } = props;
-  const { showModal, toggleShowModal } = useModal();
+  const { level, currentLevel, currentModule, title, position = "", changeClickedLesson, clickedLesson } = props;
   const navigate = useNavigate();
   return <div className="relative">
     <div
@@ -25,11 +25,14 @@ function LearnLesson(props: {
     <LearnButton
       key={level.title}
       className={`${position} ${currentLevel >= level.level && currentModule === title ? '' : 'opacity-50'}`}
-      onClick={toggleShowModal}
+      onClick={() => {
+        changeClickedLesson(level.title);
+      }}
     />
-    <PopoverStartLesson showModal={showModal} toggleShowModal={toggleShowModal} title={level.title} onClick={() => {
-      navigate("/lesson")
-    }} />
+    {clickedLesson === level.title && <PopoverStartLesson changeClickedLesson={changeClickedLesson} title={level.title} onClick={() => {
+      navigate(`/lesson/${encodeURIComponent(title)}/${encodeURIComponent(level.title)}`);
+      changeClickedLesson(level.title);
+    }} />}
   </div>
 };
 

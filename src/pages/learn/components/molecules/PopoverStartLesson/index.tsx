@@ -3,17 +3,15 @@ import { useEffect } from "react";
 
 function PopoverStartLesson(props: {
   title: string;
-  showModal: boolean;
-  toggleShowModal: () => void;
   onClick: () => void;
+  changeClickedLesson: (lesson: string) => void;
 }) {
-  const { title, showModal, toggleShowModal, onClick } = props;
+  const { title, onClick, changeClickedLesson } = props;
 
   useEffect(() => {
-    if (!showModal) return;
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        toggleShowModal();
+        changeClickedLesson("");
       }
     };
 
@@ -22,15 +20,14 @@ function PopoverStartLesson(props: {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }
-    , [toggleShowModal]);
+  }, [changeClickedLesson]);
 
-  return showModal ? <div className="animate-zoom-in absolute z-10 w-[250px] bg-primary rounded-2xl p-4 -bottom-36 -left-34">
+  return <div className="popover-start-lesson animate-zoom-in absolute z-10 w-[250px] bg-primary rounded-2xl p-4 -bottom-36 -left-34">
     <Typography className="text-white mb-4 font-bold">
       {title}
     </Typography>
     <Button className="w-full" variant="secondary" onClick={onClick}>Empezar lección</Button>
-  </div> : <></>
+  </div>
 };
 
 export default PopoverStartLesson;
