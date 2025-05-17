@@ -35,10 +35,6 @@ export { Radio } from './atoms/Radio/Radio';
 export type { IRadioProps } from './atoms/Radio/Radio';
 
 export { Typography } from './atoms/Typography/Typography';
-export type {
-  ITypographyProps,
-  TTypographyVariant,
-} from './atoms/Typography/Typography';
 
 // Moléculas (combinaciones de átomos)
 export { Card } from './molecules/Card/Card';
@@ -73,18 +69,5 @@ export type {
 export { MessageScreen } from './organisms/MessageScreen/MessageScreen';
 export type { IMessageScreenProps } from './organisms/MessageScreen/MessageScreen';
 
-export { QuestionScreen } from './organisms/QuestionScreen/QuestionScreen';
-export type { IQuestionScreenProps } from './organisms/QuestionScreen/QuestionScreen';
-
-export { ResultsView } from './organisms/ResultsView/ResultsView';
-export type {
-  IResultsViewProps,
-  IResultItem,
-} from './organisms/ResultsView/ResultsView';
-
 export { WelcomeScreen } from './organisms/WelcomeScreen/WelcomeScreen';
 export type { IWelcomeScreenProps } from './organisms/WelcomeScreen/WelcomeScreen';
-
-// Templates (layouts)
-export { QuestionnaireLayout } from './templates/QuestionnaireLayout/QuestionnaireLayout';
-export type { IQuestionnaireLayoutProps } from './templates/QuestionnaireLayout/QuestionnaireLayout';

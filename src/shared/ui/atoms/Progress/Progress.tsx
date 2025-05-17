@@ -129,6 +129,9 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
         aria-valuemin={0}
         aria-valuemax={max}
         aria-valuetext={`${percentage}%`}
+        style={{
+          height: sizeClasses[size],
+        }}
         {...restProps}
       >
         <div

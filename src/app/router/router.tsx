@@ -5,17 +5,18 @@ import Spinner from '@/shared/ui/atoms/Spinner/Spinner';
 import { PublicOnlyRoute } from './public-route';
 import { PrivateRoute } from './private-route';
 
-const HomePage = lazy(() => import('@pages/home'));
+const LandingPage = lazy(() => import('@/pages/landing'));
 const LoginPage = lazy(() => import('@pages/login'));
 const SignupPage = lazy(() => import('@pages/signup'));
-const CategoriesPage = lazy(() => import('@pages/categories'));
-const QuestionnaireIntroPage = lazy(() => import('@pages/questionnaire/intro'));
-const QuestionnaireQuestionsPage = lazy(
-  () => import('@pages/questionnaire/questions'),
+const CategoriesPage = lazy(() => import('@/pages/onboarding/components/templates/Categories'));
+const OnboardingIntroPage = lazy(() => import('@/pages/onboarding/components/templates/Intro'));
+const OnboardingQuestionsPage = lazy(
+  () => import('@/pages/onboarding/components/templates/Questions'),
 );
-const QuestionnaireResultsPage = lazy(
-  () => import('@pages/questionnaire/results'),
+const OnboardingResultsPage = lazy(
+  () => import('@/pages/onboarding/components/templates/Results'),
 );
+
 const DashboardPage = lazy(() => import('@pages/dashboard'));
 
 // INITIAL HOME WITH SIDEBAR
@@ -43,18 +44,18 @@ function AppRouter() {
     >
       <Routes>
         {/* Rutas públicas */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
 
-        {/* Rutas del cuestionario */}
-        <Route path="/questionnaire" element={<QuestionnaireIntroPage />} />
+        {/* Rutas del onboarding */}
+        <Route path="/onboarding" element={<OnboardingIntroPage />} />
         <Route
-          path="/questionnaire/questions"
-          element={<QuestionnaireQuestionsPage />}
+          path="/onboarding/questions"
+          element={<OnboardingQuestionsPage />}
         />
         <Route
-          path="/questionnaire/results"
-          element={<QuestionnaireResultsPage />}
+          path="/onboarding/results"
+          element={<OnboardingResultsPage />}
         />
         <Route path="/" element={<MainLayout />}>
           <Route path="/sections" element={<SectionsPage />} />

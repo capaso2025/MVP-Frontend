@@ -2,10 +2,10 @@ import { Button } from '../../atoms/Button/Button';
 import { Input } from '../../atoms/Input/Input';
 import { Typography } from '../../atoms/Typography/Typography';
 import { Icon } from '../../atoms/Icon/Icon';
-import { useForm } from '@/shared/lib/hooks/useForm';
+import { useForm } from '@/shared/hooks/useForm';
 import { LoginData } from '@/features/auth/login/types/loginData.types';
 import { validateLogin } from '@/features/auth/login/loginValidator';
-import { usePassword } from '@/shared/lib/hooks/usePassword';
+import { usePassword } from '@/shared/hooks/usePassword';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 
 function Login(props: { onClickSignup?: () => void }) {
@@ -92,7 +92,7 @@ function Login(props: { onClickSignup?: () => void }) {
         </form>
         <div className="hidden md:block">
           <img
-            src="/src/assets/wolf.png"
+            src="/assets/characters/capito-running.png"
             width={500}
             className="scale-x-[-1] transform"
           />

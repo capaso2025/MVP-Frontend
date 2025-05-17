@@ -2,11 +2,11 @@ import { Button } from '../../atoms/Button/Button';
 import { Input } from '../../atoms/Input/Input';
 import { Typography } from '../../atoms/Typography/Typography';
 import { Icon } from '../../atoms/Icon/Icon';
-import { useForm } from '@/shared/lib/hooks/useForm';
+import { useForm } from '@/shared/hooks/useForm';
 import { SignupData } from '@/features/auth/signup/signupData.types';
 import { validateSignup } from '@/features/auth/signup/signupValidator';
 import { DatePicker } from '../../molecules/DatePicker/DatePicker';
-import { usePassword } from '@/shared/lib/hooks/usePassword';
+import { usePassword } from '@/shared/hooks/usePassword';
 import { useSignup } from '@/features/auth/signup/hooks/useSignup';
 
 function Signup(props: { onClickLogin?: () => void }) {
@@ -125,7 +125,7 @@ function Signup(props: { onClickLogin?: () => void }) {
         </form>
         <div className="hidden md:block">
           <img
-            src="/src/assets/wolf.png"
+            src="/assets/characters/capito-running.png"
             width={500}
             className="scale-x-[-1] transform"
           />

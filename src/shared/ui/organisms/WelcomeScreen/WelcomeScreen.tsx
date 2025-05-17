@@ -5,77 +5,20 @@ import { Button } from '@shared/ui/atoms/Button/Button';
 import { Typography } from '@shared/ui/atoms/Typography/Typography';
 import { Character } from '@shared/ui/molecules/Character/Character';
 
-/**
- * Props para el componente WelcomeScreen
- */
 export interface IWelcomeScreenProps extends HTMLAttributes<HTMLDivElement> {
-  /**
-   * Título principal de la pantalla
-   */
   title: string;
-
-  /**
-   * Subtítulo o descripción
-   */
   subtitle?: string;
-
-  /**
-   * Mensaje que muestra el personaje
-   */
   characterMessage?: string;
-
-  /**
-   * Estado de ánimo del personaje
-   */
   characterMood?: Parameters<typeof Character>[0]['mood'];
-
-  /**
-   * URL de la imagen del personaje
-   */
   characterImage?: string;
-
-  /**
-   * Texto del botón principal
-   * @default "Comenzar"
-   */
   primaryButtonText?: string;
-
-  /**
-   * Función a ejecutar cuando se hace clic en el botón principal
-   */
   onPrimaryButtonClick?: () => void;
-
-  /**
-   * Texto del botón secundario
-   */
   secondaryButtonText?: string;
-
-  /**
-   * Función a ejecutar cuando se hace clic en el botón secundario
-   */
   onSecondaryButtonClick?: () => void;
-
-  /**
-   * Si se debe mostrar una imagen decorativa
-   * @default true
-   */
-  showDecorativeImage?: boolean;
-
-  /**
-   * URL de la imagen decorativa
-   */
   decorativeImageUrl?: string;
-
-  /**
-   * Contenido adicional a mostrar en la pantalla
-   */
   children?: ReactNode;
 }
 
-/**
- * Componente WelcomeScreen
- * Pantalla de bienvenida con título, descripción, personaje y botones de acción
- */
 export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
   (
     {
@@ -88,7 +31,6 @@ export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
       onPrimaryButtonClick,
       secondaryButtonText,
       onSecondaryButtonClick,
-      showDecorativeImage = true,
       decorativeImageUrl,
       children,
       className = '',
@@ -103,7 +45,6 @@ export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
         {...restProps}
       >
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center text-center">
-          {/* Título y subtítulo */}
           <Typography variant="h1" component="h1" className="mb-4">
             {title}
           </Typography>
@@ -118,12 +59,11 @@ export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
             </Typography>
           )}
 
-          {/* Imagen decorativa o personaje */}
           <div className="my-8">
-            {showDecorativeImage ? (
+            {decorativeImageUrl ? (
               <div className="h-64 w-64 md:h-80 md:w-80">
                 <img
-                  src={decorativeImageUrl || '/assets/decorative-image.svg'}
+                  src={decorativeImageUrl}
                   alt=""
                   className="h-full w-full object-contain"
                 />
@@ -139,10 +79,7 @@ export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
             )}
           </div>
 
-          {/* Contenido adicional */}
           {children && <div className="mb-8 w-full">{children}</div>}
-
-          {/* Botones de acción */}
           <div className="mt-4 flex w-full max-w-xs flex-col justify-center gap-4 sm:max-w-md sm:flex-row">
             <Button
               variant="primary"
@@ -152,7 +89,6 @@ export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
             >
               {primaryButtonText}
             </Button>
-
             {secondaryButtonText && (
               <Button
                 variant="outline"
@@ -170,5 +106,4 @@ export const WelcomeScreen = forwardRef<HTMLDivElement, IWelcomeScreenProps>(
   },
 );
 
-// Definir el nombre para DevTools
 WelcomeScreen.displayName = 'WelcomeScreen';

@@ -6,7 +6,7 @@
   /* Colores principales */
   --color-primary: #162335;
   --color-primary-dark: #0a1018;
-  --color-primary-light: #34406c;
+  --color-primary-light: #2c5076;
   --color-primary-lighter: #ccd1da;
 
   --color-secondary: #78716c;
@@ -38,8 +38,8 @@
 
   /* Tipografía */
   --font-family-sans:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
 }
 
 /* Estilos globales base */

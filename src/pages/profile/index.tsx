@@ -24,7 +24,7 @@ export default function ProfilePage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className='h-auto lg:h-[calc(100vh-120px)] grid grid-rows-[auto_max-content]'>
           <div>
-            <img src="/src/assets/wolf.png" width={250} className="mx-auto" />
+            <img src="/assets/characters/capito-running.png" width={250} className="mx-auto" />
             <div className="mt-8">
               <p className="text-primary-2 text-2xl font-bold">{`${profile?.name} ${profile.lastName}`}</p>
               <p className="mt-0 font-semibold">{"OCUPACIÓN"}</p>

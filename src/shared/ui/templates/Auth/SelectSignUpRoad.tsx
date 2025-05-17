@@ -55,7 +55,7 @@ function SelectSignUpRoad(props: {
         </div>
         <div className="hidden md:block">
           <img
-            src="/src/assets/wolf.png"
+            src="/assets/characters/capito-running.png"
             width={500}
             className="scale-x-[-1] transform"
           />
