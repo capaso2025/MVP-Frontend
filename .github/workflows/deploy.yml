@@ -60,6 +60,8 @@ jobs:
           echo "VITE_AUTH_REDIRECT_URI=${{ secrets.VITE_AUTH_REDIRECT_URI }}" >> .env
           echo "VITE_LOGGING_LEVEL=${{ secrets.VITE_LOGGING_LEVEL }}" >> .env
       
+      - name: Install Terser
+        run: npm install -D terser
       # Build con configuraciones de producción
       - name: Build React app (optimized)
         run: npx vite build --mode production
