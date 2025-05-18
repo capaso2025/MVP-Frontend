@@ -62,7 +62,7 @@ jobs:
       
       # Build con configuraciones de producción
       - name: Build React app (optimized)
-        run: vite build --mode production
+        run: npx vite build --mode production
       
       # Deploy optimizado con compresión GZIP para archivos
       - name: Deploy to S3 bucket (optimized)
