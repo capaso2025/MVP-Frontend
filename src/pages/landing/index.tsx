@@ -1,6 +1,6 @@
 import { Button, Typography } from '@/shared/ui';
 import { useNavigate } from 'react-router-dom';
-
+import capitoDesk from '@/assets/capito-desk.webp';
 function Landing() {
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ function Landing() {
           </div>
         </div>
         <img
-          src="@/assets/landing.webp"
+          src={capitoDesk}
           className="hidden justify-self-end md:block"
           alt="capito en el escritorio"
           width={600}
