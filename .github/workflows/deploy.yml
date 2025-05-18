@@ -119,14 +119,18 @@ jobs:
         working-directory: terraform
         run: |
           DISTRIBUTION_ID=$(terraform output cloudfront_distribution_id | tr -d '"')
-          echo "DISTRIBUTION_ID=$DISTRIBUTION_ID" >> $GITHUB_ENV
+          echo "DISTRIBUTION_ID=${DISTRIBUTION_ID}" >> $GITHUB_ENV
+          # Importante: asegurarse de que el formato sea correcto
+          echo "CloudFront Distribution ID: ${DISTRIBUTION_ID}"
 
       - name: Invalidate CloudFront cache (selective)
         if: github.ref == 'refs/heads/releases' || github.ref == 'refs/heads/main'
         run: |
-          # Usar el ID guardado en el paso anterior
+          echo "Usando CloudFront Distribution ID: ${{ env.DISTRIBUTION_ID }}"
+          
+          # Crear invalidación
           aws cloudfront create-invalidation \
             --distribution-id ${{ env.DISTRIBUTION_ID }} \
             --paths "/index.html"
-            
+                  
           echo "Invalidación selectiva de CloudFront completada"
