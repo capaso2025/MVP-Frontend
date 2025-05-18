@@ -8,7 +8,7 @@ import { ResponseQuestion } from '../../store/onboarding-store';
 
 function Questions() {
   const navigate = useNavigate();
-  const { questions } = useOnboarding();
+  const { questions, category } = useOnboarding();
   const { currentIndex, goToNext, goToPrevious } = useBackNext({
     length: questions.length,
     finishFn: () => {
@@ -16,20 +16,25 @@ function Questions() {
     },
   });
   const { responses, setResponsesByQuestion } = useOnboarding();
-  const [currentData, setCurrentData] = useState<{
-    question: string;
-    options: {
-      id: string;
-      text: string;
-    }[];
-  } | undefined>(undefined);
-  const [currentQuestion, setCurrentQuestion] = useState<ResponseQuestion | undefined>(undefined);
+  const [currentData, setCurrentData] = useState<
+    | {
+        question: string;
+        options: {
+          id: string;
+          text: string;
+        }[];
+      }
+    | undefined
+  >(undefined);
+  const [currentQuestion, setCurrentQuestion] = useState<
+    ResponseQuestion | undefined
+  >(undefined);
 
   const handleNext = () => {
     if (responses.find((resp) => resp.title === currentData?.question)) {
       goToNext();
     }
-  }
+  };
   const calculatedProgress = Math.round(
     ((currentIndex + 1) / questions.length) * 100,
   );
@@ -37,16 +42,24 @@ function Questions() {
   useEffect(() => {
     const data = questions[currentIndex];
     setCurrentData(data);
-  }, [currentIndex, questions])
+  }, [currentIndex, questions]);
 
   useEffect(() => {
-    const currentQuestion = responses.find((resp) => resp.title === currentData?.question)
+    const currentQuestion = responses.find(
+      (resp) => resp.title === currentData?.question,
+    );
     if (currentQuestion) {
       setCurrentQuestion(currentQuestion);
     } else {
       setCurrentQuestion(undefined);
     }
-  }, [responses, currentData])
+  }, [responses, currentData]);
+
+  useEffect(() => {
+    if (!category) {
+      navigate('/onboarding/category');
+    }
+  }, [category]);
 
   return (
     <OnboardingLayout>
@@ -67,14 +80,18 @@ function Questions() {
         <main>
           <div className="mx-auto grid h-full max-w-[80%] grid-cols-1 place-content-center gap-4 md:grid-cols-2">
             {currentData?.options?.map((opt) => (
-              <div className={`h-max rounded-lg border p-4 cursor-pointer transition-all duration-200 ${currentQuestion?.title === currentData?.question && currentQuestion?.response.id === opt.id ? 'border-transparent bg-primary-lighter shadow-md' : 'border-primary-lighter '}`}
-                onClick={() => setResponsesByQuestion({
-                  title: currentData?.question,
-                  response: {
-                    id: opt.id,
-                    value: opt.text,
-                  },
-                })}
+              <div
+                key={opt.id}
+                className={`h-max cursor-pointer rounded-lg border p-4 transition-all duration-200 ${currentQuestion?.title === currentData?.question && currentQuestion?.response.id === opt.id ? 'bg-primary-lighter border-transparent shadow-md' : 'border-primary-lighter'}`}
+                onClick={() =>
+                  setResponsesByQuestion({
+                    title: currentData?.question,
+                    response: {
+                      id: opt.id,
+                      value: opt.text,
+                    },
+                  })
+                }
               >
                 <Typography>{opt.text}</Typography>
               </div>

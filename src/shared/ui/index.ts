@@ -39,35 +39,3 @@ export { Typography } from './atoms/Typography/Typography';
 // Moléculas (combinaciones de átomos)
 export { Card } from './molecules/Card/Card';
 export type { ICardProps } from './molecules/Card/Card';
-
-export { Character } from './molecules/Character/Character';
-export type {
-  ICharacterProps,
-  TCharacterMood,
-  TCharacterSize,
-} from './molecules/Character/Character';
-
-export { OptionCard } from './molecules/OptionCard/OptionCard';
-export type { IOptionCardProps } from './molecules/OptionCard/OptionCard';
-
-export { OptionGroup } from './molecules/OptionGroup/OptionGroup';
-export type {
-  IOptionGroupProps,
-  IOptionItem,
-} from './molecules/OptionGroup/OptionGroup';
-
-export { Stepper } from './molecules/Stepper/Stepper';
-export type { IStepperProps, IStepItem } from './molecules/Stepper/Stepper';
-
-// Organismos (componentes complejos)
-export { CategoryGrid } from './organisms/CategoryGrid/CategoryGrid';
-export type {
-  ICategoryGridProps,
-  ICategoryItem,
-} from './organisms/CategoryGrid/CategoryGrid';
-
-export { MessageScreen } from './organisms/MessageScreen/MessageScreen';
-export type { IMessageScreenProps } from './organisms/MessageScreen/MessageScreen';
-
-export { WelcomeScreen } from './organisms/WelcomeScreen/WelcomeScreen';
-export type { IWelcomeScreenProps } from './organisms/WelcomeScreen/WelcomeScreen';

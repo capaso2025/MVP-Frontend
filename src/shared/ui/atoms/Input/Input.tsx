@@ -244,11 +244,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
 
         {/* Mensaje de ayuda o error */}
         {(helperText || (error && errorMessage)) && (
-          <Typography
-            variant="caption"
-            color={error ? 'error' : 'secondary'}
-            className="mt-1"
-          >
+          <Typography className="mt-1">
             {error ? errorMessage : helperText}
           </Typography>
         )}

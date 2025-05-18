@@ -31,6 +31,9 @@ interface RenderState {
   alertDialogData: AlertDialogData;
   setAlertDialogData: (value: AlertDialogData) => void;
   closeAlertDialog: () => void;
+  openedSidebar: boolean;
+  setOpenedSidebar: (value: boolean) => void;
+  toggleOpenedSidebar: () => void;
 }
 
 const initialModalData: ModalData = {
@@ -74,5 +77,14 @@ export const useRenderStore = create<RenderState>()((set) => ({
   closeAlertDialog: () =>
     set(() => ({
       alertDialogData: initialAlertDialogData,
+    })),
+  openedSidebar: false,
+  setOpenedSidebar: (value: boolean) =>
+    set(() => ({
+      openedSidebar: value,
+    })),
+  toggleOpenedSidebar: () =>
+    set((state) => ({
+      openedSidebar: !state.openedSidebar,
     })),
 }));

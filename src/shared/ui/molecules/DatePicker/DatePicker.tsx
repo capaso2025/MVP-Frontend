@@ -12,7 +12,7 @@ export function DatePicker(props: {
   placeholder?: string;
   errorMessage?: string | undefined;
 }) {
-  const { className = "", errorMessage, onChange, placeholder } = props;
+  const { className = '', errorMessage, onChange, placeholder } = props;
   const [date, setDate] = useState<Date>();
   useEffect(() => {
     onChange?.(date as Date);
@@ -23,19 +23,25 @@ export function DatePicker(props: {
       <Popover
         trigger={() => (
           <Button
-            type='button'
+            type="button"
             variant={'input'}
-            className={`w-full justify-start !p-0 h-10 !pl-[11px] gap-1 ${className} ${errorMessage ? '!border !border-error !bg-error-light' : ''}`}
+            className={`h-10 w-full justify-start gap-1 !p-0 !pl-[11px] ${className} ${errorMessage ? '!border-error !bg-error-light !border' : ''}`}
           >
-            <Icon name="calendar" className='text-gray-500' />
-            {date ? format(date, "dd/MM/yyyy") : <span className='text-[16px] text-[#9e9fa6] font-normal'>{placeholder || ""}</span>}
+            <Icon name="calendar" className="text-gray-500" />
+            {date ? (
+              format(date, 'dd/MM/yyyy')
+            ) : (
+              <span className="text-[16px] font-normal text-[#9e9fa6]">
+                {placeholder || ''}
+              </span>
+            )}
           </Button>
         )}
-        contentClassName='mt-14'
+        contentClassName="mt-14"
         content={() => (
           <DayPicker
-            captionLayout='dropdown'
-            startMonth={new Date("1920-01-01")}
+            captionLayout="dropdown"
+            startMonth={new Date('1920-01-01')}
             animate
             mode="single"
             lang="es"
@@ -46,18 +52,12 @@ export function DatePicker(props: {
               week: 'flex gap-1',
               weekdays: 'flex justify-between mx-4',
               chevron: 'fill-primary-2',
-              today: 'text-primary'
+              today: 'text-primary',
             }}
           />
         )}
       />
-      {errorMessage && <Typography
-        variant="caption"
-        color={errorMessage ? 'error' : 'secondary'}
-        className="mt-1"
-      >
-        {errorMessage}
-      </Typography>}
+      {errorMessage && <Typography className="mt-1">{errorMessage}</Typography>}
     </div>
   );
 }

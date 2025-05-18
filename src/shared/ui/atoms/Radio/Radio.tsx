@@ -110,21 +110,13 @@ export const Radio = forwardRef<HTMLInputElement, IRadioProps>(
           </label>
 
           {helpText && !error && (
-            <Typography
-              variant="caption"
-              color="secondary"
-              className={compact ? 'mt-0.5' : 'mt-1'}
-            >
+            <Typography className={compact ? 'mt-0.5' : 'mt-1'}>
               {helpText}
             </Typography>
           )}
 
           {error && errorMessage && (
-            <Typography
-              variant="caption"
-              color="error"
-              className={compact ? 'mt-0.5' : 'mt-1'}
-            >
+            <Typography className={compact ? 'mt-0.5' : 'mt-1'}>
               {errorMessage}
             </Typography>
           )}

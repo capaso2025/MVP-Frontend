@@ -33,15 +33,15 @@ const NotFoundPage: FC = () => {
           </svg>
         </div>
 
-        <Typography variant="h2" component="h1" className="mb-2">
+        <Typography variant="h2" className="mb-2">
           ¡Oops!
         </Typography>
 
-        <Typography variant="h4" component="h2" className="mb-6">
+        <Typography variant="h4" className="mb-6">
           Página no encontrada
         </Typography>
 
-        <Typography variant="body1" color="secondary" className="mb-8">
+        <Typography variant="body1" className="mb-8">
           La página que estás buscando no existe o ha sido movida. No te
           preocupes, podemos ayudarte a encontrar tu camino.
         </Typography>

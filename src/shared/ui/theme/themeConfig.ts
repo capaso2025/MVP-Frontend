@@ -72,7 +72,7 @@ export const borderRadius = {
  */
 export const typography = {
   fontFamily: {
-    sans: 'var(--font-family-sans)',
+    sans: 'var(--font-roboto)',
   },
   fontSize: {
     xs: '0.75rem', // 12px
@@ -114,7 +114,7 @@ export const breakpoints = {
   xs: '320px',
   sm: '640px',
   md: '768px',
-  lg: '1024px',
+  lg: '1030px',
   xl: '1280px',
   '2xl': '1536px',
 } as const;

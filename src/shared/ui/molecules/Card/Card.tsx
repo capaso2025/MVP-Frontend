@@ -196,19 +196,9 @@ export const Card = forwardRef<HTMLDivElement, ICardProps>(
               )}
               <div>
                 {title && (
-                  <Typography
-                    variant="subtitle1"
-                    component="h3"
-                    className="font-medium"
-                  >
-                    {title}
-                  </Typography>
+                  <Typography className="font-medium">{title}</Typography>
                 )}
-                {subtitle && (
-                  <Typography variant="caption" color="secondary">
-                    {subtitle}
-                  </Typography>
-                )}
+                {subtitle && <Typography>{subtitle}</Typography>}
               </div>
             </div>
           </div>
