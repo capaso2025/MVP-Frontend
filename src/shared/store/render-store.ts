@@ -9,6 +9,17 @@ type ModalData = {
   description?: string;
   fullScreen?: boolean;
 };
+type AlertDialogData = {
+  title?: string;
+  description?: string;
+  confirmText?: string;
+  onConfirm?: () => void;
+  onlyCloseAction?: boolean;
+  onClose?: () => void;
+  onCancel?: () => void;
+  confirmButtonProps?: Record<string, unknown>;
+  show: boolean;
+};
 
 interface RenderState {
   modalData: ModalData;
@@ -17,6 +28,12 @@ interface RenderState {
   loading: boolean;
   setLoading: (loading: boolean) => void;
   toggleLoading: () => void;
+  alertDialogData: AlertDialogData;
+  setAlertDialogData: (value: AlertDialogData) => void;
+  closeAlertDialog: () => void;
+  openedSidebar: boolean;
+  setOpenedSidebar: (value: boolean) => void;
+  toggleOpenedSidebar: () => void;
 }
 
 const initialModalData: ModalData = {
@@ -27,6 +44,15 @@ const initialModalData: ModalData = {
   title: '',
   description: '',
   fullScreen: false,
+};
+const initialAlertDialogData = {
+  title: '',
+  confirmText: '',
+  description: '',
+  onClose: () => {},
+  onConfirm: () => {},
+  onCancel: () => {},
+  show: false,
 };
 export const useRenderStore = create<RenderState>()((set) => ({
   modalData: initialModalData,
@@ -43,4 +69,22 @@ export const useRenderStore = create<RenderState>()((set) => ({
   loading: false,
   setLoading: (loading: boolean) => set(() => ({ loading })),
   toggleLoading: () => set((state) => ({ loading: !state.loading })),
+  alertDialogData: initialAlertDialogData,
+  setAlertDialogData: (value: AlertDialogData) =>
+    set(() => ({
+      alertDialogData: value,
+    })),
+  closeAlertDialog: () =>
+    set(() => ({
+      alertDialogData: initialAlertDialogData,
+    })),
+  openedSidebar: false,
+  setOpenedSidebar: (value: boolean) =>
+    set(() => ({
+      openedSidebar: value,
+    })),
+  toggleOpenedSidebar: () =>
+    set((state) => ({
+      openedSidebar: !state.openedSidebar,
+    })),
 }));

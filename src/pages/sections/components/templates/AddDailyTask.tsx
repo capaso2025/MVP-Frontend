@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
   const { addReminder } = props;
+  console.log('🏝️ ~ AddDailyTask ~ addReminder:', addReminder);
   const [newReminder, setNewReminder] = useState({
     title: '',
     category: 'hoy' as ReminderCategory,
@@ -107,7 +108,7 @@ function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
           <div className="flex justify-end pt-4">
             <Button
               onClick={() => {
-                addReminder(newReminder);
+                // addReminder(newReminder);
               }}
               variant="primary"
             >

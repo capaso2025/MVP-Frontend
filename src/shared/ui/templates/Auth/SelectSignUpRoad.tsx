@@ -1,6 +1,6 @@
-import { Button } from '../../atoms/Button/Button';
+import { Button } from '../../atoms/Button';
 import { Icon } from '../../atoms/Icon/Icon';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Typography } from '../../atoms/Typography';
 
 function SelectSignUpRoad(props: {
   onClickMail?: () => void;
@@ -9,12 +9,12 @@ function SelectSignUpRoad(props: {
   const { onClickMail, onClickLogin } = props;
   return (
     <>
-      <Button variant="outline" className="absolute top-4 right-4">
-        <Typography
-          variant="subtitle1"
-          className="text-primary font-bold"
-          onClick={onClickLogin}
-        >
+      <Button
+        variant="outline"
+        className="absolute top-4 right-4"
+        onClick={onClickLogin}
+      >
+        <Typography className="text-primary font-bold">
           Iniciar sesión
         </Typography>
       </Button>
@@ -31,10 +31,7 @@ function SelectSignUpRoad(props: {
             onClick={onClickMail}
           >
             <Icon name="mail" />
-            <Typography
-              variant="subtitle1"
-              className="text-primary ml-2 font-bold"
-            >
+            <Typography className="text-primary ml-2 font-bold">
               Email
             </Typography>
           </Button>
@@ -45,17 +42,14 @@ function SelectSignUpRoad(props: {
           </div>
           <Button size="lg" variant="primary" className="w-full">
             <Icon name="google" fill="none" stroke="none" />
-            <Typography
-              variant="subtitle1"
-              className="ml-2 font-bold text-white"
-            >
+            <Typography className="ml-2 font-bold text-white">
               Google
             </Typography>
           </Button>
         </div>
         <div className="hidden md:block">
           <img
-            src="/src/assets/wolf.png"
+            src="/assets/characters/capito-running.png"
             width={500}
             className="scale-x-[-1] transform"
           />

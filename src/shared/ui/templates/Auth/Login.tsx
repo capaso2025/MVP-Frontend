@@ -1,11 +1,11 @@
-import { Button } from '../../atoms/Button/Button';
-import { Input } from '../../atoms/Input/Input';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Button } from '../../atoms/Button';
+import { Input } from '../../atoms/Input';
+import { Typography } from '../../atoms/Typography';
 import { Icon } from '../../atoms/Icon/Icon';
-import { useForm } from '@/shared/lib/hooks/useForm';
+import { useForm } from '@/shared/hooks/useForm';
 import { LoginData } from '@/features/auth/login/types/loginData.types';
 import { validateLogin } from '@/features/auth/login/loginValidator';
-import { usePassword } from '@/shared/lib/hooks/usePassword';
+import { usePassword } from '@/shared/hooks/usePassword';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 
 function Login(props: { onClickSignup?: () => void }) {
@@ -17,7 +17,7 @@ function Login(props: { onClickSignup?: () => void }) {
     keysList: ['email', 'password'],
     initialValues: {},
     onSubmit: executeLogin,
-  })
+  });
 
   return (
     <>
@@ -26,17 +26,16 @@ function Login(props: { onClickSignup?: () => void }) {
         className="absolute top-4 right-4"
         onClick={onClickSignup}
       >
-        <Typography variant="subtitle1" className="text-primary font-bold">
-          Regístrate
-        </Typography>
+        <Typography className="text-primary font-bold">Regístrate</Typography>
       </Button>
       <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
-        <form className="mx-auto -mt-8 w-full place-content-center px-4" onSubmit={
-          (ev) => {
+        <form
+          className="mx-auto -mt-8 w-full place-content-center px-4"
+          onSubmit={(ev) => {
             ev.preventDefault();
             handleSubmit();
-          }
-        }>
+          }}
+        >
           <Typography variant="h2" className="text-primary mb-12">
             Ingresa tus credenciales para{' '}
             <span className="text-primary-2">iniciar sesión</span>
@@ -68,16 +67,8 @@ function Login(props: { onClickSignup?: () => void }) {
             errorMessage={errors?.password}
             error={!!errors?.password}
           />
-          <Button
-            size="lg"
-            variant="primary"
-            className="w-full"
-            type='submit'
-          >
-            <Typography
-              variant="subtitle1"
-              className="ml-2 font-bold text-white"
-            >
+          <Button size="lg" variant="primary" className="w-full" type="submit">
+            <Typography className="ml-2 font-bold text-white">
               Ingresar
             </Typography>
           </Button>
@@ -92,7 +83,7 @@ function Login(props: { onClickSignup?: () => void }) {
         </form>
         <div className="hidden md:block">
           <img
-            src="/src/assets/wolf.png"
+            src="/assets/characters/capito-running.png"
             width={500}
             className="scale-x-[-1] transform"
           />

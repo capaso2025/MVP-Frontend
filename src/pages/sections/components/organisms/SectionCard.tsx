@@ -1,13 +1,12 @@
 import { Button, Progress, Typography } from '@/shared/ui';
 import { Link } from 'react-router-dom';
-import SpeechBubble from '../../../../shared/ui/atoms/speech-bubble/SpeechBubble';
+import SpeechBubble from '../../../../shared/ui/atoms/speech-bubble';
 
 function SectionCard(props: {
   title: string;
   bubbleText: string;
   progress: number;
   onClick: () => void;
-  detailsRoute: string;
   isActive?: boolean;
   image?: string;
 }) {
@@ -16,7 +15,6 @@ function SectionCard(props: {
     bubbleText,
     progress,
     onClick,
-    detailsRoute,
     isActive = false,
     image,
   } = props;
@@ -26,7 +24,7 @@ function SectionCard(props: {
     >
       <div className="grid grid-rows-[auto_max-content]">
         <div>
-          <Link className="text-primary text-sm" to={detailsRoute}>
+          <Link className="text-primary text-sm" to="/">
             Ver detalles
           </Link>
           <Typography variant="h4" className="mt-4 mb-4 font-bold">
@@ -35,7 +33,7 @@ function SectionCard(props: {
           <Progress value={progress} />
         </div>
         <Button
-          onClick={isActive ? onClick : () => { }}
+          onClick={isActive ? onClick : () => {}}
           variant={isActive ? 'primary' : 'outline'}
           disabled={!isActive}
         >
