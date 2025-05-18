@@ -1,4 +1,4 @@
-import home from '@/assets/home.png';
+import home from '@/assets/home.svg';
 import calendar from '@/assets/calendar.png';
 import timer from '@/assets/timer.png';
 import user from '@/assets/user.png';
