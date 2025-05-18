@@ -113,30 +113,15 @@ jobs:
             echo "Estado guardado exitosamente en S3"
           fi
           
-      # Invalidación selectiva para reducir número de operaciones
-      - name: Invalidate CloudFront cache (selective)
+      # Invalidación selectiva con ID fijo para evitar problemas
+      - name: Invalidate CloudFront cache (fixed ID)
         if: github.ref == 'refs/heads/releases' || github.ref == 'refs/heads/main'
         run: |
-          # Obtener el ID directamente sin formateo JSON
-          cd terraform
-          DISTRIBUTION_ID=$(terraform output cloudfront_distribution_id || echo "")
-          # Eliminar comillas si existen
-          DISTRIBUTION_ID=$(echo $DISTRIBUTION_ID | tr -d '"')
-          cd ..
+          echo "Usando CloudFront Distribution ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"
           
-          echo "CloudFront Distribution ID: '${DISTRIBUTION_ID}'"
-          
-          # Verificar que tenemos un valor
-          if [ -z "${DISTRIBUTION_ID}" ]; then
-            echo "Error: No se pudo obtener el ID de distribución de CloudFront"
-            # Usar un valor fijo como último recurso
-            DISTRIBUTION_ID="E3N9IMM0IX7I0H"  # El ID que apareció en el error
-            echo "Usando ID fijo: ${DISTRIBUTION_ID}"
-          fi
-          
-          # Crear invalidación
+          # Crear invalidación usando el ID fijo definido en las variables de entorno
           aws cloudfront create-invalidation \
-            --distribution-id ${DISTRIBUTION_ID} \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/index.html"
                 
           echo "Invalidación selectiva de CloudFront completada"
