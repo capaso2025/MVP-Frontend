@@ -36,7 +36,7 @@ function Landing() {
           </div>
         </div>
         <img
-          src="/src/assets/landing.webp"
+          src="@/assets/landing.webp"
           className="hidden justify-self-end md:block"
           alt="capito en el escritorio"
           width={600}
