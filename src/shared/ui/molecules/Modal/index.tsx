@@ -2,7 +2,7 @@ import { useRenderStore } from '@/shared/store/render-store';
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Icon } from '../../atoms/Icon/Icon';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Typography } from '../../atoms/Typography';
 
 function Modal() {
   const closeModal = useRenderStore((state) => state.closeModal);

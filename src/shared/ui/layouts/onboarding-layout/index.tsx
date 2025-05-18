@@ -1,7 +1,7 @@
 import { forwardRef, useCallback } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
-import { Button } from '@shared/ui/atoms/Button/Button';
-import { Typography } from '@shared/ui/atoms/Typography/Typography';
+import { Button } from '@/shared/ui/atoms/Button';
+import { Typography } from '@/shared/ui/atoms/Typography';
 import { useRenderStore } from '@/shared/store/render-store';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../atoms/Icon/Icon';

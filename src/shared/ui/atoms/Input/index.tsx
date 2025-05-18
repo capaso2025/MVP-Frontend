@@ -2,7 +2,7 @@ import { forwardRef, useState } from 'react';
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
 import { Icon, type TIconName } from '../Icon/Icon';
-import { Typography } from '../Typography/Typography';
+import { Typography } from '../Typography';
 
 /**
  * Props para el componente Input

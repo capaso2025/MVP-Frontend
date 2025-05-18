@@ -1,6 +1,6 @@
 import { useRenderStore } from '@/shared/store/render-store';
 import { useEffect } from 'react';
-import Spinner from '../../atoms/Spinner/Spinner';
+import Spinner from '../../atoms/Spinner';
 
 function Loading() {
   const loading = useRenderStore((state) => state.loading);

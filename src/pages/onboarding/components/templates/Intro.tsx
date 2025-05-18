@@ -1,7 +1,7 @@
 import { useBackNext } from '@/shared/hooks/useBackNext';
 import { Button } from '@/shared/ui';
-import SpeechBubble from '@/shared/ui/atoms/speech-bubble/SpeechBubble';
-import { OnboardingLayout } from '@/shared/ui/layouts/OnboardingLayout/OnboardingLayout';
+import SpeechBubble from '@/shared/ui/atoms/speech-bubble';
+import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

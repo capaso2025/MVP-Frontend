@@ -2,7 +2,7 @@ export const Typography = ({
   children,
   variant = 'body1',
   className = '',
-  as: Component = 'p'
+  as: Component = 'p',
 }: {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2';
   className?: string;
@@ -20,10 +20,9 @@ export const Typography = ({
     body2: 'text-sm',
   };
 
-  return <Component
-    className={`${variants[variant]} ${className}`}
-  >
-    {children}
-  </Component>
-
-}
+  return (
+    <Component className={`${variants[variant]} ${className}`}>
+      {children}
+    </Component>
+  );
+};

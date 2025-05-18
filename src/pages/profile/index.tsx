@@ -3,7 +3,7 @@ import { useState } from 'react';
 import StatisticsPanel from './components/Statistics';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import { useProfile } from '@/features/profile/hooks/useProfile';
-import Spinner from '@/shared/ui/atoms/Spinner/Spinner';
+import Spinner from '@/shared/ui/atoms/Spinner';
 import { format } from 'date-fns';
 
 export default function ProfilePage() {

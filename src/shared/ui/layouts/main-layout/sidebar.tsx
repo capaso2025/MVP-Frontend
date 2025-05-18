@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Typography } from '../../atoms/Typography';
 import { MENU_ITEMS } from './menu-items';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useRenderStore } from '@/shared/store/render-store';

@@ -1,5 +1,5 @@
 import { Button, Progress, Typography } from '@/shared/ui';
-import { OnboardingLayout } from '@/shared/ui/layouts/OnboardingLayout/OnboardingLayout';
+import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useBackNext } from '@/shared/hooks/useBackNext';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../hooks/use-onboarding';

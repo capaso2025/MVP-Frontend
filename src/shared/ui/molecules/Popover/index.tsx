@@ -12,27 +12,37 @@ function Popover(props: {
     onClick: () => void;
   }[];
 }) {
-  const { trigger, content, optionsList, triggerClassName = '', contentClassName = '' } = props;
+  const {
+    trigger,
+    content,
+    optionsList,
+    triggerClassName = '',
+    contentClassName = '',
+  } = props;
   const [contentVisible, setContentVisible] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (contentRef.current && !contentRef.current.contains(event.target as Node)) {
+      if (
+        contentRef.current &&
+        !contentRef.current.contains(event.target as Node)
+      ) {
         setContentVisible(false);
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
   return (
     <div className="relative">
-      <div className={`${triggerClassName}`} onClick={
-        () => setContentVisible(contentVisible => !contentVisible)
-      } >
+      <div
+        className={`${triggerClassName}`}
+        onClick={() => setContentVisible((contentVisible) => !contentVisible)}
+      >
         {trigger()}
       </div>
       <div

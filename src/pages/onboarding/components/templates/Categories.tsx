@@ -1,7 +1,7 @@
 import { CategoryCard } from '../organisms/CategoryCard';
 import { Button, Icon, Typography } from '@shared/ui';
 import { CATEGORIES } from '../../constants/categories';
-import { OnboardingLayout } from '@/shared/ui/layouts/OnboardingLayout/OnboardingLayout';
+import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../hooks/use-onboarding';
 
@@ -11,8 +11,8 @@ const CategoriesPage = () => {
 
   return (
     <OnboardingLayout title="Selección de habilidades">
-      <div className="w-[90%] xl:w-full max-w-7xl mx-auto h-[calc(100vh-132px)] grid grid-rows-[auto_max-content] py-4">
-        <div className='grid place-content-center'>
+      <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
+        <div className="grid place-content-center">
           <h1 className="mb-8 text-center text-3xl font-bold">
             Quiero ser un CAPO en...
           </h1>
@@ -20,10 +20,11 @@ const CategoriesPage = () => {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {CATEGORIES.map((category) => (
               <CategoryCard
-                className={`${category.id === selectedCategory?.id
-                  ? '!bg-primary-lighter'
-                  : ''
-                  }`}
+                className={`${
+                  category.id === selectedCategory?.id
+                    ? '!bg-primary-lighter'
+                    : ''
+                }`}
                 key={category.id}
                 category={category}
                 onClick={() => setCategory(category)}
@@ -56,11 +57,19 @@ const CategoriesPage = () => {
             )}
           </div>
         </div>
-        <div className="flex justify-end mt-10 lg:mt-20">
-          {selectedCategory ? <Button className='flex items-center w-max' size='lg' onClick={() => navigate("/onboarding")}>
-            <Typography className='text-white'>Comenzar</Typography>
-            <Icon name="arrow-right" className="mr-2" />
-          </Button> : <div className='h-[48px]' />}
+        <div className="mt-10 flex justify-end lg:mt-20">
+          {selectedCategory ? (
+            <Button
+              className="flex w-max items-center"
+              size="lg"
+              onClick={() => navigate('/onboarding')}
+            >
+              <Typography className="text-white">Comenzar</Typography>
+              <Icon name="arrow-right" className="mr-2" />
+            </Button>
+          ) : (
+            <div className="h-[48px]" />
+          )}
         </div>
       </div>
     </OnboardingLayout>

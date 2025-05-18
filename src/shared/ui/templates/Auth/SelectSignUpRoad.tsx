@@ -1,6 +1,6 @@
-import { Button } from '../../atoms/Button/Button';
+import { Button } from '../../atoms/Button';
 import { Icon } from '../../atoms/Icon/Icon';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Typography } from '../../atoms/Typography';
 
 function SelectSignUpRoad(props: {
   onClickMail?: () => void;

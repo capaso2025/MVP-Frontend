@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import type { InputHTMLAttributes } from 'react';
 
-import { Typography } from '../Typography/Typography';
+import { Typography } from '../Typography';
 
 /**
  * Props para el componente Radio

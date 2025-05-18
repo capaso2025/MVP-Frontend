@@ -1,10 +1,10 @@
 import { format } from 'date-fns';
 import { Icon } from '../../atoms/Icon/Icon';
 import { useEffect, useState } from 'react';
-import Popover from '../Popover/Popover';
-import { Button } from '../../atoms/Button/Button';
+import Popover from '../Popover';
+import { Button } from '../../atoms/Button';
 import { DayPicker } from 'react-day-picker';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Typography } from '../../atoms/Typography';
 
 export function DatePicker(props: {
   className?: string;

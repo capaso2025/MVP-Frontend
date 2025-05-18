@@ -1,6 +1,6 @@
-import { Button } from '../../atoms/Button/Button';
-import { Input } from '../../atoms/Input/Input';
-import { Typography } from '../../atoms/Typography/Typography';
+import { Button } from '../../atoms/Button';
+import { Input } from '../../atoms/Input';
+import { Typography } from '../../atoms/Typography';
 import { Icon } from '../../atoms/Icon/Icon';
 import { useForm } from '@/shared/hooks/useForm';
 import { LoginData } from '@/features/auth/login/types/loginData.types';

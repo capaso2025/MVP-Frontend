@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import MainLayout from '@/shared/ui/layouts/main-layout';
-import Spinner from '@/shared/ui/atoms/Spinner/Spinner';
+import Spinner from '@/shared/ui/atoms/Spinner';
 import { PublicOnlyRoute } from './public-route';
 
 // Public

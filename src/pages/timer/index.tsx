@@ -1,5 +1,5 @@
 import { useTimer } from './hooks/use-timer';
-import Tabs from '@/shared/ui/molecules/Tabs/Tabs';
+import Tabs from '@/shared/ui/molecules/Tabs';
 import { getMaxTime } from './utils';
 import TimerActions from './components/TimerActions';
 import { TimerMode } from './types/TimerContext.types';

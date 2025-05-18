@@ -8,34 +8,26 @@ export { default as themeConfig } from './theme/themeConfig';
 export * from './theme/themeConfig';
 
 // Átomos (componentes base)
-export { Button } from './atoms/Button/Button';
-export type {
-  IButtonProps,
-  TButtonSize,
-  TButtonVariant,
-} from './atoms/Button/Button';
+export { Button } from './atoms/Button';
+export type { IButtonProps, TButtonSize, TButtonVariant } from './atoms/Button';
 
-export { Checkbox } from './atoms/Checkbox/Checkbox';
-export type { ICheckboxProps } from './atoms/Checkbox/Checkbox';
+export { Checkbox } from './atoms/Checkbox';
+export type { ICheckboxProps } from './atoms/Checkbox';
 
 export { Icon } from './atoms/Icon/Icon';
 export type { IIconProps, TIconName, TIconSize } from './atoms/Icon/Icon';
 
-export { Input } from './atoms/Input/Input';
-export type { IInputProps } from './atoms/Input/Input';
+export { Input } from './atoms/Input';
+export type { IInputProps } from './atoms/Input';
 
-export { Progress } from './atoms/Progress/Progress';
+export { Progress } from './atoms/Progress';
 export type {
   IProgressProps,
   TProgressSize,
   TProgressVariant,
-} from './atoms/Progress/Progress';
+} from './atoms/Progress';
 
-export { Radio } from './atoms/Radio/Radio';
-export type { IRadioProps } from './atoms/Radio/Radio';
+export { Radio } from './atoms/Radio';
+export type { IRadioProps } from './atoms/Radio';
 
-export { Typography } from './atoms/Typography/Typography';
-
-// Moléculas (combinaciones de átomos)
-export { Card } from './molecules/Card/Card';
-export type { ICardProps } from './molecules/Card/Card';
+export { Typography } from './atoms/Typography';

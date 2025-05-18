@@ -1,6 +1,6 @@
 import { useRenderStore } from '@/shared/store/render-store';
 import { Typography } from '@/shared/ui';
-import Popover from '@/shared/ui/molecules/Popover/Popover';
+import Popover from '@/shared/ui/molecules/Popover';
 import { MenuIcon } from 'lucide-react';
 function HeaderActions() {
   const toggleOpenedSidebar = useRenderStore(
