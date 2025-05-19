@@ -1,8 +1,10 @@
+import { useFadeInOnScroll } from '@/shared/hooks/use-fade-in-scroll';
 import { Button, Typography } from '@/shared/ui';
 import Spacer from '@/shared/ui/atoms/Spacer';
-function InfoSection() {
+const InfoSection = () => {
+  const { hasBeenVisible, ref } = useFadeInOnScroll();
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 place-content-center">
+    <div ref={ref} className={`grid grid-cols-1 gap-8 lg:grid-cols-2 place-content-center ${hasBeenVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"} transition-all duration-500`}>
       {
         [{
           image: '/assets/characters/capito-teach.png',
@@ -13,7 +15,7 @@ function InfoSection() {
           title: 'Eres el líder de la institución',
           buttonText: 'Comenzar como institución',
         }].map(el => (
-          <div className='text-center'>
+          <div key={el.title} className='text-center'>
             <Typography variant="h3" className="text-primary">
               {el.title}
             </Typography>
