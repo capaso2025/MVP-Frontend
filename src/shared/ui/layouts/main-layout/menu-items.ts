@@ -32,3 +32,22 @@ export const MENU_ITEMS: MenuItem[] = [
   { label: 'Perfil', icon: user, path: '/profile' },
   { label: 'Tienda', icon: shop, path: '/shop' },
 ];
+export const NO_LOGGED_MENU_ITEMS: MenuItem[] = [
+  {
+    label: 'Objetivos',
+    icon: home,
+    path: '/sections',
+    include: ['/modules'],
+  },
+  {
+    label: 'Calendario',
+    icon: calendar,
+    path: '/calendar',
+  },
+  {
+    label: 'Timer',
+    icon: timer,
+    path: '/timer',
+  },
+  { label: 'Classroom', icon: home, path: '/classroom' },
+];
