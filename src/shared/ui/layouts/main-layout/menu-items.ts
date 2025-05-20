@@ -1,3 +1,9 @@
+import home from '@/assets/home.svg';
+import calendar from '@/assets/calendar.png';
+import timer from '@/assets/timer.png';
+import user from '@/assets/user.png';
+import shop from '@/assets/shop.png';
+
 interface MenuItem {
   label: string;
   icon: string;
@@ -8,20 +14,20 @@ interface MenuItem {
 export const MENU_ITEMS: MenuItem[] = [
   {
     label: 'Objetivos',
-    icon: '/src/assets/home.svg',
+    icon: home,
     path: '/sections',
     include: ['/modules'],
   },
   {
     label: 'Calendario',
-    icon: '/src/assets/calendar.png',
+    icon: calendar,
     path: '/calendar',
   },
   {
     label: 'Timer',
-    icon: '/src/assets/timer.png',
+    icon: timer,
     path: '/timer',
   },
-  { label: 'Perfil', icon: '/src/assets/user.png', path: '/profile' },
-  { label: 'Tienda', icon: '/src/assets/shop.png', path: '/shop' },
+  { label: 'Perfil', icon: user, path: '/profile' },
+  { label: 'Tienda', icon: shop, path: '/shop' },
 ];

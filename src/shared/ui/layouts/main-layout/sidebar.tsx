@@ -4,6 +4,7 @@ import { MENU_ITEMS } from './menu-items';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useRenderStore } from '@/shared/store/render-store';
 import { MenuIcon } from 'lucide-react';
+import capoLogo from '@/assets/capo-logo.png';
 
 function Sidebar() {
   const location = useLocation();
@@ -29,7 +30,7 @@ function Sidebar() {
         </div>
         <img
           alt="Capo logo"
-          src="/src/assets/capo-logo.png"
+          src={capoLogo}
           width={70}
           className="mx-auto mt-0 xl:mt-4"
         />
