@@ -1,14 +1,16 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Typography } from '../../atoms/Typography';
-import { MENU_ITEMS } from './menu-items';
+import { MENU_ITEMS, NO_LOGGED_MENU_ITEMS } from './menu-items';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useRenderStore } from '@/shared/store/render-store';
 import { MenuIcon } from 'lucide-react';
 import capoLogo from '@/assets/capo-logo.png';
+import { useAuthStore } from '@/features/auth/auth-store';
 
 function Sidebar() {
   const location = useLocation();
   const { isMobile } = useResize();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const toggleOpenedSidebar = useRenderStore(
     (state) => state.toggleOpenedSidebar,
   );
@@ -36,7 +38,7 @@ function Sidebar() {
         />
       </div>
       <div>
-        {MENU_ITEMS.map((el) => (
+        {(isAuthenticated ? MENU_ITEMS : NO_LOGGED_MENU_ITEMS).map((el) => (
           <MenuItem
             key={el.label}
             {...el}

@@ -157,11 +157,11 @@ body {
   }
 }
 .animate-slide-out {
-  animation: slideOut 500ms ease-out;
+  animation: slideOut 0.5s ease-out;
 }
 
 .animate-slide-in {
-  animation: slideIn 500ms ease-out;
+  animation: slideIn 0.5s ease-out;
 }
 @keyframes slideIn {
   from {
