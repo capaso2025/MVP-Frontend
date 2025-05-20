@@ -30,6 +30,7 @@ const CalendarPage = lazy(() => import('@/pages/calendar'));
 const ShopPage = lazy(() => import('@/pages/shop'));
 const ProfilePage = lazy(() => import('@/pages/profile'));
 const TimerPage = lazy(() => import('@/pages/timer'));
+const ClassroomPage = lazy(() => import('@/pages/classroom'));
 
 // Lessons
 const LessonPage = lazy(() => import('@/pages/lesson'));
@@ -75,6 +76,7 @@ function AppRouter() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
+          <Route path="/classroom" element={<ClassroomPage />} />
         </Route>
         <Route path="/lesson/:module/:lesson" element={<LessonPage />} />
 

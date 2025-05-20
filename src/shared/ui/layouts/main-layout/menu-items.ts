@@ -28,6 +28,7 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: timer,
     path: '/timer',
   },
+  { label: 'Classroom', icon: home, path: '/classroom' },
   { label: 'Perfil', icon: user, path: '/profile' },
   { label: 'Tienda', icon: shop, path: '/shop' },
 ];
