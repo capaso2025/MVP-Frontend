@@ -8,12 +8,18 @@ terraform {
   }
 }
 
+# Provider principal - usa la región de tus variables
 provider "aws" {
   region = var.region
 }
 
+# Provider específico para ACM en us-east-1 (obligatorio para certificados usados con CloudFront)
+provider "aws" {
+  alias  = "us_east_1"
+  region = "us-east-1"
+}
+
 # Política de bucket para permitir acceso desde CloudFront
-#requerido
 resource "aws_s3_bucket_policy" "frontend_bucket_policy" {
   bucket = data.aws_s3_bucket.frontend_bucket.id
 
@@ -50,13 +56,13 @@ resource "aws_s3_bucket_website_configuration" "frontend_website" {
   }
 }
 
-# Habilitar compresión GZIP para reducir el tamaño de transferencia
+# Habilitar encriptación del lado del servidor
 resource "aws_s3_bucket_server_side_encryption_configuration" "frontend_encryption" {
   bucket = data.aws_s3_bucket.frontend_bucket.id
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"  # Encriptación gratuita que no afecta la factura
+      sse_algorithm = "AES256"  # Encriptación gratuita
     }
   }
 }
@@ -70,6 +76,48 @@ resource "aws_cloudfront_origin_access_control" "frontend_oac" {
   signing_protocol                  = "sigv4"
 }
 
+# Zona DNS para tu dominio
+resource "aws_route53_zone" "main" {
+  name = "capoacademy.com"
+  comment = "Zona DNS para capoacademy.com"
+}
+
+# Certificado SSL para tu dominio
+resource "aws_acm_certificate" "cert" {
+  provider = aws.us_east_1
+  domain_name = "capoacademy.com"
+  subject_alternative_names = ["www.capoacademy.com"]
+  validation_method = "DNS"
+  
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+# Validación del certificado usando registros DNS
+resource "aws_route53_record" "cert_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  name    = each.value.name
+  type    = each.value.type
+  zone_id = aws_route53_zone.main.zone_id
+  records = [each.value.record]
+  ttl     = 60
+}
+
+# Asegurarse de que el certificado está validado
+resource "aws_acm_certificate_validation" "cert" {
+  provider = aws.us_east_1
+  certificate_arn         = aws_acm_certificate.cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.cert_validation : record.fqdn]
+}
+
 # Distribución CloudFront
 resource "aws_cloudfront_distribution" "frontend_distribution" {
   enabled             = true
@@ -77,6 +125,9 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
   default_root_object = "index.html"
   price_class         = var.price_class
   comment             = "React Frontend - ${var.env} - Free Tier Optimized"
+  
+  # Importante: agregar aliases para dominios personalizados
+  aliases = ["capoacademy.com", "www.capoacademy.com"]
   
   # Origen S3
   origin {
@@ -91,11 +142,10 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "S3-${var.frontend_bucket_name}"
     
-    # Política de caché gestionada para maximizar la proporción de aciertos de caché
     cache_policy_id          = data.aws_cloudfront_cache_policy.optimized.id
     origin_request_policy_id = data.aws_cloudfront_origin_request_policy.s3_origin.id
     
-    compress               = true  # Habilitamos compresión para reducir tamaño de transferencia
+    compress               = true
     viewer_protocol_policy = "redirect-to-https"
   }
   
@@ -104,14 +154,14 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
     error_code            = 403
     response_code         = 200
     response_page_path    = "/index.html"
-    error_caching_min_ttl = 3600  # Caché de 1 hora para reducir solicitudes
+    error_caching_min_ttl = 3600
   }
   
   custom_error_response {
     error_code            = 404
     response_code         = 200
     response_page_path    = "/index.html"
-    error_caching_min_ttl = 3600  # Caché de 1 hora para reducir solicitudes
+    error_caching_min_ttl = 3600
   }
   
   restrictions {
@@ -121,15 +171,46 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
   }
   
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = aws_acm_certificate.cert.arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
   
-  # Configuraciones adicionales para optimizar costos
+  # Configuraciones para optimizar costos
   http_version        = "http2"        
-  wait_for_deployment = false           
+  wait_for_deployment = false
+  
+  # Esperamos a que el certificado esté validado para evitar errores
+  depends_on = [aws_acm_certificate_validation.cert]
 }
 
-# Outputs necesarios
+# Registros DNS para usar el dominio con CloudFront
+resource "aws_route53_record" "www" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "www.capoacademy.com"
+  type    = "A"
+  
+  alias {
+    name                   = aws_cloudfront_distribution.frontend_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.frontend_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+# Registro para el apex domain (sin www)
+resource "aws_route53_record" "apex" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "capoacademy.com"
+  type    = "A"
+  
+  alias {
+    name                   = aws_cloudfront_distribution.frontend_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.frontend_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+# Outputs requeridos
 output "frontend_bucket_name" {
   value = var.frontend_bucket_name
 }
@@ -141,4 +222,9 @@ output "cloudfront_distribution_id" {
 output "cloudfront_domain_name" {
   value = aws_cloudfront_distribution.frontend_distribution.domain_name
   description = "URL de CloudFront para acceder a la aplicación"
+}
+
+output "nameservers" {
+  value = aws_route53_zone.main.name_servers
+  description = "Nameservers para configurar en tu proveedor de dominios"
 }
