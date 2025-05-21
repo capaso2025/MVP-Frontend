@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 
-export function useResize() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1350);
+export function useResize(params?: { mobileWidth?: number }) {
+  const mobileWidth = params?.mobileWidth || 768; // Default mobile width
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= mobileWidth);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 1350);
+      setIsMobile(window.innerWidth <= mobileWidth);
     };
 
     const resizeObserver = new ResizeObserver(checkScreenSize);

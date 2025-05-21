@@ -4,12 +4,12 @@ function Spacer(props: {
 }) {
   const { size = 'sm' } = props;
   const sizes = {
-    sm: 'h-2',
-    md: 'h-4',
-    lg: 'h-8',
-    xl: 'h-16',
-    '2xl': 'h-24',
-    '3xl': 'h-32',
+    sm: 'h-1 lg:h-2',
+    md: 'h-2 lg:h-4',
+    lg: 'h-4 lg:h-8',
+    xl: 'h-8 lg:h-16',
+    '2xl': 'h-16 lg:h-24',
+    '3xl': 'h-24 lg:h-32',
   };
   const className = sizes[size];
   if (className) {
