@@ -1,13 +1,13 @@
-import { Button } from '../../atoms/Button';
-import { Input } from '../../atoms/Input';
-import { Typography } from '../../atoms/Typography';
-import { Icon } from '../../atoms/Icon/Icon';
 import { useForm } from '@/shared/hooks/useForm';
 import { SignupData } from '@/features/auth/signup/signupData.types';
 import { validateSignup } from '@/features/auth/signup/signupValidator';
-import { DatePicker } from '../../molecules/DatePicker';
 import { usePassword } from '@/shared/hooks/usePassword';
 import { useSignup } from '@/features/auth/signup/hooks/useSignup';
+import { Button } from '@/shared/ui/atoms/Button';
+import { Typography } from '@/shared/ui/atoms/Typography';
+import { Input } from '@/shared/ui/atoms/Input';
+import { DatePicker } from '@/shared/ui/molecules/DatePicker';
+import { Icon } from '@/shared/ui/atoms/Icon/Icon';
 
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;

@@ -59,6 +59,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+@layer utilities {
+  .bg-landing {
+    @apply bg-gradient-to-br from-[#ced8df] to-[#42455a];
+  }
+}
 
 /* Estilos de accesibilidad para elementos focusables */
 :focus-visible {

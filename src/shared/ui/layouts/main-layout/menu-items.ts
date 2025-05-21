@@ -11,7 +11,7 @@ interface MenuItem {
   include?: string[];
 }
 
-export const MENU_ITEMS: MenuItem[] = [
+export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     label: 'Objetivos',
     icon: home,
@@ -32,7 +32,7 @@ export const MENU_ITEMS: MenuItem[] = [
   { label: 'Perfil', icon: user, path: '/profile' },
   { label: 'Tienda', icon: shop, path: '/shop' },
 ];
-export const NO_LOGGED_MENU_ITEMS: MenuItem[] = [
+export const NO_LOGGED_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     label: 'Objetivos',
     icon: home,
@@ -50,4 +50,28 @@ export const NO_LOGGED_MENU_ITEMS: MenuItem[] = [
     path: '/timer',
   },
   { label: 'Classroom', icon: home, path: '/classroom' },
+];
+export const TEACHER_DEFAULT_MENU_ITEMS: MenuItem[] = [
+  {
+    label: 'Inicio',
+    icon: home,
+    path: '/classroom?role=teacher',
+    include: [],
+  },
+  {
+    label: 'Calendario',
+    icon: calendar,
+    path: '/calendar?role=teacher',
+  },
+  {
+    label: 'Chats',
+    icon: timer,
+    path: '/chats?role=teacher',
+  },
+  {
+    label: 'Puntos',
+    icon: timer,
+    path: '/points?role=teacher',
+  },
+  { label: 'Insight', icon: home, path: '/insight?role=teacher' },
 ];

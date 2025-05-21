@@ -48,12 +48,12 @@ function Modal() {
           </div>
         )}
         {title && (
-          <Typography variant="h2" className="mt-4 mb-2 text-center text-white">
+          <Typography variant="h2" className="mt-4 mb-2 text-center text-primary">
             {title}
           </Typography>
         )}
         {description && (
-          <Typography variant="body1" className="mb-2 text-center text-white">
+          <Typography variant="body1" className="mb-2 text-center text-primary">
             {description}
           </Typography>
         )}

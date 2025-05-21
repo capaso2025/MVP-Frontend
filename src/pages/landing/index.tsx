@@ -3,50 +3,68 @@ import InfoSection from './components/organisms/InfoSection';
 import Main from './components/organisms/Main';
 import Header from './components/molecules/Header';
 import Container from '@/shared/ui/atoms/Container';
+import { SECTIONS_TEXTS } from './constants/sections-texts';
+import { useRenderStore } from '@/shared/store/render-store';
+import TeacherSignupForm from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupForm';
 function Landing() {
+  const setModalData = useRenderStore((state) => state.setModalData);
+
+  const openTeacherModal = () => {
+    setModalData({
+      containerClassName: "bg-landing",
+      fullScreen: true,
+      title: "Crea tu cuenta como profesor",
+      children: <TeacherSignupForm />,
+    })
+  }
   return (
-    <div className="animate-fade-in bg-gradient-to-b from-[#ced8df] to-[#42455a]">
+    <div className="animate-fade-in bg-landing">
       <Container>
         <Header />
         <Main />
         <InfoSection
-          id='nosotros'
-          title="Respaldado por psicólogos"
+          id={SECTIONS_TEXTS.NOSOTROS.ID}
+          title={SECTIONS_TEXTS.NOSOTROS.TITLE}
           color='text-primary-light'
-          image='/assets/characters/capito-university.png' imgPosition="left" description="Cada herramienta y contenido ha sido desarrollado con el acompañamiento de psicólogos especializados en adolescentes y jóvenes. Tu bienestar emocional es tan importante como tu crecimiento académico y personal." />
+          image='/assets/characters/capito-university.png' imgPosition="left" description={SECTIONS_TEXTS.NOSOTROS.DESCRIPTION} />
         <Spacer size="3xl" />
         <InfoSection
           color='text-white'
-          title='Mantén tu motivación'
-          image='/assets/characters/capito-ladders.png' imgPosition="right" description="En Capo, convertimos tu progreso en pequeñas victorias diarias que te mantienen motivado y con ganas de seguir. Porque avanzar también puede sentirse bien, desde el primer paso." />
+          title={SECTIONS_TEXTS.NOSOTROS_2.TITLE}
+          image='/assets/characters/capito-ladders.png' imgPosition="right" description={SECTIONS_TEXTS.NOSOTROS_2.DESCRIPTION} />
         <Spacer size="3xl" />
       </Container>
       <div className='bg-primary'>
         <Spacer size="3xl" />
         <Container>
           <InfoSection
-            id='profesores'
+            id={SECTIONS_TEXTS.PROFESORES.ID}
             color='text-white'
-            title='Eres el pilar de los estudiantes'
+            title={SECTIONS_TEXTS.PROFESORES.TITLE}
+            description={SECTIONS_TEXTS.PROFESORES.DESCRIPTION}
             withButton
-            buttonText='Comenzar como profesor'
-            description='Capo es una herramienta que te permite acompañar a tus estudiantes en su proceso de aprendizaje.'
             descriptionProps={{
               variant: 'h5',
               className: '!text-secondary font-normal text-center'
             }}
+            buttonProps={{
+              children: SECTIONS_TEXTS.PROFESORES.BUTTON_TEXT,
+              onClick: openTeacherModal
+            }}
             image='/assets/characters/capito-teach.png' imgPosition="left" />
           <Spacer size="3xl" />
           <InfoSection
-            id='instituciones'
+            id={SECTIONS_TEXTS.INSTITUCIONES.ID}
             color='text-white'
-            title='Comenzar como institución'
+            title={SECTIONS_TEXTS.INSTITUCIONES.TITLE}
             withButton
-            buttonText='Comenzar como institución'
-            description='Capo es una herramienta que te permite acompañar a tus estudiantes en su proceso de aprendizaje.'
+            description={SECTIONS_TEXTS.INSTITUCIONES.DESCRIPTION}
             descriptionProps={{
               variant: 'h5',
               className: '!text-secondary font-normal text-center'
+            }}
+            buttonProps={{
+              children: SECTIONS_TEXTS.INSTITUCIONES.BUTTON_TEXT
             }}
             image='/assets/characters/capito-teach.png' imgPosition="right" />
           <Spacer size="3xl" />

@@ -1,9 +1,10 @@
 function Spacer(props: {
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg'
   | 'xl' | '2xl' | '3xl';
 }) {
   const { size = 'sm' } = props;
   const sizes = {
+    xs: 'h-0.5 lg:h-1',
     sm: 'h-1 lg:h-2',
     md: 'h-2 lg:h-4',
     lg: 'h-4 lg:h-8',

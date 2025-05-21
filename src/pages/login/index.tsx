@@ -1,4 +1,4 @@
-import Login from "@/shared/ui/templates/Auth/Login";
+import Login from "@/shared/ui/templates/auth/login";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {

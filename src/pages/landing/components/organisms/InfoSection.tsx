@@ -10,8 +10,8 @@ interface Props {
   description?: string;
   color?: string;
   withButton?: boolean;
-  buttonText?: string;
   descriptionProps?: Partial<React.ComponentProps<typeof Typography>>;
+  buttonProps?: Partial<React.ComponentProps<typeof Button>>;
 }
 const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivElement>>((props) => {
   const {
@@ -21,13 +21,12 @@ const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivEle
     color = '',
     title = '',
     withButton = false,
-    buttonText = '',
     descriptionProps = {},
+    buttonProps = {},
     ...rest
   } = props;
   const { hasBeenVisible, ref } = useFadeInOnScroll();
   const { className: descriptionClassName, ...restDescriptionProps } = descriptionProps;
-  console.log(rest)
   return (
     <div
 
@@ -52,7 +51,9 @@ const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivEle
         </Typography>
         {withButton && <div className={
           `mt-4 text-center ${imgPosition === 'left' ? 'lg:text-right' : 'lg:text-left'}`
-        }><Button size="lg" variant='landing' className=''>{buttonText}</Button></div>}
+        }><Button size="lg" variant='landing'
+          {...buttonProps}
+          /></div>}
       </div>
       <img
         src={image}
