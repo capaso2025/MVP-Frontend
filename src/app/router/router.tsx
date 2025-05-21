@@ -31,6 +31,9 @@ const ShopPage = lazy(() => import('@/pages/shop'));
 const ProfilePage = lazy(() => import('@/pages/profile'));
 const TimerPage = lazy(() => import('@/pages/timer'));
 const ClassroomPage = lazy(() => import('@/pages/classroom'));
+const InsightPage = lazy(() => import('@/pages/insight'));
+const PointsPage = lazy(() => import('@/pages/points'));
+const ChatsPage = lazy(() => import('@/pages/chats'));
 
 // Lessons
 const LessonPage = lazy(() => import('@/pages/lesson'));
@@ -77,6 +80,9 @@ function AppRouter() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
           <Route path="/classroom" element={<ClassroomPage />} />
+          <Route path="/insight" element={<InsightPage />} />
+          <Route path="/points" element={<PointsPage />} />
+          <Route path="/chats" element={<ChatsPage />} />
         </Route>
         <Route path="/lesson/:module/:lesson" element={<LessonPage />} />
 

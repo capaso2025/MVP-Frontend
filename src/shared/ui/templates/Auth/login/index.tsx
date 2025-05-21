@@ -1,7 +1,7 @@
-import { Button } from '../../atoms/Button';
-import { Input } from '../../atoms/Input';
-import { Typography } from '../../atoms/Typography';
-import { Icon } from '../../atoms/Icon/Icon';
+import { Button } from '../../../atoms/Button';
+import { Input } from '../../../atoms/Input';
+import { Typography } from '../../../atoms/Typography';
+import { Icon } from '../../../atoms/Icon/Icon';
 import { useForm } from '@/shared/hooks/useForm';
 import { LoginData } from '@/features/auth/login/types/loginData.types';
 import { validateLogin } from '@/features/auth/login/loginValidator';

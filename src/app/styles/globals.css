@@ -44,6 +44,9 @@
   --breakpoint-xl: 84rem;
   --breakpoint-2xl: 96rem;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 /* Estilos globales base */
 body {
@@ -55,6 +58,11 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@layer utilities {
+  .bg-landing {
+    @apply bg-gradient-to-br from-[#ced8df] to-[#42455a];
+  }
 }
 
 /* Estilos de accesibilidad para elementos focusables */
@@ -183,5 +191,17 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+.animate-slide-x {
+  animation: slideX 0.2s ease-out;
+}
+@keyframes slideX {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }

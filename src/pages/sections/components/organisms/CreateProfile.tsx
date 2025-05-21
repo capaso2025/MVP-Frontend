@@ -1,11 +1,11 @@
 import { useAuthStore } from '@/features/auth/auth-store';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button } from '@/shared/ui';
-import Auth from '@/shared/ui/templates/Auth';
+import Auth from '@/shared/ui/templates/auth';
 import {
   AUTH_SCREENS,
   AuthScreen,
-} from '@/shared/ui/templates/Auth/auth-screens';
+} from '@/shared/ui/templates/auth/auth-screens';
 
 function CreateProfile() {
   const setModalData = useRenderStore((state) => state.setModalData);

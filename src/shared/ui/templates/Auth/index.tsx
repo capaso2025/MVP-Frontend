@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Login from './Login';
-import SelectSignUpRoad from './SelectSignUpRoad';
-import Signup from './Signup';
 import { AUTH_SCREENS, AuthScreen } from './auth-screens';
+import Login from './login';
+import SelectSignUpRoad from './signup/SelectSignUpRoad';
+import Signup from './signup/Signup';
 
 function Auth(props: { initialScreen: AuthScreen | undefined }) {
   const { initialScreen } = props;

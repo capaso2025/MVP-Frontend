@@ -140,8 +140,8 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
     // Mapeo de tamaños a clases CSS
     const sizeClasses = {
       sm: 'h-8 text-sm',
-      md: 'h-10 text-base',
-      lg: 'h-12 text-lg',
+      md: 'h-12 text-base',
+      lg: 'h-14 text-lg',
     };
 
     // Clases del contenedor
@@ -158,9 +158,6 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
       'relative flex items-center overflow-hidden',
       'border rounded-md transition-colors',
       disabled ? 'bg-gray-100 border-gray-300' : 'bg-white',
-      isFocused && !disabled && !error
-        ? 'border-primary ring-1 ring-primary/30'
-        : '',
       error ? 'border-error !bg-error-light' : 'border-gray-300',
       sizeClasses[size],
     ]
@@ -170,7 +167,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(
     // Clases del input
     const inputClasses = [
       'w-full h-full outline-none bg-transparent',
-      'text-text-primary disabled:text-text-disabled',
+      'text-text-primary disabled:text-text-disabled px-4 py-3',
       startIcon || startContent ? 'pl-9' : 'pl-3',
       endIcon || endContent || clearable ? 'pr-9' : 'pr-3',
     ]
