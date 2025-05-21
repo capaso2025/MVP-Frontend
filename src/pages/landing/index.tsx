@@ -22,6 +22,7 @@ function Landing() {
       <Container>
         <Header />
         <Main />
+        <Spacer size="xl" />
         <InfoSection
           id={SECTIONS_TEXTS.NOSOTROS.ID}
           title={SECTIONS_TEXTS.NOSOTROS.TITLE}
