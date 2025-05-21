@@ -10,6 +10,7 @@ function Landing() {
         <Header />
         <Main />
         <InfoSection
+          id='nosotros'
           title="Respaldado por psicólogos"
           color='text-primary-light'
           image='/assets/characters/capito-university.png' imgPosition="left" description="Cada herramienta y contenido ha sido desarrollado con el acompañamiento de psicólogos especializados en adolescentes y jóvenes. Tu bienestar emocional es tan importante como tu crecimiento académico y personal." />
@@ -24,6 +25,7 @@ function Landing() {
         <Spacer size="3xl" />
         <Container>
           <InfoSection
+            id='profesores'
             color='text-white'
             title='Eres el pilar de los estudiantes'
             withButton
@@ -36,6 +38,7 @@ function Landing() {
             image='/assets/characters/capito-teach.png' imgPosition="left" />
           <Spacer size="3xl" />
           <InfoSection
+            id='instituciones'
             color='text-white'
             title='Comenzar como institución'
             withButton

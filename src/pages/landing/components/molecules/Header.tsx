@@ -23,7 +23,7 @@ function Header() {
               variant="h5"
               className="hover:text-primary-2 cursor-pointer font-normal transition-all duration-200 hover:font-bold"
             >
-              {element.text}
+              <a href={element.href}>{element.text}</a>
             </Typography>
           ))}
         </div>

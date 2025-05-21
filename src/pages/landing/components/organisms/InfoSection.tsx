@@ -1,7 +1,7 @@
 import { useFadeInOnScroll } from '@/shared/hooks/use-fade-in-scroll';
 import { Button, Typography } from '@/shared/ui';
 import Spacer from '@/shared/ui/atoms/Spacer';
-import { forwardRef } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 
 interface Props {
   image?: string;
@@ -13,7 +13,7 @@ interface Props {
   buttonText?: string;
   descriptionProps?: Partial<React.ComponentProps<typeof Typography>>;
 }
-const InfoSection = forwardRef<HTMLDivElement, Props>((props) => {
+const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivElement>>((props) => {
   const {
     image,
     imgPosition = 'right',
@@ -23,13 +23,17 @@ const InfoSection = forwardRef<HTMLDivElement, Props>((props) => {
     withButton = false,
     buttonText = '',
     descriptionProps = {},
+    ...rest
   } = props;
   const { hasBeenVisible, ref } = useFadeInOnScroll();
   const { className: descriptionClassName, ...restDescriptionProps } = descriptionProps;
+  console.log(rest)
   return (
     <div
+
       ref={ref}
       className={`flex flex-col items-start transition-all duration-500 justify-between gap-8 lg:gap-0 ${imgPosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} ${hasBeenVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+      {...rest}
     >
       <div className="lg:max-w-[50%]">
         <Typography
