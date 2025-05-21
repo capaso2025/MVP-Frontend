@@ -1,4 +1,4 @@
-import Signup from "@/shared/ui/templates/Auth/Signup";
+import Signup from "@/shared/ui/templates/auth/signup/Signup";
 import { useNavigate } from "react-router-dom";
 
 function SignupPage() {
