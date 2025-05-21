@@ -4,7 +4,7 @@ import capitoDesk from '@/assets/capito-desk.webp';
 
 function Main() {
   const navigate = useNavigate();
-  return <div id="inicio" className="grid grid-cols-1 md:grid-cols-2 -mt-20 lg:mt-0 h-[calc(100vh-60px)] place-content-center">
+  return <div id="inicio" className="grid grid-cols-1 md:grid-cols-2 md:-mt-20 lg:mt-0 h-[calc(100vh-60px)] place-content-center">
     <div className="mx-auto grid max-w-[80%] grid-rows-[max-content_auto] place-content-center gap-16 md:mx-0">
       <div className="text-center md:text-left">
         <Typography variant="h1" as="h1" className="text-primary-light">
@@ -30,13 +30,15 @@ function Main() {
         </div>
       </div>
     </div>
-    <img
-      src={capitoDesk}
-      className="hidden justify-self-end md:block ml-auto mr-0 rounded-3xl [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [--webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
-      alt="capito en el escritorio"
-      width={600}
-      height={500}
-    />
+    <div className="flex justify-center mx-auto md:mx-0">
+      <img
+        src={capitoDesk}
+        className="md:justify-self-end w-[400px] md:w-[600px] md:block ml-auto mr-0 rounded-3xl [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [--webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+        alt="capito en el escritorio"
+        width={600}
+        height={500}
+      />
+    </div>
   </div>
 };
 

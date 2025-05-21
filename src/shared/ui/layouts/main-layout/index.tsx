@@ -9,6 +9,7 @@ import { useResize } from '@/shared/hooks/use-resize';
 import { useEffect } from 'react';
 import { useRenderStore } from '@/shared/store/render-store';
 import School from '@/assets/school.png';
+import { MenuIcon } from 'lucide-react';
 function MenuLayout() {
   const { isMobile } = useResize();
   const [searchParams] = useSearchParams();
@@ -51,8 +52,16 @@ function MenuLayout() {
 export default MenuLayout;
 
 const TeacherHeader = () => {
+  const toggleOpenedSidebar = useRenderStore(
+    (state) => state.toggleOpenedSidebar,
+  );
   return <header className="bg-white p-2 shadow-sm">
     <div className="flex items-center gap-2">
+      <MenuIcon
+        className="block xl:hidden"
+        color="var(--color-primary)"
+        onClick={toggleOpenedSidebar}
+      />
       <img
         src={School}
         alt="Logo colegio"
