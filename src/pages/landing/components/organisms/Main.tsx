@@ -33,7 +33,7 @@ function Main() {
     <div className="flex justify-center mx-auto md:mx-0">
       <img
         src={capitoDesk}
-        className="md:justify-self-end w-[400px] md:w-[600px] md:block ml-auto mr-0 rounded-3xl [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [--webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+        className="md:justify-self-end w-[400px] md:w-[600px] md:block ml-auto mr-0 rounded-3xl mask-transparent"
         alt="capito en el escritorio"
         width={600}
         height={500}

@@ -16,12 +16,11 @@ const CategoriesPage = () => {
           <h1 className="mb-8 text-center text-3xl font-bold">
             Quiero ser un CAPO en...
           </h1>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex justify-center flex-wrap gap-4 w-full mx-auto">
             {CATEGORIES.map((category) => (
               <CategoryCard
                 className={`${category.id === selectedCategory?.id
-                  ? '!bg-primary-lighter'
+                  ? '!bg-primary text-white shadow-2xl'
                   : ''
                   }`}
                 key={category.id}
