@@ -12,7 +12,7 @@ export const CATEGORIES = [
   {
     id: 'soft-skills',
     name: 'Habilidades blandas',
-    imageUrl: '/assets/characters/capito-excited.png',
+    imageUrl: '/assets/characters/soft-skills.png',
     subSkills: [
       { id: 'comm', name: 'Comunicación efectiva' },
       { id: 'team', name: 'Trabajo en equipo' },
@@ -23,7 +23,7 @@ export const CATEGORIES = [
   {
     id: 'personal well-being',
     name: 'Bienestar social',
-    imageUrl: '/assets/characters/capito-celebrating.png',
+    imageUrl: '/assets/characters/personal-well-being.png',
     subSkills: [
       { id: 'self-care', name: 'Auto cuidado y límites saludables' },
       { id: 'gratitude', name: 'Gratitud y reciprocidad' },
@@ -34,7 +34,7 @@ export const CATEGORIES = [
   {
     id: 'time-management',
     name: 'Optimización de tiempo',
-    imageUrl: '/assets/characters/capito-running.png',
+    imageUrl: '/assets/characters/time-management.png',
     subSkills: [
       { id: 'prioritization', name: 'Priorización inteligente' },
       { id: 'planning', name: 'Planificación efectiva' },
@@ -44,7 +44,7 @@ export const CATEGORIES = [
   {
     id: 'emotional-control',
     name: 'Control de emociones',
-    imageUrl: '/assets/characters/capito-confused.png',
+    imageUrl: '/assets/characters/emotion-control.png',
     subSkills: [
       { id: 'emotional-awareness', name: 'Autoconciencia emocional' },
       { id: 'discomfort-tolerance', name: 'Tolerancia al malestar' },

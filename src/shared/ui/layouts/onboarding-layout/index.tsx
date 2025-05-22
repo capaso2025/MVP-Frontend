@@ -58,7 +58,7 @@ export const OnboardingLayout = forwardRef<
         </div>
       </header>
 
-      <main className='h-[calc(100vh-132px)]'>{children}</main>
+      <main className='h-[calc(100vh-132px)] overflow-auto'>{children}</main>
 
       <footer className="border-t border-gray-200 bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">

@@ -63,6 +63,9 @@ body {
   .bg-landing {
     @apply bg-gradient-to-br from-[#ced8df] to-[#42455a];
   }
+  .mask-transparent {
+    @apply [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [--webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)];
+  }
 }
 
 /* Estilos de accesibilidad para elementos focusables */
