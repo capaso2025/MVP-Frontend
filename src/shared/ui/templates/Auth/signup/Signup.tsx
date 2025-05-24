@@ -1,13 +1,13 @@
-import { Button } from '../../atoms/Button';
-import { Input } from '../../atoms/Input';
-import { Typography } from '../../atoms/Typography';
-import { Icon } from '../../atoms/Icon/Icon';
 import { useForm } from '@/shared/hooks/useForm';
 import { SignupData } from '@/features/auth/signup/signupData.types';
 import { validateSignup } from '@/features/auth/signup/signupValidator';
-import { DatePicker } from '../../molecules/DatePicker';
 import { usePassword } from '@/shared/hooks/usePassword';
 import { useSignup } from '@/features/auth/signup/hooks/useSignup';
+import { Button } from '@/shared/ui/atoms/Button';
+import { Typography } from '@/shared/ui/atoms/Typography';
+import { DatePicker } from '@/shared/ui/molecules/DatePicker';
+import { Icon } from '@/shared/ui/atoms/Icon/Icon';
+import Input from '@/shared/ui/atoms/Input/Input';
 
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;
@@ -37,7 +37,7 @@ function Signup(props: { onClickLogin?: () => void }) {
           Iniciar sesión
         </Typography>
       </Button>
-      <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
+      {/* <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
         <form
           className="mx-auto -mt-8 w-full place-content-center px-4"
           onSubmit={(ev) => {
@@ -51,7 +51,7 @@ function Signup(props: { onClickLogin?: () => void }) {
           </Typography>
           <div className="grid grid-cols-2 gap-4">
             <Input
-              startIcon="user"
+              starstartIcon="user"
               type="text"
               value={values.name}
               onChange={(ev) => setValue('name', ev.target.value)}
@@ -129,7 +129,7 @@ function Signup(props: { onClickLogin?: () => void }) {
             className="scale-x-[-1] transform"
           />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -11,27 +11,25 @@ const CategoriesPage = () => {
 
   return (
     <OnboardingLayout title="Selección de habilidades">
-      <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
+      <div className="mx-auto grid w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
         <div className="grid place-content-center">
           <h1 className="mb-8 text-center text-3xl font-bold">
             Quiero ser un CAPO en...
           </h1>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex justify-center flex-wrap gap-4 w-full mx-auto">
             {CATEGORIES.map((category) => (
               <CategoryCard
-                className={`${
-                  category.id === selectedCategory?.id
-                    ? '!bg-primary-lighter'
-                    : ''
-                }`}
+                className={`${category.id === selectedCategory?.id
+                  ? '!bg-primary text-white shadow-2xl'
+                  : ''
+                  }`}
                 key={category.id}
                 category={category}
                 onClick={() => setCategory(category)}
               />
             ))}
           </div>
-          <div className="mt-10 grid place-content-center lg:mt-20">
+          <div className="mt-5 grid place-content-center lg:mt-10">
             {selectedCategory ? (
               <>
                 <Typography variant="h4" className="mb-4">
@@ -53,11 +51,11 @@ const CategoriesPage = () => {
                 </ul>
               </>
             ) : (
-              <div className="h-[200px]" />
+              <div className="h-[100px]" />
             )}
           </div>
         </div>
-        <div className="mt-10 flex justify-end lg:mt-20">
+        <div className="flex justify-end">
           {selectedCategory ? (
             <Button
               className="flex w-max items-center"

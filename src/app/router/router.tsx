@@ -6,8 +6,8 @@ import { PublicOnlyRoute } from './public-route';
 
 // Public
 const LandingPage = lazy(() => import('@/pages/landing'));
-const LoginPage = lazy(() => import('@pages/login'));
-const SignupPage = lazy(() => import('@pages/signup'));
+const LoginPage = lazy(() => import('@/pages/login'));
+const SignupPage = lazy(() => import('@/pages/signup'));
 
 // Onboarding
 const CategoriesPage = lazy(
@@ -26,16 +26,20 @@ const OnboardingResultsPage = lazy(
 // Home
 const SectionsPage = lazy(() => import('@/pages/sections'));
 const LearnPage = lazy(() => import('@/pages/learn'));
-const CalendarPage = lazy(() => import('@pages/calendar'));
-const ShopPage = lazy(() => import('@pages/shop'));
-const ProfilePage = lazy(() => import('@pages/profile'));
-const TimerPage = lazy(() => import('@pages/timer'));
+const CalendarPage = lazy(() => import('@/pages/calendar'));
+const ShopPage = lazy(() => import('@/pages/shop'));
+const ProfilePage = lazy(() => import('@/pages/profile'));
+const TimerPage = lazy(() => import('@/pages/timer'));
+const ClassroomPage = lazy(() => import('@/pages/classroom'));
+const InsightPage = lazy(() => import('@/pages/insight'));
+const PointsPage = lazy(() => import('@/pages/points'));
+const ChatsPage = lazy(() => import('@/pages/chats'));
 
 // Lessons
-const LessonPage = lazy(() => import('@pages/lesson'));
+const LessonPage = lazy(() => import('@/pages/lesson'));
 
 // Not found
-const NotFoundPage = lazy(() => import('@pages/not-found'));
+const NotFoundPage = lazy(() => import('@/pages/not-found'));
 
 function AppRouter() {
   return (
@@ -75,6 +79,10 @@ function AppRouter() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
+          <Route path="/classroom" element={<ClassroomPage />} />
+          <Route path="/insight" element={<InsightPage />} />
+          <Route path="/points" element={<PointsPage />} />
+          <Route path="/chats" element={<ChatsPage />} />
         </Route>
         <Route path="/lesson/:module/:lesson" element={<LessonPage />} />
 

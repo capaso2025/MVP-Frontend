@@ -29,18 +29,20 @@ export const CategoryCard: FC<ICategoryCardProps> = ({
 
   return (
     <div
-      className={`rounded-lg border-gray-200 bg-white shadow-sm hover:shadow-2xl hover:border-primary-lighter transition-all duration-200 cursor-pointer border ${className}`}
+      className={`relative rounded-lg border-gray-200 bg-white hover:shadow-2xl hover:border-primary-lighter overflow-hidden w-[300px] transition-all h-[350px] duration-200 cursor-pointer border ${className}`}
       onClick={handleClick}
     >
-      <div className="mb-4 p-4">
-        <img
-          src={category.imageUrl}
-          alt={category.name}
-          className="mb-4 mx-auto"
-          width={150}
-          height={150}
-        />
-        <Typography variant='h4' className='text-center'>{category.name}</Typography>
+      <div className="mb-4 grid h-full">
+        <div className='grid place-content-start'>
+          <img
+            src={category.imageUrl}
+            alt={category.name}
+            className="object-cover w-full mx-auto h-[310px] mask-transparent mb-8"
+            width={200}
+            height={200}
+          />
+        </div>
+        <Typography variant='h5' className='absolute p-1 bottom-0 w-full text-center'>{category.name}</Typography>
       </div>
     </div>
   );

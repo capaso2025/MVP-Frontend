@@ -1,20 +1,27 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { Typography } from '../../atoms/Typography';
-import { MENU_ITEMS } from './menu-items';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useRenderStore } from '@/shared/store/render-store';
 import { MenuIcon } from 'lucide-react';
+import capoLogo from '@/assets/capo-logo.png';
+import { useAuthStore } from '@/features/auth/auth-store';
+import { DEFAULT_MENU_ITEMS, NO_LOGGED_DEFAULT_MENU_ITEMS, TEACHER_DEFAULT_MENU_ITEMS } from './menu-items';
 
 function Sidebar() {
   const location = useLocation();
   const { isMobile } = useResize();
+  const [searchParams] = useSearchParams();
+  const isTeacher = searchParams.get("role") === "teacher";
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const toggleOpenedSidebar = useRenderStore(
     (state) => state.toggleOpenedSidebar,
   );
   const openedSidebar = useRenderStore((state) => state.openedSidebar);
+
   const sidebarItemIsSelected = (path: string, include?: string[]) => {
+    const pathWithoutQuery = path.split("?")[0];
     return (
-      location.pathname === path ||
+      location.pathname === pathWithoutQuery ||
       !!include?.some((el) => location.pathname.includes(el))
     );
   };
@@ -29,13 +36,13 @@ function Sidebar() {
         </div>
         <img
           alt="Capo logo"
-          src="/src/assets/capo-logo.png"
+          src={capoLogo}
           width={70}
           className="mx-auto mt-0 xl:mt-4"
         />
       </div>
       <div>
-        {MENU_ITEMS.map((el) => (
+        {(isTeacher ? TEACHER_DEFAULT_MENU_ITEMS : isAuthenticated ? DEFAULT_MENU_ITEMS : NO_LOGGED_DEFAULT_MENU_ITEMS).map((el) => (
           <MenuItem
             key={el.label}
             {...el}

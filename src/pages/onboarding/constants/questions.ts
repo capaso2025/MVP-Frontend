@@ -12,6 +12,44 @@ export const QUESTIONS: {
 } = {
   'soft-skills': [
     {
+      question: '¿Cómo supiste de Capo?',
+      type: 'multiple-choice',
+      options: [
+        {
+          id: '1',
+          text: 'Búsqueda en Google',
+        },
+        {
+          id: '2',
+          text: 'Facebook/Instagram',
+        },
+        {
+          id: '3',
+          text: 'Youtube',
+        },
+        {
+          id: '4',
+          text: 'TV',
+        },
+        {
+          id: '5',
+          text: 'Noticias/artículos/blog',
+        },
+        {
+          id: '6',
+          text: 'TikTok',
+        },
+        {
+          id: '7',
+          text: 'Amigos/familiares',
+        },
+        {
+          id: '8',
+          text: 'Otros',
+        },
+      ],
+    },
+    {
       question: '¿Por qué quieres aprender esta habilidad?',
       type: 'single-choice',
       options: [
@@ -71,44 +109,7 @@ export const QUESTIONS: {
         },
       ],
     },
-    {
-      question: '¿Cómo supiste de Capo?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Búsqueda en Google',
-        },
-        {
-          id: '2',
-          text: 'Facebook/Instagram',
-        },
-        {
-          id: '3',
-          text: 'Youtube',
-        },
-        {
-          id: '4',
-          text: 'TV',
-        },
-        {
-          id: '5',
-          text: 'Noticias/artículos/blog',
-        },
-        {
-          id: '6',
-          text: 'TikTok',
-        },
-        {
-          id: '7',
-          text: 'Amigos/familiares',
-        },
-        {
-          id: '8',
-          text: 'Otros',
-        },
-      ],
-    },
+
     {
       question: 'En que etapa estas ahora?',
       type: 'multiple-choice',
@@ -171,6 +172,44 @@ export const QUESTIONS: {
     },
   ],
   'time-management': [
+    {
+      question: '¿Cómo supiste de Capo?',
+      type: 'multiple-choice',
+      options: [
+        {
+          id: '1',
+          text: 'Búsqueda en Google',
+        },
+        {
+          id: '2',
+          text: 'Facebook/Instagram',
+        },
+        {
+          id: '3',
+          text: 'Youtube',
+        },
+        {
+          id: '4',
+          text: 'TV',
+        },
+        {
+          id: '5',
+          text: 'Noticias/artículos/blog',
+        },
+        {
+          id: '6',
+          text: 'TikTok',
+        },
+        {
+          id: '7',
+          text: 'Amigos/familiares',
+        },
+        {
+          id: '8',
+          text: 'Otros',
+        },
+      ],
+    },
     {
       question: '¿Por qué quieres aprender esta habilidad?',
       type: 'single-choice',
@@ -292,6 +331,44 @@ export const QUESTIONS: {
     },
   ],
   'personal well-being': [
+    {
+      question: '¿Cómo supiste de Capo?',
+      type: 'multiple-choice',
+      options: [
+        {
+          id: '1',
+          text: 'Búsqueda en Google',
+        },
+        {
+          id: '2',
+          text: 'Facebook/Instagram',
+        },
+        {
+          id: '3',
+          text: 'Youtube',
+        },
+        {
+          id: '4',
+          text: 'TV',
+        },
+        {
+          id: '5',
+          text: 'Noticias/artículos/blog',
+        },
+        {
+          id: '6',
+          text: 'TikTok',
+        },
+        {
+          id: '7',
+          text: 'Amigos/familiares',
+        },
+        {
+          id: '8',
+          text: 'Otros',
+        },
+      ],
+    },
     {
       question: '¿Por qué quieres aprender esta habilidad?',
       type: 'multiple-choice',
@@ -415,6 +492,44 @@ export const QUESTIONS: {
     },
   ],
   'emotional-control': [
+    {
+      question: '¿Cómo supiste de Capo?',
+      type: 'multiple-choice',
+      options: [
+        {
+          id: '1',
+          text: 'Búsqueda en Google',
+        },
+        {
+          id: '2',
+          text: 'Facebook/Instagram',
+        },
+        {
+          id: '3',
+          text: 'Youtube',
+        },
+        {
+          id: '4',
+          text: 'TV',
+        },
+        {
+          id: '5',
+          text: 'Noticias/artículos/blog',
+        },
+        {
+          id: '6',
+          text: 'TikTok',
+        },
+        {
+          id: '7',
+          text: 'Amigos/familiares',
+        },
+        {
+          id: '8',
+          text: 'Otros',
+        },
+      ],
+    },
     {
       question: '¿Por qué quieres aprender esta habilidad?',
       type: 'multiple-choice',

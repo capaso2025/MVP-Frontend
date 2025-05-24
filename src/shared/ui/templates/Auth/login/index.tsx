@@ -1,12 +1,12 @@
-import { Button } from '../../atoms/Button';
-import { Input } from '../../atoms/Input';
-import { Typography } from '../../atoms/Typography';
-import { Icon } from '../../atoms/Icon/Icon';
+import { Button } from '../../../atoms/Button';
+import { Typography } from '../../../atoms/Typography';
 import { useForm } from '@/shared/hooks/useForm';
 import { LoginData } from '@/features/auth/login/types/loginData.types';
 import { validateLogin } from '@/features/auth/login/loginValidator';
 import { usePassword } from '@/shared/hooks/usePassword';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
+import Input from '@/shared/ui/atoms/Input/Input';
+import { EyeIcon } from 'lucide-react';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
@@ -41,31 +41,26 @@ function Login(props: { onClickSignup?: () => void }) {
             <span className="text-primary-2">iniciar sesión</span>
           </Typography>
           <Input
-            startIcon="mail"
             type="email"
             value={values.email}
             onChange={(ev) => setValue('email', ev.target.value)}
             placeholder="Correo electrónico"
             className="mt-4"
-            errorMessage={errors?.email}
-            error={!!errors?.email}
+          // errorMessage={errors?.email}
+          // error={!!errors?.email}
           />
           <Input
-            startIcon="lock"
+            icon={<EyeIcon />}
             type={showPassword ? 'text' : 'password'}
             value={values.password}
             onChange={(ev) => setValue('password', ev.target.value)}
             placeholder="Contraseña"
             className="mt-4 mb-8"
-            endContent={
-              <Icon
-                name={showPassword ? 'eye' : 'eye-off'}
-                className="text-gray-500"
-                onClick={togglePasswordVisibility}
-              />
+            iconOnClick={
+              togglePasswordVisibility
             }
-            errorMessage={errors?.password}
-            error={!!errors?.password}
+          // errorMessage={errors?.password}
+          // error={!!errors?.password}
           />
           <Button size="lg" variant="primary" className="w-full" type="submit">
             <Typography className="ml-2 font-bold text-white">

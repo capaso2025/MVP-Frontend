@@ -10,6 +10,7 @@ export type TButtonVariant =
   | 'outline'
   | 'ghost'
   | 'input'
+  | 'landing'
   | 'danger';
 
 /**
@@ -91,6 +92,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       danger: 'bg-red-600 text-white',
       input:
         'bg-gray-100 bg-white border border-gray-300 text-text-primary disabled:text-text-disabled active:scale-100',
+      landing: '!rounded-full bg-gradient-to-br from-primary-2 to-[#41372a] text-white !px-8 !py-4 font-bold text-lg',
     };
 
     // Mapeo de tamaños a clases CSS

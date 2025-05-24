@@ -1,47 +1,75 @@
-import { Button, Typography } from '@/shared/ui';
-import { useNavigate } from 'react-router-dom';
-
+import Spacer from '@/shared/ui/atoms/Spacer';
+import InfoSection from './components/organisms/InfoSection';
+import Main from './components/organisms/Main';
+import Header from './components/molecules/Header';
+import Container from '@/shared/ui/atoms/Container';
+import { SECTIONS_TEXTS } from './constants/sections-texts';
+import { useRenderStore } from '@/shared/store/render-store';
+import TeacherSignupForm from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupForm';
 function Landing() {
-  const navigate = useNavigate();
+  const setModalData = useRenderStore((state) => state.setModalData);
 
+  const openTeacherModal = () => {
+    setModalData({
+      containerClassName: "bg-landing",
+      fullScreen: true,
+      title: "Crea tu cuenta como profesor",
+      children: <TeacherSignupForm />,
+    })
+  }
   return (
-    <div className="grid h-screen place-content-center bg-gradient-to-br from-[#ccdae4] to-[#6b7091]">
-      <div className="mx-auto grid w-[90%] grid-cols-1 md:grid-cols-2 lg:max-w-7xl xl:w-full">
-        <div className="mx-auto grid max-w-[80%] grid-rows-[max-content_auto] gap-16 md:mx-0">
-          <Typography variant="h2" className="text-primary-light">
-            CAPO
-          </Typography>
-          <div className="text-center md:text-left">
-            <Typography variant="h1" as="h1" className="text-primary-light">
-              Hoy comienza tu transformación
-            </Typography>
-            <Typography className="text-secondary-dark mt-4 text-xl">
-              ¿Listo para convertirte en un CAPO?
-            </Typography>
-            <div className="mt-14 grid grid-cols-1 gap-4">
-              <Button
-                onClick={() => navigate('/onboarding/categories')}
-                size="lg"
-              >
-                Comenzar
-              </Button>
-              <Button
-                onClick={() => navigate('/login')}
-                variant="secondary"
-                size="lg"
-              >
-                Tengo una cuenta
-              </Button>
-            </div>
-          </div>
-        </div>
-        <img
-          src="@/assets/landing.webp"
-          className="hidden justify-self-end md:block"
-          alt="capito en el escritorio"
-          width={600}
-          height={500}
-        />
+    <div className="relative animate-fade-in bg-landing">
+      <Header />
+      <Container>
+        <Main />
+        <Spacer size="xl" />
+        <InfoSection
+          id={SECTIONS_TEXTS.NOSOTROS.ID}
+          title={SECTIONS_TEXTS.NOSOTROS.TITLE}
+          color='text-primary-light'
+          image='/assets/characters/capito-university.png' imgPosition="left" description={SECTIONS_TEXTS.NOSOTROS.DESCRIPTION} />
+        <Spacer size="3xl" />
+        <InfoSection
+          color='text-white'
+          title={SECTIONS_TEXTS.NOSOTROS_2.TITLE}
+          image='/assets/characters/capito-ladders.png' imgPosition="right" description={SECTIONS_TEXTS.NOSOTROS_2.DESCRIPTION} />
+        <Spacer size="3xl" />
+      </Container>
+      <div className='bg-primary'>
+        <Spacer size="3xl" />
+        <Container>
+          <InfoSection
+            id={SECTIONS_TEXTS.PROFESORES.ID}
+            color='text-white'
+            title={SECTIONS_TEXTS.PROFESORES.TITLE}
+            description={SECTIONS_TEXTS.PROFESORES.DESCRIPTION}
+            withButton
+            descriptionProps={{
+              variant: 'h5',
+              className: '!text-secondary font-normal text-center'
+            }}
+            buttonProps={{
+              children: SECTIONS_TEXTS.PROFESORES.BUTTON_TEXT,
+              onClick: openTeacherModal
+            }}
+            image='/assets/characters/capito-teach.png' imgPosition="left" />
+          <Spacer size="3xl" />
+          <InfoSection
+            id={SECTIONS_TEXTS.INSTITUCIONES.ID}
+            color='text-white'
+            title={SECTIONS_TEXTS.INSTITUCIONES.TITLE}
+            withButton
+            description={SECTIONS_TEXTS.INSTITUCIONES.DESCRIPTION}
+            descriptionProps={{
+              variant: 'h5',
+              className: '!text-secondary font-normal text-center'
+            }}
+            buttonProps={{
+              children: SECTIONS_TEXTS.INSTITUCIONES.BUTTON_TEXT
+            }}
+            image='/assets/characters/capito-teach.png' imgPosition="right" />
+          <Spacer size="3xl" />
+        </Container>
       </div>
     </div>
   );

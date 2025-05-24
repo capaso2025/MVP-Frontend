@@ -32,13 +32,12 @@ function Modal() {
 
   return ReactDOM.createPortal(
     <div
-      style={{ zIndex: '100' }}
-      className={`absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
+      style={{ zIndex: '100000' }}
+      className={`animate-slide-x absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
     >
       <div
-        className={`bg-background relative overflow-auto ${fullScreen ? 'h-full w-full' : 'border-custom mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl p-4 md:min-w-[400px]'} ${
-          containerClassName || ''
-        }`}
+        className={`bg-background relative overflow-auto ${fullScreen ? 'h-full w-full' : 'border-custom mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl p-4 md:min-w-[400px]'} ${containerClassName || ''
+          }`}
       >
         {noCloseButton ? null : (
           <div
@@ -49,12 +48,12 @@ function Modal() {
           </div>
         )}
         {title && (
-          <Typography variant="h2" className="mt-4 mb-2 text-center text-white">
+          <Typography variant="h2" className="mt-4 mb-2 text-center text-primary">
             {title}
           </Typography>
         )}
         {description && (
-          <Typography variant="body1" className="mb-2 text-center text-white">
+          <Typography variant="body1" className="mb-2 text-center text-primary">
             {description}
           </Typography>
         )}

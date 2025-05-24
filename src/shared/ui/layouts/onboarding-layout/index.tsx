@@ -5,6 +5,7 @@ import { Typography } from '@/shared/ui/atoms/Typography';
 import { useRenderStore } from '@/shared/store/render-store';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../atoms/Icon/Icon';
+import capoLogo from '@/assets/capo-logo.png';
 
 export interface OnboardingLayoutProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
@@ -40,7 +41,7 @@ export const OnboardingLayout = forwardRef<
       <header className="bg-primary border-b border-gray-200 px-4 py-3 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center">
-            {<img src="/src/assets/capo-logo.png" width={50} alt="capo logo" />}
+            {<img src={capoLogo} width={50} alt="capo logo" />}
             {title && (
               <Typography
                 variant="h6"
@@ -57,7 +58,7 @@ export const OnboardingLayout = forwardRef<
         </div>
       </header>
 
-      <main>{children}</main>
+      <main className='h-[calc(100vh-132px)] overflow-auto'>{children}</main>
 
       <footer className="border-t border-gray-200 bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">

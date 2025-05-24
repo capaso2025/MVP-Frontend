@@ -1,4 +1,8 @@
 import { Module } from '@/shared/types/modules.types';
+import speak from '@/assets/speak.png';
+import leadership from '@/assets/leadership.png';
+import decision from '@/assets/decisition.png';
+import team from '@/assets/team.png';
 
 export const SOFT_SKILLS_SECTIONS: {
   id: string;
@@ -18,7 +22,7 @@ export const SOFT_SKILLS_SECTIONS: {
     progress: 50,
     onClick: () => console.log('Section 1 clicked'),
     isActive: true,
-    image: '/src/assets/speak.png',
+    image: speak,
     modules: [
       {
         title: '¿Por qué nadie me entiende (y cómo evitarlo)?',
@@ -109,7 +113,7 @@ export const SOFT_SKILLS_SECTIONS: {
       'Inspira, guía y potencia a los demás. El liderazgo empieza con tu ejemplo y visión.',
     progress: 0,
     onClick: () => console.log('Section 2 clicked'),
-    image: '/src/assets/leadership.png',
+    image: leadership,
   },
   {
     id: '3',
@@ -118,7 +122,7 @@ export const SOFT_SKILLS_SECTIONS: {
       'Analiza, prioriza y actúa con seguridad. Mejora tu criterio para enfrentar cualquier desafío.',
     progress: 0,
     onClick: () => console.log('Section 2 clicked'),
-    image: '/src/assets/decisition.png',
+    image: decision,
   },
   {
     id: '4',
@@ -127,6 +131,6 @@ export const SOFT_SKILLS_SECTIONS: {
       'Colabora con confianza, escucha activamente y alcanza metas junto a otros. El éxito se construye en equipo.',
     progress: 0,
     onClick: () => console.log('Section 2 clicked'),
-    image: '/src/assets/team.png',
+    image: team,
   },
 ];

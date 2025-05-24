@@ -51,7 +51,7 @@ function OnboardingIntro() {
               setTimeout(() => {
                 goToNext();
                 setAnimate(false);
-              }, 500);
+              }, 400);
             }}
           >
             Avanzar
