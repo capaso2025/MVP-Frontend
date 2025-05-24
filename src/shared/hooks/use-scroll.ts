@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 export const useScroll = ({ height = 0 }: { height?: number }) => {
   const [scrolled, setScrolled] = useState(false);
-  console.log('🏝️ ~ useScroll ~ scrolled:', scrolled);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,7 +11,6 @@ export const useScroll = ({ height = 0 }: { height?: number }) => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    // Llamar al inicio para verificar posición inicial
     handleScroll();
 
     return () => {
