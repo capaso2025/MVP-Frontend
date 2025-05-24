@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
-import { Input } from "@/shared/ui/atoms/Input"
+import Input from '@/shared/ui/atoms/Input/Input';
 import { Typography } from "@/shared/ui/atoms/Typography"
 import Spacer from "@/shared/ui/atoms/Spacer"
 import { Button } from "@/shared/ui/atoms/Button"

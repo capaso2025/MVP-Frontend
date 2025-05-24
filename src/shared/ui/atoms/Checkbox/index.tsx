@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import type { InputHTMLAttributes } from 'react';
 
-import { Icon } from '../Icon/Icon';
+import { CheckIcon } from '../Icon/Icon';
 import { Typography } from '../Typography';
 
 /**
@@ -101,11 +101,7 @@ export const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
               />
               <div className={checkboxClasses}>
                 {restProps.checked && (
-                  <Icon
-                    name="check"
-                    size="sm"
-                    className={disabled ? 'text-gray-500' : 'text-primary'}
-                  />
+                  <CheckIcon className={disabled ? 'text-gray-500' : 'text-primary'} />
                 )}
               </div>
             </div>

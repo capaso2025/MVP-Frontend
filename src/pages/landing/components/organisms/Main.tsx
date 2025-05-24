@@ -4,7 +4,7 @@ import capitoDesk from '@/assets/capito-desk.webp';
 
 function Main() {
   const navigate = useNavigate();
-  return <div id="inicio" className="grid grid-cols-1 md:grid-cols-2 mt-10 md:-mt-20 lg:mt-0 h-auto lg:h-[calc(100vh-60px)] place-content-center">
+  return <div id="inicio" className="grid grid-cols-1 md:grid-cols-2 mt-10 lg:-mt-20 h-auto lg:h-[calc(100vh-60px)] place-content-center">
     <div className="mx-auto grid max-w-[80%] grid-rows-[max-content_auto] place-content-center gap-16 md:mx-0">
       <div className="text-center md:text-left">
         <Typography variant="h1" as="h1" className="text-primary-light">

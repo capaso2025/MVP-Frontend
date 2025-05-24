@@ -22,6 +22,21 @@ import {
   Users,
   User,
   LucideProps,
+  Mail,
+  Pencil,
+  Save,
+  ArrowRight,
+  Clock,
+  ChartColumnIncreasing,
+  Trophy,
+  Medal,
+  Calendar,
+  Maximize,
+  Play,
+  Pause,
+  RotateCcw,
+  SkipForward,
+  Book,
 } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 
@@ -40,7 +55,7 @@ const IconBase = (
     <Icon
       size={size}
       color="currentColor"
-      className={`text-primary ${className}`}
+      className={`${className}`}
     />
   );
   return IconComponent;
@@ -53,6 +68,7 @@ export const XIcon = IconBase(X);
 export const HomeIcon = IconBase(Home);
 export const SettingsIcon = IconBase(Settings);
 export const ArrowLeftIcon = IconBase(ArrowLeft);
+export const ArrowRightIcon = IconBase(ArrowRight);
 export const SearchIcon = IconBase(Search);
 export const InfoIcon = IconBase(Info);
 export const LoaderIcon = IconBase(Loader);
@@ -67,3 +83,17 @@ export const CheckIcon = IconBase(Check);
 export const PersonStandingIcon = IconBase(PersonStanding);
 export const UsersIcon = IconBase(Users);
 export const UserIcon = IconBase(User);
+export const MailIcon = IconBase(Mail)
+export const PencilIcon = IconBase(Pencil);
+export const SaveIcon = IconBase(Save);
+export const ClockIcon = IconBase(Clock)
+export const ChartColumnIncreasingIcon = IconBase(ChartColumnIncreasing);
+export const TrophyIcon = IconBase(Trophy);
+export const MedalIcon = IconBase(Medal);
+export const CalendarIcon = IconBase(Calendar);
+export const MaximizeIcon = IconBase(Maximize);
+export const PlayIcon = IconBase(Play);
+export const PauseIcon = IconBase(Pause);
+export const RotateCcwIcon = IconBase(RotateCcw);
+export const SkipForwardIcon = IconBase(SkipForward);
+export const BookIcon = IconBase(Book)

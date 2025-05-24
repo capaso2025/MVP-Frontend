@@ -10,5 +10,4 @@ function Container(props: {
   return <Component {...rest} className={cn("w-[90%] max-w-6xl mx-auto", className)}>{props.children}</Component>
 };
 
-
 export default Container;

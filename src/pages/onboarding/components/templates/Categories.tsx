@@ -1,9 +1,10 @@
 import { CategoryCard } from '../organisms/CategoryCard';
-import { Button, Icon, Typography } from '@shared/ui';
+import { Button, Typography } from '@shared/ui';
 import { CATEGORIES } from '../../constants/categories';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../hooks/use-onboarding';
+import { ArrowRightIcon, CheckIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -40,11 +41,7 @@ const CategoriesPage = () => {
                     (el) => el.id === selectedCategory?.id,
                   )?.subSkills.map((subSkill) => (
                     <li key={subSkill.id} className="flex items-center">
-                      <Icon
-                        name="check"
-                        size="sm"
-                        className="text-primary mr-2"
-                      />
+                      <CheckIcon />
                       <span className="text-gray-700">{subSkill.name}</span>
                     </li>
                   ))}
@@ -63,7 +60,7 @@ const CategoriesPage = () => {
               onClick={() => navigate('/onboarding')}
             >
               <Typography className="text-white">Comenzar</Typography>
-              <Icon name="arrow-right" className="mr-2" />
+              <ArrowRightIcon />
             </Button>
           ) : (
             <div className="h-[48px]" />

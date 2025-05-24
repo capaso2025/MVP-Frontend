@@ -4,7 +4,7 @@ import { Button } from '@/shared/ui/atoms/Button';
 import { Typography } from '@/shared/ui/atoms/Typography';
 import { useRenderStore } from '@/shared/store/render-store';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from '../../atoms/Icon/Icon';
+import { XIcon } from '../../atoms/Icon/Icon';
 import capoLogo from '@/assets/capo-logo.png';
 
 export interface OnboardingLayoutProps extends HTMLAttributes<HTMLDivElement> {
@@ -51,9 +51,8 @@ export const OnboardingLayout = forwardRef<
               </Typography>
             )}
           </div>
-
           <Button variant="ghost" size="sm" onClick={handleExit}>
-            <Icon name="x" className="text-white" />
+            <XIcon className='text-white' />
           </Button>
         </div>
       </header>

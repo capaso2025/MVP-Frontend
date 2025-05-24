@@ -1,5 +1,7 @@
 import React from "react";
 import { InputProps, RawInput } from "./RawInput";
+import { Typography } from "../Typography";
+import Error from "../Error";
 
 export interface ExtendedInputProps extends InputProps {
   label?: string;
@@ -20,13 +22,10 @@ function Input(
     iconOnClick,
     ...rawInputProps
   } = props;
-  console.log(errors)
   return (
     <div className={`rounded-2xl ${containerClassName}`}>
       {label && (
-        <div className="flex items-center gap-2 mb-2">
-          <p className="text-sm text-foreground-secondary">{label}</p>
-        </div>
+        <Typography variant="body2" className="text-gray-500 mb-2">{label}</Typography>
       )}
       <div className="relative">
         <RawInput
@@ -40,18 +39,14 @@ function Input(
         />
         {icon && (
           <div
-            className={`absolute right-4 bottom-0 -translate-y-1/2`}
+            className={`absolute right-4 top-5 -translate-y-1/2`}
             onClick={iconOnClick}
           >
             {icon}
           </div>
         )}
       </div>
-      {Object.keys(errors || {}).length && rawInputProps.name ? (
-        <p className="text-sm ml-2 text-danger mt-2">
-          {errors?.[rawInputProps.name] || ""}
-        </p>
-      ) : null}
+      <Error errors={errors} name={rawInputProps.name} />
     </div>
   );
 }

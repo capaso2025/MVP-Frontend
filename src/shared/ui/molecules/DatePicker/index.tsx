@@ -1,18 +1,20 @@
 import { format } from 'date-fns';
-import { Icon } from '../../atoms/Icon/Icon';
 import { useEffect, useState } from 'react';
 import Popover from '../Popover';
 import { Button } from '../../atoms/Button';
 import { DayPicker } from 'react-day-picker';
 import { Typography } from '../../atoms/Typography';
+import Error from '../../atoms/Error';
 
 export function DatePicker(props: {
   className?: string;
   onChange?: (date: Date) => void;
   placeholder?: string;
-  errorMessage?: string | undefined;
+  name: string;
+  errors?: Record<string, string>;
+  label?: string;
 }) {
-  const { className = '', errorMessage, onChange, placeholder } = props;
+  const { className = '', errors, onChange, placeholder, label = "", name } = props;
   const [date, setDate] = useState<Date>();
   useEffect(() => {
     onChange?.(date as Date);
@@ -22,22 +24,24 @@ export function DatePicker(props: {
     <div>
       <Popover
         trigger={() => (
-          <Button
-            type="button"
-            variant={'input'}
-            className={`h-10 w-full justify-start gap-1 !p-0 !pl-[11px] ${className} ${errorMessage ? '!border-error !bg-error-light !border' : ''}`}
-          >
-            <Icon name="calendar" className="text-gray-500" />
-            {date ? (
-              format(date, 'dd/MM/yyyy')
-            ) : (
-              <span className="text-[16px] font-normal text-[#9e9fa6]">
-                {placeholder || ''}
-              </span>
-            )}
-          </Button>
+          <> {label && (
+            <Typography variant="body2" className="text-gray-500 mb-2">{label}</Typography>
+          )}
+            <Button
+              type="button"
+              variant={'input'}
+              className={`h-10 w-full justify-start gap-1 !p-0 !pl-[11px] ${className} ${errors?.[name] ? '!border-error !bg-error-light !border' : ''}`}
+            >
+              {date ? (
+                format(date, 'dd/MM/yyyy')
+              ) : (
+                <span className="text-[16px] font-normal text-[#9e9fa6]">
+                  {placeholder || ''}
+                </span>
+              )}
+            </Button></>
         )}
-        contentClassName="mt-14"
+        contentClassName="mt-18"
         content={() => (
           <DayPicker
             captionLayout="dropdown"
@@ -57,7 +61,7 @@ export function DatePicker(props: {
           />
         )}
       />
-      {errorMessage && <Typography className="mt-1">{errorMessage}</Typography>}
+      <Error errors={errors} name={name} />
     </div>
   );
 }

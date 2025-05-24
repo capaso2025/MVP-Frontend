@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { schools } from "./data"
-import { Input } from "../../atoms/Input"
+import Input from '@/shared/ui/atoms/Input/Input';
 import { SchoolCard } from "./school-card"
 import Spacer from "../../atoms/Spacer"
 import { Typography } from "../../atoms/Typography"

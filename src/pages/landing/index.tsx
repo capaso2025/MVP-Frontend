@@ -5,7 +5,7 @@ import Header from './components/molecules/Header';
 import Container from '@/shared/ui/atoms/Container';
 import { SECTIONS_TEXTS } from './constants/sections-texts';
 import { useRenderStore } from '@/shared/store/render-store';
-import TeacherSignupForm from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupForm';
+import TeacherSignupForm from '@/shared/ui/templates/Auth/teacher-signup/TeacherSignupForm';
 function Landing() {
   const setModalData = useRenderStore((state) => state.setModalData);
 

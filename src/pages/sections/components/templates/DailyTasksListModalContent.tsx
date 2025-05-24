@@ -1,6 +1,6 @@
 import { cn } from '@/shared/lib/utils';
 import { useRenderStore } from '@/shared/store/render-store';
-import { Button, Icon, Input } from '@/shared/ui';
+import { Button } from '@/shared/ui';
 import { useState } from 'react';
 import AddDailyTask from './AddDailyTask';
 import {
@@ -8,6 +8,8 @@ import {
   ReminderCategory,
 } from '../../store/reminder/reminder.types';
 import { useReminderStore } from '../../store/reminder/reminder-store';
+import { CalendarIcon, CheckIcon, PlusIcon, XIcon } from '@/shared/ui/atoms/Icon/Icon';
+import Input from '@/shared/ui/atoms/Input/Input';
 
 const categoryColors = {
   hoy: 'bg-blue-500',
@@ -17,10 +19,10 @@ const categoryColors = {
 };
 
 const categoryIcons = {
-  hoy: <Icon className="text-white" name="calendar" />,
-  programado: <Icon className="text-white" name="calendar" />,
-  todos: <Icon className="text-white" name="check" />,
-  marcados: <Icon className="text-white" name="check" />,
+  hoy: <CalendarIcon />,
+  programado: <CalendarIcon />,
+  todos: <CheckIcon />,
+  marcados: <CheckIcon />,
 };
 
 export default function DailyTasksListModalContent() {
@@ -121,7 +123,7 @@ export default function DailyTasksListModalContent() {
               {selectedCategory}
             </h2>
             <Button variant="outline" size="md" onClick={openModalData}>
-              <Icon name="plus" className="mr-2" />
+              <PlusIcon />
               Nuevo
             </Button>
           </header>
@@ -180,7 +182,7 @@ function ReminderItem({
           }
         >
           {reminder.status === 'completado' && (
-            <Icon name="check" className="h-4 w-4 text-blue-500" />
+            <CheckIcon />
           )}
         </button>
         <div className="space-y-1">
@@ -196,7 +198,7 @@ function ReminderItem({
           </p>
           {reminder.date && (
             <div className="flex items-center gap-1 text-xs text-gray-500">
-              <Icon name="calendar" className="text-blue-500" />
+              <CalendarIcon />
               <span>{new Date(reminder.date).toLocaleDateString()}</span>
             </div>
           )}
@@ -211,7 +213,7 @@ function ReminderItem({
           className="invisible text-gray-400 group-hover:visible hover:text-gray-600"
           aria-label="Eliminar recordatorio"
         >
-          <Icon name="x" />
+          <XIcon />
         </button>
       </div>
     </div>
@@ -230,7 +232,7 @@ function EmptyState({ category }: { category: ReminderCategory }) {
   return (
     <div className="flex flex-col items-center justify-center py-12 text-center">
       <div className="mb-4 rounded-full bg-gray-100 p-4">
-        <Icon name="check" />
+        <CheckIcon />
       </div>
       <h3 className="mb-2 text-lg font-medium text-gray-900">
         {messages[category]}
