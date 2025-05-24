@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useLesson } from './hooks/use-lesson';
 import { useEffect } from 'react';
 import { getSectionNameByModuleName } from '@/shared/lib/utils';
-import { XIcon } from '@/shared/ui/atoms/Icon/Icon';
+// import { XIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 function Lesson() {
   const navigate = useNavigate();
@@ -19,17 +19,17 @@ function Lesson() {
   const setAlertDialogData = useRenderStore(
     (state) => state.setAlertDialogData,
   );
-  const onCloseLesson = () => {
-    setAlertDialogData({
-      show: true,
-      title:
-        '¿Estás seguro que deseas abandonar la lección?. Perderás tu progreso hasta ahora.',
-      confirmText: 'Sí, salir',
-      onConfirm: () => {
-        navigate(-1);
-      },
-    });
-  };
+  // const onCloseLesson = () => {
+  //   setAlertDialogData({
+  //     show: true,
+  //     title:
+  //       '¿Estás seguro que deseas abandonar la lección?. Perderás tu progreso hasta ahora.',
+  //     confirmText: 'Sí, salir',
+  //     onConfirm: () => {
+  //       navigate(-1);
+  //     },
+  //   });
+  // };
   console.log(getSectionNameByModuleName(params.module || ''));
   const handleFinishModule = () => {
     setAlertDialogData({
@@ -58,7 +58,7 @@ function Lesson() {
             </Typography>
             <Typography variant="h2">Comunicacion efectiva</Typography>
           </div>
-          <XIcon onClick={onCloseLesson} />
+          {/* <XIcon onClick={onCloseLesson} /> */}
         </div>
         <div className="grid grid-cols-2 place-content-center gap-4 p-4">
           <div>

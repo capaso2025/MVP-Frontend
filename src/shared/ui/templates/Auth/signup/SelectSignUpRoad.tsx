@@ -1,6 +1,6 @@
-import { Button } from "@/shared/ui/atoms/Button";
-import { Icon, MailIcon } from "@/shared/ui/atoms/Icon/Icon";
-import { Typography } from "@/shared/ui/atoms/Typography";
+import { Button } from '@/shared/ui/atoms/Button';
+import { MailIcon } from '@/shared/ui/atoms/Icon/Icon';
+import { Typography } from '@/shared/ui/atoms/Typography';
 
 function SelectSignUpRoad(props: {
   onClickMail?: () => void;
