@@ -18,9 +18,9 @@ function Landing() {
     })
   }
   return (
-    <div className="animate-fade-in bg-landing">
+    <div className="relative animate-fade-in bg-landing">
+      <Header />
       <Container>
-        <Header />
         <Main />
         <Spacer size="xl" />
         <InfoSection
