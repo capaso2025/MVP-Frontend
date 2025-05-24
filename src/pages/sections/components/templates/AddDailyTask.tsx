@@ -1,9 +1,10 @@
-import { Button, Input, Radio, Typography } from '@/shared/ui';
+import { Button, Radio, Typography } from '@/shared/ui';
 import {
   Reminder,
   ReminderCategory,
 } from '../../store/reminder/reminder.types';
 import { useState } from 'react';
+import Input from '@/shared/ui/atoms/Input/Input';
 
 function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
   const { addReminder } = props;
@@ -23,7 +24,7 @@ function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
           <div className="space-y-2">
             <Input
               placeholder="Título"
-              className="border-0 border-b border-gray-200 px-0 text-lg font-medium placeholder:text-gray-400 focus-visible:border-blue-500 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="border-0 border-b border-gray-200 px-0 text-lg font-medium placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
               value={newReminder.title}
               onChange={(e) =>
                 setNewReminder({ ...newReminder, title: e.target.value })

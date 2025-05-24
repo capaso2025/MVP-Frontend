@@ -1,5 +1,6 @@
-import { Button, Icon } from '@/shared/ui';
+import { Button } from '@/shared/ui';
 import { useTimer } from '../hooks/use-timer';
+import { PauseIcon, PlayIcon, RotateCcwIcon, SkipForwardIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 function TimerActions() {
   const { isActive, isPaused, startTimer, pauseTimer, resetTimer, skipTimer } =
@@ -8,21 +9,21 @@ function TimerActions() {
     <>
       {!isActive || isPaused ? (
         <Button onClick={startTimer} className="w-32">
-          <Icon name="play" />
+          <PlayIcon />
           Iniciar
         </Button>
       ) : (
         <Button onClick={pauseTimer} className="w-32">
-          <Icon name="pause" />
+          <PauseIcon />
           Pausar
         </Button>
       )}
       <Button variant="outline" onClick={resetTimer}>
-        <Icon name="rotate-ccw" />
+        <RotateCcwIcon />
         Reiniciar
       </Button>
       <Button variant="outline" onClick={skipTimer}>
-        <Icon name="skip-forward" />
+        <SkipForwardIcon />
         Saltar
       </Button>
     </>

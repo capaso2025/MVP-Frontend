@@ -1,6 +1,6 @@
-import { Button } from "@/shared/ui/atoms/Button";
-import { Icon } from "@/shared/ui/atoms/Icon/Icon";
-import { Typography } from "@/shared/ui/atoms/Typography";
+import { Button } from '@/shared/ui/atoms/Button';
+import { MailIcon } from '@/shared/ui/atoms/Icon/Icon';
+import { Typography } from '@/shared/ui/atoms/Typography';
 
 function SelectSignUpRoad(props: {
   onClickMail?: () => void;
@@ -30,7 +30,7 @@ function SelectSignUpRoad(props: {
             className="mt-4 w-full"
             onClick={onClickMail}
           >
-            <Icon name="mail" />
+            <MailIcon />
             <Typography className="text-primary ml-2 font-bold">
               Email
             </Typography>
@@ -41,7 +41,7 @@ function SelectSignUpRoad(props: {
             <span className="via-primary h-[1px] flex-1 bg-gradient-to-r from-transparent to-transparent" />
           </div>
           <Button size="lg" variant="primary" className="w-full">
-            <Icon name="google" fill="none" stroke="none" />
+            {/* <Icon name="google" fill="none" stroke="none" /> */}
             <Typography className="ml-2 font-bold text-white">
               Google
             </Typography>

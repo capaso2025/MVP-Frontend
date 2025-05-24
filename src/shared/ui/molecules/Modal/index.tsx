@@ -1,7 +1,7 @@
 import { useRenderStore } from '@/shared/store/render-store';
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Icon } from '../../atoms/Icon/Icon';
+import { XIcon } from '../../atoms/Icon/Icon';
 import { Typography } from '../../atoms/Typography';
 
 function Modal() {
@@ -44,7 +44,7 @@ function Modal() {
             onClick={handleClose}
             className="absolute top-[4px] left-[4px] grid h-10 w-10 cursor-pointer place-content-center rounded-2xl"
           >
-            <Icon name="x" className="text-primary scale-110" />
+            <XIcon className="text-primary scale-110" />
           </div>
         )}
         {title && (

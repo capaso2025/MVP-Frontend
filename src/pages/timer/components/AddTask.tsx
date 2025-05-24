@@ -1,4 +1,6 @@
-import { Button, Icon, Input } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { PlusIcon } from '@/shared/ui/atoms/Icon/Icon';
+import Input from '@/shared/ui/atoms/Input/Input';
 
 function AddTask(props: {
   value: string;
@@ -16,7 +18,7 @@ function AddTask(props: {
         className="flex-1"
       />
       <Button onClick={onClick}>
-        <Icon name="plus" />
+        <PlusIcon />
         Añadir
       </Button>
     </div>

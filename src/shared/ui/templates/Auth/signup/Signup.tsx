@@ -5,9 +5,10 @@ import { usePassword } from '@/shared/hooks/usePassword';
 import { useSignup } from '@/features/auth/signup/hooks/useSignup';
 import { Button } from '@/shared/ui/atoms/Button';
 import { Typography } from '@/shared/ui/atoms/Typography';
-import { Input } from '@/shared/ui/atoms/Input';
 import { DatePicker } from '@/shared/ui/molecules/DatePicker';
-import { Icon } from '@/shared/ui/atoms/Icon/Icon';
+import { EyeIcon, EyeOffIcon } from '@/shared/ui/atoms/Icon/Icon';
+import Input from '@/shared/ui/atoms/Input/Input';
+import Spacer from '@/shared/ui/atoms/Spacer';
 
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;
@@ -51,71 +52,66 @@ function Signup(props: { onClickLogin?: () => void }) {
           </Typography>
           <div className="grid grid-cols-2 gap-4">
             <Input
-              startIcon="user"
               type="text"
               value={values.name}
               onChange={(ev) => setValue('name', ev.target.value)}
-              placeholder="Nombre"
-              className="mt-4"
-              errorMessage={errors?.name}
-              error={!!errors?.name}
+              label="Nombre"
+              name='name'
+              errors={errors}
             />
             <Input
-              startIcon="user"
               type="text"
               value={values.lastName}
               onChange={(ev) => setValue('lastName', ev.target.value)}
-              placeholder="Apellidos"
-              className="mt-4"
-              errorMessage={errors?.lastName}
-              error={!!errors?.lastName}
+              label="Apellidos"
+              name='lastName'
+              errors={errors}
             />
           </div>
+          <Spacer size='md' />
           <DatePicker
-            className="mt-4"
             onChange={(date) => setValue('birthdate', date)}
-            placeholder="Fecha de nacimiento"
-            errorMessage={errors?.birthdate}
+            label="Fecha de nacimiento"
+            placeholder="dd/mm/aaaa"
+            name="birthdate"
+            errors={errors}
           />
+          <Spacer size='md' />
           <Input
-            startIcon="mail"
             type="email"
             value={values.email}
             onChange={(ev) => setValue('email', ev.target.value)}
-            placeholder="Correo electrónico"
-            className="mt-4"
-            errorMessage={errors?.email}
-            error={!!errors?.email}
+            label="Correo electrónico"
+            name="email"
+            placeholder='example@mail.com'
+            errors={errors}
           />
+          <Spacer size='md' />
           <div className="grid grid-cols-2 gap-4">
             <Input
-              startIcon="lock"
               type={showPassword ? 'text' : 'password'}
               value={values.password}
               onChange={(ev) => setValue('password', ev.target.value)}
-              placeholder="Contraseña"
-              className="mt-4"
-              endContent={
-                <Icon
-                  name={showPassword ? 'eye' : 'eye-off'}
-                  className="text-gray-500"
-                  onClick={togglePasswordVisibility}
-                />
+              label="Contraseña"
+              placeholder='********'
+              iconOnClick={togglePasswordVisibility}
+              icon={
+                showPassword ? <EyeOffIcon className='text-gray-500' /> : <EyeIcon className='text-gray-500' />
               }
-              errorMessage={errors?.password}
-              error={!!errors?.password}
+              name='password'
+              errors={errors}
             />
             <Input
-              startIcon="lock"
               type={showPassword ? 'text' : 'password'}
               value={values.confirmPassword}
               onChange={(ev) => setValue('confirmPassword', ev.target.value)}
-              placeholder="Repite tu Contraseña"
-              className="mt-4 mb-8"
-              errorMessage={errors?.confirmPassword}
-              error={!!errors?.confirmPassword}
+              label="Repite tu Contraseña"
+              placeholder='********'
+              name='confirmPassword'
+              errors={errors}
             />
           </div>
+          <Spacer size='md' />
           <Button size="lg" variant="primary" className="w-full" type="submit">
             <Typography className="ml-2 font-bold text-white">
               Registrarme

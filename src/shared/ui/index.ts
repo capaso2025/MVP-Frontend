@@ -14,12 +14,6 @@ export type { IButtonProps, TButtonSize, TButtonVariant } from './atoms/Button';
 export { Checkbox } from './atoms/Checkbox';
 export type { ICheckboxProps } from './atoms/Checkbox';
 
-export { Icon } from './atoms/Icon/Icon';
-export type { IIconProps, TIconName, TIconSize } from './atoms/Icon/Icon';
-
-export { Input } from './atoms/Input';
-export type { IInputProps } from './atoms/Input';
-
 export { Progress } from './atoms/Progress';
 export type {
   IProgressProps,

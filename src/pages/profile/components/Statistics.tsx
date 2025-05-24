@@ -1,4 +1,4 @@
-import { Icon } from '@/shared/ui';
+import { ChartColumnIncreasingIcon, ClockIcon, MedalIcon, TrophyIcon } from '@/shared/ui/atoms/Icon/Icon';
 import React from 'react';
 
 function Box(props: { Icon: React.ReactNode; title: string; value: string }) {
@@ -19,27 +19,24 @@ export default function StatisticsPanel() {
       <p className="mb-6 text-2xl font-semibold">Estadísticas</p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Box
-          Icon={<Icon name="clock" className="text-blue-400" />}
+          Icon={<ClockIcon />}
           title="Day streak"
           value="0"
         />
         <Box
           Icon={
-            <Icon
-              name="chart-no-axes-column-decreasing"
-              className="text-green-300"
-            />
+            <ChartColumnIncreasingIcon />
           }
           title="Total XP"
           value="0"
         />
         <Box
-          Icon={<Icon name="trophy" className="text-amber-300" />}
+          Icon={<TrophyIcon />}
           title="Current league"
           value="None"
         />
         <Box
-          Icon={<Icon name="medal" className="text-yellow-400" />}
+          Icon={<MedalIcon />}
           title="Top 3 finishes"
           value="0"
         />
