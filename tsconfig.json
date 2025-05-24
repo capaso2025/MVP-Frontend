@@ -1,23 +1,20 @@
 {
   "compilerOptions": {
     /* Configuración Básica */
-    "target": "ES2020" /* Especifica el nivel ECMAScript de salida */,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ] /* Especifica bibliotecas de biblioteca para incluir en la compilación */,
-    "jsx": "react-jsx" /* Establece JSX para React 17+ (sin necesidad de importar React) */,
-    "module": "ESNext" /* Especifica el sistema de módulos */,
-    "moduleResolution": "bundler" /* Estrategia de resolución de módulos para Turbopack */,
-    "allowImportingTsExtensions": true /* Permite importar archivos .ts directamente */,
-    "resolveJsonModule": true /* Permite importar archivos .json */,
-    "isolatedModules": true /* Asegura que cada archivo pueda ser transpilado por herramientas como babel */,
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true /* IMPORTANTE: Vite maneja la emisión */,
 
     /* Alias de Importación */
-    "baseUrl": "." /* URL base para resolver módulos en caso de paths */,
+    "baseUrl": ".",
     "paths": {
-      /* Establece alias para importaciones más limpias */ "@/*": ["./src/*"],
+      "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@pages/*": ["./src/pages/*"],
       "@widgets/*": ["./src/widgets/*"],
@@ -27,35 +24,36 @@
     },
 
     /* Configuración Estricta */
-    "strict": true /* Habilita todas las comprobaciones de tipado estrictas */,
-    "noImplicitAny": true /* Genera errores en expresiones con 'any' implícito */,
-    "strictNullChecks": true /* Habilita verificaciones estrictas para null y undefined */,
-    "strictFunctionTypes": true /* Habilita verificación estricta de tipos de funciones */,
-    "strictBindCallApply": true /* Habilita verificaciones estrictas para métodos bind, call y apply */,
-    "strictPropertyInitialization": true /* Verifica que las propiedades de clase estén inicializadas */,
-    "noImplicitThis": true /* Genera error en 'this' con tipo 'any' implícito */,
-    "useUnknownInCatchVariables": true /* Tipo 'unknown' para variables en bloques catch */,
-    "alwaysStrict": true /* Analiza en modo estricto y emite "use strict" */,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
 
     /* Verificaciones adicionales */
-    "noUnusedLocals": true /* Reporta errores en variables locales no utilizadas */,
-    "noUnusedParameters": true /* Reporta errores en parámetros no utilizados */,
-    "noImplicitReturns": true /* Reporta errores cuando no hay un return explícito en cada camino */,
-    "noFallthroughCasesInSwitch": true /* Asegura que los casos de switch no caigan accidentalmente */,
-    "noUncheckedIndexedAccess": true /* Accesos indexados se tratan como potencialmente undefined */,
-    "exactOptionalPropertyTypes": true /* Asegura que las propiedades opcionales no permiten undefined */,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
 
     /* Otras Configuraciones */
-    "allowSyntheticDefaultImports": true /* Permite importaciones de módulos sin un export default */,
-    "esModuleInterop": true /* Habilita la interoperabilidad entre módulos CommonJS y ES */,
-    "forceConsistentCasingInFileNames": true /* Asegura la consistencia en el uso de mayúsculas/minúsculas en importaciones */,
-    "skipLibCheck": true /* Evita chequear archivos en node_modules */,
-    "sourceMap": true /* Genera archivos .map para depuración */,
-    "removeComments": false /* Preserva comentarios en la salida */,
-    "declaration": true /* Genera archivos .d.ts con declaraciones de tipos */,
-    "declarationMap": true /* Genera source maps para los archivos de declaración */,
-    "incremental": true /* Habilita compilación incremental */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "sourceMap": false /* Vite maneja los sourcemaps */,
+    "removeComments": false
+    /* Eliminar estas configuraciones que causan conflictos con Vite */
+    /* "declaration": true, */
+    /* "declarationMap": true, */
+    /* "incremental": true */
   },
   "include": ["src", "vite.config.ts", "**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "build", "coverage"]
+  "exclude": ["node_modules", "dist", "build", "coverage", ".turbo"]
 }

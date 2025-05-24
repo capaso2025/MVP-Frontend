@@ -26,7 +26,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     // Opciones de optimización para producción
-    minify: 'terser',
+    minify: 'esbuild',
     terserOptions: {
       compress: {
         drop_console: true,

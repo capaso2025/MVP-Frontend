@@ -1,10 +1,12 @@
-import { Button, Icon, Input, Typography } from '@/shared/ui';
+import { Button, Typography } from '@/shared/ui';
 import { useState } from 'react';
 import StatisticsPanel from './components/Statistics';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import { useProfile } from '@/features/profile/hooks/useProfile';
 import Spinner from '@/shared/ui/atoms/Spinner';
 import { format } from 'date-fns';
+import { MailIcon, PencilIcon, SaveIcon, XIcon } from '@/shared/ui/atoms/Icon/Icon';
+import Input from '@/shared/ui/atoms/Input/Input';
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
@@ -35,7 +37,7 @@ export default function ProfilePage() {
             <div className="mt-8">
               <p className="text-primary-2 text-center text-2xl font-bold">{`${profile?.name} ${profile.lastName}`}</p>
               <div className="mt-6 flex items-center gap-3">
-                <Icon name="mail" />
+                <MailIcon />
                 <span className="text-sm">{profile?.email}</span>
               </div>
             </div>
@@ -58,11 +60,11 @@ export default function ProfilePage() {
               >
                 {isEditing ? (
                   <>
-                    <Icon name="x" /> Cancelar edición
+                    <XIcon /> Cancelar edición
                   </>
                 ) : (
                   <>
-                    <Icon name="pencil" /> Editar perfil
+                    <PencilIcon /> Editar perfil
                   </>
                 )}
               </Button>
@@ -87,7 +89,7 @@ export default function ProfilePage() {
               {isEditing && (
                 <div className="text-right">
                   <Button className="mt-6 mr-auto ml-0">
-                    <Icon name="save" />
+                    <SaveIcon />
                     Guardar cambios
                   </Button>
                 </div>
