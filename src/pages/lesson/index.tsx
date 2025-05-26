@@ -53,7 +53,7 @@ function Lesson() {
       <div className="mx-auto grid h-screen w-4/5 max-w-[1200px] grid-rows-[max-content_auto_max-content] gap-8 p-8">
         <div className="flex items-center justify-between">
           <div>
-            <Typography variant="body2" className="text-secondary">
+            <Typography variant="body2" className="text-text-secondary">
               Estas dentro de la habilidad
             </Typography>
             <Typography variant="h2">Comunicacion efectiva</Typography>

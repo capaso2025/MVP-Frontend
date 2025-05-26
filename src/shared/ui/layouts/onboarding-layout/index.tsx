@@ -52,19 +52,19 @@ export const OnboardingLayout = forwardRef<
             )}
           </div>
           <Button variant="ghost" size="sm" onClick={handleExit}>
-            <XIcon className='text-white' />
+            <XIcon className="text-white" />
           </Button>
         </div>
       </header>
 
-      <main className='h-[calc(100vh-132px)] overflow-auto'>{children}</main>
+      <main className="h-[calc(100vh-132px)] overflow-auto">{children}</main>
 
       <footer className="border-t border-gray-200 bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Typography variant="body1" className="text-secondary">
+          <Typography variant="body1" className="text-text-secondary">
             © {new Date().getFullYear()} CAPO
           </Typography>
-          <Typography variant="body1" className="text-secondary">
+          <Typography variant="body1" className="text-text-secondary">
             Desarrollando habilidades
           </Typography>
         </div>

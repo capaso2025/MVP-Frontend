@@ -1,8 +1,8 @@
 /* Directivas de Tailwind */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import 'tailwindcss';
+@import './animations.css';
 
-/* Variables CSS personalizadas */
 @theme {
   /* Colores principales */
   --color-primary: #162335;
@@ -63,44 +63,33 @@ body {
   .bg-landing {
     @apply bg-gradient-to-br from-[#ced8df] to-[#42455a];
   }
-  .mask-transparent {
+  .bg-landing-dark {
+    @apply bg-gradient-to-br from-[#0a1018] via-[#162335] to-[#0a1018];
+  }
+  .mask-transparent-bottom {
     @apply [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [--webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)];
+  }
+  .mask-transparent-left {
+    @apply [mask-image:linear-gradient(to_left,black_70%,transparent_100%)] [--webkit-mask-image:linear-gradient(to_left,black_70%,transparent_100%)];
   }
 }
 
-/* Estilos de accesibilidad para elementos focusables */
+.mask-opacity-image::after {
+  content: '';
+  width: 100%;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.68;
+  pointer-events: none;
+  z-index: 1;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
-}
-
-/* Clases de utilidad para animaciones comunes */
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 
 /* Estilos para scrollbar personalizados */
@@ -121,90 +110,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .animate-bounce {
-    animation: bounce 1.5s infinite;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    scale: 0;
-  }
-  to {
-    opacity: 1;
-    scale: 1;
-  }
-}
-
-.animate-zoom-in {
-  animation: zoomIn 0.2s ease-in-out;
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-}
-.animate-slide-out {
-  animation: slideOut 0.5s ease-out;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.5s ease-out;
-}
-@keyframes slideIn {
-  from {
-    transform: translateY(10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 500ms ease-out;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-slide-x {
-  animation: slideX 0.2s ease-out;
-}
-@keyframes slideX {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
 }
