@@ -12,8 +12,12 @@ interface Props {
   withButton?: boolean;
   descriptionProps?: Partial<React.ComponentProps<typeof Typography>>;
   buttonProps?: Partial<React.ComponentProps<typeof Button>>;
+  list?: string[];
 }
-const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivElement>>((props) => {
+const InfoSection = forwardRef<
+  HTMLDivElement,
+  Props & HTMLAttributes<HTMLDivElement>
+>((props) => {
   const {
     image,
     imgPosition = 'right',
@@ -23,15 +27,16 @@ const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivEle
     withButton = false,
     descriptionProps = {},
     buttonProps = {},
+    list = [],
     ...rest
   } = props;
   const { hasBeenVisible, ref } = useFadeInOnScroll();
-  const { className: descriptionClassName, ...restDescriptionProps } = descriptionProps;
+  const { className: descriptionClassName, ...restDescriptionProps } =
+    descriptionProps;
   return (
     <div
-
       ref={ref}
-      className={`flex flex-col items-start transition-all duration-500 justify-between gap-8 lg:gap-0 ${imgPosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} ${hasBeenVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
+      className={`flex flex-col items-start justify-between gap-8 transition-all duration-500 lg:gap-0 ${imgPosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} ${hasBeenVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
       {...rest}
     >
       <div className="lg:max-w-[50%]">
@@ -49,11 +54,29 @@ const InfoSection = forwardRef<HTMLDivElement, Props & HTMLAttributes<HTMLDivEle
         >
           {description}
         </Typography>
-        {withButton && <div className={
-          `mt-4 text-center ${imgPosition === 'left' ? 'lg:text-right' : 'lg:text-left'}`
-        }><Button size="lg" variant='landing'
-          {...buttonProps}
-          /></div>}
+        {list.length > 0 && (
+          <ul
+            className={`${imgPosition === 'left' ? 'lg:text-right' : 'lg:text-left'} ${color || 'text-primary-light'} mt-4 mb-8`}
+          >
+            {list.map((item, index) => (
+              <Typography
+                variant="h6"
+                as="li"
+                key={index}
+                className="py-2 font-normal"
+              >
+                {item}
+              </Typography>
+            ))}
+          </ul>
+        )}
+        {withButton && (
+          <div
+            className={`mt-4 text-center ${imgPosition === 'left' ? 'lg:text-right' : 'lg:text-left'}`}
+          >
+            <Button size="lg" variant="landing" {...buttonProps} />
+          </div>
+        )}
       </div>
       <img
         src={image}

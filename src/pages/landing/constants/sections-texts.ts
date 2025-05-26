@@ -11,16 +11,27 @@ export const SECTIONS_TEXTS = {
       'En Capo, convertimos tu progreso en pequeñas victorias diarias que te mantienen motivado y con ganas de seguir. Porque avanzar también puede sentirse bien, desde el primer paso.',
   },
   PROFESORES: {
-    TITLE: 'Eres el pilar de los estudiantes',
+    TITLE: '👨‍🏫 Eres el pilar que transforma vidas',
     DESCRIPTION:
-      'Capo es una herramienta que te permite acompañar a tus estudiantes en su proceso de aprendizaje.',
+      'Capo te da las herramientas necesarias para acompañar, motivar y potenciar a cada estudiante en proceso educativo.',
     BUTTON_TEXT: 'Comenzar como profesor',
     ID: 'profesores',
+    LIST: [
+      'Seguimiento individual 🔍',
+      'Progreso en tiempo real 📈',
+      'Conexión cercana 🤝',
+    ],
   },
   INSTITUCIONES: {
-    TITLE: 'Eres líder de la institución',
+    TITLE: '🏫 Lidera el cambio desde tu institución',
     DESCRIPTION:
-      'Capo es una herramienta que te permite acompañar a tus estudiantes en su proceso de aprendizaje.',
+      'Fortalece a tus docentes, eleva el nivel educativo y transforma tu institución con tecnología al servicio del aprendizaje.',
+    // 📊 Informes claros, 🌐 comunidad conectada, 🔧 gestión eficiente.
+    LIST: [
+      '📊 Informes claros',
+      '🌐 Comunidad conectada',
+      '🔧 Gestión eficiente',
+    ],
     BUTTON_TEXT: 'Comenzar como institución',
     ID: 'instituciones',
   },

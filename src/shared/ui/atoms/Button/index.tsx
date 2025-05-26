@@ -92,7 +92,8 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
       danger: 'bg-red-600 text-white',
       input:
         'bg-gray-100 bg-white border border-gray-300 text-text-primary disabled:text-text-disabled active:scale-100',
-      landing: '!rounded-full bg-gradient-to-br from-primary-2 to-[#41372a] text-white !px-8 !py-4 font-bold text-lg',
+      landing:
+        ' bg-gradient-to-br from-primary-light transition-all duration-300 to-primary-dark border-2 border-primary-light text-white !px-8 !py-4 font-bold text-xl hover:scale-105',
     };
 
     // Mapeo de tamaños a clases CSS
@@ -104,7 +105,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 
     // Construcción de la clase combinada
     const buttonClasses = [
-      'inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-95',
+      'inline-flex items-center justify-center font-medium rounded-md focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-95',
       variantClasses[variant],
       sizeClasses[size],
       fullWidth ? 'w-full' : '',

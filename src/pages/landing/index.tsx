@@ -6,9 +6,13 @@ import Container from '@/shared/ui/atoms/Container';
 import { SECTIONS_TEXTS } from './constants/sections-texts';
 import { useRenderStore } from '@/shared/store/render-store';
 import TeacherSignupForm from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupForm';
+import Features from './components/organisms/Features';
+import Differentiation from './components/organisms/Differentiation';
+import Footer from './components/organisms/Footer';
+import Demo from './components/organisms/Demo';
+
 function Landing() {
   const setModalData = useRenderStore((state) => state.setModalData);
-
   const openTeacherModal = () => {
     setModalData({
       containerClassName: 'bg-landing',
@@ -22,7 +26,9 @@ function Landing() {
       <Header />
       <Container>
         <Main />
-        <Spacer size="xl" />
+      </Container>
+      <Spacer size="3xl" />
+      <Container>
         <InfoSection
           id={SECTIONS_TEXTS.NOSOTROS.ID}
           title={SECTIONS_TEXTS.NOSOTROS.TITLE}
@@ -31,7 +37,9 @@ function Landing() {
           imgPosition="left"
           description={SECTIONS_TEXTS.NOSOTROS.DESCRIPTION}
         />
-        <Spacer size="3xl" />
+      </Container>
+      <Spacer size="3xl" />
+      <Container>
         <InfoSection
           color="text-white"
           title={SECTIONS_TEXTS.NOSOTROS_2.TITLE}
@@ -39,9 +47,21 @@ function Landing() {
           imgPosition="right"
           description={SECTIONS_TEXTS.NOSOTROS_2.DESCRIPTION}
         />
-        <Spacer size="3xl" />
       </Container>
-      <div className="bg-primary">
+      <Spacer size="3xl" />
+      <div className="bg-gradient-to-br from-[#0a1018] via-[#162335] to-[#0a1018]">
+        <Spacer size="3xl" />
+        <Container>
+          <Features />
+        </Container>
+        <Spacer size="3xl" />
+      </div>
+      <Spacer size="3xl" />
+      <Container>
+        <Differentiation />
+      </Container>
+      <Spacer size="3xl" />
+      <div className="bg-landing-dark rounded-t-[4rem]">
         <Spacer size="3xl" />
         <Container>
           <InfoSection
@@ -52,25 +72,30 @@ function Landing() {
             withButton
             descriptionProps={{
               variant: 'h5',
-              className: '!text-secondary font-normal text-center',
+              className: '!text-text-secondary font-normal text-center',
             }}
+            list={SECTIONS_TEXTS.PROFESORES.LIST}
             buttonProps={{
               children: SECTIONS_TEXTS.PROFESORES.BUTTON_TEXT,
               onClick: openTeacherModal,
             }}
-            image="/assets/characters/capito-teach.png"
+            image="/assets/characters/capito-old.png"
             imgPosition="left"
           />
-          <Spacer size="3xl" />
+        </Container>
+        <Spacer size="3xl" />
+        <Spacer size="3xl" />
+        <Container>
           <InfoSection
             id={SECTIONS_TEXTS.INSTITUCIONES.ID}
             color="text-white"
             title={SECTIONS_TEXTS.INSTITUCIONES.TITLE}
             withButton
             description={SECTIONS_TEXTS.INSTITUCIONES.DESCRIPTION}
+            list={SECTIONS_TEXTS.INSTITUCIONES.LIST}
             descriptionProps={{
               variant: 'h5',
-              className: '!text-secondary font-normal text-center',
+              className: '!text-text-secondary font-normal text-center',
             }}
             buttonProps={{
               children: SECTIONS_TEXTS.INSTITUCIONES.BUTTON_TEXT,
@@ -78,7 +103,16 @@ function Landing() {
             image="/assets/characters/capito-teach.png"
             imgPosition="right"
           />
-          <Spacer size="3xl" />
+        </Container>
+        <Spacer size="3xl" />
+        <Spacer size="3xl" />
+        <Container>
+          <Demo id="demo" />
+        </Container>
+        <Spacer size="3xl" />
+        <Spacer size="3xl" />
+        <Container>
+          <Footer />
         </Container>
       </div>
     </div>
