@@ -6,21 +6,19 @@ import {
 } from '@/pages/learn/constants/learn-path-classnames';
 import LearnLesson from '../../organisms/LearnLesson/LearnLesson';
 
-function LearnModule(
-  props: {
-    currentLevel: number;
-    currentModule: string;
-    changeClickedLesson: (lesson: string) => void;
-    clickedLesson: string;
-    module: Module;
-  },
-) {
+function LearnModule(props: {
+  currentLevel: number;
+  currentModule: string;
+  changeClickedLesson: (lesson: string) => void;
+  clickedLesson: string;
+  module: Module;
+}) {
   const {
     currentLevel,
     currentModule,
     changeClickedLesson,
     clickedLesson,
-    module
+    module,
   } = props;
 
   const learnPathButtonPositions =
@@ -39,7 +37,7 @@ function LearnModule(
       />
       <div className="mx-auto mb-10 flex w-full items-center justify-center">
         <span className="via-secondary-light to-secondary-light h-[1px] flex-1 bg-gradient-to-r from-transparent" />
-        <Typography className="text-secondary mx-3 w-max text-left">
+        <Typography className="text-text-secondary mx-3 w-max text-left">
           {module.title}
         </Typography>
         <span className="via-secondary-light from-secondary-light h-[1px] flex-1 bg-gradient-to-r to-transparent" />

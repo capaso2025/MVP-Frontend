@@ -96,9 +96,9 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
 
     // Mapeo de tamaños a clases CSS
     const sizeClasses: Record<TProgressSize, string> = {
-      sm: 'h-1',
-      md: 'h-2',
-      lg: 'h-4',
+      sm: 'h-2',
+      md: 'h-3',
+      lg: 'h-5',
     };
 
     // Construir las clases para el contenedor
@@ -139,7 +139,7 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
           style={{
             width: `${percentage}%`,
             height: '100%',
-            backgroundColor: `var(--color-primary)`,
+            backgroundColor: `var(--color-primary-light)`,
           }} //TODO: Corregir para altura y fondo
         />
         {showLabel && (

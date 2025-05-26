@@ -1,8 +1,8 @@
 import { Module } from '@/shared/types/modules.types';
-import speak from '@/assets/speak.png';
-import leadership from '@/assets/leadership.png';
-import decision from '@/assets/decisition.png';
 import team from '@/assets/team.png';
+import communication from '/assets/characters/communication.jpg';
+import emotionControl from '/assets/characters/emotion-control.png';
+import leadership from '/assets/characters/leadership.jpeg';
 
 export const SOFT_SKILLS_SECTIONS: {
   id: string;
@@ -22,7 +22,7 @@ export const SOFT_SKILLS_SECTIONS: {
     progress: 50,
     onClick: () => console.log('Section 1 clicked'),
     isActive: true,
-    image: speak,
+    image: communication,
     modules: [
       {
         title: '¿Por qué nadie me entiende (y cómo evitarlo)?',
@@ -122,7 +122,7 @@ export const SOFT_SKILLS_SECTIONS: {
       'Analiza, prioriza y actúa con seguridad. Mejora tu criterio para enfrentar cualquier desafío.',
     progress: 0,
     onClick: () => console.log('Section 2 clicked'),
-    image: decision,
+    image: emotionControl,
   },
   {
     id: '4',
