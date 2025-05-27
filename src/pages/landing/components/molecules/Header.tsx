@@ -1,12 +1,12 @@
 import { Typography } from '@/shared/ui';
 import Logo from '@/assets/capo-logo.png';
 import LogoDark from '@/assets/capo-logo-dark.png';
-import { MenuIcon } from 'lucide-react';
 import RightMenu from '../organisms/RightMenu';
 import { MENU } from '../../constants/menu';
 import { useState } from 'react';
 import { useScroll } from '@/shared/hooks/use-scroll';
 import Container from '@/shared/ui/atoms/Container';
+import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 function Header() {
   const [openedMenu, setOpenMenu] = useState<boolean>(false);

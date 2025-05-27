@@ -1,7 +1,7 @@
 import { useRenderStore } from '@/shared/store/render-store';
 import { Typography } from '@/shared/ui';
 import Popover from '@/shared/ui/molecules/Popover';
-import { MenuIcon } from 'lucide-react';
+import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
 import brain from '@/assets/brain.png';
 import fire from '@/assets/fire.png';
 import world from '@/assets/world.png';
@@ -14,8 +14,7 @@ function HeaderActions() {
   return (
     <header className="flex justify-between">
       <MenuIcon
-        className="block xl:hidden"
-        color="var(--color-primary)"
+        className="text-primary block xl:hidden"
         onClick={toggleOpenedSidebar}
       />
       <div className="hidden xl:block" />
@@ -27,12 +26,12 @@ function HeaderActions() {
             {
               label: 'Gestión de Tiempo',
               icon: brain,
-              onClick: () => { },
+              onClick: () => {},
             },
             {
               label: 'Control de Emociones',
               icon: brain,
-              onClick: () => { },
+              onClick: () => {},
             },
           ]}
         />
@@ -43,12 +42,12 @@ function HeaderActions() {
             {
               label: 'Gestión de Tiempo',
               icon: brain,
-              onClick: () => { },
+              onClick: () => {},
             },
             {
               label: 'Control de Emociones',
               icon: brain,
-              onClick: () => { },
+              onClick: () => {},
             },
           ]}
         />
@@ -58,7 +57,7 @@ function HeaderActions() {
           optionsList={[
             {
               label: 'Inglés',
-              onClick: () => { },
+              onClick: () => {},
             },
           ]}
         />

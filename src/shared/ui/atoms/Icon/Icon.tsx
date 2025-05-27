@@ -37,6 +37,16 @@ import {
   RotateCcw,
   SkipForward,
   Book,
+  Menu,
+  CircleHelp,
+  Zap,
+  Target,
+  Brain,
+  Globe,
+  Gamepad2,
+  BookOpen,
+  TrendingUp,
+  GraduationCap,
 } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 
@@ -100,3 +110,13 @@ export const PauseIcon = IconBase(Pause);
 export const RotateCcwIcon = IconBase(RotateCcw);
 export const SkipForwardIcon = IconBase(SkipForward);
 export const BookIcon = IconBase(Book);
+export const MenuIcon = IconBase(Menu);
+export const CircleHelpIcon = IconBase(CircleHelp);
+export const ZapIcon = IconBase(Zap);
+export const TargetIcon = IconBase(Target);
+export const BrainIcon = IconBase(Brain);
+export const GlobeIcon = IconBase(Globe);
+export const Gamepad2Icon = IconBase(Gamepad2);
+export const BookOpenIcon = IconBase(BookOpen);
+export const TrendingUpIcon = IconBase(TrendingUp);
+export const GraduationCapIcon = IconBase(GraduationCap);

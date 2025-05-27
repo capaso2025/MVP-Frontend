@@ -1,8 +1,12 @@
 import { Button, Progress } from '@/shared/ui';
 import { useTimer } from '../hooks/use-timer';
 import { getMaxTime, getModeColor, getModeTitle } from '../utils';
-import { MaximizeIcon, PauseIcon, PlayIcon } from '@/shared/ui/atoms/Icon/Icon';
-import { RotateCcw } from 'lucide-react';
+import {
+  MaximizeIcon,
+  PauseIcon,
+  PlayIcon,
+  RotateCcwIcon,
+} from '@/shared/ui/atoms/Icon/Icon';
 
 function MinimizedTimer() {
   const {
@@ -52,7 +56,7 @@ function MinimizedTimer() {
               </Button>
             )}
             <Button onClick={resetTimer}>
-              <RotateCcw />
+              <RotateCcwIcon />
             </Button>
           </div>
         </div>

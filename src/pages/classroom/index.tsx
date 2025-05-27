@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react"
+import { PlusIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 export default function ColegioDashboard() {
   return (
@@ -7,14 +7,14 @@ export default function ColegioDashboard() {
       <main className="p-5">
         {/* Mis Clases section */}
         <section className="mb-8">
-          <h2 className="text-blue-900 font-medium text-xl mb-4">Mis Clases</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <h2 className="mb-4 text-xl font-medium text-blue-900">Mis Clases</h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {/* Nueva clase card */}
-            <div className="bg-white rounded-lg shadow-sm p-6 flex flex-col items-center justify-center h-45 w-45">
-              <button className="h-12 w-12 bg-purple-600 rounded-full flex items-center justify-center text-white mb-4">
-                <Plus className="h-6 w-6" />
+            <div className="flex h-45 w-45 flex-col items-center justify-center rounded-lg bg-white p-6 shadow-sm">
+              <button className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-600 text-white">
+                <PlusIcon className="h-6 w-6" />
               </button>
-              <span className="text-purple-600 font-medium">Nueva clase</span>
+              <span className="font-medium text-purple-600">Nueva clase</span>
             </div>
 
             {/* You can add more class cards here */}
@@ -23,23 +23,27 @@ export default function ColegioDashboard() {
 
         {/* Recursos section */}
         <section>
-          <h2 className="text-blue-900 font-medium text-xl mb-4">Recursos</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <h2 className="mb-4 text-xl font-medium text-blue-900">Recursos</h2>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
             {/* Recurso card */}
             <div className="block">
-              <div className="bg-green-100 rounded-lg overflow-hidden shadow-sm">
-                <div className="h-32 bg-green-200 p-4 relative">
-                  <div className="absolute top-4 left-4 h-16 w-16 bg-green-300 rounded-full flex items-center justify-center">
+              <div className="overflow-hidden rounded-lg bg-green-100 shadow-sm">
+                <div className="relative h-32 bg-green-200 p-4">
+                  <div className="absolute top-4 left-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-300">
                     <div className="flex space-x-1">
-                      <div className="h-4 w-2 bg-blue-500 rounded-full"></div>
-                      <div className="h-5 w-2 bg-pink-500 rounded-full"></div>
-                      <div className="h-6 w-2 bg-yellow-500 rounded-full"></div>
+                      <div className="h-4 w-2 rounded-full bg-blue-500"></div>
+                      <div className="h-5 w-2 rounded-full bg-pink-500"></div>
+                      <div className="h-6 w-2 rounded-full bg-yellow-500"></div>
                     </div>
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-gray-800">Rincón de Actividades de Mojo</h3>
-                  <p className="text-sm text-gray-600">Actividades divertidas para estudiantes</p>
+                  <h3 className="font-bold text-gray-800">
+                    Rincón de Actividades de Mojo
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Actividades divertidas para estudiantes
+                  </p>
                 </div>
               </div>
             </div>
@@ -49,5 +53,5 @@ export default function ColegioDashboard() {
         </section>
       </main>
     </>
-  )
+  );
 }
