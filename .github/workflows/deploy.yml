@@ -2,8 +2,8 @@ name: Deploy React Frontend (Free Tier)
 on:
   push:
     branches: 
-      - releases
-      - main 
+      # - releases
+      - main1 
   workflow_dispatch:
 
 permissions:
