@@ -3,16 +3,18 @@ import { Typography } from '@/shared/ui';
 function Footer() {
   return (
     <footer className="pb-4 text-center">
-      <div className="flex justify-between text-center">
-        <div className="text-left">
-          <Typography variant="body1" className="text-text-secondary">
-            Correo de contacto
-          </Typography>
-          <Typography variant="h6" className="text-white">
-            servicioalcliente@capo.host
-          </Typography>
+      <div className="flex justify-between">
+        <div className="flex justify-between text-center">
+          <div className="text-left">
+            <Typography variant="body1" className="text-text-secondary">
+              Correo de contacto
+            </Typography>
+            <Typography variant="h6" className="text-white">
+              servicioalcliente@capo.host
+            </Typography>
+          </div>
         </div>
-        <div>
+        <div className="w-max">
           <Typography variant="body1" className="text-text-secondary">
             Síguenos
           </Typography>
@@ -30,6 +32,7 @@ function Footer() {
           </div>
         </div>
       </div>
+      <Typography className="text-text-secondary mt-8">CAPO 2025</Typography>
     </footer>
   );
 }

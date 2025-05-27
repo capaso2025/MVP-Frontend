@@ -85,8 +85,7 @@ function Landing() {
             imgPosition="left"
           />
         </Container>
-        <Spacer size="3xl" />
-        <Spacer size="3xl" />
+        <Spacer size="5xl" />
         <Container>
           <InfoSection
             id={SECTIONS_TEXTS.INSTITUCIONES.ID}
@@ -106,12 +105,11 @@ function Landing() {
             imgPosition="right"
           />
         </Container>
-        <Spacer size="3xl" />
-        <Spacer size="3xl" />
+        <Spacer size="5xl" />
         <Container>
           <Demo id="demo" />
         </Container>
-        <Spacer size="3xl" />
+        <Spacer size="5xl" />
         <Container>
           <FAQSection />
         </Container>
@@ -121,7 +119,7 @@ function Landing() {
         </Container>
       </div>
 
-      <div className="fixed right-0 right-[-165px] bottom-8 z-50 w-max transition-all duration-200 hover:right-0">
+      <div className="fixed right-[-145px] bottom-8 z-50 w-max transition-all duration-200 hover:right-0 lg:right-[-165px]">
         <QuestionsWidget as="a" href="#questions" />
       </div>
     </div>

@@ -58,7 +58,7 @@ function RightMenu(props: {
                 variant="h3"
                 className="hover:text-primary-2 cursor-pointer text-center font-normal text-white transition-all duration-200 hover:font-bold"
               >
-                <a href="#">{element.text}</a>
+                <a href={element.href}>{element.text}</a>
               </Typography>
             ))}
           </ul>
