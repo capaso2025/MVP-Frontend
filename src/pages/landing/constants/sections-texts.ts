@@ -11,7 +11,7 @@ export const SECTIONS_TEXTS = {
       'En Capo, convertimos tu progreso en pequeñas victorias diarias que te mantienen motivado y con ganas de seguir. Porque avanzar también puede sentirse bien, desde el primer paso.',
   },
   PROFESORES: {
-    TITLE: '👨‍🏫 Eres el pilar que transforma vidas',
+    TITLE: 'Eres el pilar que transforma vidas',
     DESCRIPTION:
       'Capo te da las herramientas necesarias para acompañar, motivar y potenciar a cada estudiante en proceso educativo.',
     BUTTON_TEXT: 'Comenzar como profesor',
@@ -23,10 +23,9 @@ export const SECTIONS_TEXTS = {
     ],
   },
   INSTITUCIONES: {
-    TITLE: '🏫 Lidera el cambio desde tu institución',
+    TITLE: 'Lidera el cambio desde tu institución',
     DESCRIPTION:
       'Fortalece a tus docentes, eleva el nivel educativo y transforma tu institución con tecnología al servicio del aprendizaje.',
-    // 📊 Informes claros, 🌐 comunidad conectada, 🔧 gestión eficiente.
     LIST: [
       '📊 Informes claros',
       '🌐 Comunidad conectada',
