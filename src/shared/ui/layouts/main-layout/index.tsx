@@ -25,7 +25,9 @@ function MenuLayout() {
       <Sidebar />
       {isMobile ? <></> : <div className="w-[300px]" />}
       <div className={isMobile ? 'w-auto' : 'ml-[300px]'}>
-        <main className={`mx-auto ${!isTeacher ? 'w-[1050px] p-4' : 'w-full'}`}>
+        <main
+          className={`mx-auto ${!isTeacher ? 'w-full p-4 lg:w-[1050px]' : 'w-full'}`}
+        >
           {!isTeacher ? <HeaderActions /> : <TeacherHeader />}
           <div
             className={`grid grid-cols-1 gap-8 ${!isTeacher ? 'md:grid-cols-[60%_auto]' : ''}`}

@@ -31,7 +31,7 @@ function SectionCard(props: {
           {isActive ? 'Continuar' : 'Bloqueado'}
         </Button>
       </div>
-      <div className="mask-opacity-image absolute top-0 right-0 z-0">
+      <div className="mask-opacity-image absolute top-0 right-0 z-0 h-full w-full">
         {/* <SpeechBubble text={bubbleText} /> */}
         <img
           src={image}
