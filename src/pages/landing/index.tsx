@@ -10,6 +10,8 @@ import Features from './components/organisms/Features';
 import Differentiation from './components/organisms/Differentiation';
 import Footer from './components/organisms/Footer';
 import Demo from './components/organisms/Demo';
+import FAQSection from './components/organisms/Faq/Faq';
+import QuestionsWidget from './components/molecules/QuestionsWidget';
 
 function Landing() {
   const setModalData = useRenderStore((state) => state.setModalData);
@@ -49,7 +51,7 @@ function Landing() {
         />
       </Container>
       <Spacer size="3xl" />
-      <div className="bg-gradient-to-br from-[#0a1018] via-[#162335] to-[#0a1018]">
+      <div className="bg-landing-dark">
         <Spacer size="3xl" />
         <Container>
           <Features />
@@ -110,10 +112,17 @@ function Landing() {
           <Demo id="demo" />
         </Container>
         <Spacer size="3xl" />
+        <Container>
+          <FAQSection />
+        </Container>
         <Spacer size="3xl" />
         <Container>
           <Footer />
         </Container>
+      </div>
+
+      <div className="fixed right-0 right-[-165px] bottom-8 z-50 w-max transition-all duration-200 hover:right-0">
+        <QuestionsWidget as="a" href="#questions" />
       </div>
     </div>
   );

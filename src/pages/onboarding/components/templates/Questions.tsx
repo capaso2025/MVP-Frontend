@@ -14,6 +14,9 @@ function Questions() {
     finishFn: () => {
       navigate('/onboarding/results');
     },
+    previousFn: () => {
+      navigate('/onboarding/categories');
+    },
   });
   const { responses, setResponsesByQuestion } = useOnboarding();
   const [currentData, setCurrentData] = useState<
@@ -22,6 +25,7 @@ function Questions() {
         options: {
           id: string;
           text: string;
+          icon?: string;
         }[];
       }
     | undefined
@@ -82,7 +86,7 @@ function Questions() {
             {currentData?.options?.map((opt) => (
               <div
                 key={opt.id}
-                className={`h-max cursor-pointer rounded-lg border p-4 transition-all duration-200 ${currentQuestion?.title === currentData?.question && currentQuestion?.response.id === opt.id ? 'bg-primary-lighter border-transparent shadow-md' : 'border-primary-lighter'}`}
+                className={`flex h-max cursor-pointer items-center gap-2 rounded-lg border p-4 transition-all duration-200 ${currentQuestion?.title === currentData?.question && currentQuestion?.response.id === opt.id ? 'bg-primary-lighter border-transparent shadow-md' : 'border-primary-lighter'}`}
                 onClick={() =>
                   setResponsesByQuestion({
                     title: currentData?.question,
@@ -93,6 +97,11 @@ function Questions() {
                   })
                 }
               >
+                {opt.icon ? (
+                  <img src={opt.icon} alt="icon" width={30} height={30} />
+                ) : (
+                  <></>
+                )}
                 <Typography>{opt.text}</Typography>
               </div>
             ))}

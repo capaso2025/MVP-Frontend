@@ -13,6 +13,9 @@ function OnboardingIntro() {
     finishFn: () => {
       navigate('/onboarding/questions');
     },
+    previousFn: () => {
+      navigate('/onboarding/categories');
+    },
   });
 
   const messages = [

@@ -7,6 +7,7 @@ export const QUESTIONS: {
     options: {
       id: string;
       text: string;
+      icon?: string;
     }[];
   }[];
 } = {
@@ -18,30 +19,37 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Búsqueda en Google',
+          icon: '/assets/social-media/google.svg',
         },
         {
           id: '2',
           text: 'Facebook/Instagram',
+          icon: '/assets/social-media/fb-ig.png',
         },
         {
           id: '3',
           text: 'Youtube',
+          icon: '/assets/social-media/yt.svg',
         },
         {
           id: '4',
           text: 'TV',
+          icon: '/assets/social-media/tv.png',
         },
         {
           id: '5',
           text: 'Noticias/artículos/blog',
+          icon: '/assets/social-media/news.svg',
         },
         {
           id: '6',
           text: 'TikTok',
+          icon: '/assets/social-media/tiktok.png',
         },
         {
           id: '7',
           text: 'Amigos/familiares',
+          icon: '/assets/social-media/person.png',
         },
         {
           id: '8',
@@ -179,30 +187,37 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Búsqueda en Google',
+          icon: '/assets/social-media/google.svg',
         },
         {
           id: '2',
           text: 'Facebook/Instagram',
+          icon: '/assets/social-media/fb-ig.png',
         },
         {
           id: '3',
           text: 'Youtube',
+          icon: '/assets/social-media/yt.svg',
         },
         {
           id: '4',
           text: 'TV',
+          icon: '/assets/social-media/tv.png',
         },
         {
           id: '5',
           text: 'Noticias/artículos/blog',
+          icon: '/assets/social-media/news.svg',
         },
         {
           id: '6',
           text: 'TikTok',
+          icon: '/assets/social-media/tiktok.png',
         },
         {
           id: '7',
           text: 'Amigos/familiares',
+          icon: '/assets/social-media/person.png',
         },
         {
           id: '8',
@@ -338,30 +353,37 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Búsqueda en Google',
+          icon: '/assets/social-media/google.svg',
         },
         {
           id: '2',
           text: 'Facebook/Instagram',
+          icon: '/assets/social-media/fb-ig.png',
         },
         {
           id: '3',
           text: 'Youtube',
+          icon: '/assets/social-media/yt.svg',
         },
         {
           id: '4',
           text: 'TV',
+          icon: '/assets/social-media/tv.png',
         },
         {
           id: '5',
           text: 'Noticias/artículos/blog',
+          icon: '/assets/social-media/news.svg',
         },
         {
           id: '6',
           text: 'TikTok',
+          icon: '/assets/social-media/tiktok.png',
         },
         {
           id: '7',
           text: 'Amigos/familiares',
+          icon: '/assets/social-media/person.png',
         },
         {
           id: '8',
@@ -499,30 +521,37 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Búsqueda en Google',
+          icon: '/assets/social-media/google.svg',
         },
         {
           id: '2',
           text: 'Facebook/Instagram',
+          icon: '/assets/social-media/fb-ig.png',
         },
         {
           id: '3',
           text: 'Youtube',
+          icon: '/assets/social-media/yt.svg',
         },
         {
           id: '4',
           text: 'TV',
+          icon: '/assets/social-media/tv.png',
         },
         {
           id: '5',
           text: 'Noticias/artículos/blog',
+          icon: '/assets/social-media/news.svg',
         },
         {
           id: '6',
           text: 'TikTok',
+          icon: '/assets/social-media/tiktok.png',
         },
         {
           id: '7',
           text: 'Amigos/familiares',
+          icon: '/assets/social-media/person.png',
         },
         {
           id: '8',
