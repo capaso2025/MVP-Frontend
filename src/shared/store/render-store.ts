@@ -3,7 +3,6 @@ import { create } from 'zustand';
 type ModalData = {
   children: React.ReactNode;
   containerClassName?: string;
-  callback?: () => void;
   noCloseButton?: boolean;
   title?: string;
   description?: string;
@@ -39,7 +38,6 @@ interface RenderState {
 const initialModalData: ModalData = {
   children: null,
   containerClassName: '',
-  callback: () => {},
   noCloseButton: false,
   title: '',
   description: '',

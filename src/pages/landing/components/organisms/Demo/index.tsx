@@ -22,12 +22,12 @@ const Demo = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
           </Typography>
           <Typography
             variant="h4"
-            className="text-text-secondary text-center font-normal"
+            className="text-foreground-secondary text-center font-normal"
           >
             Capo ayuda a colegios y universidades a potenciar a sus estudiantes.
             Solicita una demo para tu institución.
           </Typography>
-          <Button variant="landing" size="lg" className="mx-auto mt-4 w-fit">
+          <Button variant="landing" className="mx-auto mt-4 w-fit">
             Quiero una demo para mi institución
           </Button>
         </div>

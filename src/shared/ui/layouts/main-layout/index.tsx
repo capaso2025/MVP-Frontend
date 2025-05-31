@@ -10,30 +10,42 @@ import { useEffect } from 'react';
 import { useRenderStore } from '@/shared/store/render-store';
 import School from '@/assets/school.png';
 import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
+
+const noRightSection = ['/calendar'];
 function MenuLayout() {
   const { isMobile } = useResize();
   const [searchParams] = useSearchParams();
   const isTeacher = searchParams.get('role') === 'teacher';
+  const withRightSection =
+    !noRightSection.includes(window.location.pathname) && !isTeacher;
   const setOpenedSidebar = useRenderStore((state) => state.setOpenedSidebar);
   useEffect(() => {
     if (isMobile) {
       setOpenedSidebar(false);
     }
-  }, [isMobile]);
+  }, [isMobile, setOpenedSidebar]);
+  console.log(window.location.pathname);
+
   return (
     <div className="">
       <Sidebar />
       {isMobile ? <></> : <div className="w-[300px]" />}
       <div className={isMobile ? 'w-auto' : 'ml-[300px]'}>
         <main
-          className={`mx-auto ${!isTeacher ? 'w-full p-4 lg:w-[1050px]' : 'w-full'}`}
+          className={`mx-auto ${withRightSection ? 'w-full p-4 lg:w-[1050px]' : 'w-full'}`}
         >
-          {!isTeacher ? <HeaderActions /> : <TeacherHeader />}
+          {withRightSection ? (
+            <HeaderActions />
+          ) : isTeacher ? (
+            <TeacherHeader />
+          ) : (
+            <></>
+          )}
           <div
-            className={`grid grid-cols-1 gap-8 ${!isTeacher ? 'md:grid-cols-[60%_auto]' : ''}`}
+            className={`grid grid-cols-1 gap-8 ${withRightSection ? 'md:grid-cols-[60%_auto]' : ''}`}
           >
             <Outlet />
-            {!isTeacher && (
+            {withRightSection && (
               <section className="sticky top-0 mt-4 hidden h-screen flex-col gap-8 md:flex">
                 <CustomCalendar
                   selectedDays={[

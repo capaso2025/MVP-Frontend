@@ -39,7 +39,7 @@ export default function Features() {
                     <Typography variant="h6">{feature.title}</Typography>
                     <Typography
                       variant="h6"
-                      className="text-text-secondary font-normal"
+                      className="text-foreground-secondary font-normal"
                     >
                       {feature.description}
                     </Typography>
@@ -53,9 +53,7 @@ export default function Features() {
           <Typography variant="h5" className="font-normal text-white">
             ¿Listo para comenzar tu transformación?
           </Typography>
-          <Button variant="landing" size="lg">
-            Empezar ahora
-          </Button>
+          <Button variant="landing">Empezar ahora</Button>
         </div>
       </div>
     </section>

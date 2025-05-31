@@ -21,7 +21,7 @@ function Header() {
     <>
       <Container
         as="header"
-        className={`flex items-center justify-between transition-all duration-200 ${scrolled ? 'sticky top-4 z-[99] rounded-full bg-[#1d20315d] px-8 py-2 pl-2 shadow-md backdrop-blur-2xl' : ''}`}
+        className={`flex items-center justify-between transition-all duration-200 ${scrolled ? 'bg-custom-blur sticky top-4 z-[99] rounded-full px-8 py-2 pl-2 shadow-md' : ''}`}
       >
         <img
           src={scrolled ? Logo : LogoDark}

@@ -24,18 +24,21 @@ function AlertDialog() {
   return (
     <AlertDialogContainer defaultOpen={show}>
       <AlertDialogContent
-        className="w-[95%] rounded-2xl text-white"
+        className="bg-landing-dark w-[95%] rounded-2xl p-10 text-white"
         id="alert-dialog"
       >
         {title && (
           <AlertDialogTitle>
-            <Typography variant="body1" className="text-primary text-center">
+            <Typography variant="h3" className="text-foreground text-center">
               {title}
             </Typography>
           </AlertDialogTitle>
         )}
         {description && (
-          <Typography className={`px-4 ${!title ? 'text-primary pt-8' : ''}`}>
+          <Typography
+            variant="h6"
+            className={`px-4 text-center font-normal ${!title ? '!text-foreground pb-4 text-xl' : 'text-foreground-secondary'}`}
+          >
             {description}
           </Typography>
         )}
@@ -44,7 +47,7 @@ function AlertDialog() {
         >
           {onlyCloseAction ? (
             <Button
-              variant="outline"
+              variant="landing"
               className="w-full"
               {...confirmButtonProps}
               onClick={async () => {
@@ -71,7 +74,8 @@ function AlertDialog() {
                 Cancelar
               </Button>
               <Button
-                className="w-full text-wrap"
+                variant="landing"
+                className="w-full text-wrap hover:!scale-100"
                 {...confirmButtonProps}
                 onClick={async () => {
                   await onConfirm?.();

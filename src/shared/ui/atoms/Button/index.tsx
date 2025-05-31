@@ -86,21 +86,21 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
     // Mapeo de variantes a clases CSS
     const variantClasses: Record<TButtonVariant, string> = {
       primary: 'bg-primary text-white',
-      secondary: 'bg-primary-lighter text-gray-900 ',
+      secondary: 'bg-primary-lighter text-gray-900',
       outline: 'bg-transparent border border-primary-light text-primary',
       ghost: 'bg-transparent text-gray-700',
       danger: 'bg-red-600 text-white',
       input:
         'bg-gray-100 bg-white border border-gray-300 text-text-primary disabled:text-text-disabled active:scale-100',
       landing:
-        ' bg-gradient-to-br from-primary-light transition-all duration-300 to-primary-dark border-2 border-primary-light text-white !px-8 !py-4 font-bold text-xl hover:scale-105',
+        ' bg-gradient-to-br from-primary-light transition-all duration-300 to-primary-dark border-2 border-primary-light text-white font-bold hover:scale-105',
     };
 
     // Mapeo de tamaños a clases CSS
     const sizeClasses: Record<TButtonSize, string> = {
-      sm: 'text-xs py-1 px-2',
-      md: 'text-sm py-2 px-4',
-      lg: 'text-base py-3 px-6',
+      sm: 'text-sm py-1 px-2',
+      md: 'text-base py-3 px-5',
+      lg: 'text-lg py-4 px-8',
     };
 
     // Construcción de la clase combinada

@@ -40,49 +40,27 @@ export const useLesson = (params: { module: string; lesson: string }) => {
     navigate(
       `/lesson/${encodeURIComponent(module)}/${encodeURIComponent(currentAndNextLesson?.nextLesson?.title || '')}`,
     );
-    // const newCurrentAndNextLesson: LessonsState = {
-    //   currentLesson: undefined,
-    //   nextLesson: undefined,
-    // };
-    // if (currentAndNextLesson?.nextLesson) {
-    //   newCurrentAndNextLesson.currentLesson = currentAndNextLesson.nextLesson;
-    // }
-    // const newCurrentLessonIndex = lessons.findIndex(
-    //   (lesson) => lesson.title === newCurrentAndNextLesson.currentLesson?.title,
-    // );
-    // console.log(
-    //   '🏝️ ~ handleNextLesson ~ newCurrentLessonIndex:',
-    //   newCurrentLessonIndex,
-    // );
-    // if (newCurrentLessonIndex < 0) return;
-    // const newNextLesson =
-    //   newCurrentLessonIndex < lessons.length - 1
-    //     ? lessons[newCurrentLessonIndex + 1]
-    //     : undefined;
-    // newCurrentAndNextLesson.nextLesson = newNextLesson;
-    // setCurrentAndNextLesson(newCurrentAndNextLesson);
   };
 
   const handleBackLesson = () => {
-    navigate(
-      `/lesson/${encodeURIComponent(module)}/${encodeURIComponent(currentAndNextLesson?.currentLesson?.title || '')}`,
+    const newCurrentAndNextLesson: LessonsState = {
+      currentLesson: undefined,
+      nextLesson: undefined,
+    };
+    if (currentAndNextLesson?.currentLesson) {
+      newCurrentAndNextLesson.nextLesson = currentAndNextLesson.currentLesson;
+    }
+    const newCurrentLessonIndex = lessons.findIndex(
+      (lesson) => lesson.title === newCurrentAndNextLesson.nextLesson?.title,
     );
-    // const newCurrentAndNextLesson: LessonsState = {
-    //   currentLesson: undefined,
-    //   nextLesson: undefined,
-    // };
-    // if (currentAndNextLesson?.currentLesson) {
-    //   newCurrentAndNextLesson.nextLesson = currentAndNextLesson.currentLesson;
-    // }
-    // const newCurrentLessonIndex = lessons.findIndex(
-    //   (lesson) => lesson.title === newCurrentAndNextLesson.nextLesson?.title,
-    // );
-    // const newCurrentLesson =
-    //   newCurrentLessonIndex > 0
-    //     ? lessons[newCurrentLessonIndex - 1]
-    //     : undefined;
-    // newCurrentAndNextLesson.currentLesson = newCurrentLesson;
-    // setCurrentAndNextLesson(newCurrentAndNextLesson);
+    const newCurrentLesson =
+      newCurrentLessonIndex > 0
+        ? lessons[newCurrentLessonIndex - 1]
+        : undefined;
+    newCurrentAndNextLesson.currentLesson = newCurrentLesson;
+    navigate(
+      `/lesson/${encodeURIComponent(module)}/${encodeURIComponent(newCurrentAndNextLesson?.currentLesson?.title || '')}`,
+    );
   };
 
   return {

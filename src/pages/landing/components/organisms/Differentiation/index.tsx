@@ -1,9 +1,14 @@
 import { Typography } from '@/shared/ui';
 import { DIFFERENCES } from './data';
+import { useFadeInOnScroll } from '@/shared/hooks/use-fade-in-scroll';
 
 export default function DiferenciasSection() {
+  const { hasBeenVisible, ref } = useFadeInOnScroll();
   return (
-    <section>
+    <section
+      ref={ref}
+      className={`relative z-1 transition-all duration-500 ${hasBeenVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
+    >
       <Typography variant="h1" className="mb-16 text-center text-white">
         ¿Qué nos hace diferentes?
       </Typography>

@@ -4,6 +4,8 @@ import timer from '@/assets/timer.png';
 import user from '@/assets/profile.png';
 import shop from '@/assets/shop.png';
 import classroom from '@/assets/classroom.png';
+import message from '@/assets/chat.png';
+import points from '@/assets/points.png';
 
 interface MenuItem {
   label: string;
@@ -66,12 +68,12 @@ export const TEACHER_DEFAULT_MENU_ITEMS: MenuItem[] = [
   },
   {
     label: 'Chats',
-    icon: timer,
+    icon: message,
     path: '/chats?role=teacher',
   },
   {
     label: 'Puntos',
-    icon: timer,
+    icon: points,
     path: '/points?role=teacher',
   },
   { label: 'Insight', icon: home, path: '/insight?role=teacher' },

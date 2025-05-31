@@ -6,7 +6,7 @@ function Footer() {
       <div className="flex justify-between">
         <div className="flex justify-between text-center">
           <div className="text-left">
-            <Typography variant="body1" className="text-text-secondary">
+            <Typography variant="body1" className="text-foreground-secondary">
               Correo de contacto
             </Typography>
             <Typography variant="h6" className="text-white">
@@ -15,7 +15,7 @@ function Footer() {
           </div>
         </div>
         <div className="w-max">
-          <Typography variant="body1" className="text-text-secondary">
+          <Typography variant="body1" className="text-foreground-secondary">
             Síguenos
           </Typography>
           <div className="mt-2 flex justify-center space-x-4">
@@ -32,7 +32,9 @@ function Footer() {
           </div>
         </div>
       </div>
-      <Typography className="text-text-secondary mt-8">CAPO 2025</Typography>
+      <Typography className="text-foreground-secondary mt-8">
+        CAPO 2025
+      </Typography>
     </footer>
   );
 }

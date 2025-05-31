@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { XIcon } from '../../atoms/Icon/Icon';
 import { Typography } from '../../atoms/Typography';
-
+import logo from '@/assets/capo-logo.png';
 function Modal() {
   const closeModal = useRenderStore((state) => state.closeModal);
   const {
@@ -33,27 +33,36 @@ function Modal() {
   return ReactDOM.createPortal(
     <div
       style={{ zIndex: '100000' }}
-      className={`animate-slide-x absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
+      className={`animate-fade-in bg-custom absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
     >
       <div
-        className={`bg-background relative overflow-auto ${fullScreen ? 'h-full w-full' : 'border-custom mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl p-4 md:min-w-[400px]'} ${containerClassName || ''
-          }`}
+        className={`bg-landing-dark relative overflow-auto shadow-xl ${fullScreen ? 'h-full w-full' : 'border-custom mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl p-4 md:min-w-[400px]'} ${
+          containerClassName || ''
+        }`}
       >
         {noCloseButton ? null : (
           <div
             onClick={handleClose}
-            className="absolute top-[4px] left-[4px] grid h-10 w-10 cursor-pointer place-content-center rounded-2xl"
+            className="text-foreground absolute top-[4px] right-[4px] grid h-10 w-10 cursor-pointer place-content-center rounded-2xl"
           >
-            <XIcon className="text-primary scale-110" />
+            <XIcon className="scale-110 text-white" />
           </div>
         )}
+        {fullScreen ? (
+          <img src={logo} alt="" className="absolute top-4 left-4" width={50} />
+        ) : (
+          <></>
+        )}
         {title && (
-          <Typography variant="h2" className="mt-4 mb-2 text-center text-primary">
+          <Typography
+            variant="h2"
+            className="text-foreground mt-4 mb-2 text-center"
+          >
             {title}
           </Typography>
         )}
         {description && (
-          <Typography variant="body1" className="mb-2 text-center text-primary">
+          <Typography variant="body1" className="text-primary mb-2 text-center">
             {description}
           </Typography>
         )}

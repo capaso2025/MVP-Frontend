@@ -5,50 +5,45 @@ import Header from './components/molecules/Header';
 import Container from '@/shared/ui/atoms/Container';
 import { SECTIONS_TEXTS } from './constants/sections-texts';
 import { useRenderStore } from '@/shared/store/render-store';
-import TeacherSignupForm from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupForm';
 import Features from './components/organisms/Features';
 import Differentiation from './components/organisms/Differentiation';
 import Footer from './components/organisms/Footer';
 import Demo from './components/organisms/Demo';
 import FAQSection from './components/organisms/Faq/Faq';
 import QuestionsWidget from './components/molecules/QuestionsWidget';
-
+import AboutUs from './components/organisms/AboutUs';
+import logoBG from '@/assets/capo-logo-dark.png';
+import TeacherSignupFormWrapper from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupFormWrapper';
+import TeacherSignupForm from '@/shared/ui/templates/auth/teacher-signup/TeacherSignupForm';
 function Landing() {
   const setModalData = useRenderStore((state) => state.setModalData);
   const openTeacherModal = () => {
     setModalData({
-      containerClassName: 'bg-landing',
+      // containerClassName: 'bg-landing',
       fullScreen: true,
-      title: 'Crea tu cuenta como profesor',
-      children: <TeacherSignupForm />,
+      children: (
+        <TeacherSignupFormWrapper
+          title="¡Únete a Capo como profesor!"
+          component={<TeacherSignupForm className="z-10" />}
+        />
+      ),
     });
   };
   return (
-    <div className="animate-fade-in bg-landing relative">
+    <div className="animate-fade-in bg-landing relative overflow-x-hidden">
       <Header />
       <Container>
         <Main />
       </Container>
       <Spacer size="3xl" />
-      <Container>
-        <InfoSection
-          id={SECTIONS_TEXTS.NOSOTROS.ID}
-          title={SECTIONS_TEXTS.NOSOTROS.TITLE}
-          color="text-primary-light"
-          image="/assets/characters/capito-university.png"
-          imgPosition="left"
-          description={SECTIONS_TEXTS.NOSOTROS.DESCRIPTION}
+      <Container className="relative">
+        <img
+          src={logoBG}
+          width={600}
+          alt="logo"
+          className="absolute -top-1/4 -right-[520px] z-0 opacity-10"
         />
-      </Container>
-      <Spacer size="3xl" />
-      <Container>
-        <InfoSection
-          color="text-white"
-          title={SECTIONS_TEXTS.NOSOTROS_2.TITLE}
-          image="/assets/characters/capito-ladders.png"
-          imgPosition="right"
-          description={SECTIONS_TEXTS.NOSOTROS_2.DESCRIPTION}
-        />
+        <AboutUs />
       </Container>
       <Spacer size="3xl" />
       <div className="bg-landing-dark">
@@ -59,8 +54,14 @@ function Landing() {
         <Spacer size="3xl" />
       </div>
       <Spacer size="3xl" />
-      <Container>
+      <Container className="relative">
         <Differentiation />
+        <img
+          src={logoBG}
+          alt="logo"
+          className="absolute top-[0] -left-1/3 z-[0] opacity-20"
+          width={700}
+        />
       </Container>
       <Spacer size="3xl" />
       <div className="bg-landing-dark rounded-t-[4rem]">
@@ -74,14 +75,14 @@ function Landing() {
             withButton
             descriptionProps={{
               variant: 'h5',
-              className: '!text-text-secondary font-normal text-center',
+              className: '!text-foreground-secondary font-normal text-center',
             }}
             list={SECTIONS_TEXTS.PROFESORES.LIST}
             buttonProps={{
               children: SECTIONS_TEXTS.PROFESORES.BUTTON_TEXT,
               onClick: openTeacherModal,
             }}
-            image="/assets/characters/capito-old.png"
+            image="/assets/characters/capito-director.png"
             imgPosition="left"
           />
         </Container>
@@ -96,7 +97,7 @@ function Landing() {
             list={SECTIONS_TEXTS.INSTITUCIONES.LIST}
             descriptionProps={{
               variant: 'h5',
-              className: '!text-text-secondary font-normal text-center',
+              className: '!text-foreground-secondary font-normal text-center',
             }}
             buttonProps={{
               children: SECTIONS_TEXTS.INSTITUCIONES.BUTTON_TEXT,

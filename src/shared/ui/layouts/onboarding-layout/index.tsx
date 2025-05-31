@@ -31,7 +31,7 @@ export const OnboardingLayout = forwardRef<
       },
       confirmText: 'Sí, salir',
     });
-  }, []);
+  }, [navigate, setAlertDialogData]);
   return (
     <div
       ref={ref}
@@ -61,10 +61,10 @@ export const OnboardingLayout = forwardRef<
 
       <footer className="border-t border-gray-200 bg-white px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Typography variant="body1" className="text-text-secondary">
+          <Typography variant="body1" className="text-foreground-secondary">
             © {new Date().getFullYear()} CAPO
           </Typography>
-          <Typography variant="body1" className="text-text-secondary">
+          <Typography variant="body1" className="text-foreground-secondary">
             Desarrollando habilidades
           </Typography>
         </div>

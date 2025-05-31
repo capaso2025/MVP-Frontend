@@ -1,12 +1,3 @@
-/**
- * Archivo de exportación centralizado para la biblioteca de UI
- * Facilita las importaciones desde otros módulos de la aplicación
- */
-
-// Tema
-export { default as themeConfig } from './theme/themeConfig';
-export * from './theme/themeConfig';
-
 // Átomos (componentes base)
 export { Button } from './atoms/Button';
 export type { IButtonProps, TButtonSize, TButtonVariant } from './atoms/Button';

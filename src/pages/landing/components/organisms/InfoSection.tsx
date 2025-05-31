@@ -74,13 +74,13 @@ const InfoSection = forwardRef<
           <div
             className={`mt-4 text-center ${imgPosition === 'left' ? 'lg:text-right' : 'lg:text-left'}`}
           >
-            <Button size="lg" variant="landing" {...buttonProps} />
+            <Button variant="landing" {...buttonProps} />
           </div>
         )}
       </div>
       <img
         src={image}
-        className={`mx-auto w-[200px] lg:w-[400px] ${imgPosition === 'left' ? 'lg:mr-auto lg:ml-0' : 'lg:mr-0 lg:ml-auto'}`}
+        className={`mask-transparent-bottom mx-auto w-[200px] lg:w-[400px] ${imgPosition === 'left' ? 'lg:mr-auto lg:ml-0' : 'lg:mr-0 lg:ml-auto'}`}
         width={400}
       />
     </div>

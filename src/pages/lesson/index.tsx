@@ -2,7 +2,6 @@ import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Typography } from '@/shared/ui';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useLesson } from './hooks/use-lesson';
-import { useEffect } from 'react';
 import { getSectionNameByModuleName } from '@/shared/lib/utils';
 import { XIcon } from '@/shared/ui/atoms/Icon/Icon';
 
@@ -14,23 +13,22 @@ function Lesson() {
       lesson: params.lesson as string,
       module: params.module as string,
     });
-
-  useEffect(() => {}, []);
   const setAlertDialogData = useRenderStore(
     (state) => state.setAlertDialogData,
   );
   const onCloseLesson = () => {
     setAlertDialogData({
       show: true,
-      title:
+      description:
         '¿Estás seguro que deseas abandonar la lección?. Perderás tu progreso hasta ahora.',
       confirmText: 'Sí, salir',
       onConfirm: () => {
-        navigate(-1);
+        navigate(
+          `/modules/${encodeURIComponent(getSectionNameByModuleName(params.module || ''))}`,
+        );
       },
     });
   };
-  console.log(getSectionNameByModuleName(params.module || ''));
   const handleFinishModule = () => {
     setAlertDialogData({
       show: true,
@@ -53,10 +51,10 @@ function Lesson() {
       <div className="mx-auto grid h-screen w-4/5 max-w-[1200px] grid-rows-[max-content_auto_max-content] gap-8 p-8">
         <div className="flex items-center justify-between">
           <div>
-            <Typography variant="body2" className="text-text-secondary">
+            <Typography variant="body2" className="text-foreground-secondary">
               Estas dentro de la habilidad
             </Typography>
-            <Typography variant="h2">Comunicacion efectiva</Typography>
+            <Typography variant="h2">Comunicación efectiva</Typography>
           </div>
           <XIcon onClick={onCloseLesson} />
         </div>
