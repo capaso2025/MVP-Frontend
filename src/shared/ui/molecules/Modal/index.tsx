@@ -16,7 +16,7 @@ function Modal() {
   } = useRenderStore((state) => state.modalData);
   useEffect(() => {
     if (!children) {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = 'auto';
       return;
     }
     window.scrollTo(0, 0);
@@ -25,7 +25,7 @@ function Modal() {
 
   const handleClose = () => {
     closeModal();
-    document.body.style.overflow = 'auto';
+    document.body.style.overflowY = 'auto';
   };
 
   if (!children) return <></>;

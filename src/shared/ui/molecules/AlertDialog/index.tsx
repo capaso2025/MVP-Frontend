@@ -43,7 +43,7 @@ function AlertDialog() {
           </Typography>
         )}
         <div
-          className={`grid gap-4 ${onlyCloseAction ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}
+          className={`mt-10 grid gap-4 ${onlyCloseAction ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'}`}
         >
           {onlyCloseAction ? (
             <Button

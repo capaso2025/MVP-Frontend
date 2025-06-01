@@ -30,7 +30,7 @@ function Landing() {
     });
   };
   return (
-    <div className="animate-fade-in bg-landing relative overflow-x-hidden">
+    <div className="animate-fade-in bg-landing relative">
       <Header />
       <Container>
         <Main />
@@ -41,7 +41,7 @@ function Landing() {
           src={logoBG}
           width={600}
           alt="logo"
-          className="absolute -top-1/4 -right-[520px] z-0 opacity-10"
+          className="absolute -top-1/4 -right-[520px] opacity-10"
         />
         <AboutUs />
       </Container>

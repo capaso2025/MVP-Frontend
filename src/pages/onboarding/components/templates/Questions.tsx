@@ -108,12 +108,10 @@ function Questions() {
           </div>
         </main>
         <div className="mt-8 flex items-center justify-between">
-          <Button variant="secondary" size="lg" onClick={goToPrevious}>
+          <Button variant="secondary" onClick={goToPrevious}>
             Regresar
           </Button>
-          <Button size="lg" onClick={handleNext}>
-            Avanzar
-          </Button>
+          <Button onClick={handleNext}>Avanzar</Button>
         </div>
       </div>
     </OnboardingLayout>

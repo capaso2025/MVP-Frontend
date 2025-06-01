@@ -9,7 +9,7 @@ import {
 
 function CreateProfile() {
   const setModalData = useRenderStore((state) => state.setModalData);
-  const isAuthenticated = useAuthStore(state => state.isAuthenticated);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   const handleAuthClick = (initialScreen?: AuthScreen) => {
     setModalData({
@@ -18,7 +18,7 @@ function CreateProfile() {
     });
   };
 
-  if (isAuthenticated) return <></>
+  if (isAuthenticated) return <></>;
 
   return (
     <div className="rounded-lg border border-gray-200 p-6">
@@ -26,7 +26,6 @@ function CreateProfile() {
         <div className="text-center font-medium">Crea tu perfil</div>
 
         <Button
-          size="lg"
           variant="secondary"
           className="w-full"
           onClick={() => handleAuthClick()}
@@ -35,7 +34,6 @@ function CreateProfile() {
         </Button>
 
         <Button
-          size="lg"
           variant="primary"
           className="w-full"
           onClick={() => handleAuthClick(AUTH_SCREENS.LOGIN)}

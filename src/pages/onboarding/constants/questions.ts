@@ -1,4 +1,7 @@
 import { Category } from '../types/categories';
+import yes from '@/assets/yes.png';
+import no from '@/assets/no.png';
+import question from '@/assets/question.png';
 
 export const QUESTIONS: {
   [key in Category]: {
@@ -148,14 +151,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -167,14 +173,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -296,14 +305,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'Tal vez',
+          icon: question,
         },
         {
           id: '3',
           text: 'No',
+          icon: no,
         },
       ],
     },
@@ -314,14 +326,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'Tal vez',
+          icon: question,
         },
         {
           id: '3',
           text: 'No',
+          icon: no,
         },
       ],
     },
@@ -333,14 +348,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'Tal vez',
+          icon: question,
         },
         {
           id: '3',
           text: 'No',
+          icon: no,
         },
       ],
     },
@@ -463,14 +481,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -482,14 +503,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -501,14 +525,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -649,14 +676,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -668,14 +698,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },
@@ -687,14 +720,17 @@ export const QUESTIONS: {
         {
           id: '1',
           text: 'Sí',
+          icon: yes,
         },
         {
           id: '2',
           text: 'No',
+          icon: no,
         },
         {
           id: '3',
           text: 'A veces',
+          icon: question,
         },
       ],
     },

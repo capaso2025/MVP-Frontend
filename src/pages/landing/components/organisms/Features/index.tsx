@@ -8,7 +8,7 @@ export default function Features() {
       ref={ref}
       className={`transition-all duration-500 ${hasBeenVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
     >
-      <div className="container px-4 md:px-6">
+      <div className="px-4 md:px-6">
         <div className="mb-12 flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <Typography variant="h1" className="text-white">
