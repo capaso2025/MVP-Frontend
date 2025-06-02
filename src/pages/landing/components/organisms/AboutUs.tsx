@@ -12,23 +12,22 @@ function AboutUs() {
       id="nosotros"
       className={`transition-all duration-500 ${hasBeenVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
     >
-      <div className="bg-landing-dark grid h-[350px] items-center gap-8 overflow-hidden rounded-2xl shadow-xl md:grid-cols-[30%_auto]">
-        <img
-          src="/assets/characters/capito-university1.png"
-          width={400}
-          alt=""
-          className="mask-transparent-right hidden h-full object-cover md:block"
-        />
-        <div className="grid h-[80%] grid-rows-[auto_max-content] gap-4 pr-8 text-right">
+      <div className="grid place-content-center items-center gap-8 md:grid-cols-[30%_auto]">
+        <div className="grid place-content-center">
+          <img
+            src="/assets/characters/capito-ladders.png"
+            width={400}
+            alt=""
+            className="hidden md:block"
+          />
+        </div>
+        <div className="grid h-full grid-rows-[auto_max-content] gap-4 pr-8 pb-8 text-right">
           <div>
-            <Typography variant="h2" className="text-white">
-              {SECTIONS_TEXTS.NOSOTROS.TITLE}
+            <Typography variant="h2" className="text-primary">
+              {SECTIONS_TEXTS.NOSOTROS_2.TITLE}
             </Typography>
-            <Typography
-              variant="h5"
-              className="text-foreground-secondary mt-4 font-normal"
-            >
-              {SECTIONS_TEXTS.NOSOTROS.DESCRIPTION}
+            <Typography variant="h5" className="text-primary mt-4 font-normal">
+              {SECTIONS_TEXTS.NOSOTROS_2.DESCRIPTION}
             </Typography>
           </div>
           <div className="flex justify-end">
@@ -39,15 +38,15 @@ function AboutUs() {
           </div>
         </div>
       </div>
-      <Spacer size="xl" />
-      <div className="grid h-[350px] items-center gap-8 overflow-hidden rounded-2xl md:grid-cols-[auto_30%]">
-        <div className="grid h-[80%] grid-rows-[auto_max-content] gap-4 pl-8 text-left">
+      <Spacer size="3xl" />
+      <div className="grid items-center gap-8 md:grid-cols-[auto_30%]">
+        <div className="grid h-[80%] grid-rows-[auto_max-content] gap-4 pb-8 pl-8 text-left">
           <div>
             <Typography variant="h2" className="text-primary">
-              {SECTIONS_TEXTS.NOSOTROS_2.TITLE}
+              {SECTIONS_TEXTS.NOSOTROS.TITLE}
             </Typography>
             <Typography variant="h5" className="text-primary mt-4 font-normal">
-              {SECTIONS_TEXTS.NOSOTROS_2.DESCRIPTION}
+              {SECTIONS_TEXTS.NOSOTROS.DESCRIPTION}
             </Typography>
           </div>
           <div className="flex justify-start">
@@ -58,10 +57,11 @@ function AboutUs() {
           </div>
         </div>
         <img
-          src="/assets/characters/capito-ladders.png"
+          src="/assets/characters/capo-university2.png"
           alt=""
-          className="hidden md:block"
-          width={400}
+          className="hidden justify-self-end md:block"
+          width={280}
+          height={350}
         />
       </div>
     </section>

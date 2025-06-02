@@ -35,13 +35,13 @@ function Landing() {
       <Container>
         <Main />
       </Container>
-      <Spacer size="3xl" />
+      <Spacer size="xl" />
       <Container className="relative">
         <img
           src={logoBG}
           width={600}
           alt="logo"
-          className="absolute -top-1/4 -right-[520px] opacity-10"
+          className="absolute -top-1/4 -right-[390px] opacity-10"
         />
         <AboutUs />
       </Container>
@@ -82,7 +82,7 @@ function Landing() {
               children: SECTIONS_TEXTS.PROFESORES.BUTTON_TEXT,
               onClick: openTeacherModal,
             }}
-            image="/assets/characters/capito-tech.png"
+            image="/assets/characters/capito-teach.png"
             imgPosition="left"
           />
         </Container>
