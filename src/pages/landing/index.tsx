@@ -82,7 +82,7 @@ function Landing() {
               children: SECTIONS_TEXTS.PROFESORES.BUTTON_TEXT,
               onClick: openTeacherModal,
             }}
-            image="/assets/characters/capito-director.png"
+            image="/assets/characters/capito-tech.png"
             imgPosition="left"
           />
         </Container>
@@ -102,7 +102,7 @@ function Landing() {
             buttonProps={{
               children: SECTIONS_TEXTS.INSTITUCIONES.BUTTON_TEXT,
             }}
-            image="/assets/characters/capito-teach.png"
+            image="/assets/characters/capito-director.png"
             imgPosition="right"
           />
         </Container>

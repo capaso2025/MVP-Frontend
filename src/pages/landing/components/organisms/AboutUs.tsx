@@ -14,7 +14,7 @@ function AboutUs() {
     >
       <div className="bg-landing-dark grid h-[350px] items-center gap-8 overflow-hidden rounded-2xl shadow-xl md:grid-cols-[30%_auto]">
         <img
-          src="/assets/characters/capito-university.png"
+          src="/assets/characters/capito-university1.png"
           width={400}
           alt=""
           className="mask-transparent-right hidden h-full object-cover md:block"
