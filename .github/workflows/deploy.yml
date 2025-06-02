@@ -2,7 +2,7 @@ name: Deploy React Frontend (Free Tier)
 on:
   push:
     branches: 
-      # - releases
+      - releases
       - main1 
   workflow_dispatch:
 
@@ -43,10 +43,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'  # Cachear dependencias para acelerar builds
+          # cache: 'npm'  # Cachear dependencias para acelerar builds
       
       - name: Install dependencies
-        run: npm ci --no-audit --prefer-offline  # Opciones para build más rápido
+        run: npm install --no-audit --prefer-offline  # Opciones para build más rápido
         
       # Crear el archivo .env
       - name: Create production env file
@@ -125,3 +125,5 @@ jobs:
             --paths "/index.html"
                 
           echo "Invalidación selectiva de CloudFront completada"
+
+          
