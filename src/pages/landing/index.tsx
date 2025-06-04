@@ -46,7 +46,7 @@ function Landing() {
         <AboutUs />
       </Container>
       <Spacer size="3xl" />
-      <div className="bg-landing-dark">
+      <div className="bg-landing-dark" id="funcionalidades">
         <Spacer size="3xl" />
         <Container>
           <Features />
@@ -64,11 +64,13 @@ function Landing() {
         />
       </Container>
       <Spacer size="3xl" />
-      <div className="bg-landing-dark rounded-t-[4rem]">
+      <div
+        className="bg-landing-dark rounded-t-[4rem]"
+        id={SECTIONS_TEXTS.PROFESORES.ID}
+      >
         <Spacer size="3xl" />
         <Container>
           <InfoSection
-            id={SECTIONS_TEXTS.PROFESORES.ID}
             color="text-white"
             title={SECTIONS_TEXTS.PROFESORES.TITLE}
             description={SECTIONS_TEXTS.PROFESORES.DESCRIPTION}
@@ -106,9 +108,9 @@ function Landing() {
             imgPosition="right"
           />
         </Container>
-        <Spacer size="5xl" />
-        <Container>
-          <Demo id="demo" />
+        <Container id="demo">
+          <Spacer size="5xl" />
+          <Demo />
         </Container>
         <Spacer size="5xl" />
         <Container>
