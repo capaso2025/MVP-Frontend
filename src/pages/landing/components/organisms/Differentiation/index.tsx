@@ -47,7 +47,7 @@ export default function DiferenciasSection() {
         </div>
         <div className="grid place-content-center">
           <img
-            src="/assets/characters/capito-excited.png"
+            src="/assets/characters/capito-excited-2.png"
             className="mask-transparent-bottom"
             width={400}
             height={400}
