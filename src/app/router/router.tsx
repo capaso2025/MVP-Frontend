@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import MainLayout from '@/shared/ui/layouts/main-layout';
 import Spinner from '@/shared/ui/atoms/Spinner';
 import { PublicOnlyRoute } from './public-route';
+import LessonPathPage from '@/pages/lessons-path';
 
 // Public
 const LandingPage = lazy(() => import('@/pages/landing'));
@@ -25,7 +26,7 @@ const OnboardingResultsPage = lazy(
 
 // Home
 const SectionsPage = lazy(() => import('@/pages/sections'));
-const LearnPage = lazy(() => import('@/pages/learn'));
+const LearnPage = lazy(() => import('@/pages/modules'));
 const CalendarPage = lazy(() => import('@/pages/calendar'));
 const ShopPage = lazy(() => import('@/pages/shop'));
 const ProfilePage = lazy(() => import('@/pages/profile'));
@@ -74,7 +75,11 @@ function AppRouter() {
         {/* Home */}
         <Route path="/" element={<MainLayout />}>
           <Route path="/sections" element={<SectionsPage />} />
-          <Route path="/modules/:section" element={<LearnPage />} />
+          <Route path="/modules/:sectionId" element={<LearnPage />} />
+          <Route
+            path="/modules/:sectionId/:moduleId"
+            element={<LessonPathPage />}
+          />
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
@@ -84,7 +89,10 @@ function AppRouter() {
           <Route path="/points" element={<PointsPage />} />
           <Route path="/chats" element={<ChatsPage />} />
         </Route>
-        <Route path="/lesson/:module/:lesson" element={<LessonPage />} />
+        <Route
+          path="/lesson/:sectionId/:moduleId/:lessonId"
+          element={<LessonPage />}
+        />
 
         {/* Ruta 404 - No encontrado */}
         <Route path="*" element={<NotFoundPage />} />

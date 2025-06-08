@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { Category } from '../types/categories';
 
 export const RESULT_MESSAGES: {
   [key in Category]: {
     bubble?: string;
-    mainText: string;
+    mainText: ReactNode;
     buttonText: string;
   }[];
 } = {
@@ -15,8 +16,14 @@ export const RESULT_MESSAGES: {
       buttonText: 'Siguiente',
     },
     {
-      mainText:
-        'Con base a tus respuestas [usuario], preparamos un roadmap hecho para ti. Cada paso te ayudará a mejorar tu forma de comunicarte, conectar con otros y sentirte más seguro en cualquier situación. ✅ Toca EMPEZAR para ver tu plan',
+      mainText: (
+        <>
+          ¡Tenemos un plan para ti! <br /> Según lo que respondiste, armamos una
+          guía paso a paso para ayudarte a comunicarte mejor, conectar con otros
+          y sentirte más seguro. <br />✅ Toca EMPEZAR y ve lo que puedes
+          lograr.
+        </>
+      ),
       buttonText: 'Empezar',
     },
   ],
@@ -28,8 +35,14 @@ export const RESULT_MESSAGES: {
       buttonText: 'Siguiente',
     },
     {
-      mainText:
-        'Con base en tus respuestas [usuario], preparamos un roadmap a tu medida. Vas a aprender a priorizar, planificar y avanzar sin sentir que estás corriendo todo ✅ el tiempo. ✅ Toca EMPEZAR para ver tu plan',
+      mainText: (
+        <>
+          ¡Tenemos un plan para ti! <br /> Según lo que respondiste, armamos una
+          guía paso a paso para ayudarte a comunicarte mejor, conectar con otros
+          y sentirte más seguro.
+          <br />✅ Toca EMPEZAR y ve lo que puedes lograr.
+        </>
+      ),
       buttonText: 'Empezar',
     },
   ],
@@ -41,8 +54,14 @@ export const RESULT_MESSAGES: {
       buttonText: 'Siguiente',
     },
     {
-      mainText:
-        'Con base en tus respuestas [usuario], preparamos un roadmap pensando en tu bienestar. Vas a trabajar en hábitos reales, sostenibles y adaptados a tu ritmo. ✅ Toca EMPEZAR para ver tu plan',
+      mainText: (
+        <>
+          ¡Tenemos un plan para ti! <br /> Según lo que respondiste, armamos una
+          guía paso a paso para ayudarte a comunicarte mejor, conectar con otros
+          y sentirte más seguro.
+          <br />✅ Toca EMPEZAR y ve lo que puedes lograr.
+        </>
+      ),
       buttonText: 'Empezar',
     },
   ],
@@ -54,8 +73,14 @@ export const RESULT_MESSAGES: {
       buttonText: 'Siguiente',
     },
     {
-      mainText:
-        'Con base en tus respuestas [usuario], preparamos un roadmap pensando en tu bienestar. Vas a trabajar en hábitos reales, sostenibles y adaptados a tu ritmo. ✅ Toca EMPEZAR para ver tu plan',
+      mainText: (
+        <>
+          ¡Tenemos un plan para ti! <br /> Según lo que respondiste, armamos una
+          guía paso a paso para ayudarte a comunicarte mejor, conectar con otros
+          y sentirte más seguro.
+          <br />✅ Toca EMPEZAR y ve lo que puedes lograr.
+        </>
+      ),
       buttonText: 'Empezar',
     },
   ],

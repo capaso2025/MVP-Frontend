@@ -7,7 +7,7 @@ const meta: Meta<typeof LessonDetails> = {
   component: LessonDetails,
   tags: ['autodocs'],
   argTypes: {
-    level: {
+    lesson: {
       control: 'object',
       defaultValue: { level: 1, title: 'Introducción a JavaScript' },
     },
@@ -31,7 +31,7 @@ export default meta;
 type Story = StoryObj<typeof LessonDetails>;
 export const Default: Story = {
   args: {
-    level: { level: 1, title: '¿Que es comunicar?' },
+    lesson: { level: 1, title: '¿Que es comunicar?' },
   },
   render: (args) => <LessonDetails {...args} />,
   parameters: {

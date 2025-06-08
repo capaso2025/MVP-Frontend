@@ -6,4 +6,5 @@ export interface Module {
   image: string;
   imagePosition: 'left' | 'right';
   lessons: Lesson[];
+  id: string;
 }

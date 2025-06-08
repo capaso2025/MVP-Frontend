@@ -20,6 +20,7 @@ const meta: Meta<typeof AlertDialog> = {
             onClick={() => {
               setAlertDialogData({
                 show: true,
+                title: 'Alerta de ejemplo',
                 description:
                   'Esta es una descripción de alerta para mostrar información importante.',
                 confirmText: 'Aceptar',

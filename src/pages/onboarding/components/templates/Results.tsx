@@ -44,7 +44,7 @@ function Intro() {
         </main>
         <div className="mt-8 flex items-center justify-between">
           <div />
-          <Button size="lg" onClick={goToNext}>
+          <Button onClick={goToNext}>
             {resultMessages[currentIndex]?.buttonText}
           </Button>
         </div>

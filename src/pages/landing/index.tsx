@@ -19,7 +19,7 @@ function Landing() {
   const setModalData = useRenderStore((state) => state.setModalData);
   const openTeacherModal = () => {
     setModalData({
-      // containerClassName: 'bg-landing',
+      containerClassName: 'bg-landing-dark',
       fullScreen: true,
       children: (
         <TeacherSignupFormWrapper

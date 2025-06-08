@@ -1,12 +1,14 @@
+import { useDummyStore } from '@/shared/store/dummy-store';
 import { Button, Typography } from '@/shared/ui';
 import Spacer from '@/shared/ui/atoms/Spacer';
 
 function LessonDetails(props: {
-  level: { level: number; title: string };
+  lesson: { level: number; title: string };
   onClick: () => void;
 }) {
-  const { level, onClick } = props;
-  if (!level) return <></>;
+  const { lesson, onClick } = props;
+  const currentLesson = useDummyStore((state) => state.currentLesson);
+  if (!lesson) return <></>;
   return (
     <div className="grid grid-cols-2 place-content-center gap-4 p-4 text-white">
       <div className="grid place-content-center">
@@ -19,43 +21,39 @@ function LessonDetails(props: {
       </div>
       <div className="grid grid-rows-[auto_max-content] gap-8">
         <div>
-          <Typography variant="h2" className="font-normal">
-            {level.title}
-          </Typography>
-          <Spacer size="md" />
-          <Typography className="text-foreground font-normal" variant="h5">
-            {`Nivel ${level.level}`}
+          <Typography variant="h3" className="text-primary font-normal">
+            {lesson.title}
           </Typography>
           <Spacer size="lg" />
           <Typography
             variant="h5"
-            className="text-foreground-secondary font-normal"
+            className="text-foreground-secondary/50 font-normal"
           >
             Puntos de experiencia:{' '}
             <Typography
               as="span"
               variant="h5"
-              className="text-foreground font-normal"
+              className="text-primary font-normal"
             >
               100 XP
             </Typography>
           </Typography>
           <Typography
             variant="h5"
-            className="text-foreground-secondary font-normal"
+            className="text-foreground-secondary/50 font-normal"
           >
             Nivel:{' '}
             <Typography
               as="span"
               variant="h5"
-              className="text-foreground font-normal"
+              className="text-primary font-normal"
             >
               Principiante
             </Typography>
           </Typography>
         </div>
         <Button variant="landing" className="w-full" onClick={onClick}>
-          Empezar ahora
+          {currentLesson > lesson.level ? 'Repetir' : 'Empezar ahora'}
         </Button>
       </div>
     </div>

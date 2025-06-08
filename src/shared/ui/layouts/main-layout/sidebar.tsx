@@ -32,7 +32,7 @@ function Sidebar() {
 
   return (
     <aside
-      className={`from-primary to-primary-dark shadow-secondary-dark fixed z-[90] grid h-screen min-w-[300px] grid-rows-[120px_auto] gap-2 rounded-r-2xl bg-gradient-to-br px-4 py-8 text-white shadow-xl ${isMobile ? 'translate-x-[-1000px]' : ''} ${openedSidebar ? '!translate-x-0' : ''} transition-transform duration-300`}
+      className={`bg-landing-dark shadow-secondary-dark fixed z-[90] grid h-screen min-w-[300px] grid-rows-[120px_auto] gap-2 rounded-r-2xl bg-gradient-to-br px-4 py-8 text-white shadow-xl ${isMobile ? 'translate-x-[-1000px]' : ''} ${openedSidebar ? '!translate-x-0' : ''} transition-transform duration-300`}
     >
       <div>
         <div className="flex justify-end xl:hidden">

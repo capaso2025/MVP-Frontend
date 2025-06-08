@@ -2,8 +2,7 @@ import { Button, Progress, Typography } from '@/shared/ui';
 
 function SectionCard(props: {
   title: string;
-  bubbleText: string;
-  progress: number;
+  progress?: number;
   onClick: () => void;
   isActive?: boolean;
   image?: string;
@@ -15,13 +14,13 @@ function SectionCard(props: {
     >
       <div className="z-10 grid grid-rows-[auto_max-content]">
         <div>
-          <Typography variant="h6" className="font-normal text-white">
+          <Typography variant="h6" className="text-foreground mb-2 font-normal">
             Ver detalles
           </Typography>
           <Typography variant="h4" className="mb-4 font-bold">
             {title}
           </Typography>
-          <Progress value={progress} />
+          {progress !== undefined && <Progress value={progress} />}
         </div>
         <Button
           onClick={isActive ? onClick : () => {}}
@@ -32,7 +31,6 @@ function SectionCard(props: {
         </Button>
       </div>
       <div className="mask-opacity-image absolute top-0 right-0 z-0 h-full w-full">
-        {/* <SpeechBubble text={bubbleText} /> */}
         <img
           src={image}
           className="mr-0 ml-auto h-full w-full object-cover text-center"

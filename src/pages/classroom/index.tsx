@@ -55,3 +55,27 @@ export default function ColegioDashboard() {
     </>
   );
 }
+
+// const TeacherHeader = () => {
+//   const toggleOpenedSidebar = useRenderStore(
+//     (state) => state.toggleOpenedSidebar,
+//   );
+//   return (
+//     <header className="bg-white p-2 shadow-sm">
+//       <div className="flex items-center gap-2">
+//         <MenuIcon
+//           className="text-primary block xl:hidden"
+//           onClick={toggleOpenedSidebar}
+//         />
+//         <img
+//           src={School}
+//           alt="Logo colegio"
+//           width={50}
+//           height={50}
+//           className="object-contain"
+//         />
+//         <h1 className="text-lg font-bold text-blue-900">COLEGIO ***</h1>
+//       </div>
+//     </header>
+//   );
+// };

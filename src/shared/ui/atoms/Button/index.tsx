@@ -105,7 +105,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
 
     // Construcción de la clase combinada
     const buttonClasses = [
-      'inline-flex items-center justify-center font-medium rounded-md focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed active:scale-95',
+      'inline-flex items-center justify-center font-medium rounded-md focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed active:scale-95',
       variantClasses[variant],
       sizeClasses[size],
       fullWidth ? 'w-full' : '',

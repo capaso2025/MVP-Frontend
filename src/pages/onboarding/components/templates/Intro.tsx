@@ -9,7 +9,7 @@ function OnboardingIntro() {
   const navigate = useNavigate();
   const [animate, setAnimate] = useState(false);
   const { currentIndex, goToNext, goToPrevious } = useBackNext({
-    length: 3,
+    length: 2,
     finishFn: () => {
       navigate('/onboarding/questions');
     },
@@ -18,11 +18,7 @@ function OnboardingIntro() {
     },
   });
 
-  const messages = [
-    'Hola soy Capito!',
-    'Antes que inicies tu camino...',
-    'Recuerda, tu voz tiene poder. Y cuando aprendes a usarla con seguridad, puedes abrirte a nuevas oportunidades, crear relaciones auténticas y liderar con confianza. ¡Vamos a desarrollar esa versión fuerte y clara de ti!',
-  ];
+  const messages = ['Te saluda Kapi!', 'Antes que inicies tu camino...'];
   return (
     <OnboardingLayout>
       <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
@@ -36,7 +32,7 @@ function OnboardingIntro() {
           />
           <br />
           <img
-            src="/assets/characters/capito-happy.png"
+            src="/assets/characters/capito-default.png"
             className="mx-auto"
             width={150}
             height={150}
@@ -44,11 +40,10 @@ function OnboardingIntro() {
           <br />
         </div>
         <div className="flex h-max w-full justify-between">
-          <Button size="lg" variant="secondary" onClick={goToPrevious}>
+          <Button variant="secondary" onClick={goToPrevious}>
             Anterior
           </Button>
           <Button
-            size="lg"
             onClick={() => {
               setAnimate(true);
               setTimeout(() => {

@@ -13,7 +13,7 @@ export function SchoolCard({ school }: SchoolCardProps) {
 
   const handleSelectSchool = () => {
     setModalData({
-      containerClassName: 'bg-landing',
+      containerClassName: 'bg-landing-dark',
       fullScreen: true,
       children: (
         <TeacherSignupFormWrapper

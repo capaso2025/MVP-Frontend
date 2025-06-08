@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 
-function CustomCalendar(props: { selectedDays: Date[] }) {
+function CustomCalendar(props: { selectedDays?: Date[] }) {
   const { selectedDays } = props;
-  const [selected, setSelected] = useState<Date[]>([...selectedDays]);
+  const [selected, setSelected] = useState<Date[]>([...(selectedDays || [])]);
   useEffect(() => {
-    setSelected([...selectedDays]);
+    setSelected([...(selectedDays || [])]);
   }, [selectedDays]);
 
   return (
@@ -25,10 +25,13 @@ function CustomCalendar(props: { selectedDays: Date[] }) {
         }
         classNames={{
           selected: 'bg-primary-2 text-white rounded-sm',
-          week: 'flex gap-1',
+          week: 'flex gap-1 justify-between w-full',
           weekdays: 'flex justify-between mx-4',
           chevron: 'fill-primary-2',
           today: 'font-bold text-primary-2',
+          month: 'w-full',
+          month_grid: 'w-full',
+          months: 'max-w-none',
         }}
       />
     </div>

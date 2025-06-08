@@ -36,16 +36,18 @@ function Modal() {
       className={`animate-fade-in bg-custom absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
     >
       <div
-        className={`bg-landing-dark relative overflow-auto shadow-xl ${fullScreen ? 'h-full w-full' : 'border-custom mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl p-4 md:min-w-[400px]'} ${
+        className={`bg-foreground relative overflow-auto shadow-xl ${fullScreen ? 'h-full w-full' : 'border-primary-lighter mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl border-2 p-4 md:min-w-[400px]'} ${
           containerClassName || ''
         }`}
       >
         {noCloseButton ? null : (
           <div
             onClick={handleClose}
-            className="text-foreground absolute top-[4px] right-[4px] grid h-10 w-10 cursor-pointer place-content-center rounded-2xl"
+            className="absolute top-[4px] right-[4px] grid h-10 w-10 cursor-pointer place-content-center rounded-2xl"
           >
-            <XIcon className="scale-110 text-white" />
+            <XIcon
+              className={`scale-110 ${fullScreen ? 'text-foreground' : 'text-primary'}`}
+            />
           </div>
         )}
         {fullScreen ? (

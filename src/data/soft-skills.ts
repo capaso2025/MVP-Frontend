@@ -25,37 +25,60 @@ export const SOFT_SKILLS_SECTIONS: {
     image: communication,
     modules: [
       {
+        id: '1',
         title: '¿Por qué nadie me entiende (y cómo evitarlo)?',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'left',
         objective: 'Entender barreras de comunicación y cómo evitarlas.',
         lessons: [
-          { level: 1, title: '¿Qué es la comunicación realmente?' },
           {
+            level: 1,
+            title: '¿Qué es la comunicación realmente?',
+            id: '1',
+            activity: 'FLASH_CARDS',
+          },
+          {
+            id: '2',
             level: 2,
             title: 'Barreras invisibles (emociones, juicios, filtros)',
+            activity: 'SORTING_GAME',
           },
-          { level: 3, title: 'Lenguaje no verbal', type: 'normal' },
-          { level: 4, title: 'Tú crees que fuiste claro… ¿pero lo fuiste?' },
           {
+            id: '3',
+            level: 3,
+            title: 'Lenguaje no verbal',
+            type: 'normal',
+            activity: 'QUIZ',
+          },
+          {
+            id: '4',
+            level: 4,
+            title: 'Tú crees que fuiste claro… ¿pero lo fuiste?',
+            activity: 'FLASH_CARDS',
+          },
+          {
+            id: '5',
             level: 5,
             title:
               'Mini reto interactivo — reconstruye una conversación con fallos y corrígela',
             type: 'final',
+            activity: 'RESUME',
           },
         ],
       },
       {
+        id: '2',
         title: 'El superpoder de escuchar',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'right',
         objective: 'Aprender a escuchar activamente.',
         lessons: [
-          { level: 1, title: 'La escucha que no escucha' },
-          { level: 2, title: 'Escucha activa y empática' },
-          { level: 3, title: 'Técnica del espejo', type: 'normal' },
-          { level: 4, title: 'Reto de “escuchar sin interrumpir”' },
+          { id: '1', level: 1, title: 'La escucha que no escucha' },
+          { id: '2', level: 2, title: 'Escucha activa y empática' },
+          { id: '3', level: 3, title: 'Técnica del espejo', type: 'normal' },
+          { id: '4', level: 4, title: 'Reto de “escuchar sin interrumpir”' },
           {
+            id: '5',
             level: 5,
             title:
               'Desbloquea una medalla de “Oído ninja” al superar un diálogo interactivo',
@@ -64,19 +87,22 @@ export const SOFT_SKILLS_SECTIONS: {
         ],
       },
       {
+        id: '3',
         title: 'Di lo que piensas sin miedo',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'left',
         objective: 'Fortalecer la expresión clara y sin temor.',
         lessons: [
-          { level: 1, title: 'Identifica lo que sientes y piensas' },
-          { level: 2, title: 'Técnicas para hablar desde el “yo”' },
-          { level: 3, title: 'Lo que callas pesa' },
+          { id: '1', level: 1, title: 'Identifica lo que sientes y piensas' },
+          { id: '2', level: 2, title: 'Técnicas para hablar desde el “yo”' },
+          { id: '3', level: 3, title: 'Lo que callas pesa' },
           {
+            id: '4',
             level: 4,
             title: 'Mini juego — Escribe tu opinión con diferentes tonos',
           },
           {
+            id: '5',
             level: 5,
             title: '“Defiende tu idea” — reto interactivo estilo diálogo',
             type: 'final',
@@ -84,19 +110,22 @@ export const SOFT_SKILLS_SECTIONS: {
         ],
       },
       {
+        id: '4',
         title: 'Conversaciones difíciles sin drama',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'right',
         objective: 'Gestionar conflictos y tensiones con madurez.',
         lessons: [
-          { level: 1, title: '¿Por qué evitamos el conflicto?' },
-          { level: 2, title: 'Técnica del sándwich' },
-          { level: 3, title: 'Validar sin ceder' },
+          { id: '1', level: 1, title: '¿Por qué evitamos el conflicto?' },
+          { id: '2', level: 2, title: 'Técnica del sándwich' },
+          { id: '3', level: 3, title: 'Validar sin ceder' },
           {
+            id: '4',
             level: 4,
             title: 'Caso práctico — conversación con un amigo que te falló',
           },
           {
+            id: '5',
             level: 5,
             title:
               '“Boss level” — conversación compleja con toma de decisiones',

@@ -75,6 +75,9 @@ body {
   .bg-custom-blur {
     @apply bg-[#1d20315d] backdrop-blur-2xl;
   }
+  .with-right-section {
+    @apply grid gap-8 md:grid-cols-[60%_auto];
+  }
 }
 
 .mask-opacity-image::after {
@@ -84,7 +87,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   opacity: 0.68;
   pointer-events: none;
   z-index: 1;

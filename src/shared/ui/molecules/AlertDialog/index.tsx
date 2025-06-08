@@ -24,12 +24,12 @@ function AlertDialog() {
   return (
     <AlertDialogContainer defaultOpen={show}>
       <AlertDialogContent
-        className="bg-landing-dark w-[95%] rounded-2xl p-10 text-white"
+        className="bg-foreground border-primary-lighter w-[95%] rounded-2xl border-2 p-10"
         id="alert-dialog"
       >
         {title && (
           <AlertDialogTitle>
-            <Typography variant="h3" className="text-foreground text-center">
+            <Typography variant="h3" className="text-primary text-center">
               {title}
             </Typography>
           </AlertDialogTitle>
@@ -37,7 +37,7 @@ function AlertDialog() {
         {description && (
           <Typography
             variant="h6"
-            className={`px-4 text-center font-normal ${!title ? '!text-foreground pb-4 text-xl' : 'text-foreground-secondary'}`}
+            className={`text-primary px-4 text-center font-normal ${!title ? 'pb-4 text-xl' : ''}`}
           >
             {description}
           </Typography>
