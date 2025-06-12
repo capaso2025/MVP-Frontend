@@ -413,10 +413,10 @@ export const QUESTIONS: {
       question: '¿Por qué quieres aprender esta habilidad?',
       type: 'multiple-choice',
       options: [
-        { id: '1', text: 'Mas energía diaria' },
+        { id: '1', text: 'Más energía diaria' },
         { id: '2', text: 'Mejor concentración' },
-        { id: '3', text: 'Mejorar tu estado de animo' },
-        { id: '4', text: 'Mas autoestima' },
+        { id: '3', text: 'Mejorar tu estado de ánimo' },
+        { id: '4', text: 'Más autoestima' },
         { id: '5', text: 'Hábitos saludables' },
         { id: '6', text: 'Menos estrés físico y mental' },
       ],
