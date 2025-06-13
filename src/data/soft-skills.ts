@@ -88,7 +88,7 @@ export const SOFT_SKILLS_SECTIONS: {
       },
       {
         id: '3',
-        title: 'Di lo que piensas sin miedo',
+        title: 'Barreras comunes',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'left',
         objective: 'Fortalecer la expresión clara y sin temor.',
