@@ -1,0 +1,92 @@
+export const STUDENTS = [
+  {
+    id: 1,
+    name: 'Ana García',
+    avatar: '/placeholder.svg?height=40&width=40',
+    lastMessage: 'Profesor, tengo una duda sobre la tarea',
+    timestamp: '10:30',
+    unread: 2,
+    online: true,
+  },
+  {
+    id: 2,
+    name: 'Carlos López',
+    avatar: '/placeholder.svg?height=40&width=40',
+    lastMessage: 'Gracias por la explicación',
+    timestamp: '09:45',
+    unread: 0,
+    online: false,
+  },
+  {
+    id: 3,
+    name: 'María Rodríguez',
+    avatar: '/placeholder.svg?height=40&width=40',
+    lastMessage: '¿Podemos revisar el ejercicio 5?',
+    timestamp: 'Ayer',
+    unread: 1,
+    online: true,
+  },
+  {
+    id: 4,
+    name: 'Diego Martín',
+    avatar: '/placeholder.svg?height=40&width=40',
+    lastMessage: 'Entendido, profesor',
+    timestamp: 'Ayer',
+    unread: 0,
+    online: false,
+  },
+  {
+    id: 5,
+    name: 'Sofía Hernández',
+    avatar: '/placeholder.svg?height=40&width=40',
+    lastMessage: '¿Cuándo es el examen?',
+    timestamp: 'Lunes',
+    unread: 3,
+    online: true,
+  },
+];
+
+export const CHATS = [
+  {
+    id: 1,
+    senderId: 1,
+    senderName: 'Ana García',
+    message: 'Hola profesor, espero que esté bien',
+    timestamp: '10:25',
+    isTeacher: false,
+  },
+  {
+    id: 2,
+    senderId: 0,
+    senderName: 'Profesor',
+    message: 'Hola Ana, muy bien gracias. ¿En qué puedo ayudarte?',
+    timestamp: '10:26',
+    isTeacher: true,
+  },
+  {
+    id: 3,
+    senderId: 1,
+    senderName: 'Ana García',
+    message:
+      'Tengo una duda sobre la tarea de matemáticas, específicamente el ejercicio 3',
+    timestamp: '10:28',
+    isTeacher: false,
+  },
+  {
+    id: 4,
+    senderId: 0,
+    senderName: 'Profesor',
+    message:
+      'Por supuesto, ¿qué parte del ejercicio te está causando dificultad?',
+    timestamp: '10:29',
+    isTeacher: true,
+  },
+  {
+    id: 5,
+    senderId: 1,
+    senderName: 'Ana García',
+    message: 'No entiendo cómo resolver las ecuaciones cuadráticas',
+    timestamp: '10:30',
+    isTeacher: false,
+  },
+];

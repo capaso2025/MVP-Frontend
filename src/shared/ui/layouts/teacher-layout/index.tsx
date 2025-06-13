@@ -1,15 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import Sidebar from '../../organisms/sidebar';
 import { TimerFloating } from '@/pages/timer/components/TimerFloating';
 import HeaderActions from '@/pages/sections/components/organisms/HeaderActions';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useEffect } from 'react';
 import { useRenderStore } from '@/shared/store/render-store';
-import { DEFAULT_MENU_ITEMS } from './menu-items';
+import { TEACHER_DEFAULT_MENU_ITEMS } from '../main-layout/menu-items';
+import { useDummyStore } from '@/shared/store/dummy-store';
 
-function MenuLayout() {
+function TeacherLayout() {
   const { isMobile } = useResize();
-
+  const role = useDummyStore((state) => state.role);
   const setOpenedSidebar = useRenderStore((state) => state.setOpenedSidebar);
   useEffect(() => {
     if (isMobile) {
@@ -17,9 +18,10 @@ function MenuLayout() {
     }
   }, [isMobile, setOpenedSidebar]);
 
+  if (role !== 'teacher') return <Navigate to="/" replace={true} />;
   return (
     <div className="">
-      <Sidebar items={DEFAULT_MENU_ITEMS} />
+      <Sidebar items={TEACHER_DEFAULT_MENU_ITEMS} />
       {isMobile ? <></> : <div className="w-[300px]" />}
       <div className={isMobile ? 'w-auto' : 'ml-[300px]'}>
         <main className="mx-auto w-full p-4 lg:w-[1050px]">
@@ -34,4 +36,4 @@ function MenuLayout() {
   );
 }
 
-export default MenuLayout;
+export default TeacherLayout;

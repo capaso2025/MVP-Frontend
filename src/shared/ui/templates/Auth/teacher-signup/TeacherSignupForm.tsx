@@ -43,7 +43,7 @@ const TeacherSignupForm = forwardRef<
 
   return (
     <div
-      className={`animate-fade-in bg-background mx-auto mt-4 max-w-xl rounded-4xl px-8 py-4 ${className}`}
+      className={`animate-fade-in bg-background mx-auto mt-4 max-w-xl rounded-lg px-8 py-4 ${className}`}
       {...rest}
     >
       <div className="text-md mb-4 text-center">

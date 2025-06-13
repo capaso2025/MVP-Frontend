@@ -18,7 +18,7 @@ function UpdateTeacherEmail() {
     });
   };
   return (
-    <div className="animate-fade-in max-[500px] z-10 mx-auto w-full">
+    <div className="animate-fade-in z-10 mx-auto w-full max-w-[400px]">
       <Typography className="text-foreground font-normal" variant="h5">
         Usa tu dirección de correo electrónico institucional para que tu escuela
         te autorice lo antes posible

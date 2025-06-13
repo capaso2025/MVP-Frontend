@@ -4,6 +4,7 @@ import MainLayout from '@/shared/ui/layouts/main-layout';
 import Spinner from '@/shared/ui/atoms/Spinner';
 import { PublicOnlyRoute } from './public-route';
 import LessonPathPage from '@/pages/lessons-path';
+import TeacherLayout from '@/shared/ui/layouts/teacher-layout';
 
 // Public
 const LandingPage = lazy(() => import('@/pages/landing'));
@@ -27,14 +28,13 @@ const OnboardingResultsPage = lazy(
 // Home
 const SectionsPage = lazy(() => import('@/pages/sections'));
 const LearnPage = lazy(() => import('@/pages/modules'));
-const CalendarPage = lazy(() => import('@/pages/calendar'));
 const ShopPage = lazy(() => import('@/pages/shop'));
 const ProfilePage = lazy(() => import('@/pages/profile'));
 const TimerPage = lazy(() => import('@/pages/timer'));
 const ClassroomPage = lazy(() => import('@/pages/classroom'));
 const InsightPage = lazy(() => import('@/pages/insight'));
-const PointsPage = lazy(() => import('@/pages/points'));
 const ChatsPage = lazy(() => import('@/pages/chats'));
+const CalendarPage = lazy(() => import('@/pages/calendar'));
 
 // Lessons
 const LessonPage = lazy(() => import('@/pages/lesson'));
@@ -80,13 +80,14 @@ function AppRouter() {
             path="/modules/:sectionId/:moduleId"
             element={<LessonPathPage />}
           />
-          <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
+        </Route>
+        <Route path="/" element={<TeacherLayout />}>
           <Route path="/classroom" element={<ClassroomPage />} />
+          <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/insight" element={<InsightPage />} />
-          <Route path="/points" element={<PointsPage />} />
           <Route path="/chats" element={<ChatsPage />} />
         </Route>
         <Route

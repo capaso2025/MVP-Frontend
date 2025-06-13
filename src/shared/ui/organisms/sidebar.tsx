@@ -1,22 +1,15 @@
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { Typography } from '../../atoms/Typography';
+import { Link, useLocation } from 'react-router-dom';
+import { Typography } from '../atoms/Typography';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useRenderStore } from '@/shared/store/render-store';
 import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
 import capoLogo from '@/assets/capo-logo.png';
-import { useAuthStore } from '@/features/auth/auth-store';
-import {
-  DEFAULT_MENU_ITEMS,
-  NO_LOGGED_DEFAULT_MENU_ITEMS,
-  TEACHER_DEFAULT_MENU_ITEMS,
-} from './menu-items';
+import { MenuItem as MenuItemType } from '../layouts/main-layout/menu-items';
 
-function Sidebar() {
+function Sidebar(props: { items: MenuItemType[] }) {
+  const { items } = props;
   const location = useLocation();
   const { isMobile } = useResize();
-  const [searchParams] = useSearchParams();
-  const isTeacher = searchParams.get('role') === 'teacher';
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const toggleOpenedSidebar = useRenderStore(
     (state) => state.toggleOpenedSidebar,
   );
@@ -46,12 +39,7 @@ function Sidebar() {
         />
       </div>
       <div>
-        {(isTeacher
-          ? TEACHER_DEFAULT_MENU_ITEMS
-          : isAuthenticated
-            ? DEFAULT_MENU_ITEMS
-            : NO_LOGGED_DEFAULT_MENU_ITEMS
-        ).map((el) => (
+        {items.map((el) => (
           <MenuItem
             key={el.label}
             {...el}

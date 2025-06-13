@@ -26,7 +26,7 @@ export const SOFT_SKILLS_SECTIONS: {
     modules: [
       {
         id: '1',
-        title: '¿Por qué nadie me entiende (y cómo evitarlo)?',
+        title: 'Fundamentos de la comunicación',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'left',
         objective: 'Entender barreras de comunicación y cómo evitarlas.',
@@ -68,7 +68,7 @@ export const SOFT_SKILLS_SECTIONS: {
       },
       {
         id: '2',
-        title: 'El superpoder de escuchar',
+        title: 'Estilos: pasivo, agresivo, asertivo',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'right',
         objective: 'Aprender a escuchar activamente.',

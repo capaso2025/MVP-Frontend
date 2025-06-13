@@ -6,7 +6,7 @@ import shop from '@/assets/shop.png';
 import classroom from '@/assets/classroom.png';
 import message from '@/assets/chat.png';
 
-interface MenuItem {
+export interface MenuItem {
   label: string;
   icon: string;
   path: string;
@@ -57,18 +57,18 @@ export const TEACHER_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     label: 'Inicio',
     icon: home,
-    path: '/classroom?role=teacher',
+    path: '/classroom',
     include: [],
   },
   {
     label: 'Calendario',
     icon: calendar,
-    path: '/calendar?role=teacher',
+    path: '/calendar',
   },
   {
     label: 'Chats',
     icon: message,
-    path: '/chats?role=teacher',
+    path: '/chats',
   },
-  { label: 'Insight', icon: home, path: '/insight?role=teacher' },
+  { label: 'Insight', icon: home, path: '/insight' },
 ];

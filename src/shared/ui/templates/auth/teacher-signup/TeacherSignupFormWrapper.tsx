@@ -8,13 +8,10 @@ function TeacherSignupFormWrapper(props: {
 }) {
   const { component, title } = props;
   return (
-    <div className="mx-auto grid min-h-screen w-[80%] grid-cols-2 place-content-center items-center gap-4">
+    <div className="mx-auto grid min-h-screen w-[80%] grid-cols-1 place-content-center items-center gap-4 lg:grid-cols-2">
       <div className="grid place-content-center">
         {title ? (
-          <Typography
-            variant="h3"
-            className="text-foreground text-primary-2 mt-4 mb-8"
-          >
+          <Typography variant="h3" className="text-primary-2 mt-4 mb-8">
             {title}
           </Typography>
         ) : (
@@ -23,7 +20,7 @@ function TeacherSignupFormWrapper(props: {
         <img
           alt="capo"
           width={500}
-          className="mask-transparent-bottom"
+          className="mask-transparent-bottom hidden lg:block"
           src="/assets/characters/capito-teach.png"
         />
       </div>

@@ -3,12 +3,14 @@ import { Button } from '../../atoms/Button';
 import Spacer from '../../atoms/Spacer';
 import { Typography } from '../../atoms/Typography';
 import { useRenderStore } from '@/shared/store/render-store';
+import { useDummyStore } from '@/shared/store/dummy-store';
 
 function FinishedMessage() {
   const navigate = useNavigate();
+  const setRole = useDummyStore((state) => state.setRole);
   const closeModalData = useRenderStore((state) => state.closeModal);
   return (
-    <div className="grid h-screen place-content-center text-center">
+    <div className="mx-auto grid h-screen max-w-[90%] place-content-center text-center">
       <img
         src="/assets/characters/capito-default.png"
         width={300}
@@ -27,7 +29,8 @@ function FinishedMessage() {
           variant="landing"
           size="lg"
           onClick={() => {
-            navigate('/classroom?role=teacher');
+            navigate('/classroom');
+            setRole('teacher');
             closeModalData();
           }}
         >

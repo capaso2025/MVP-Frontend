@@ -5,6 +5,8 @@ import { persist } from 'zustand/middleware';
 type DummyState = {
   currentLesson: number;
   nextLesson: () => void;
+  role?: 'teacher' | 'student' | 'admin';
+  setRole: (role: 'teacher' | 'student' | 'admin') => void;
 };
 
 export const useDummyStore = create<DummyState>()(
@@ -14,6 +16,11 @@ export const useDummyStore = create<DummyState>()(
       nextLesson: () =>
         set((state) => ({
           currentLesson: state.currentLesson + 1,
+        })),
+      role: 'student',
+      setRole: (role) =>
+        set(() => ({
+          role,
         })),
     }),
     {
