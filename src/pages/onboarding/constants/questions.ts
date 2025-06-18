@@ -122,7 +122,7 @@ export const QUESTIONS: {
     },
 
     {
-      question: 'En que etapa estas ahora?',
+      question: '¿En qué estapa estás ahora?',
       type: 'multiple-choice',
       options: [
         {
@@ -277,7 +277,7 @@ export const QUESTIONS: {
       ],
     },
     {
-      question: 'En que etapa estas ahora?',
+      question: '¿En qué estapa estás ahora?',
       type: 'multiple-choice',
       options: [
         {
@@ -465,7 +465,7 @@ export const QUESTIONS: {
       ],
     },
     {
-      question: 'En que etapa estas ahora?',
+      question: '¿En qué estapa estás ahora?',
       type: 'multiple-choice',
       options: [
         {
@@ -660,7 +660,7 @@ export const QUESTIONS: {
       ],
     },
     {
-      question: 'En que etapa estas ahora?',
+      question: '¿En qué estapa estás ahora?',
       type: 'multiple-choice',
       options: [
         {
