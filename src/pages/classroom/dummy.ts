@@ -1,7 +1,7 @@
 export const CLASSES = [
   {
     id: 1,
-    name: 'Habilidades Blandas',
+    name: 'Lengua y Literatura',
     schedule: 'Lun, Mié, Vie 10:00-11:30',
     room: 'Aula 201',
     studentCount: 28,
@@ -10,7 +10,7 @@ export const CLASSES = [
   },
   {
     id: 2,
-    name: 'Comunicación Efectiva',
+    name: 'Matemáticas',
     schedule: 'Mar, Jue 14:00-15:30',
     room: 'Lab 105',
     studentCount: 22,
@@ -19,12 +19,21 @@ export const CLASSES = [
   },
   {
     id: 3,
-    name: 'Liderazgo',
+    name: 'Ciencias Naturales',
     schedule: 'Lun, Mié 16:00-17:30',
     room: 'Lab 203',
     studentCount: 25,
     semester: '2024-1',
     color: 'bg-green-500',
+  },
+  {
+    id: 4,
+    name: 'Ciencias Sociales',
+    schedule: 'Lun, Mié 16:00-17:30',
+    room: 'Lab 2404',
+    studentCount: 30,
+    semester: '2024-1',
+    color: 'bg-red-500',
   },
 ];
 

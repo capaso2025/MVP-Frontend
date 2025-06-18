@@ -26,7 +26,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
     path: '/calendar',
   },
   {
-    label: 'Timer',
+    label: 'Capómetro',
     icon: timer,
     path: '/timer',
   },
@@ -47,7 +47,7 @@ export const NO_LOGGED_DEFAULT_MENU_ITEMS: MenuItem[] = [
     path: '/calendar',
   },
   {
-    label: 'Timer',
+    label: 'Capómetro',
     icon: timer,
     path: '/timer',
   },
