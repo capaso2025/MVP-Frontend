@@ -26,7 +26,7 @@ export const useOnboardingStore = create<
   persist(
     (set) => ({
       responses: [],
-      category: undefined,
+      category: 'capaso-ia',
       setCategory: (category: Category) => {
         set(() => ({
           category,
