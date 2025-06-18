@@ -29,7 +29,7 @@ function FinishedMessage() {
           variant="landing"
           size="lg"
           onClick={() => {
-            navigate('/classroom');
+            navigate('/teacher/classroom');
             setRole('teacher');
             closeModalData();
           }}

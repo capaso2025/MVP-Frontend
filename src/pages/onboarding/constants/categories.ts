@@ -1,5 +1,7 @@
-export interface Category {
-  id: string;
+import { Category } from '../types/categories';
+
+export interface CategoryData {
+  id: Category;
   name: string;
   imageUrl: string;
   subSkills: SubSkill[];
@@ -8,7 +10,18 @@ export interface SubSkill {
   id: string;
   name: string;
 }
-export const CATEGORIES = [
+export const CATEGORIES: CategoryData[] = [
+  {
+    id: 'capaso-ia',
+    name: 'Capaso IA',
+    imageUrl: '/assets/characters/ia.jpeg',
+    subSkills: [
+      { id: 'self-care', name: 'Auto cuidado y límites saludables' },
+      { id: 'gratitude', name: 'Gratitud y reciprocidad' },
+      { id: 'social-adapt', name: 'Adaptabilidad social' },
+      { id: 'empathy', name: 'Empatía y conexión humana' },
+    ],
+  },
   {
     id: 'soft-skills',
     name: 'Habilidades blandas',
@@ -18,17 +31,6 @@ export const CATEGORIES = [
       { id: 'team', name: 'Trabajo en equipo' },
       { id: 'adapt', name: 'Adaptabilidad y resiliencia' },
       { id: 'creative', name: 'Creatividad e innovación' },
-    ],
-  },
-  {
-    id: 'personal well-being',
-    name: 'Bienestar social',
-    imageUrl: '/assets/characters/personal-well-being.png',
-    subSkills: [
-      { id: 'self-care', name: 'Auto cuidado y límites saludables' },
-      { id: 'gratitude', name: 'Gratitud y reciprocidad' },
-      { id: 'social-adapt', name: 'Adaptabilidad social' },
-      { id: 'empathy', name: 'Empatía y conexión humana' },
     ],
   },
   {

@@ -57,13 +57,13 @@ export const TEACHER_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     label: 'Inicio',
     icon: home,
-    path: '/classroom',
+    path: '/teacher/classroom',
     include: [],
   },
   {
     label: 'Calendario',
     icon: calendar,
-    path: '/calendar',
+    path: '/teacher/calendar',
   },
   {
     label: 'Chats',

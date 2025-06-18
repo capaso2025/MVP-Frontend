@@ -33,7 +33,7 @@ export const CategoryCard: FC<ICategoryCardProps> = ({
       onClick={handleClick}
     >
       <div className="mb-4 grid h-full">
-        <div className="grid place-content-start">
+        <div className="">
           <img
             src={category.imageUrl}
             alt={category.name}

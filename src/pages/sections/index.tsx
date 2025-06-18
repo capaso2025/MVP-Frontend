@@ -1,19 +1,20 @@
 import { Typography } from '@/shared/ui';
 import SectionCard from './components/organisms/SectionCard';
-import { SOFT_SKILLS_SECTIONS } from '../../data/soft-skills';
 import { useNavigate } from 'react-router-dom';
 import RightSection from '@/shared/ui/organisms/right-section/RightSection';
+import { useSection } from './hooks/use-section';
 
 function Sections() {
   const navigate = useNavigate();
+  const { data, sectionTitle } = useSection();
   return (
     <section className="with-right-section">
       <div className="animate-fade-in grid grid-rows-[70px_auto] gap-2">
         <Typography variant="h2" className="py-2">
-          Habilidades Blandas
+          {sectionTitle}
         </Typography>
         <div className="flex flex-col gap-8">
-          {SOFT_SKILLS_SECTIONS.map((values) => (
+          {data?.map((values) => (
             <SectionCard
               {...values}
               onClick={() => {

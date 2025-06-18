@@ -7,10 +7,12 @@ import { useEffect } from 'react';
 import { useRenderStore } from '@/shared/store/render-store';
 import { TEACHER_DEFAULT_MENU_ITEMS } from '../main-layout/menu-items';
 import { useDummyStore } from '@/shared/store/dummy-store';
+import { useAuthStore } from '@/features/auth/auth-store';
 
 function TeacherLayout() {
   const { isMobile } = useResize();
   const role = useDummyStore((state) => state.role);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const setOpenedSidebar = useRenderStore((state) => state.setOpenedSidebar);
   useEffect(() => {
     if (isMobile) {
@@ -18,7 +20,8 @@ function TeacherLayout() {
     }
   }, [isMobile, setOpenedSidebar]);
 
-  if (role !== 'teacher') return <Navigate to="/" replace={true} />;
+  if (!isAuthenticated || role !== 'teacher')
+    return <Navigate to="/login" replace={true} />;
   return (
     <div className="">
       <Sidebar items={TEACHER_DEFAULT_MENU_ITEMS} />

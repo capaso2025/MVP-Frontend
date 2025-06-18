@@ -80,13 +80,15 @@ function AppRouter() {
             path="/modules/:sectionId/:moduleId"
             element={<LessonPathPage />}
           />
+          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/classroom" element={<ClassroomPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
         </Route>
         <Route path="/" element={<TeacherLayout />}>
-          <Route path="/classroom" element={<ClassroomPage />} />
-          <Route path="/calendar" element={<CalendarPage />} />
+          <Route path="/teacher/classroom" element={<ClassroomPage />} />
+          <Route path="/teacher/calendar" element={<CalendarPage />} />
           <Route path="/insight" element={<InsightPage />} />
           <Route path="/chats" element={<ChatsPage />} />
         </Route>

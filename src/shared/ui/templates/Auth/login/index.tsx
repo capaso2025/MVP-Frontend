@@ -7,6 +7,8 @@ import { usePassword } from '@/shared/hooks/usePassword';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Spacer from '@/shared/ui/atoms/Spacer';
+import LogoDark from '@/assets/capo-logo-dark.png';
+import { useNavigate } from 'react-router-dom';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
@@ -18,6 +20,7 @@ function Login(props: { onClickSignup?: () => void }) {
     initialValues: {},
     onSubmit: executeLogin,
   });
+  const navigate = useNavigate();
 
   return (
     <>
@@ -28,6 +31,17 @@ function Login(props: { onClickSignup?: () => void }) {
       >
         <Typography className="text-primary font-bold">Regístrate</Typography>
       </Button>
+      <div className="mx-auto mt-2 max-w-5xl">
+        <img
+          onClick={() => navigate('/')}
+          src={LogoDark}
+          width={50}
+          height={50}
+          alt="logo de capo"
+          color="text-primary"
+          className="cursor-pointer p-1"
+        />
+      </div>
       <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
         <form
           className="mx-auto -mt-8 w-full place-content-center px-4"
@@ -42,27 +56,25 @@ function Login(props: { onClickSignup?: () => void }) {
           </Typography>
           <Input
             type="email"
-            name='email'
+            name="email"
             label="Correo electrónico"
             value={values.email}
             onChange={(ev) => setValue('email', ev.target.value)}
             placeholder="example@mail.com"
             errors={errors}
           />
-          <Spacer size='md' />
+          <Spacer size="md" />
           <Input
-            name='password'
+            name="password"
             label="Contraseña"
             type={showPassword ? 'text' : 'password'}
             value={values.password}
             onChange={(ev) => setValue('password', ev.target.value)}
             placeholder="********"
-            iconOnClick={
-              togglePasswordVisibility
-            }
+            iconOnClick={togglePasswordVisibility}
             errors={errors}
           />
-          <Spacer size='md' />
+          <Spacer size="md" />
           <Button size="lg" variant="primary" className="w-full" type="submit">
             <Typography className="ml-2 font-bold text-white">
               Ingresar

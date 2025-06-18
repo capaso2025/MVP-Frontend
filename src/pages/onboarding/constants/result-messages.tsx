@@ -46,11 +46,11 @@ export const RESULT_MESSAGES: {
       buttonText: 'Empezar',
     },
   ],
-  'personal well-being': [
+  'capaso-ia': [
     {
-      bubble: 'Lo que ganarás siendo un Capo en esto…',
+      bubble: '¿Qué gana el usuario con Capaso IA?',
       mainText:
-        'Tu bienestar es la base para todo lo que quieres lograr. Cuando cuidas tu cuerpo y mente, todo mejora: tu ánimo, tus relaciones y tu rendimiento. Vamos a ayudarte q construir hábitos que realmente se mantengan.',
+        'Con Capaso IA, conviertes la inteligencia artificial en tu mano derecha. Organiza tu vida, aprende más rápido y crea hábitos poderosos, todo con un asistente que piensa contigo, no por ti. No es solo tecnología. Es tu ventaja secreta.',
       buttonText: 'Siguiente',
     },
     {

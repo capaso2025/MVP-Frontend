@@ -14,10 +14,10 @@ export interface SkillData {
   image: string;
   modules?: Module[];
 }
-export const SOFT_SKILLS_SECTIONS: SkillData[] = [
+export const IA_SKILLS_SECTIONS: SkillData[] = [
   {
     id: '1',
-    title: 'Comunicación Efectiva',
+    title: 'IA para organización y productividad personal',
     bubbleText:
       'Exprésate con claridad y empatía. Haz que tus ideas conecten y generen impacto en cualquier entorno.',
     progress: 50,
@@ -27,14 +27,14 @@ export const SOFT_SKILLS_SECTIONS: SkillData[] = [
     modules: [
       {
         id: '1',
-        title: 'Fundamentos de la comunicación',
+        title: 'xxxxx',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'left',
         objective: 'Entender barreras de comunicación y cómo evitarlas.',
         lessons: [
           {
             level: 1,
-            title: '¿Qué es la comunicación realmente?',
+            title: 'xxxxx',
             id: '1',
             activity: 'FLASH_CARDS',
           },
@@ -69,12 +69,12 @@ export const SOFT_SKILLS_SECTIONS: SkillData[] = [
       },
       {
         id: '2',
-        title: 'Estilos: pasivo, agresivo, asertivo',
+        title: 'IA xxxxx',
         image: '/assets/characters/capito-happy.png',
         imagePosition: 'right',
         objective: 'Aprender a escuchar activamente.',
         lessons: [
-          { id: '1', level: 1, title: 'La escucha que no escucha' },
+          { id: '1', level: 1, title: 'xxxxx' },
           { id: '2', level: 2, title: 'Escucha activa y empática' },
           { id: '3', level: 3, title: 'Técnica del espejo', type: 'normal' },
           { id: '4', level: 4, title: 'Reto de “escuchar sin interrumpir”' },
@@ -138,7 +138,7 @@ export const SOFT_SKILLS_SECTIONS: SkillData[] = [
   },
   {
     id: '2',
-    title: 'Liderazgo',
+    title: 'IA en el estudio académico',
     bubbleText:
       'Inspira, guía y potencia a los demás. El liderazgo empieza con tu ejemplo y visión.',
     progress: 0,
@@ -147,7 +147,7 @@ export const SOFT_SKILLS_SECTIONS: SkillData[] = [
   },
   {
     id: '3',
-    title: 'Toma de Decisiones',
+    title: 'IA para pensamiento crítico y creatividad',
     bubbleText:
       'Analiza, prioriza y actúa con seguridad. Mejora tu criterio para enfrentar cualquier desafío.',
     progress: 0,
@@ -156,7 +156,16 @@ export const SOFT_SKILLS_SECTIONS: SkillData[] = [
   },
   {
     id: '4',
-    title: 'Trabajo en Equipo',
+    title: ' IA para comunicación y expresión',
+    bubbleText:
+      'Colabora con confianza, escucha activamente y alcanza metas junto a otros. El éxito se construye en equipo.',
+    progress: 0,
+    onClick: () => console.log('Section 2 clicked'),
+    image: team,
+  },
+  {
+    id: '4',
+    title: ' IA y ética digital',
     bubbleText:
       'Colabora con confianza, escucha activamente y alcanza metas junto a otros. El éxito se construye en equipo.',
     progress: 0,

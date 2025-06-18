@@ -363,7 +363,7 @@ export const QUESTIONS: {
       ],
     },
   ],
-  'personal well-being': [
+  'capaso-ia': [
     {
       question: '¿Cómo supiste de Capo?',
       type: 'multiple-choice',
@@ -410,15 +410,28 @@ export const QUESTIONS: {
       ],
     },
     {
-      question: '¿Por qué quieres aprender esta habilidad?',
+      question:
+        '¿Por qué te interesa aprender a usar la inteligencia artificial ahora?',
       type: 'multiple-choice',
       options: [
-        { id: '1', text: 'Más energía diaria' },
-        { id: '2', text: 'Mejor concentración' },
-        { id: '3', text: 'Mejorar tu estado de ánimo' },
-        { id: '4', text: 'Más autoestima' },
-        { id: '5', text: 'Hábitos saludables' },
-        { id: '6', text: 'Menos estrés físico y mental' },
+        { id: '1', text: 'Quiero organizarme mejor y dejar de procrastinar.' },
+        {
+          id: '2',
+          text: 'Me gustaría aprender más rápido en el colegio o universidad.',
+        },
+        {
+          id: '3',
+          text: 'Siento que si no aprendo IA, me voy a quedar atrás.',
+        },
+        { id: '4', text: 'Quiero aprovechar el tiempo y ser más productivo.' },
+        {
+          id: '5',
+          text: 'Me interesa usar IA para mis proyectos o emprendimientos.',
+        },
+        {
+          id: '6',
+          text: 'No sé bien por qué, pero sé que es importante y no quiero ignorarla.',
+        },
       ],
     },
     {
@@ -475,7 +488,7 @@ export const QUESTIONS: {
     },
     {
       question:
-        '¿Te cuesta tener una rutina que te haga sentir bien física y mentalmente?',
+        '¿Sientes que a veces tienes ideas o metas, pero no sabes por dónde empezar?',
       type: 'single-choice',
       options: [
         {
@@ -497,7 +510,7 @@ export const QUESTIONS: {
     },
     {
       question:
-        '¿Te sientes con poca energía o sin motivación en tu día a día?',
+        '¿Te cuesta mantenerte enfocado cuando estudias o intentas organizarte?',
       type: 'single-choice',
       options: [
         {

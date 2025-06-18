@@ -4,7 +4,7 @@ import { CATEGORIES } from '../../constants/categories';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../hooks/use-onboarding';
-import { ArrowRightIcon, CheckIcon } from '@/shared/ui/atoms/Icon/Icon';
+import { ArrowRightIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 const CategoriesPage = () => {
   const navigate = useNavigate();
@@ -17,16 +17,17 @@ const CategoriesPage = () => {
           <h1 className="mb-8 text-center text-3xl font-bold">
             Quiero ser un CAPO en...
           </h1>
-          <div className="flex justify-center flex-wrap gap-4 w-full mx-auto">
+          <div className="mx-auto flex w-full flex-wrap justify-center gap-4">
             {CATEGORIES.map((category) => (
               <CategoryCard
-                className={`${category.id === selectedCategory?.id
-                  ? '!bg-primary text-white shadow-2xl'
-                  : ''
-                  }`}
+                className={`${
+                  category.id === selectedCategory
+                    ? '!bg-primary text-white shadow-2xl'
+                    : ''
+                }`}
                 key={category.id}
                 category={category}
-                onClick={() => setCategory(category)}
+                onClick={() => setCategory(category.id)}
               />
             ))}
           </div>
@@ -36,12 +37,14 @@ const CategoriesPage = () => {
                 <Typography variant="h4" className="mb-4">
                   Aprenderás:
                 </Typography>
-                <ul className="h-[152px] space-y-2">
+                <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                   {CATEGORIES.find(
-                    (el) => el.id === selectedCategory?.id,
+                    (el) => el.id === selectedCategory,
                   )?.subSkills.map((subSkill) => (
-                    <li key={subSkill.id} className="flex items-center">
-                      <CheckIcon />
+                    <li
+                      key={subSkill.id}
+                      className="border-primary-light bg-primary-lighter flex items-center rounded-lg border p-2"
+                    >
                       <span className="text-gray-700">{subSkill.name}</span>
                     </li>
                   ))}
@@ -52,11 +55,10 @@ const CategoriesPage = () => {
             )}
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="mt-8 flex justify-end">
           {selectedCategory ? (
             <Button
               className="flex w-max items-center"
-              size="lg"
               onClick={() => navigate('/onboarding')}
             >
               <Typography className="text-white">Comenzar</Typography>

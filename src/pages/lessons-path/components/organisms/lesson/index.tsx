@@ -3,8 +3,8 @@ import LearnButton from '../../atoms/lesson-button';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useRenderStore } from '@/shared/store/render-store';
 import LessonDetails from '@/pages/modules/components/organisms/LessonDetails/LessonDetails';
-import { SOFT_SKILLS_SECTIONS } from '@/data/soft-skills';
 import { useDummyStore } from '@/shared/store/dummy-store';
+import { useSection } from '@/pages/sections/hooks/use-section';
 function Lesson(props: {
   lesson: { level: number; title: string };
   position?: string;
@@ -12,12 +12,13 @@ function Lesson(props: {
   const { lesson, position = '' } = props;
   const navigate = useNavigate();
   const params = useParams();
+  const { data } = useSection();
   const setModalData = useRenderStore((state) => state.setModalData);
   const closeModal = useRenderStore((state) => state.closeModal);
   const currentLesson = useDummyStore((state) => state.currentLesson);
-  const currentModule = SOFT_SKILLS_SECTIONS.find(
-    (section) => section.id === params.sectionId,
-  )?.modules?.find((module) => module.id === params.moduleId);
+  const currentModule = data
+    ?.find((section) => section.id === params.sectionId)
+    ?.modules?.find((module) => module.id === params.moduleId);
 
   const enabledLesson = currentLesson >= lesson.level;
 

@@ -1,5 +1,5 @@
 export type Category =
   | 'soft-skills'
-  | 'personal well-being'
+  | 'capaso-ia'
   | 'time-management'
   | 'emotional-control';

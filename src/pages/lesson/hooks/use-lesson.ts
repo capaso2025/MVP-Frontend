@@ -1,4 +1,4 @@
-import { SOFT_SKILLS_SECTIONS } from '@/data/soft-skills';
+import { useSection } from '@/pages/sections/hooks/use-section';
 import { useDummyStore } from '@/shared/store/dummy-store';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -6,10 +6,10 @@ export const useLesson = () => {
   const currentLesson = useDummyStore((state) => state.currentLesson);
   const params = useParams();
   const navigate = useNavigate();
+  const { data } = useSection();
 
-  const currentLessonByParams = SOFT_SKILLS_SECTIONS.find(
-    (section) => section.id === params.sectionId,
-  )
+  const currentLessonByParams = data
+    ?.find((section) => section.id === params.sectionId)
     ?.modules?.find((module) => module.id === params.moduleId)
     ?.lessons?.find((lesson) => lesson.id === params.lessonId);
 
@@ -18,9 +18,9 @@ export const useLesson = () => {
   const isRepeatedLesson = currentLesson > (currentLessonByParams?.level || 0);
 
   const handleNextLesson = () => {
-    const lessons = SOFT_SKILLS_SECTIONS.find(
-      (section) => section.id === params.sectionId,
-    )?.modules?.find((module) => module.id === params.moduleId)?.lessons;
+    const lessons = data
+      ?.find((section) => section.id === params.sectionId)
+      ?.modules?.find((module) => module.id === params.moduleId)?.lessons;
 
     const currentLessonIndex =
       lessons?.findIndex((lesson) => lesson.id === params.lessonId) || 0;
