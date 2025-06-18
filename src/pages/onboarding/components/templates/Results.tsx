@@ -8,7 +8,7 @@ function Intro() {
   const navigate = useNavigate();
   const { resultMessages } = useOnboarding();
   const { currentIndex, goToNext } = useBackNext({
-    length: 2,
+    length: 1,
     finishFn: () => {
       navigate('/sections');
     },
@@ -20,7 +20,7 @@ function Intro() {
         <div>
           <div className="mt-8 flex items-center gap-4">
             <img
-              src="/assets/characters/capito-happy.png"
+              src="/assets/characters/herramienta.png"
               width={150}
               height={150}
             />

@@ -51,17 +51,6 @@ export const RESULT_MESSAGES: {
       bubble: '¿Qué gana el usuario con Capaso IA?',
       mainText:
         'Con Capaso IA, conviertes la inteligencia artificial en tu mano derecha. Organiza tu vida, aprende más rápido y crea hábitos poderosos, todo con un asistente que piensa contigo, no por ti. No es solo tecnología. Es tu ventaja secreta.',
-      buttonText: 'Siguiente',
-    },
-    {
-      mainText: (
-        <>
-          ¡Tenemos un plan para ti! <br /> Según lo que respondiste, armamos una
-          guía paso a paso para ayudarte a comunicarte mejor, conectar con otros
-          y sentirte más seguro.
-          <br />✅ Toca EMPEZAR y ve lo que puedes lograr.
-        </>
-      ),
       buttonText: 'Empezar',
     },
   ],

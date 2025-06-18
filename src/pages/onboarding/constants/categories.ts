@@ -16,10 +16,13 @@ export const CATEGORIES: CategoryData[] = [
     name: 'Capaso IA',
     imageUrl: '/assets/characters/ia.jpeg',
     subSkills: [
-      { id: 'self-care', name: 'Auto cuidado y límites saludables' },
-      { id: 'gratitude', name: 'Gratitud y reciprocidad' },
-      { id: 'social-adapt', name: 'Adaptabilidad social' },
-      { id: 'empathy', name: 'Empatía y conexión humana' },
+      { id: 'self-care', name: 'Capacitaciones prácticas y guiadas.' },
+      { id: 'gratitude', name: 'Organiza tu tiempo y deja de procrastinar.' },
+      {
+        id: 'social-adapt',
+        name: 'Usa la IA para estudiar, crear y pensar mejor.',
+      },
+      { id: 'empathy', name: 'Avanza con hábitos y consejos.' },
     ],
   },
   {
