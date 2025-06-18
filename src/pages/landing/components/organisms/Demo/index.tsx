@@ -10,7 +10,7 @@ const Demo = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
       >
         <div className="hidden place-content-center lg:grid">
           <img
-            src="/assets/characters/capito-excited.png"
+            src="/assets/characters/idea-brillante.png"
             className="mask-transparent-bottom"
             width={400}
             height={400}
