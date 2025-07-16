@@ -10,7 +10,7 @@ function Intro() {
   const { currentIndex, goToNext } = useBackNext({
     length: 1,
     finishFn: () => {
-      navigate('/sections');
+      navigate('/home');
     },
   });
 

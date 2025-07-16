@@ -1,751 +1,117 @@
-import { Category } from '../types/categories';
-import yes from '@/assets/yes.png';
-import no from '@/assets/no.png';
-import question from '@/assets/question.png';
-
 export const QUESTIONS: {
-  [key in Category]: {
-    question: string;
-    type: 'single-choice' | 'multiple-choice';
-    options: {
-      id: string;
-      text: string;
-      icon?: string;
-    }[];
+  id: number;
+  question: string;
+  alternatives: {
+    text: string;
+    score: number;
   }[];
-} = {
-  'soft-skills': [
-    {
-      question: '¿Cómo supiste de Capo?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Búsqueda en Google',
-          icon: '/assets/social-media/google.svg',
-        },
-        {
-          id: '2',
-          text: 'Facebook/Instagram',
-          icon: '/assets/social-media/fb-ig.png',
-        },
-        {
-          id: '3',
-          text: 'Youtube',
-          icon: '/assets/social-media/yt.svg',
-        },
-        {
-          id: '4',
-          text: 'TV',
-          icon: '/assets/social-media/tv.png',
-        },
-        {
-          id: '5',
-          text: 'Noticias/artículos/blog',
-          icon: '/assets/social-media/news.svg',
-        },
-        {
-          id: '6',
-          text: 'TikTok',
-          icon: '/assets/social-media/tiktok.png',
-        },
-        {
-          id: '7',
-          text: 'Amigos/familiares',
-          icon: '/assets/social-media/person.png',
-        },
-        {
-          id: '8',
-          text: 'Otros',
-        },
-      ],
-    },
-    {
-      question: '¿Por qué quieres aprender esta habilidad?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Quiero aprender a hablar con más seguridad ',
-        },
-        {
-          id: '2',
-          text: 'Me cuesta expresarme frente a otras personas',
-        },
-        {
-          id: '3',
-          text: 'Quiero ser mejor en entrevistas o presentaciones',
-        },
-        {
-          id: '4',
-          text: 'Me pongo nervioso al hablar en público.',
-        },
-        {
-          id: '5',
-          text: 'No sé cómo empezar una conversación con alguien nuevo',
-        },
-        {
-          id: '6',
-          text: 'Quiero mejorar para trabajar bien en equipo',
-        },
-      ],
-    },
-    {
-      question: '¿Cuanto tiempo puedes dedicar a mejor diariamente?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: '5 minutos',
-        },
-        {
-          id: '2',
-          text: '10 minutos',
-        },
-        {
-          id: '3',
-          text: '15 minutos',
-        },
-        {
-          id: '4',
-          text: '20 minutos',
-        },
-        {
-          id: '5',
-          text: '30 minutos',
-        },
-        {
-          id: '6',
-          text: '1 hora o más',
-        },
-      ],
-    },
-
-    {
-      question: '¿En qué estapa estás ahora?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Últimos años del colegio',
-        },
-        {
-          id: '2',
-          text: 'Tomando un año sabático',
-        },
-        {
-          id: '3',
-          text: 'Empezando la universidad',
-        },
-        {
-          id: '4',
-          text: 'Estudiando y trabajando a la vez',
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te cuesta hablar en publico o expresar tus ideas con claridad?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te gustaría sentirte más seguro al comunicarte en clases, entrevistas o reuniones?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-  ],
-  'time-management': [
-    {
-      question: '¿Cómo supiste de Capo?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Búsqueda en Google',
-          icon: '/assets/social-media/google.svg',
-        },
-        {
-          id: '2',
-          text: 'Facebook/Instagram',
-          icon: '/assets/social-media/fb-ig.png',
-        },
-        {
-          id: '3',
-          text: 'Youtube',
-          icon: '/assets/social-media/yt.svg',
-        },
-        {
-          id: '4',
-          text: 'TV',
-          icon: '/assets/social-media/tv.png',
-        },
-        {
-          id: '5',
-          text: 'Noticias/artículos/blog',
-          icon: '/assets/social-media/news.svg',
-        },
-        {
-          id: '6',
-          text: 'TikTok',
-          icon: '/assets/social-media/tiktok.png',
-        },
-        {
-          id: '7',
-          text: 'Amigos/familiares',
-          icon: '/assets/social-media/person.png',
-        },
-        {
-          id: '8',
-          text: 'Otros',
-        },
-      ],
-    },
-    {
-      question: '¿Por qué quieres aprender esta habilidad?',
-      type: 'single-choice',
-      options: [
-        { id: '1', text: 'Organización real' },
-        { id: '2', text: 'Mejores resultados académicos o laborales' },
-        { id: '3', text: 'Menos estrés y ansiedad' },
-        { id: '4', text: 'Mayor enfoque' },
-        { id: '5', text: 'Más tiempo libre' },
-        { id: '6', text: 'Sensación de logro diario' },
-      ],
-    },
-    {
-      question: '¿Cuanto tiempo puedes dedicar a mejor diariamente?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: '5 minutos',
-        },
-        {
-          id: '2',
-          text: '10 minutos',
-        },
-        {
-          id: '3',
-          text: '15 minutos',
-        },
-        {
-          id: '4',
-          text: '20 minutos',
-        },
-        {
-          id: '5',
-          text: '30 minutos',
-        },
-        {
-          id: '6',
-          text: '1 hora o más',
-        },
-      ],
-    },
-    {
-      question: '¿En qué estapa estás ahora?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Últimos años del colegio',
-        },
-        {
-          id: '2',
-          text: 'Tomando un año sabático',
-        },
-        {
-          id: '3',
-          text: 'Empezando la universidad',
-        },
-        {
-          id: '4',
-          text: 'Estudiando y trabajando a la vez',
-        },
-      ],
-    },
-    {
-      question: '¿Sientes que siempre haces todo a última hora?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'Tal vez',
-          icon: question,
-        },
-        {
-          id: '3',
-          text: 'No',
-          icon: no,
-        },
-      ],
-    },
-    {
-      question: '¿Te cuesta organizar tus tareas y saber por donde empezar?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'Tal vez',
-          icon: question,
-        },
-        {
-          id: '3',
-          text: 'No',
-          icon: no,
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te gustaría tener mas tiempo libre sin descuidar responsabilidades?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'Tal vez',
-          icon: question,
-        },
-        {
-          id: '3',
-          text: 'No',
-          icon: no,
-        },
-      ],
-    },
-  ],
-  'capaso-ia': [
-    {
-      question: '¿Cómo supiste de Capo?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Búsqueda en Google',
-          icon: '/assets/social-media/google.svg',
-        },
-        {
-          id: '2',
-          text: 'Facebook/Instagram',
-          icon: '/assets/social-media/fb-ig.png',
-        },
-        {
-          id: '3',
-          text: 'Youtube',
-          icon: '/assets/social-media/yt.svg',
-        },
-        {
-          id: '4',
-          text: 'TV',
-          icon: '/assets/social-media/tv.png',
-        },
-        {
-          id: '5',
-          text: 'Noticias/artículos/blog',
-          icon: '/assets/social-media/news.svg',
-        },
-        {
-          id: '6',
-          text: 'TikTok',
-          icon: '/assets/social-media/tiktok.png',
-        },
-        {
-          id: '7',
-          text: 'Amigos/familiares',
-          icon: '/assets/social-media/person.png',
-        },
-        {
-          id: '8',
-          text: 'Otros',
-        },
-      ],
-    },
-    {
-      question:
-        '¿Por qué te interesa aprender a usar la inteligencia artificial ahora?',
-      type: 'multiple-choice',
-      options: [
-        { id: '1', text: 'Quiero organizarme mejor y dejar de procrastinar.' },
-        {
-          id: '2',
-          text: 'Me gustaría aprender más rápido en el colegio o universidad.',
-        },
-        {
-          id: '3',
-          text: 'Siento que si no aprendo IA, me voy a quedar atrás.',
-        },
-        { id: '4', text: 'Quiero aprovechar el tiempo y ser más productivo.' },
-        {
-          id: '5',
-          text: 'Me interesa usar IA para mis proyectos o emprendimientos.',
-        },
-        {
-          id: '6',
-          text: 'No sé bien por qué, pero sé que es importante y no quiero ignorarla.',
-        },
-      ],
-    },
-    {
-      question: '¿Cuanto tiempo puedes dedicar a mejor diariamente?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: '5 minutos',
-        },
-        {
-          id: '2',
-          text: '10 minutos',
-        },
-        {
-          id: '3',
-          text: '15 minutos',
-        },
-        {
-          id: '4',
-          text: '20 minutos',
-        },
-        {
-          id: '5',
-          text: '30 minutos',
-        },
-        {
-          id: '6',
-          text: '1 hora o más',
-        },
-      ],
-    },
-    {
-      question: '¿En qué estapa estás ahora?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Últimos años del colegio',
-        },
-        {
-          id: '2',
-          text: 'Tomando un año sabático',
-        },
-        {
-          id: '3',
-          text: 'Empezando la universidad',
-        },
-        {
-          id: '4',
-          text: 'Estudiando y trabajando a la vez',
-        },
-      ],
-    },
-    {
-      question:
-        '¿Sientes que a veces tienes ideas o metas, pero no sabes por dónde empezar?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te cuesta mantenerte enfocado cuando estudias o intentas organizarte?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te gustaría mejorar tus hábitos (sueño, alimentación, movimiento, descanso)?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-  ],
-  'emotional-control': [
-    {
-      question: '¿Cómo supiste de Capo?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Búsqueda en Google',
-          icon: '/assets/social-media/google.svg',
-        },
-        {
-          id: '2',
-          text: 'Facebook/Instagram',
-          icon: '/assets/social-media/fb-ig.png',
-        },
-        {
-          id: '3',
-          text: 'Youtube',
-          icon: '/assets/social-media/yt.svg',
-        },
-        {
-          id: '4',
-          text: 'TV',
-          icon: '/assets/social-media/tv.png',
-        },
-        {
-          id: '5',
-          text: 'Noticias/artículos/blog',
-          icon: '/assets/social-media/news.svg',
-        },
-        {
-          id: '6',
-          text: 'TikTok',
-          icon: '/assets/social-media/tiktok.png',
-        },
-        {
-          id: '7',
-          text: 'Amigos/familiares',
-          icon: '/assets/social-media/person.png',
-        },
-        {
-          id: '8',
-          text: 'Otros',
-        },
-      ],
-    },
-    {
-      question: '¿Por qué quieres aprender esta habilidad?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Más paz mental',
-        },
-        {
-          id: '2',
-          text: 'Toma de decisiones más claras',
-        },
-        {
-          id: '3',
-          text: 'Mejores relaciones',
-        },
-        {
-          id: '4',
-          text: 'Autoconocimiento profundo',
-        },
-        {
-          id: '5',
-          text: 'Mayor resiliencia',
-        },
-        {
-          id: '6',
-          text: 'Confianza emocional',
-        },
-      ],
-    },
-    {
-      question: '¿Cuanto tiempo puedes dedicar a mejor diariamente?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: '5 minutos',
-        },
-        {
-          id: '2',
-          text: '10 minutos',
-        },
-        {
-          id: '3',
-          text: '15 minutos',
-        },
-        {
-          id: '4',
-          text: '20 minutos',
-        },
-        {
-          id: '5',
-          text: '30 minutos',
-        },
-        {
-          id: '6',
-          text: '1 hora o más',
-        },
-      ],
-    },
-    {
-      question: '¿En qué estapa estás ahora?',
-      type: 'multiple-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Últimos años del colegio',
-        },
-        {
-          id: '2',
-          text: 'Tomando un año sabático',
-        },
-        {
-          id: '3',
-          text: 'Empezando la universidad',
-        },
-        {
-          id: '4',
-          text: 'Estudiando y trabajando a la vez',
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te cuesta manejar tus emociones cuando te sientes estresado, triste o frustrado?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te siente abrumado fácilmente cuando las cosas no salen como esperas?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-    {
-      question:
-        '¿Te gustaría aprender a responder con más calma y claridad en momentos difíciles?',
-      type: 'single-choice',
-      options: [
-        {
-          id: '1',
-          text: 'Sí',
-          icon: yes,
-        },
-        {
-          id: '2',
-          text: 'No',
-          icon: no,
-        },
-        {
-          id: '3',
-          text: 'A veces',
-          icon: question,
-        },
-      ],
-    },
-  ],
-};
+}[] = [
+  {
+    id: 1,
+    question: '¿Con qué frecuencia planificas tus semanas o días?',
+    alternatives: [
+      { text: 'Nunca planifico nada', score: 1 },
+      { text: 'A veces lo intento, pero no soy constante', score: 2 },
+      {
+        text: 'Planifico lo básico (exámenes o entregas importantes)',
+        score: 3,
+      },
+      { text: 'Siempre tengo un plan semanal o diario', score: 4 },
+    ],
+  },
+  {
+    id: 2,
+    question:
+      '¿Cómo describirías tu relación con la tecnología para estudiar o trabajar?',
+    alternatives: [
+      {
+        text: 'Me cuesta usar apps o plataformas, me confundo fácilmente',
+        score: 1,
+      },
+      { text: 'Sé usar lo básico (Google, Word), pero nada más', score: 2 },
+      {
+        text: 'Me defiendo con algunas herramientas (Notion, Trello, Drive)',
+        score: 3,
+      },
+      { text: 'Me encanta usar herramientas digitales, incluso IA', score: 4 },
+    ],
+  },
+  {
+    id: 3,
+    question: '¿Con qué frecuencia postergas tareas importantes?',
+    alternatives: [
+      { text: 'Siempre dejo todo para último momento', score: 1 },
+      { text: 'Casi siempre postergo lo importante', score: 2 },
+      { text: 'A veces me pasa, pero suelo cumplir', score: 3 },
+      { text: 'Casi nunca procrastino, soy disciplinado/a', score: 4 },
+    ],
+  },
+  {
+    id: 4,
+    question: '¿Qué tan claro tienes tu propósito o metas personales?',
+    alternatives: [
+      { text: 'No tengo claro qué quiero en este momento', score: 1 },
+      { text: 'Tengo ideas, pero nada concreto', score: 2 },
+      { text: 'Tengo metas claras, pero me cuesta avanzar', score: 3 },
+      { text: 'Sé lo que quiero y actúo en función de ello', score: 4 },
+    ],
+  },
+  {
+    id: 5,
+    question:
+      '¿Qué tan cómodo te sientes usando IA (ChatGPT, Gemini, etc.) en tu vida diaria?',
+    alternatives: [
+      { text: 'Nunca he usado IA', score: 1 },
+      { text: 'La he probado pero no sé usarla bien', score: 2 },
+      { text: 'La uso para algunas tareas', score: 3 },
+      { text: 'Uso IA de forma habitual y estratégica', score: 4 },
+    ],
+  },
+  {
+    id: 6,
+    question: '¿Cuál de estas frases te representa mejor?',
+    alternatives: [
+      { text: 'Necesito que me den pasos concretos y simples', score: 1 },
+      { text: 'Me gusta aprender con ejemplos y práctica', score: 2 },
+      { text: 'Prefiero entender la teoría antes de actuar', score: 3 },
+      { text: 'Soy autodidacta, me gusta explorar por mi cuenta', score: 4 },
+    ],
+  },
+  {
+    id: 7,
+    question:
+      '¿Cuánto tiempo al día pasas en redes sociales o apps no académicas?',
+    alternatives: [
+      { text: 'Más de 5 horas al día', score: 1 },
+      { text: 'Entre 3 y 5 horas', score: 2 },
+      { text: 'Entre 1 y 2 horas', score: 3 },
+      { text: 'Menos de 1 hora', score: 4 },
+    ],
+  },
+  {
+    id: 8,
+    question: '¿Qué te gustaría mejorar primero?',
+    alternatives: [
+      { text: 'Organizar mejor mi tiempo', score: 1 },
+      { text: 'Concentrarme más y dejar de postergar', score: 2 },
+      {
+        text: 'Aprender a usar herramientas digitales (Notion, IA, etc.)',
+        score: 3,
+      },
+      { text: 'Sentirme más motivado/a y con dirección', score: 4 },
+    ],
+  },
+  {
+    id: 9,
+    question: '¿Cómo conociste a Capaso?',
+    alternatives: [
+      {
+        text: 'Mediante redes sociales (Ej: Instagram, Tik Tok, etc)',
+        score: 1,
+      },
+      { text: 'Me lo recomendó un amigo', score: 2 },
+      { text: 'Busqué en internet y me apareció', score: 3 },
+      { text: 'Otros', score: 4 },
+    ],
+  },
+];

@@ -26,7 +26,7 @@ function Main() {
           </Typography>
           <div className="mt-14 grid grid-cols-1 gap-4">
             <Button
-              onClick={() => navigate('/onboarding/categories')}
+              onClick={() => navigate('/onboarding')}
               size="md"
               variant="landing"
             >

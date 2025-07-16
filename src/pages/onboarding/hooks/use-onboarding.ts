@@ -14,7 +14,7 @@ export const useOnboarding = () => {
     setCategory,
     responses,
     setResponsesByQuestion,
-    questions: QUESTIONS[category as keyof typeof QUESTIONS] || [],
+    questions: QUESTIONS,
     resultMessages:
       RESULT_MESSAGES[category as keyof typeof RESULT_MESSAGES] || [],
   };

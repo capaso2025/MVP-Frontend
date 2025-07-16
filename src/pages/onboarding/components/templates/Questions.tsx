@@ -8,34 +8,25 @@ import { ResponseQuestion } from '../../store/onboarding-store';
 
 function Questions() {
   const navigate = useNavigate();
-  const { questions, category } = useOnboarding();
+  const { questions, category, responses, setResponsesByQuestion } =
+    useOnboarding();
   const { currentIndex, goToNext, goToPrevious } = useBackNext({
     length: questions.length,
     finishFn: () => {
       navigate('/onboarding/results');
     },
     previousFn: () => {
-      navigate('/onboarding/categories');
+      navigate('/onboarding');
     },
   });
-  const { responses, setResponsesByQuestion } = useOnboarding();
-  const [currentData, setCurrentData] = useState<
-    | {
-        question: string;
-        options: {
-          id: string;
-          text: string;
-          icon?: string;
-        }[];
-      }
-    | undefined
-  >(undefined);
   const [currentQuestion, setCurrentQuestion] = useState<
     ResponseQuestion | undefined
   >(undefined);
 
   const handleNext = () => {
-    if (responses.find((resp) => resp.title === currentData?.question)) {
+    if (
+      responses.find((resp) => resp.title === questions[currentIndex]?.question)
+    ) {
       goToNext();
     }
   };
@@ -44,20 +35,15 @@ function Questions() {
   );
 
   useEffect(() => {
-    const data = questions[currentIndex];
-    setCurrentData(data);
-  }, [currentIndex, questions]);
-
-  useEffect(() => {
     const currentQuestion = responses.find(
-      (resp) => resp.title === currentData?.question,
+      (resp) => resp.title === questions[currentIndex]?.question,
     );
     if (currentQuestion) {
       setCurrentQuestion(currentQuestion);
     } else {
       setCurrentQuestion(undefined);
     }
-  }, [responses, currentData]);
+  }, [responses]);
 
   useEffect(() => {
     if (!category) {
@@ -77,31 +63,26 @@ function Questions() {
               height={150}
             />
             <div className="border-secondary rounded-lg border p-4">
-              <Typography>{currentData?.question}</Typography>
+              <Typography>{questions[currentIndex]?.question}</Typography>
             </div>
           </div>
         </div>
         <main>
           <div className="mx-auto grid h-full max-w-[80%] grid-cols-1 place-content-center gap-4 md:grid-cols-2">
-            {currentData?.options?.map((opt) => (
+            {questions[currentIndex]?.alternatives.map((opt) => (
               <div
-                key={opt.id}
-                className={`flex h-max cursor-pointer items-center gap-2 rounded-lg border p-4 transition-all duration-200 ${currentQuestion?.title === currentData?.question && currentQuestion?.response.id === opt.id ? 'bg-primary-lighter border-transparent shadow-md' : 'border-primary-lighter'}`}
+                key={opt.text}
+                className={`flex h-max cursor-pointer items-center gap-2 rounded-lg border p-4 transition-all duration-200 ${currentQuestion?.title === questions[currentIndex]?.question && currentQuestion?.response.id === opt.score.toString() ? 'bg-primary-lighter border-transparent shadow-md' : 'border-primary-lighter'}`}
                 onClick={() =>
                   setResponsesByQuestion({
-                    title: currentData?.question,
+                    title: questions[currentIndex]?.question || '',
                     response: {
-                      id: opt.id,
-                      value: opt.text,
+                      id: opt.score.toString(),
+                      value: opt.score.toString(),
                     },
                   })
                 }
               >
-                {opt.icon ? (
-                  <img src={opt.icon} alt="icon" width={30} height={30} />
-                ) : (
-                  <></>
-                )}
                 <Typography>{opt.text}</Typography>
               </div>
             ))}

@@ -12,9 +12,9 @@ const LoginPage = lazy(() => import('@/pages/login'));
 const SignupPage = lazy(() => import('@/pages/signup'));
 
 // Onboarding
-const CategoriesPage = lazy(
-  () => import('@/pages/onboarding/components/templates/Categories'),
-);
+// const CategoriesPage = lazy(
+//   () => import('@/pages/onboarding/components/templates/Categories'),
+// );
 const OnboardingIntroPage = lazy(
   () => import('@/pages/onboarding/components/templates/Intro'),
 );
@@ -27,6 +27,7 @@ const OnboardingResultsPage = lazy(
 
 // Home
 const SectionsPage = lazy(() => import('@/pages/sections'));
+const HomePage = lazy(() => import('@/pages/home'));
 const LearnPage = lazy(() => import('@/pages/modules'));
 const ShopPage = lazy(() => import('@/pages/shop'));
 const ProfilePage = lazy(() => import('@/pages/profile'));
@@ -64,7 +65,7 @@ function AppRouter() {
         />
 
         {/* Onboarding */}
-        <Route path="/onboarding/categories" element={<CategoriesPage />} />
+        {/* <Route path="/onboarding/categories" element={<CategoriesPage />} /> */}
         <Route path="/onboarding" element={<OnboardingIntroPage />} />
         <Route
           path="/onboarding/questions"
@@ -74,6 +75,7 @@ function AppRouter() {
 
         {/* Home */}
         <Route path="/" element={<MainLayout />}>
+          <Route path="/home" element={<HomePage />} />
           <Route path="/sections" element={<SectionsPage />} />
           <Route path="/modules/:sectionId" element={<LearnPage />} />
           <Route
