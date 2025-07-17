@@ -11,16 +11,13 @@ function Main() {
     >
       <div className="mx-auto grid max-w-[80%] grid-rows-[max-content_auto] place-content-center gap-16 md:mx-0">
         <div className="text-center md:text-left">
-          <Typography variant="h1" as="h1" className="text-primary-light">
+          <Typography variant="h1" as="h1" className="text-white">
             Hoy comienza tu transformación
           </Typography>
-          <Typography
-            variant="h5"
-            className="text-secondary-dark mt-4 font-normal"
-          >
+          <Typography variant="h5" className="text-secondary mt-4 font-normal">
             ¿Listo para convertirte en un{' '}
-            <Typography as="strong" className="text-primary">
-              CAPO
+            <Typography as="strong" className="text-primary-2">
+              CAPASO
             </Typography>
             ?
           </Typography>

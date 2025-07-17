@@ -33,7 +33,7 @@ function Footer() {
         </div>
       </div>
       <Typography className="text-foreground-secondary mt-8">
-        CAPO 2025
+        CAPASO 2025
       </Typography>
     </footer>
   );

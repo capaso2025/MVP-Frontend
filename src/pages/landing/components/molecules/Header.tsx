@@ -1,16 +1,13 @@
 import { Typography } from '@/shared/ui';
 import Logo from '@/assets/capo-logo.png';
-import LogoDark from '@/assets/capo-logo-dark.png';
 import RightMenu from '../organisms/RightMenu';
 import { MENU } from '../../constants/menu';
 import { useState } from 'react';
-import { useScroll } from '@/shared/hooks/use-scroll';
 import Container from '@/shared/ui/atoms/Container';
 import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
 
 function Header() {
   const [openedMenu, setOpenMenu] = useState<boolean>(false);
-  const { scrolled } = useScroll({ height: 10 });
 
   const handleOpenMenu = (value?: boolean) => {
     if (value !== undefined) return setOpenMenu(value);
@@ -21,24 +18,22 @@ function Header() {
     <>
       <Container
         as="header"
-        className={`flex items-center justify-between transition-all duration-200 ${scrolled ? 'bg-custom-blur sticky top-4 z-[99] rounded-full px-8 py-2 pl-2 shadow-md' : ''}`}
+        className={`bg-custom-blur sticky top-4 z-[99] flex items-center justify-between rounded-full border border-white/10 px-8 py-2 pl-2 shadow-md transition-all duration-200`}
       >
         <img
-          src={scrolled ? Logo : LogoDark}
+          src={Logo}
           width={50}
           height={50}
           alt="logo de capo"
           color="text-primary"
-          className="p-1"
+          className="p-1 pt-2"
         />
         <div className="hidden items-center justify-end gap-6 py-4 lg:flex">
           {MENU.map((element) => (
             <Typography
               key={element.text}
               variant="h6"
-              className={`hover:text-primary-2 cursor-pointer font-normal transition-all duration-200 hover:font-bold ${
-                scrolled ? 'text-white' : 'text-primary'
-              }`}
+              className={`hover:text-primary-2 cursor-pointer font-normal text-white transition-all duration-200 hover:font-bold`}
             >
               <a href={element.href}>{element.text}</a>
             </Typography>
