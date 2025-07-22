@@ -9,15 +9,20 @@ import ScrollTextTransition from './components/organisms/ScrollText';
 import Pricing from './components/organisms/pricing';
 import Features from './components/organisms/Features';
 import DiferenciasSection from './components/organisms/Differentiation';
+import WhatIs from './components/organisms/WhatIs';
 function Landing() {
   return (
     <div className="animate-fade-in bg-landing-dark relative">
       <Header />
-      <Container>
+      <Container className="relative">
         <Main />
       </Container>
       <Spacer size="xl" />
       <ScrollTextTransition />
+      <Spacer size="5xl" />
+      <Container>
+        <WhatIs />
+      </Container>
       <div id="funcionalidades" />
       <Spacer size="5xl" />
       <Container>

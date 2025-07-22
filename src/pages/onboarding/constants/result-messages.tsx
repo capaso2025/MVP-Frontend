@@ -10,7 +10,7 @@ export const RESULT_MESSAGES: {
 } = {
   'soft-skills': [
     {
-      bubble: 'Lo que ganarás siendo un Capo en esto…',
+      bubble: 'Lo que ganarás siendo un Capaso en esto…',
       mainText:
         'Tu voz tiene poder. Y cuando aprendes a usarla con seguridad, puedes abrirte a nuevas oportunidades, crear relaciones auténticas y liderar con confianza. Vamos a desarrollar esa versión fuerte y clara de ti.',
       buttonText: 'Siguiente',
@@ -29,7 +29,7 @@ export const RESULT_MESSAGES: {
   ],
   'time-management': [
     {
-      bubble: 'Lo que ganarás siendo un Capo en esto…',
+      bubble: 'Lo que ganarás siendo un Capaso en esto…',
       mainText:
         'Tu tiempo es uno de tus recursos más valiosos. Aprender a organizarlo te da libertad: más enfoque, menos estrés y más espacio para lo que realmente te llena. Vamos a construir una rutina que te funcione de verdad',
       buttonText: 'Siguiente',
@@ -56,7 +56,7 @@ export const RESULT_MESSAGES: {
   ],
   'emotional-control': [
     {
-      bubble: 'Lo que ganarás siendo un Capo en esto…',
+      bubble: 'Lo que ganarás siendo un Capaso en esto…',
       mainText:
         'Sentir no está mal. Pero aprender a regular tus emociones te da poder real: claridad para tomar decisiones, fuerza para superar retos y calma para vivir con más ligereza. Vamos a enseñarte cómo lograrlo.',
       buttonText: 'Siguiente',

@@ -32,7 +32,7 @@ function Sidebar(props: { items: MenuItemType[] }) {
           <MenuIcon onClick={toggleOpenedSidebar} />
         </div>
         <img
-          alt="Capo logo"
+          alt="Capaso logo"
           src={capoLogo}
           width={70}
           className="mx-auto mt-0 xl:mt-4"

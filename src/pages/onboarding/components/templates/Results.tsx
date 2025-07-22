@@ -1,54 +1,54 @@
-import { useBackNext } from '@/shared/hooks/useBackNext';
-import { Button, Typography } from '@/shared/ui';
+import { Button, Progress, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
+import { Loader } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useOnboarding } from '../../hooks/use-onboarding';
 
 function Intro() {
   const navigate = useNavigate();
-  const { resultMessages } = useOnboarding();
-  const { currentIndex, goToNext } = useBackNext({
-    length: 1,
-    finishFn: () => {
-      navigate('/home');
-    },
-  });
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   return (
-    <OnboardingLayout>
-      <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] py-4 xl:w-full">
-        <div>
-          <div className="mt-8 flex items-center gap-4">
+    <OnboardingLayout
+      title={loading ? '' : 'Asi empezaremos Fernando: Explorador sin rumbo'}
+    >
+      {loading ? (
+        <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] place-content-center py-4 xl:w-full">
+          <div className="flex flex-col items-center gap-8">
+            <Loader className="text-primary-2 scale-200 animate-spin" />
+            <p>Generando ruta de aprendizaje...</p>
+          </div>
+        </div>
+      ) : (
+        <div className="mx-auto grid h-[90%] w-[90%] grid-rows-[auto_max-content]">
+          <div className="mx-auto mt-8 grid w-[80%] grid-cols-2 place-content-center gap-8">
+            <div className="grid gap-4">
+              {[1, 2, 3, 4].map((el) => (
+                <div className="flex items-center gap-8">
+                  <Typography>Tiempo</Typography>
+                  <Progress value={el * 25} size="lg" />
+                </div>
+              ))}
+            </div>
             <img
-              src="/assets/characters/herramienta.png"
-              width={150}
-              height={150}
+              src="/assets/characters/capito-happy.png"
+              className="mx-auto"
+              alt="herramienta"
+              width={300}
             />
-            {resultMessages[currentIndex]?.bubble && (
-              <div className="border-secondary rounded-lg border p-4">
-                <Typography>{resultMessages[currentIndex]?.bubble}</Typography>
-              </div>
-            )}
+          </div>
+          <div className="mt-8 flex items-center justify-end">
+            <Button onClick={() => navigate('/home')} variant="landing">
+              Continuar
+            </Button>
           </div>
         </div>
-        <main>
-          <div className="mx-auto grid h-full max-w-[50%] place-content-center gap-4">
-            {resultMessages[currentIndex]?.mainText && (
-              <div className="border-secondary-light h-max rounded-lg border p-4">
-                <Typography>
-                  {resultMessages[currentIndex]?.mainText}
-                </Typography>
-              </div>
-            )}
-          </div>
-        </main>
-        <div className="mt-8 flex items-center justify-between">
-          <div />
-          <Button onClick={goToNext}>
-            {resultMessages[currentIndex]?.buttonText}
-          </Button>
-        </div>
-      </div>
+      )}
     </OnboardingLayout>
   );
 }

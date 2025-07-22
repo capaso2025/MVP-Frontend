@@ -27,6 +27,7 @@ export interface PricingPlan {
   descriptionClass: string;
   gradientClass?: string;
   innerClass?: string;
+  image: string; // Nueva propiedad
 }
 
 export const pricingPlans: PricingPlan[] = [
@@ -53,6 +54,7 @@ export const pricingPlans: PricingPlan[] = [
     containerClass: 'bg-white/2',
     priceClass: 'text-5xl font-bold',
     descriptionClass: 'text-sm text-gray-400 mb-4',
+    image: '/assets/characters/capito-happy.png',
   },
   {
     key: 'pro',
@@ -95,6 +97,7 @@ export const pricingPlans: PricingPlan[] = [
     priceClass: 'text-5xl font-bold',
     priceNoteClass: 'text-sm text-gray-300',
     descriptionClass: 'text-sm text-gray-300 mb-4',
+    image: '/assets/characters/capito-excited-2.png',
   },
   {
     key: 'ultra',
@@ -122,5 +125,6 @@ export const pricingPlans: PricingPlan[] = [
     priceClass: 'text-5xl font-bold',
     priceNoteClass: 'text-sm text-gray-400',
     descriptionClass: 'text-sm text-gray-400 mb-4',
+    image: '/assets/characters/capito-director.png',
   },
 ];

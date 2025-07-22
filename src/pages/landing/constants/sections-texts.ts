@@ -8,12 +8,12 @@ export const SECTIONS_TEXTS = {
   NOSOTROS_2: {
     TITLE: 'Mantén tu motivación',
     DESCRIPTION:
-      'En Capo, convertimos tu progreso en pequeñas victorias diarias que te mantienen motivado y con ganas de seguir. Porque avanzar también puede sentirse bien, desde el primer paso.',
+      'En Capaso, convertimos tu progreso en pequeñas victorias diarias que te mantienen motivado y con ganas de seguir. Porque avanzar también puede sentirse bien, desde el primer paso.',
   },
   PROFESORES: {
     TITLE: 'Eres el pilar que transforma vidas',
     DESCRIPTION:
-      'Capo te da las herramientas necesarias para acompañar, motivar y potenciar a cada estudiante en proceso educativo.',
+      'Capaso te da las herramientas necesarias para acompañar, motivar y potenciar a cada estudiante en proceso educativo.',
     BUTTON_TEXT: 'Comenzar como profesor',
     ID: 'profesores',
     LIST: [

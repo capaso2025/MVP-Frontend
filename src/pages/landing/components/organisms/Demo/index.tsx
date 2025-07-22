@@ -24,8 +24,8 @@ const Demo = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
             variant="h4"
             className="text-foreground-secondary text-center font-normal"
           >
-            Capo ayuda a colegios y universidades a potenciar a sus estudiantes.
-            Solicita una demo para tu institución.
+            Capaso ayuda a colegios y universidades a potenciar a sus
+            estudiantes. Solicita una demo para tu institución.
           </Typography>
           <Button variant="landing" className="mx-auto mt-4 w-fit">
             Quiero una demo para mi institución

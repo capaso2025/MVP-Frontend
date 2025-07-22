@@ -1,99 +1,179 @@
-import { Button, Progress } from '@/shared/ui';
-import RightSection from '@/shared/ui/organisms/right-section/RightSection';
+import { Button, Progress, Typography } from '@/shared/ui';
+import CustomCalendar from '../sections/components/atoms/Calendar';
+import DailyTasks from '../sections/components/organisms/DailyTasks';
+import {
+  ChartGanttIcon,
+  CompassIcon,
+  HeartHandshakeIcon,
+  UserIcon,
+} from '@/shared/ui/atoms/Icon/Icon';
+const MODULES = [
+  {
+    title: 'Enfocar tu atención',
+  },
+  {
+    title: 'Planificar sin caos',
+  },
+  {
+    title: 'Establecer metas claras',
+  },
+  {
+    title: 'Domina tu tiempo',
+  },
+];
 
-export default function Component() {
-  const weeklyData = [
-    { day: 1, height: 40 },
-    { day: 2, height: 60 },
-    { day: 3, height: 75 },
-    { day: 4, height: 85 },
-    { day: 5, height: 100 },
-  ];
-
+const TOOLS = [
+  {
+    title: 'Metas  y seguimientos',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Objetivo actual:
+        </Typography>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Terminar proyecto personal
+        </Typography>
+      </>
+    ),
+    icon: <CompassIcon className="text-white" />,
+  },
+  {
+    title: 'Constructor de hábitos',
+    icon: <HeartHandshakeIcon className="text-white" />,
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Dormir antes de las 11pm
+        </Typography>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Leer 20 min diarios
+        </Typography>
+      </>
+    ),
+  },
+  {
+    title: 'Aprendizaje y reflexión',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Dormir 8 horas
+        </Typography>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Leer 20 min diarios
+        </Typography>
+      </>
+    ),
+    icon: <ChartGanttIcon className="text-white" />,
+  },
+  {
+    title: 'Motivación',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Misiones semanales: 3/5 completadas
+        </Typography>
+      </>
+    ),
+    icon: <HeartHandshakeIcon className="text-white" />,
+  },
+  {
+    title: 'Motivación',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          🌝 Check-in emocional diario
+        </Typography>
+      </>
+    ),
+    icon: <UserIcon className="text-white" />,
+  },
+];
+export default function Home() {
   return (
-    <div className="with-right-section">
-      <div className="min-h-screen bg-gray-50 p-6">
-        <div className="mx-auto max-w-6xl space-y-6">
-          {/* Main Header Card */}
-          <div className="p-8">
-            <div className="flex items-center gap-8">
-              <div className="flex-shrink-0">
-                <img
-                  src="/assets/characters/capito-excited.png"
-                  alt="Capito"
-                  width={200}
-                />
-              </div>
-              <div className="flex-1">
-                <h1 className="mb-4 text-5xl font-bold text-gray-900">
-                  CAPASO IA
-                </h1>
-                <p className="mb-6 text-xl text-gray-600">
-                  Te recomiendo practicar
-                  <br />
-                  la escucha activa hoy
-                </p>
-                <Button>Elige un desafío</Button>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {/* Objectives Card */}
-            <div className="rounded-lg border border-gray-200 bg-white p-4">
-              <div>
-                <h2 className="text-2xl font-bold">Objetivos</h2>
-              </div>
-              <div className="space-y-4">
-                <div className="text-4xl font-bold text-gray-900">60%</div>
-                <div className="space-y-2">
-                  <Progress value={60} className="h-4" />
-                  <p className="text-lg text-gray-600">Productividad</p>
+    <div>
+      <div className="mt-8 grid grid-cols-[250px_auto] gap-8">
+        <div className="grid place-content-center gap-2">
+          <Typography variant="h4" className="text-primary text-left font-bold">
+            Hola, Matias
+          </Typography>
+          <img
+            src="/assets/characters/capo-example.png"
+            alt="Capaso"
+            width={250}
+            height={250}
+          />
+          <small className="text-center">Nivel 3 - Progreso personal</small>
+        </div>
+        <div>
+          <Typography variant="h6" className="text-primary mb-4 font-bold">
+            Tus módulos recomendados - Camino Autodidacta Caótico
+          </Typography>
+          <div className="grid grid-cols-2 gap-4">
+            {MODULES.map((el) => (
+              <div className="bg-primary/5 rounded-lg p-4">
+                <div className="flex items-start gap-2">
+                  <img src="" alt="" width={20} height={20} />
+                  <div>
+                    <Typography variant="h6" className="text-primary font-bold">
+                      {el.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      className="text-primary"
+                      as="span"
+                    >
+                      Nivel 1
+                    </Typography>
+                  </div>
+                </div>
+                <div className="mt-2 flex gap-2">
+                  <Progress value={50} />
+                  <Button variant="secondary" size="sm" className="w-full">
+                    Continuar lección
+                  </Button>
                 </div>
               </div>
-            </div>
-
-            {/* Challenges Card */}
-            <div className="rounded-lg border border-gray-200 bg-white p-4">
-              <div>
-                <h2 className="text-2xl font-bold">Desafíos</h2>
-              </div>
-              <div>
-                <div className="flex h-32 items-center justify-center text-gray-400">
-                  {/* Empty state for challenges */}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Weekly Progress Card */}
-          <div className="rounded-lg border border-gray-200 bg-white p-4">
-            <div>
-              <h2 className="text-2xl font-bold">Progreso semanal</h2>
-            </div>
-            <div>
-              <div className="space-y-4">
-                <div className="space-y-2 text-lg">
-                  <div>1) Usuario 1</div>
-                  <div>2) Usuario 2</div>
-                  <div>3) Usuario 3</div>
-                </div>
-                <div className="mt-8 flex h-32 items-end gap-4">
-                  {weeklyData.map((data, index) => (
-                    <div
-                      key={index}
-                      className="flex-1 rounded-t-lg border-2 border-blue-600 bg-blue-400"
-                      style={{ height: `${data.height}%` }}
-                    ></div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-      <RightSection />
+      <div className="mt-12">
+        <Typography className="text-primary mb-4" variant="h3">
+          Capo Herramientas
+        </Typography>
+        <div className="grid grid-cols-[60%_auto] gap-8">
+          <div className="grid h-max grid-cols-2 gap-4">
+            {TOOLS.map((el) => (
+              <div className="bg-landing-dark rounded-lg p-4">
+                <div className="grid grid-cols-[max-content_auto] gap-2">
+                  {el.icon}
+                  <div className="flex flex-col gap-1">
+                    <Typography variant="h6" className="font-bold text-white">
+                      {el.title}
+                    </Typography>
+                    {el.description}
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center gap-2">
+                  <Progress value={50} />
+                  <Typography>70%</Typography>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="grid gap-4">
+            <CustomCalendar />
+            <img
+              src="/assets/characters/capo-pc.png"
+              alt="capo"
+              width={200}
+              height={200}
+              className="w-full rounded-2xl"
+            />
+            <DailyTasks />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

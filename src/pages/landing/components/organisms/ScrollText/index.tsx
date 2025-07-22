@@ -75,10 +75,10 @@ export default function ScrolledText() {
     <>
       <div
         ref={firstTextRef}
-        className={`mx-auto flex h-[100vh] w-[90%] items-center justify-center ${showFirstText ? 'sticky top-0 z-0' : ''}`}
+        className={`mx-auto h-[100vh] w-[90%] ${showFirstText ? 'sticky top-0 z-0' : ''}`}
       >
-        <div>
-          <Typography className="!text-[50px] font-bold text-white md:!text-[75px] lg:!text-[100px]">
+        <div className="flex h-full w-full items-center justify-center">
+          <Typography className="px-[5%] !text-[50px] font-bold text-white lg:!text-[75px]">
             ¿Cuántos días más vas a seguir sintiendo que estás desperdiciando tu
             potencial?
           </Typography>
@@ -86,11 +86,11 @@ export default function ScrolledText() {
       </div>
       <div
         ref={secondTextRef}
-        className={`relative z-10 flex h-[100vh] items-center justify-center ${showSecondText ? 'sticky top-0 z-0' : ''}`}
+        className={`relative z-10 h-[100vh] w-screen ${showSecondText ? 'sticky top-0 z-0' : ''}`}
       >
         <div className="from-primary-dark absolute top-[-300px] left-0 h-[300px] w-full bg-gradient-to-t to-transparent"></div>
-        <div className="bg-primary-dark grid h-[100vh] place-content-center px-[5%]">
-          <Typography className="!text-[50px] font-bold text-white md:!text-[75px] lg:!text-[100px]">
+        <div className="bg-primary-dark grid h-[100vh] place-content-center">
+          <Typography className="px-[5%] !text-[50px] font-bold text-white lg:!text-[75px]">
             Sabes que puedes dar más. Pero algo te está frenando.
           </Typography>
         </div>
@@ -99,24 +99,21 @@ export default function ScrolledText() {
       {/* add thrid text */}
       <div
         ref={thirdTextRef}
-        className={`relative z-10 flex h-[100vh] items-center justify-center ${showThirdText ? 'sticky top-0 z-0' : ''}`}
+        className={`relative z-10 h-[100vh] ${showThirdText ? 'sticky top-0 z-0' : ''}`}
       >
         <div className="from-primary-dark absolute top-[-300px] left-0 h-[300px] w-full bg-gradient-to-t to-transparent"></div>
-        <div className="bg-primary-dark grid h-[100vh] place-content-center px-[5%]">
-          <Typography className="!text-[50px] font-bold text-white md:!text-[75px] lg:!text-[100px]">
+        <div className="bg-primary-dark grid h-[100vh] place-content-center">
+          <Typography className="px-[5%] text-left !text-[50px] font-bold text-white lg:!text-[75px]">
             El tiempo pasa. Y tú sientes que no avanzas.
           </Typography>
         </div>
         <div className="from-primary-dark absolute bottom-[-300px] left-0 h-[300px] w-full bg-gradient-to-b to-transparent"></div>
       </div>
       {/* add fourth text */}
-      <div
-        ref={fourthTextRef}
-        className={`relative z-10 flex h-[100vh] items-center justify-center`}
-      >
+      <div ref={fourthTextRef} className={`relative z-10 h-[100vh]`}>
         <div className="from-primary-dark absolute top-[-300px] left-0 h-[300px] w-full bg-gradient-to-t to-transparent"></div>
-        <div className="bg-primary-dark grid h-[100vh] place-content-center px-[5%]">
-          <Typography className="!text-[50px] font-bold text-white md:!text-[75px] lg:!text-[100px]">
+        <div className="bg-primary-dark grid h-[100vh] place-content-center">
+          <Typography className="px-[5%] text-left !text-[50px] font-bold text-white lg:!text-[75px]">
             El cambio empieza hoy. Da el primer paso hacia tu mejor versión.
           </Typography>
         </div>

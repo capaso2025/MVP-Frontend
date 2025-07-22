@@ -9,7 +9,7 @@ import { Typography } from '@/shared/ui';
 const faqData = [
   {
     id: 'item-1',
-    question: '¿Capo es gratis?',
+    question: '¿Capaso es gratis?',
     answer:
       'Sí. Puedes comenzar gratis con acceso a los primeros niveles y funcionalidades clave. También ofrecemos una versión PRO con contenido exclusivo, misiones especiales y ventajas adicionales.',
   },
@@ -17,13 +17,13 @@ const faqData = [
     id: 'item-2',
     question: '¿Para qué edades está diseñado?',
     answer:
-      'Capo está pensado para jóvenes entre 15 y 22 años, especialmente aquellos en la transición del colegio a la universidad. Sin embargo, cualquier persona interesada en mejorar sus habilidades blandas puede beneficiarse.',
+      'Capaso está pensado para jóvenes entre 15 y 22 años, especialmente aquellos en la transición del colegio a la universidad. Sin embargo, cualquier persona interesada en mejorar sus habilidades blandas puede beneficiarse.',
   },
   {
     id: 'item-3',
     question: '¿Necesito estar en un colegio?',
     answer:
-      'No. Capo está abierto para cualquier persona que quiera crecer de forma autodidacta. Si tu colegio o universidad tiene convenio con nosotros, podrás acceder a beneficios adicionales.',
+      'No. Capaso está abierto para cualquier persona que quiera crecer de forma autodidacta. Si tu colegio o universidad tiene convenio con nosotros, podrás acceder a beneficios adicionales.',
   },
   {
     id: 'item-4',

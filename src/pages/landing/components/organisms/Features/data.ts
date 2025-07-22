@@ -28,7 +28,7 @@ export const FEATURES = [
   },
   {
     icon: UsersIcon,
-    title: 'Comunidad Capo',
+    title: 'Comunidad Capaso',
     description: 'Aprende y crece con otros como tú.',
     color: 'text-orange-600',
   },
@@ -40,7 +40,7 @@ export const FEATURES = [
   },
   {
     icon: GraduationCapIcon,
-    title: 'Capo para colegios',
+    title: 'Capaso para colegios',
     description: 'Herramienta educativa para instituciones.',
     color: 'text-indigo-600',
   },

@@ -28,5 +28,6 @@ export const useBackNext = (params: {
     currentIndex,
     goToNext,
     goToPrevious,
+    isFirstStep: currentIndex === 0,
   };
 };

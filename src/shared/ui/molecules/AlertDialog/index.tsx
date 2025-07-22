@@ -24,12 +24,12 @@ function AlertDialog() {
   return (
     <AlertDialogContainer defaultOpen={show}>
       <AlertDialogContent
-        className="bg-foreground border-primary-lighter w-[95%] rounded-2xl border-2 p-10"
+        className="bg-landing-dark w-[95%] rounded-2xl border border-white/20 p-10"
         id="alert-dialog"
       >
         {title && (
           <AlertDialogTitle>
-            <Typography variant="h3" className="text-primary text-center">
+            <Typography variant="h3" className="text-center">
               {title}
             </Typography>
           </AlertDialogTitle>
@@ -37,7 +37,7 @@ function AlertDialog() {
         {description && (
           <Typography
             variant="h6"
-            className={`text-primary px-4 text-center font-normal ${!title ? 'pb-4 text-xl' : ''}`}
+            className={`text-secondary px-4 text-center font-normal ${!title ? 'pb-4 text-xl' : ''}`}
           >
             {description}
           </Typography>
@@ -52,7 +52,7 @@ function AlertDialog() {
               {...confirmButtonProps}
               onClick={async () => {
                 await onConfirm?.();
-                document.body.style.overflow = 'auto';
+                document.body.style.overflowY = 'auto';
                 onClose?.();
                 closeAlertDialog();
               }}
@@ -66,7 +66,7 @@ function AlertDialog() {
                 className="text-wrap"
                 onClick={() => {
                   onClose?.();
-                  document.body.style.overflow = 'auto';
+                  document.body.style.overflowY = 'auto';
                   closeAlertDialog();
                   onCancel?.();
                 }}
@@ -79,7 +79,7 @@ function AlertDialog() {
                 {...confirmButtonProps}
                 onClick={async () => {
                   await onConfirm?.();
-                  document.body.style.overflow = 'auto';
+                  document.body.style.overflowY = 'auto';
                   onClose?.();
                   closeAlertDialog();
                 }}

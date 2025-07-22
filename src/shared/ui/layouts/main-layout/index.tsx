@@ -24,7 +24,7 @@ function MenuLayout() {
   //   return <Navigate to="/login" replace />;
 
   return (
-    <div className="">
+    <div className="text-primary">
       <Sidebar
         items={
           !isAuthenticated ? NO_LOGGED_DEFAULT_MENU_ITEMS : DEFAULT_MENU_ITEMS

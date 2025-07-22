@@ -37,7 +37,7 @@ export function SchoolCard({ school }: SchoolCardProps) {
       <div className="text-right">
         <Typography variant="body2">
           {school.teacherCount}{' '}
-          {school.teacherCount === 1 ? 'profesor' : 'profesores'} en Capo
+          {school.teacherCount === 1 ? 'profesor' : 'profesores'} en Capaso
         </Typography>
       </div>
     </div>

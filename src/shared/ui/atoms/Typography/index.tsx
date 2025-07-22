@@ -21,7 +21,7 @@ export const Typography = forwardRef<
   ({
     children,
     variant = 'body1',
-    className = 'text-primary',
+    className = 'text-white',
     as: Component = 'p',
     ...rest
   }) => {

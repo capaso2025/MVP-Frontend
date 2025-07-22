@@ -15,7 +15,7 @@ function Container(
     ...rest
   } = props;
   const sizes = {
-    default: 'w-[90%] mx-auto xl:w-[60%]',
+    default: 'w-[90%] mx-auto xl:w-[70%]',
     large: 'w-[90%] mx-auto',
   };
   return (

@@ -71,9 +71,9 @@ export default function TeacherDashboard() {
               </div>
 
               <div className="flex gap-3">
-                <div className="flex items-center gap-1 rounded-full bg-gray-100 px-4 py-2">
+                <div className="flex items-center gap-1 rounded-full bg-gray-300 px-4 py-2">
                   <Users className="mr-2 h-4 w-4" />
-                  <Typography variant="body2">
+                  <Typography variant="body2" className="text-primary">
                     {classStudents.length} estudiantes
                   </Typography>
                 </div>
@@ -158,7 +158,9 @@ export default function TeacherDashboard() {
               <GraduationCap className="h-6 w-6 text-white" />
             </div>
             <div>
-              <Typography variant="h3">Mis Clases</Typography>
+              <Typography variant="h3" className="text-primary">
+                Mis Clases
+              </Typography>
               <Typography variant="h6" className="font-normal">
                 Gestiona tus clases y estudiantes
               </Typography>
@@ -166,9 +168,9 @@ export default function TeacherDashboard() {
           </div>
 
           <div className="flex gap-4">
-            <div className="flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1">
+            <div className="flex items-center gap-2 rounded-full bg-gray-300 px-3 py-1">
               <BookOpen className="mr-1 h-4 w-4" />
-              <Typography variant="body2">
+              <Typography variant="body2" className="text-primary">
                 {CLASSES.length} clases activas
               </Typography>
             </div>
@@ -196,7 +198,9 @@ export default function TeacherDashboard() {
                     <BookOpen className="h-5 w-5 text-white" />
                   </div>
                 </div>
-                <Typography variant="h5">{classItem.name}</Typography>
+                <Typography variant="h5" className="text-primary">
+                  {classItem.name}
+                </Typography>
                 <Typography
                   className="text-foreground-secondary pt-1 pb-3 font-normal"
                   variant="body2"

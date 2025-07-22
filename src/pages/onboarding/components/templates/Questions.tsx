@@ -8,9 +8,8 @@ import { ResponseQuestion } from '../../store/onboarding-store';
 
 function Questions() {
   const navigate = useNavigate();
-  const { questions, category, responses, setResponsesByQuestion } =
-    useOnboarding();
-  const { currentIndex, goToNext, goToPrevious } = useBackNext({
+  const { questions, responses, setResponsesByQuestion } = useOnboarding();
+  const { currentIndex, goToNext, goToPrevious, isFirstStep } = useBackNext({
     length: questions.length,
     finishFn: () => {
       navigate('/onboarding/results');
@@ -45,34 +44,25 @@ function Questions() {
     }
   }, [responses]);
 
-  useEffect(() => {
-    if (!category) {
-      navigate('/onboarding/category');
-    }
-  }, [category]);
-
   return (
-    <OnboardingLayout>
+    <OnboardingLayout title="Capaso">
       <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] py-4 xl:w-full">
-        <div>
-          <Progress value={calculatedProgress} size="lg" />
-          <div className="mt-8 flex items-center gap-4">
-            <img
-              src="/assets/characters/capito-default.png"
-              width={150}
-              height={150}
-            />
-            <div className="border-secondary rounded-lg border p-4">
-              <Typography>{questions[currentIndex]?.question}</Typography>
-            </div>
-          </div>
+        <Progress value={calculatedProgress} size="sm" />
+
+        <div className="mt-8 grid place-content-center">
+          <Typography variant="h5" className="font-normal">
+            {questions[currentIndex]?.question}
+          </Typography>
+          <Typography variant="body1" className="text-secondary text-center">
+            Esto ayuda a personalizar tu experiencia.
+          </Typography>
         </div>
         <main>
-          <div className="mx-auto grid h-full max-w-[80%] grid-cols-1 place-content-center gap-4 md:grid-cols-2">
+          <div className="mx-auto grid h-full max-w-[50%] grid-cols-1 place-content-center gap-4">
             {questions[currentIndex]?.alternatives.map((opt) => (
               <div
                 key={opt.text}
-                className={`flex h-max cursor-pointer items-center gap-2 rounded-lg border p-4 transition-all duration-200 ${currentQuestion?.title === questions[currentIndex]?.question && currentQuestion?.response.id === opt.score.toString() ? 'bg-primary-lighter border-transparent shadow-md' : 'border-primary-lighter'}`}
+                className={`flex h-max cursor-pointer items-center gap-2 rounded-2xl border border-white/20 p-4 transition-all duration-200 ${currentQuestion?.title === questions[currentIndex]?.question && currentQuestion?.response.id === opt.score.toString() ? 'from-primary-light to-primary-dark bg-gradient-to-br shadow-md' : ''}`}
                 onClick={() =>
                   setResponsesByQuestion({
                     title: questions[currentIndex]?.question || '',
@@ -89,10 +79,24 @@ function Questions() {
           </div>
         </main>
         <div className="mt-8 flex items-center justify-between">
-          <Button variant="secondary" onClick={goToPrevious}>
-            Regresar
+          {!isFirstStep ? (
+            <Button variant="secondary" onClick={goToPrevious}>
+              Regresar
+            </Button>
+          ) : (
+            <div />
+          )}
+          <Button
+            onClick={handleNext}
+            variant="landing"
+            disabled={
+              !responses.find(
+                (resp) => resp.title === questions[currentIndex]?.question,
+              )?.response.id
+            }
+          >
+            Avanzar
           </Button>
-          <Button onClick={handleNext}>Avanzar</Button>
         </div>
       </div>
     </OnboardingLayout>

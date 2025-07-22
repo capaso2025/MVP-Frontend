@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import { Category } from '../types/categories';
-import { persist } from 'zustand/middleware';
 
 export interface ResponseQuestion {
   title: string;
@@ -22,45 +21,38 @@ type OnboardingPersist = PersistOptions<OnboardingState>;
 export const useOnboardingStore = create<
   OnboardingState,
   [['zustand/persist', OnboardingPersist]]
->(
-  persist(
-    (set) => ({
-      responses: [],
-      category: 'capaso-ia',
-      setCategory: (category: Category) => {
-        set(() => ({
-          category,
-        }));
-      },
-      setResponsesByQuestion: (res: ResponseQuestion) => {
-        set((state) => {
-          const { title, response } = res;
-          const existingResponseIndex = state.responses.findIndex(
-            (resp) => resp.title === title,
-          );
-          if (existingResponseIndex !== -1) {
-            const updatedResponses = [...state.responses];
-            updatedResponses[existingResponseIndex] = {
-              ...updatedResponses[existingResponseIndex],
-              title,
-              response,
-            };
-            return { responses: updatedResponses };
-          }
-          return {
-            responses: [
-              ...state.responses,
-              {
-                title,
-                response,
-              },
-            ],
-          };
-        });
-      },
-    }),
-    {
-      name: 'onboarding-storage',
-    },
-  ),
-);
+>((set) => ({
+  responses: [],
+  category: 'capaso-ia',
+  setCategory: (category: Category) => {
+    set(() => ({
+      category,
+    }));
+  },
+  setResponsesByQuestion: (res: ResponseQuestion) => {
+    set((state) => {
+      const { title, response } = res;
+      const existingResponseIndex = state.responses.findIndex(
+        (resp) => resp.title === title,
+      );
+      if (existingResponseIndex !== -1) {
+        const updatedResponses = [...state.responses];
+        updatedResponses[existingResponseIndex] = {
+          ...updatedResponses[existingResponseIndex],
+          title,
+          response,
+        };
+        return { responses: updatedResponses };
+      }
+      return {
+        responses: [
+          ...state.responses,
+          {
+            title,
+            response,
+          },
+        ],
+      };
+    });
+  },
+}));

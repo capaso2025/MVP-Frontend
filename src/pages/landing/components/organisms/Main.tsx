@@ -1,6 +1,7 @@
 import { Button, Typography } from '@/shared/ui';
 import { useNavigate } from 'react-router-dom';
 import capitoDesk from '@/assets/capito-desk.webp';
+import logo from '@/assets/capo-logo.png';
 
 function Main() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ function Main() {
       id="inicio"
       className="mt-20 grid h-auto grid-cols-1 place-content-center md:grid-cols-2 lg:-mt-10 lg:h-[calc(100vh-60px)]"
     >
-      <div className="mx-auto grid max-w-[80%] grid-rows-[max-content_auto] place-content-center gap-16 md:mx-0">
+      <div className="z-[1] mx-auto grid max-w-[80%] grid-rows-[max-content_auto] place-content-center gap-16 md:mx-0">
         <div className="text-center md:text-left">
           <Typography variant="h1" as="h1" className="text-white">
             Hoy comienza tu transformación
@@ -44,6 +45,12 @@ function Main() {
           height={500}
         />
       </div>
+      <img
+        src={logo}
+        alt="Capaso logo"
+        className="absolute top-[25vh] left-[-25vw] z-0 opacity-[2%]"
+        width={800}
+      />
     </div>
   );
 }

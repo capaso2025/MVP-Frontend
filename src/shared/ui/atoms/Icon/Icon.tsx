@@ -47,6 +47,10 @@ import {
   BookOpen,
   TrendingUp,
   GraduationCap,
+  Compass,
+  ChartGantt,
+  Sunrise,
+  HeartHandshake,
 } from 'lucide-react';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 
@@ -120,3 +124,7 @@ export const Gamepad2Icon = IconBase(Gamepad2);
 export const BookOpenIcon = IconBase(BookOpen);
 export const TrendingUpIcon = IconBase(TrendingUp);
 export const GraduationCapIcon = IconBase(GraduationCap);
+export const CompassIcon = IconBase(Compass);
+export const ChartGanttIcon = IconBase(ChartGantt);
+export const HeartHandshakeIcon = IconBase(HeartHandshake);
+export const SunriseIcon = IconBase(Sunrise);

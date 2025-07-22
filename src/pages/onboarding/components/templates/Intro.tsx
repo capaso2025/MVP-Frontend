@@ -1,58 +1,43 @@
-import { useBackNext } from '@/shared/hooks/useBackNext';
-import { Button } from '@/shared/ui';
-import SpeechBubble from '@/shared/ui/atoms/speech-bubble';
+import { Button, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function OnboardingIntro() {
   const navigate = useNavigate();
-  const [animate, setAnimate] = useState(false);
-  const { currentIndex, goToNext, goToPrevious } = useBackNext({
-    length: 2,
-    finishFn: () => {
-      navigate('/onboarding/questions');
-    },
-    previousFn: () => {
-      navigate('/onboarding/categories');
-    },
-  });
 
-  const messages = ['Te saluda Kapi!', 'Antes que inicies tu camino...'];
   return (
-    <OnboardingLayout>
+    <OnboardingLayout title="¿Listo para descubrir tu perfil Capaso?">
       <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
-        <div
-          className={`grid place-content-center ${animate ? 'animate-slide-out' : 'animate-slide-in'}`}
+        <Typography
+          variant="body1"
+          className="text-secondary mt-16 text-center font-normal"
         >
-          <SpeechBubble
-            text={messages[currentIndex] || ''}
-            backgroundColor="bg-primary-lighter"
-            className="mb-4 max-w-[300px] scale-150"
-          />
-          <br />
-          <img
-            src="/assets/characters/capito-default.png"
-            className="mx-auto"
-            width={150}
-            height={150}
-          />
-          <br />
+          Este test desbloqueará tu avatar, hábitos clave y<br /> tu plan de
+          evolución
+        </Typography>
+        <div className={`grid place-content-center gap-16`}>
+          <div className="mx-auto grid max-w-[40%] grid-cols-2 place-content-center">
+            <img
+              src="/assets/characters/herramienta.png"
+              width={250}
+              height={250}
+            />
+            <div className="grid place-content-center">
+              <Typography>
+                Estoy calibrando mis sensores... responde con calma y te
+                mostraré tu verdadero potencial
+              </Typography>
+            </div>
+          </div>
         </div>
-        <div className="flex h-max w-full justify-between">
-          <Button variant="secondary" onClick={goToPrevious}>
-            Anterior
-          </Button>
+        <div className="mt-10 flex h-max w-full justify-center">
           <Button
+            variant="landing"
             onClick={() => {
-              setAnimate(true);
-              setTimeout(() => {
-                goToNext();
-                setAnimate(false);
-              }, 400);
+              navigate('/onboarding/questions');
             }}
           >
-            Avanzar
+            Empezar diagnóstico
           </Button>
         </div>
       </div>

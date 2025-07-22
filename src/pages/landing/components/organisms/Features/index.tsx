@@ -27,7 +27,7 @@ export default function Features() {
             return (
               <div
                 key={index}
-                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-gray-300 p-6 shadow-lg shadow-sm transition-all duration-300 hover:-translate-y-1`}
+                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-gray-300 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1`}
               >
                 <div className="flex items-start space-x-4">
                   <div
@@ -36,7 +36,9 @@ export default function Features() {
                     <IconComponent className="h-6 w-6" />
                   </div>
                   <div className="flex-1 space-y-2">
-                    <Typography variant="h6">{feature.title}</Typography>
+                    <Typography variant="h6" className="text-primary">
+                      {feature.title}
+                    </Typography>
                     <Typography
                       variant="h6"
                       className="text-foreground-secondary font-normal"
