@@ -33,9 +33,13 @@ const ShopPage = lazy(() => import('@/pages/shop'));
 const ProfilePage = lazy(() => import('@/pages/profile'));
 const TimerPage = lazy(() => import('@/pages/timer'));
 const ClassroomPage = lazy(() => import('@/pages/classroom'));
-const InsightPage = lazy(() => import('@/pages/insight'));
+const InsightPage = lazy(() => import('@/pages/insights'));
 const ChatsPage = lazy(() => import('@/pages/chats'));
 const CalendarPage = lazy(() => import('@/pages/calendar'));
+const GoalsPage = lazy(() => import('@/pages/goals'));
+const HabitsPage = lazy(() => import('@/pages/habits'));
+const InsightsPage = lazy(() => import('@/pages/insights'));
+const MotivationPage = lazy(() => import('@/pages/motivation'));
 
 // Lessons
 const LessonPage = lazy(() => import('@/pages/lesson'));
@@ -87,6 +91,10 @@ function AppRouter() {
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/timer" element={<TimerPage />} />
+          <Route path="/goals" element={<GoalsPage />} />
+          <Route path="/habits" element={<HabitsPage />} />
+          <Route path="/insights" element={<InsightsPage />} />
+          <Route path="/motivation" element={<MotivationPage />} />
         </Route>
         <Route path="/" element={<TeacherLayout />}>
           <Route path="/teacher/classroom" element={<ClassroomPage />} />

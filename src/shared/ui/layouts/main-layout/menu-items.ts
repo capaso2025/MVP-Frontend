@@ -34,10 +34,10 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
 ];
 export const NO_LOGGED_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
-    label: 'Objetivos',
+    label: 'Inicio',
     icon: home,
-    path: '/sections',
-    include: ['/modules'],
+    path: '/home',
+    include: ['/goals', '/habits', '/insights', '/motivation'],
   },
   {
     label: 'Calendario',

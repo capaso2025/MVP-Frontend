@@ -7,6 +7,7 @@ import {
   HeartHandshakeIcon,
   UserIcon,
 } from '@/shared/ui/atoms/Icon/Icon';
+import { Link } from 'react-router-dom';
 const MODULES = [
   {
     title: 'Enfocar tu atención',
@@ -36,6 +37,7 @@ const TOOLS = [
       </>
     ),
     icon: <CompassIcon className="text-white" />,
+    route: '/goals',
   },
   {
     title: 'Constructor de hábitos',
@@ -50,6 +52,7 @@ const TOOLS = [
         </Typography>
       </>
     ),
+    route: '/habits',
   },
   {
     title: 'Aprendizaje y reflexión',
@@ -64,17 +67,7 @@ const TOOLS = [
       </>
     ),
     icon: <ChartGanttIcon className="text-white" />,
-  },
-  {
-    title: 'Motivación',
-    description: (
-      <>
-        <Typography variant="body2" className="text-secondary" as="span">
-          Misiones semanales: 3/5 completadas
-        </Typography>
-      </>
-    ),
-    icon: <HeartHandshakeIcon className="text-white" />,
+    route: '/insights',
   },
   {
     title: 'Motivación',
@@ -86,6 +79,7 @@ const TOOLS = [
       </>
     ),
     icon: <UserIcon className="text-white" />,
+    route: '/motivation',
   },
 ];
 export default function Home() {
@@ -144,7 +138,10 @@ export default function Home() {
         <div className="grid grid-cols-[60%_auto] gap-8">
           <div className="grid h-max grid-cols-2 gap-4">
             {TOOLS.map((el) => (
-              <div className="bg-landing-dark rounded-lg p-4">
+              <Link
+                to={el.route}
+                className="bg-landing-dark hover:bg-landing-dark/80 rounded-lg p-4"
+              >
                 <div className="grid grid-cols-[max-content_auto] gap-2">
                   {el.icon}
                   <div className="flex flex-col gap-1">
@@ -158,7 +155,7 @@ export default function Home() {
                   <Progress value={50} />
                   <Typography>70%</Typography>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="grid gap-4">

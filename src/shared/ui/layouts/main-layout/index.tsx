@@ -34,7 +34,7 @@ function MenuLayout() {
       <div className={isMobile ? 'w-auto' : 'ml-[300px]'}>
         <main className="mx-auto w-full p-4 lg:w-[1050px]">
           <HeaderActions />
-          <div className="mt-4 grid grid-cols-1 gap-8 xl:-mt-4">
+          <div className="mt-4 grid grid-cols-1 gap-8">
             <Outlet />
           </div>
         </main>
