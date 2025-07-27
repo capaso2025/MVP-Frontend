@@ -17,7 +17,7 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
     label: 'Home',
     icon: home,
     path: '/home',
-    include: [],
+    include: ['/goals', '/habits', '/insights', '/motivation'],
   },
   {
     label: 'Calendario',
