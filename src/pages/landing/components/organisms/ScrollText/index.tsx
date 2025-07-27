@@ -78,7 +78,7 @@ export default function ScrolledText() {
         className={`mx-auto h-[100vh] w-[90%] ${showFirstText ? 'sticky top-0 z-0' : ''}`}
       >
         <div className="flex h-full w-full items-center justify-center">
-          <Typography className="px-[5%] !text-[50px] font-bold text-white lg:!text-[75px]">
+          <Typography className="px-[5%] !text-[50px] font-bold text-white lg:!text-[70px]">
             ¿Cuántos días más vas a seguir sintiendo que estás desperdiciando tu
             potencial?
           </Typography>
@@ -90,7 +90,7 @@ export default function ScrolledText() {
       >
         <div className="from-primary-dark absolute top-[-300px] left-0 h-[300px] w-full bg-gradient-to-t to-transparent"></div>
         <div className="bg-primary-dark grid h-[100vh] place-content-center">
-          <Typography className="px-[5%] !text-[50px] font-bold text-white lg:!text-[75px]">
+          <Typography className="px-[5%] text-center text-2xl! font-bold text-white">
             Sabes que puedes dar más. Pero algo te está frenando.
           </Typography>
         </div>
@@ -103,7 +103,7 @@ export default function ScrolledText() {
       >
         <div className="from-primary-dark absolute top-[-300px] left-0 h-[300px] w-full bg-gradient-to-t to-transparent"></div>
         <div className="bg-primary-dark grid h-[100vh] place-content-center">
-          <Typography className="px-[5%] text-left !text-[50px] font-bold text-white lg:!text-[75px]">
+          <Typography className="px-[5%] text-center text-2xl! font-bold text-white">
             El tiempo pasa. Y tú sientes que no avanzas.
           </Typography>
         </div>
@@ -113,7 +113,7 @@ export default function ScrolledText() {
       <div ref={fourthTextRef} className={`relative z-10 h-[100vh]`}>
         <div className="from-primary-dark absolute top-[-300px] left-0 h-[300px] w-full bg-gradient-to-t to-transparent"></div>
         <div className="bg-primary-dark grid h-[100vh] place-content-center">
-          <Typography className="px-[5%] text-left !text-[50px] font-bold text-white lg:!text-[75px]">
+          <Typography className="px-[5%] text-center text-2xl! font-bold text-white">
             El cambio empieza hoy. Da el primer paso hacia tu mejor versión.
           </Typography>
         </div>
