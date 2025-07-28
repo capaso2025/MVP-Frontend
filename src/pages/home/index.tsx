@@ -67,7 +67,7 @@ const TOOLS = [
       </>
     ),
     icon: <ChartGanttIcon className="text-white" />,
-    route: '/insights',
+    route: '/learning',
   },
   {
     title: 'Motivación',
@@ -88,7 +88,7 @@ export default function Home() {
       <div className="mt-8 grid grid-cols-[250px_auto] gap-8">
         <div className="grid place-content-center gap-2">
           <Typography variant="h4" className="text-primary text-left font-bold">
-            Hola, Matias
+            Hola, <span className="text-primary-2">Royal</span>
           </Typography>
           <img
             src="/assets/characters/capo-example.png"

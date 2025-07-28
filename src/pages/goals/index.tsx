@@ -1,20 +1,27 @@
 import { Button, Progress } from '@/shared/ui';
 import CustomCalendar from '../sections/components/atoms/Calendar';
 import { ChevronUp, Dumbbell, GraduationCap } from 'lucide-react';
+import Breadcrumbs from '@/shared/ui/molecules/Breadcrumbs';
 
 export default function GoalsDashboard() {
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="mx-auto w-full max-w-6xl gap-6">
+    <>
+      <Breadcrumbs
+        links={[
+          { text: 'Inicio', href: '/home' },
+          { text: 'Metas y seguimientos', href: '/goals' },
+        ]}
+      />
+      <div className="mx-auto w-full gap-6">
         {/* Goals and Tracking Section */}
         <div className="flex flex-col items-start justify-between gap-6 rounded-3xl border-2 border-gray-200 p-6 lg:flex-row">
           <div className="mb-6 w-full">
             <h1 className="text-3xl font-bold text-gray-900">
               Metas y seguimiento
             </h1>
-            <h2 className="mb-4 text-lg font-semibold text-gray-900">
+            <p className="mb-8 text-lg text-gray-600">
               Terminar proyecto personal de IA
-            </h2>
+            </p>
             <div className="mb-4">
               <Progress value={70} className="mb-4" />
               <div className="flex items-center justify-between">
@@ -130,6 +137,6 @@ export default function GoalsDashboard() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,10 +1,17 @@
 import { Play, Flame, Diamond, Star } from 'lucide-react';
 import { Button } from '@/shared/ui';
+import Breadcrumbs from '@/shared/ui/molecules/Breadcrumbs';
 
 export default function MotivationDashboard() {
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="mx-auto max-w-7xl space-y-6">
+    <>
+      <Breadcrumbs
+        links={[
+          { text: 'Inicio', href: '/home' },
+          { text: 'Motivación', href: '/motivation' },
+        ]}
+      />
+      <div className="mx-auto space-y-6">
         {/* Top Section - Motivation */}
         <div className="rounded-3xl border-2 border-gray-200 p-8">
           <div className="flex items-start justify-between">
@@ -66,9 +73,7 @@ export default function MotivationDashboard() {
                     <h3 className="mb-3 font-semibold text-gray-900">
                       Los 7 hábitos de los adolescentes altamente efectivos
                     </h3>
-                    <Button className="rounded-xl bg-blue-500 px-4 py-2 text-sm text-white hover:bg-blue-600">
-                      Ver resumen
-                    </Button>
+                    <Button>Ver resumen</Button>
                   </div>
                 </div>
 
@@ -155,6 +160,6 @@ export default function MotivationDashboard() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

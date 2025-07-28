@@ -13,11 +13,19 @@ import {
   Lock,
 } from 'lucide-react';
 import { Button, Progress } from '@/shared/ui';
+import Breadcrumbs from '@/shared/ui/molecules/Breadcrumbs';
 
 export default function HabitBuilder() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
-      <div className="mx-auto max-w-7xl">
+      <Breadcrumbs
+        links={[
+          { text: 'Inicio', href: '/home' },
+          { text: 'Construcción de hábitos', href: '/habits' },
+        ]}
+      />
+
+      <div className="mx-auto py-6">
         {/* Header Section */}
         <div className="mb-6 rounded-3xl border-2 border-gray-200 p-8">
           <div className="flex items-start justify-between gap-6">
