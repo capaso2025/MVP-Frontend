@@ -26,13 +26,13 @@ export const Typography = forwardRef<
     ...rest
   }) => {
     const variants = {
-      h1: 'text-4xl lg:text-5xl font-bold',
-      h2: 'text-3xl lg:text-4xl font-bold',
-      h3: 'text-2xl lg:text-3xl font-bold',
-      h4: 'text-xl lg:text-2xl font-bold',
-      h5: 'text-lg lg:text-xl font-bold',
-      h6: 'text-base font-bold',
-      subtitle: 'text-base lg:text-lg font-semibold',
+      h1: 'text-4xl lg:text-5xl font-semibold',
+      h2: 'text-3xl lg:text-4xl font-semibold',
+      h3: 'text-2xl lg:text-3xl font-semibold',
+      h4: 'text-xl lg:text-2xl',
+      h5: 'text-lg lg:text-xl',
+      h6: 'text-base',
+      subtitle: 'text-base lg:text-lg font-normal',
       body1: 'text-sm lg:text-base',
       body2: 'text-xs lg:text-sm',
     };

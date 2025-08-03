@@ -13,7 +13,7 @@ export default function WhatIs() {
       <div
         className={`grid place-content-center transition-all duration-500 ${hasBeenVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}
       >
-        <Typography variant="h2" className="text-left font-medium">
+        <Typography variant="h2" className="text-left font-normal!">
           <strong className="text-primary-2">Capaso</strong> es tu guía digital
           para dejar de procrastinar y construir la vida que quieres.
         </Typography>

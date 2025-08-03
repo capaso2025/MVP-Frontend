@@ -10,6 +10,7 @@ import Pricing from './components/organisms/pricing';
 import Features from './components/organisms/Features';
 import DiferenciasSection from './components/organisms/Differentiation';
 import WhatIs from './components/organisms/WhatIs';
+import HorizontalScroll from './components/organisms/HorizontalScroll';
 function Landing() {
   return (
     <div className="animate-fade-in bg-landing-dark relative">
@@ -23,6 +24,8 @@ function Landing() {
       <Container>
         <WhatIs />
       </Container>
+      <Spacer size="5xl" />
+      <HorizontalScroll />
       <div id="funcionalidades" />
       <Spacer size="5xl" />
       <Container>
