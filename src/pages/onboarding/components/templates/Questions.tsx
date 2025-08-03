@@ -21,13 +21,32 @@ function Questions() {
   const [currentQuestion, setCurrentQuestion] = useState<
     ResponseQuestion | undefined
   >(undefined);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [questionKey, setQuestionKey] = useState(0);
+  const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
 
   const handleNext = () => {
     if (
       responses.find((resp) => resp.title === questions[currentIndex]?.question)
     ) {
-      goToNext();
+      setDirection('forward');
+      setIsAnimating(true);
+      setTimeout(() => {
+        goToNext();
+        setIsAnimating(false);
+        setQuestionKey((prev) => prev + 1);
+      }, 200); // Duration matches the CSS animation
     }
+  };
+
+  const handlePrevious = () => {
+    setDirection('backward');
+    setIsAnimating(true);
+    setTimeout(() => {
+      goToPrevious();
+      setIsAnimating(false);
+      setQuestionKey((prev) => prev + 1);
+    }, 200);
   };
   const calculatedProgress = Math.round(
     ((currentIndex + 1) / questions.length) * 100,
@@ -42,23 +61,51 @@ function Questions() {
     } else {
       setCurrentQuestion(undefined);
     }
-  }, [responses]);
+  }, [responses, currentIndex, questions]);
+
+  useEffect(() => {
+    setQuestionKey((prev) => prev + 1);
+  }, [currentIndex]);
 
   return (
     <OnboardingLayout title="Capaso">
-      <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] py-4 xl:w-full">
+      <div className="mx-auto grid h-full w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] overflow-x-hidden py-4 xl:w-full">
         <Progress value={calculatedProgress} size="sm" />
 
         <div className="mt-8 grid place-content-center">
-          <Typography variant="h5" className="font-normal">
-            {questions[currentIndex]?.question}
-          </Typography>
-          <Typography variant="body1" className="text-secondary text-center">
-            Esto ayuda a personalizar tu experiencia.
-          </Typography>
+          <div
+            key={questionKey}
+            className={`transition-all duration-200 ${
+              isAnimating
+                ? direction === 'forward'
+                  ? 'animate-slide-out-left'
+                  : 'animate-slide-out-right'
+                : direction === 'forward'
+                  ? 'animate-slide-in-right'
+                  : 'animate-slide-in-left'
+            }`}
+          >
+            <Typography variant="h5" className="font-normal">
+              {questions[currentIndex]?.question}
+            </Typography>
+            <Typography variant="body1" className="text-secondary text-center">
+              Esto ayuda a personalizar tu experiencia.
+            </Typography>
+          </div>
         </div>
-        <main>
-          <div className="mx-auto grid h-full max-w-[50%] grid-cols-1 place-content-center gap-4">
+        <div>
+          <div
+            key={`alternatives-${questionKey}`}
+            className={`mx-auto grid h-full max-w-[50%] grid-cols-1 place-content-center gap-4 transition-all duration-200 ${
+              isAnimating
+                ? direction === 'forward'
+                  ? 'animate-slide-out-left'
+                  : 'animate-slide-out-right'
+                : direction === 'forward'
+                  ? 'animate-slide-in-right'
+                  : 'animate-slide-in-left'
+            }`}
+          >
             {questions[currentIndex]?.alternatives.map((opt) => (
               <div
                 key={opt.text}
@@ -77,10 +124,10 @@ function Questions() {
               </div>
             ))}
           </div>
-        </main>
-        <div className="mt-8 flex items-center justify-between">
+        </div>
+        <div className="mt-8 flex items-center justify-between px-4">
           {!isFirstStep ? (
-            <Button variant="secondary" onClick={goToPrevious}>
+            <Button variant="secondary" onClick={handlePrevious}>
               Regresar
             </Button>
           ) : (

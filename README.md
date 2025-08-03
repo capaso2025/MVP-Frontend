@@ -1,4 +1,4 @@
-# CAPO Frontend
+# CAPASO Frontend
 
 Aplicación frontend moderna basada en React, TypeScript y arquitectura limpia, diseñada para ser escalable, mantenible y eficiente.
 
@@ -95,4 +95,4 @@ Este proyecto sigue estrictas convenciones:
 
 ## Licencia
 
-Este proyecto es propiedad exclusiva de CAPO. Todos los derechos reservados.
+Este proyecto es propiedad exclusiva de CAPASO. Todos los derechos reservados.

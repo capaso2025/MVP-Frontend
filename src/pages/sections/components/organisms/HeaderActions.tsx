@@ -1,16 +1,13 @@
 import { useRenderStore } from '@/shared/store/render-store';
-import { Typography } from '@/shared/ui';
 import Popover from '@/shared/ui/molecules/Popover';
 import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
-import brain from '@/assets/brain.png';
-import fire from '@/assets/fire.png';
-import world from '@/assets/world.png';
-import heart from '@/assets/heart.png';
+import { LogOut, Menu } from 'lucide-react';
 
 function HeaderActions() {
   const toggleOpenedSidebar = useRenderStore(
     (state) => state.toggleOpenedSidebar,
   );
+  return <div />;
   return (
     <header className="flex justify-between">
       <MenuIcon
@@ -21,50 +18,15 @@ function HeaderActions() {
       <div className="flex items-center justify-between gap-6">
         <Popover
           triggerClassName="pb-2"
-          trigger={() => <img src={brain} width={25} />}
+          trigger={() => <Menu size={30} />}
           optionsList={[
             {
-              label: 'Gestión de Tiempo',
-              icon: brain,
-              onClick: () => {},
-            },
-            {
-              label: 'Control de Emociones',
-              icon: brain,
+              label: 'Cerrar sesión',
+              icon: <LogOut />,
               onClick: () => {},
             },
           ]}
         />
-        <Popover
-          triggerClassName="pb-2"
-          trigger={() => <img src={fire} width={25} />}
-          optionsList={[
-            {
-              label: 'Gestión de Tiempo',
-              icon: brain,
-              onClick: () => {},
-            },
-            {
-              label: 'Control de Emociones',
-              icon: brain,
-              onClick: () => {},
-            },
-          ]}
-        />
-        <Popover
-          triggerClassName="pb-2"
-          trigger={() => <img src={world} width={22} />}
-          optionsList={[
-            {
-              label: 'Inglés',
-              onClick: () => {},
-            },
-          ]}
-        />
-        <div className="mb-2 ml-4 flex items-center gap-2">
-          <img src={heart} width={25} />
-          <Typography className="font-bold text-red-600">5</Typography>
-        </div>
       </div>
     </header>
   );

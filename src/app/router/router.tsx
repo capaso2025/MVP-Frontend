@@ -24,6 +24,9 @@ const OnboardingQuestionsPage = lazy(
 const OnboardingResultsPage = lazy(
   () => import('@/pages/onboarding/components/templates/Results'),
 );
+const OnboardingOutroPage = lazy(
+  () => import('@/pages/onboarding/components/templates/Outro'),
+);
 
 // Home
 const SectionsPage = lazy(() => import('@/pages/sections'));
@@ -76,6 +79,7 @@ function AppRouter() {
           element={<OnboardingQuestionsPage />}
         />
         <Route path="/onboarding/results" element={<OnboardingResultsPage />} />
+        <Route path="/onboarding/outro" element={<OnboardingOutroPage />} />
 
         {/* Home */}
         <Route path="/" element={<MainLayout />}>

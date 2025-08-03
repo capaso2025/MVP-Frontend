@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { BookIcon } from '../../atoms/Icon/Icon';
 
 function Popover(props: {
   trigger: () => React.ReactNode;
@@ -8,7 +7,7 @@ function Popover(props: {
   contentClassName?: string;
   optionsList?: {
     label: string;
-    icon?: string;
+    icon?: React.ReactNode;
     onClick: () => void;
   }[];
 }) {
@@ -61,7 +60,7 @@ function Popover(props: {
                   onClick={option.onClick}
                   className="flex w-full items-center p-2 text-left text-sm hover:bg-gray-100"
                 >
-                  <BookIcon className="text-primary mr-2" />
+                  {option.icon && option.icon}
                   {option.label}
                 </div>
               ))}

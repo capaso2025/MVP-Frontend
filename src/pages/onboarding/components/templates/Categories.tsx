@@ -15,7 +15,7 @@ const CategoriesPage = () => {
       <div className="mx-auto grid w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
         <div className="grid place-content-center">
           <h1 className="mb-8 text-center text-3xl font-bold">
-            Quiero ser un CAPO en...
+            Quiero ser un CAPASO en...
           </h1>
           <div className="mx-auto flex w-full flex-wrap justify-center gap-4">
             {CATEGORIES.map((category) => (

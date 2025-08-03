@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { XIcon } from '../../atoms/Icon/Icon';
 import capoLogo from '@/assets/capo-logo.png';
 
-export interface OnboardingLayoutProps extends HTMLAttributes<HTMLDivElement> {
-  title?: string;
+export interface OnboardingLayoutProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  title?: ReactNode;
   logo?: ReactNode | string;
   children: ReactNode;
 }
@@ -43,13 +44,15 @@ export const OnboardingLayout = forwardRef<
           <div className="flex items-center">
             {<img src={capoLogo} width={50} alt="capo logo" />}
           </div>
-          {title && (
+          {typeof title === 'string' ? (
             <Typography
               variant="h4"
               className="ml-4 hidden font-normal text-white sm:block"
             >
               {title}
             </Typography>
+          ) : (
+            title
           )}
           <Button variant="ghost" size="sm" onClick={handleExit}>
             <XIcon className="text-white" />
@@ -57,12 +60,12 @@ export const OnboardingLayout = forwardRef<
         </div>
       </header>
 
-      <main className="h-[calc(100vh-132px)] overflow-auto">{children}</main>
+      <main className="h-auto overflow-auto">{children}</main>
 
       <footer className="px-4 py-4 md:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Typography variant="body1" className="text-foreground-secondary">
-            © {new Date().getFullYear()} CAPO
+            © {new Date().getFullYear()} CAPASO
           </Typography>
           <Typography variant="body1" className="text-foreground-secondary">
             Desarrollando habilidades

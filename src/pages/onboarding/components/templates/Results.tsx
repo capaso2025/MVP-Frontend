@@ -43,7 +43,10 @@ function Intro() {
             />
           </div>
           <div className="mt-8 flex items-center justify-end">
-            <Button onClick={() => navigate('/home')} variant="landing">
+            <Button
+              onClick={() => navigate('/onboarding/outro')}
+              variant="landing"
+            >
               Continuar
             </Button>
           </div>
