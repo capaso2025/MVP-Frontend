@@ -23,7 +23,6 @@ export class ApiClient {
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      console.log('🏝️ ~ ApiClient ~ errorData:', errorData);
       throw new ApiError({
         status: response.status,
         message: errorData.description ?? response.statusText,
