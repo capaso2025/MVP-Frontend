@@ -4,6 +4,7 @@ export const apiConfig: ApiConfig = {
   baseUrl: import.meta.env.VITE_APP_API_URL,
   defaultHeaders: {
     Accept: 'application/json',
+    'Content-Type': 'application/json',
   },
   getHeaders: function () {
     return {
