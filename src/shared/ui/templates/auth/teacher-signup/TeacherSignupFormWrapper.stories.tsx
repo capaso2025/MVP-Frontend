@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import TeacherSignupFormWrapper from './TeacherSignupFormWrapper';
 const meta: Meta<typeof TeacherSignupFormWrapper> = {
-  title: 'Shared/Ui/Templates/Auth/TeacherSignupFormWrapper',
+  title: 'Shared/Ui/Templates/auth/TeacherSignupFormWrapper',
   component: TeacherSignupFormWrapper,
   tags: ['autodocs'],
   parameters: {

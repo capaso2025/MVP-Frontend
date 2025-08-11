@@ -3,7 +3,7 @@ import UpdateTeacherEmail from './index';
 import TeacherSignupFormWrapper from '../auth/teacher-signup/TeacherSignupFormWrapper';
 
 const meta: Meta<typeof UpdateTeacherEmail> = {
-  title: 'Shared/Ui/Templates/Auth/UpdateTeacherEmail',
+  title: 'Shared/Ui/Templates/auth/UpdateTeacherEmail',
   component: UpdateTeacherEmail,
   parameters: {
     layout: 'fullscreen',
