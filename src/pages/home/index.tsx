@@ -1,162 +1,176 @@
-import type { FC } from "react";
-
-import { useCurrentUserQuery } from "@entities/user/api/user-queries";
+import { Button, Progress, Typography } from '@/shared/ui';
+import CustomCalendar from '../sections/components/atoms/Calendar';
+import DailyTasks from '../sections/components/organisms/DailyTasks';
 import {
-  selectIsAuthenticated,
-  useAuthStore,
-} from "@features/auth/model/auth-store";
-import { Button } from "@shared/ui/atoms/Button/Button";
+  ChartGanttIcon,
+  CompassIcon,
+  HeartHandshakeIcon,
+  UserIcon,
+} from '@/shared/ui/atoms/Icon/Icon';
+import { Link } from 'react-router-dom';
+const MODULES = [
+  {
+    title: 'Enfocar tu atención',
+  },
+  {
+    title: 'Planificar sin caos',
+  },
+  {
+    title: 'Establecer metas claras',
+  },
+  {
+    title: 'Domina tu tiempo',
+  },
+];
 
-/**
- * Página de inicio (Home)
- * Muestra diferente contenido según si el usuario está autenticado
- */
-const HomePage: FC = () => {
-  // Acceder al estado global de autenticación
-  const isAuthenticated = useAuthStore(selectIsAuthenticated);
-  const { logout } = useAuthStore();
-
-  // Obtener datos del usuario actual si está autenticado
-  const { data: currentUser, isLoading, error } = useCurrentUserQuery();
-
-  // Renderizado condicional basado en el estado de autenticación
-  if (!isAuthenticated) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-3xl font-bold mb-6">Bienvenido a CAPO</h1>
-        <p className="text-lg text-gray-600 mb-8 text-center max-w-md">
-          Inicia sesión para acceder a todas las funcionalidades de la
-          aplicación.
-        </p>
-        <div className="space-x-4">
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={() => {
-              // Redirigir a la página de login
-              window.location.href = "/login";
-            }}
-          >
-            Iniciar Sesión
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            onClick={() => {
-              // Redirigir a la página de registro
-              window.location.href = "/register";
-            }}
-          >
-            Registrarse
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
-  // Manejo de estados de carga y error
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full border-t-transparent"></div>
-      </div>
-    );
-  }
-
-  if (error || !currentUser) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-4">
-        <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
-        <p className="text-gray-700 mb-6">
-          No se pudo cargar la información del usuario. Por favor, intenta
-          nuevamente.
-        </p>
-        <Button
-          variant="primary"
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          Reintentar
-        </Button>
-      </div>
-    );
-  }
-
+const TOOLS = [
+  {
+    title: 'Metas  y seguimientos',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Objetivo actual:
+        </Typography>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Terminar proyecto personal
+        </Typography>
+      </>
+    ),
+    icon: <CompassIcon className="text-white" />,
+    route: '/goals',
+  },
+  {
+    title: 'Constructor de hábitos',
+    icon: <HeartHandshakeIcon className="text-white" />,
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Dormir antes de las 11pm
+        </Typography>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Leer 20 min diarios
+        </Typography>
+      </>
+    ),
+    route: '/habits',
+  },
+  {
+    title: 'Aprendizaje y reflexión',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Dormir 8 horas
+        </Typography>
+        <Typography variant="body2" className="text-secondary" as="span">
+          Leer 20 min diarios
+        </Typography>
+      </>
+    ),
+    icon: <ChartGanttIcon className="text-white" />,
+    route: '/learning',
+  },
+  {
+    title: 'Motivación',
+    description: (
+      <>
+        <Typography variant="body2" className="text-secondary" as="span">
+          🌝 Check-in emocional diario
+        </Typography>
+      </>
+    ),
+    icon: <UserIcon className="text-white" />,
+    route: '/motivation',
+  },
+];
+export default function Home() {
   return (
-    <div className="container mx-auto p-6">
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold">
-            Bienvenido, {currentUser.firstName}!
-          </h1>
-          <Button variant="outline" onClick={() => logout()}>
-            Cerrar Sesión
-          </Button>
+    <div>
+      <div className="mt-8 grid grid-cols-[250px_auto] gap-8">
+        <div className="grid place-content-center gap-2">
+          <Typography variant="h4" className="text-primary text-left font-bold">
+            Hola, <span className="text-primary-2">Royal</span>
+          </Typography>
+          <img
+            src="/assets/characters/capo-example.png"
+            alt="Capaso"
+            width={250}
+            height={250}
+          />
+          <small className="text-center">Nivel 3 - Progreso personal</small>
         </div>
-
-        <div className="bg-gray-50 p-4 rounded-md mb-6">
-          <h2 className="text-lg font-semibold mb-2">Información de Usuario</h2>
+        <div>
+          <Typography variant="h6" className="text-primary mb-4 font-bold">
+            Tus módulos recomendados - Camino Autodidacta Caótico
+          </Typography>
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm text-gray-500">Nombre</p>
-              <p className="font-medium">
-                {currentUser.firstName} {currentUser.lastName}
-              </p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Email</p>
-              <p className="font-medium">{currentUser.email}</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Rol</p>
-              <p className="font-medium capitalize">{currentUser.role}</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">Miembro desde</p>
-              <p className="font-medium">
-                {new Date(currentUser.createdAt).toLocaleDateString()}
-              </p>
-            </div>
+            {MODULES.map((el) => (
+              <div className="bg-primary/5 rounded-lg p-4">
+                <div className="flex items-start gap-2">
+                  <img src="" alt="" width={20} height={20} />
+                  <div>
+                    <Typography variant="h6" className="text-primary font-bold">
+                      {el.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      className="text-primary"
+                      as="span"
+                    >
+                      Nivel 1
+                    </Typography>
+                  </div>
+                </div>
+                <div className="mt-2 flex gap-2">
+                  <Progress value={50} />
+                  <Button variant="secondary" size="sm" className="w-full">
+                    Continuar lección
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* Aquí irían widgets o tarjetas con funcionalidades */}
-          <div className="bg-blue-50 p-4 rounded-md border border-blue-100">
-            <h3 className="font-semibold mb-2">Análisis de Datos</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Revisa los últimos análisis y reportes de tu cuenta.
-            </p>
-            <Button variant="primary" size="sm">
-              Ver Análisis
-            </Button>
+      </div>
+      <div className="mt-12">
+        <Typography className="text-primary mb-4" variant="h3">
+          Capo Herramientas
+        </Typography>
+        <div className="grid grid-cols-[60%_auto] gap-8">
+          <div className="grid h-max grid-cols-2 gap-4">
+            {TOOLS.map((el) => (
+              <Link
+                to={el.route}
+                className="bg-landing-dark hover:bg-landing-dark/80 rounded-lg p-4"
+              >
+                <div className="grid grid-cols-[max-content_auto] gap-2">
+                  {el.icon}
+                  <div className="flex flex-col gap-1">
+                    <Typography variant="h6" className="font-bold text-white">
+                      {el.title}
+                    </Typography>
+                    {el.description}
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center gap-2">
+                  <Progress value={50} />
+                  <Typography>70%</Typography>
+                </div>
+              </Link>
+            ))}
           </div>
-
-          <div className="bg-green-50 p-4 rounded-md border border-green-100">
-            <h3 className="font-semibold mb-2">Proyectos Activos</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Administra tus proyectos en curso y revisa su progreso.
-            </p>
-            <Button variant="primary" size="sm">
-              Ver Proyectos
-            </Button>
-          </div>
-
-          <div className="bg-purple-50 p-4 rounded-md border border-purple-100">
-            <h3 className="font-semibold mb-2">Configuraciones</h3>
-            <p className="text-sm text-gray-600 mb-3">
-              Personaliza la configuración de tu cuenta y preferencias.
-            </p>
-            <Button variant="primary" size="sm">
-              Configurar
-            </Button>
+          <div className="grid gap-4">
+            <CustomCalendar />
+            <img
+              src="/assets/characters/capo-pc.png"
+              alt="capo"
+              width={200}
+              height={200}
+              className="w-full rounded-2xl"
+            />
+            <DailyTasks />
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-// Exportar como default para facilitar la carga dinámica
-export default HomePage;
+}

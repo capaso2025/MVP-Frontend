@@ -28,3 +28,6 @@ dist-ssr
 
 # Archivos a ignorar
 *.tsbuildinfo
+
+*storybook.log
+storybook-static
