@@ -1,12 +1,9 @@
 import { Typography } from '@/shared/ui';
-import SectionCard from './components/organisms/SectionCard';
-import { useNavigate } from 'react-router-dom';
 import RightSection from '@/shared/ui/organisms/right-section/RightSection';
 import { useSection } from './hooks/use-section';
 
 function Sections() {
-  const navigate = useNavigate();
-  const { data, sectionTitle } = useSection();
+  const { sectionTitle } = useSection();
   return (
     <section className="with-right-section">
       <div className="animate-fade-in grid grid-rows-[70px_auto] gap-2">
@@ -14,14 +11,14 @@ function Sections() {
           {sectionTitle}
         </Typography>
         <div className="flex flex-col gap-8">
-          {data?.map((values) => (
+          {/* {data?.map(() => (
             <SectionCard
               {...values}
               onClick={() => {
                 navigate(`/modules/${encodeURIComponent(values.id)}`);
               }}
             />
-          ))}
+          ))} */}
         </div>
       </div>
       <RightSection />

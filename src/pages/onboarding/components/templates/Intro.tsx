@@ -2,16 +2,19 @@ import { Button, Typography } from '@/shared/ui';
 import Input from '@/shared/ui/atoms/Input/Input';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useState } from 'react';
+import { useOnboardingStore } from '../../store/onboarding-store';
 import { useNavigate } from 'react-router-dom';
 
 function OnboardingIntro() {
-  const navigate = useNavigate();
   const [introDetails, setIntroDetails] = useState(true);
+  const registerData = useOnboardingStore((state) => state.registerData);
+  const navigate = useNavigate();
   const handleContinue = () => {
     setIntroDetails(false);
   };
 
   const goToOnboarding = () => {
+    if (registerData.name.length === 0 || registerData.age === 0) return;
     navigate('/onboarding/questions');
   };
   return (
@@ -86,6 +89,9 @@ const IntroDetails = (props: { navigate: () => void }) => {
 };
 
 const NamesForm = ({ navigate }: { navigate: () => void }) => {
+  const registerData = useOnboardingStore((state) => state.registerData);
+  const setRegisterData = useOnboardingStore((state) => state.setRegisterData);
+
   return (
     <div className="mx-auto flex w-[50%] flex-col items-center justify-center">
       <Input
@@ -93,6 +99,10 @@ const NamesForm = ({ navigate }: { navigate: () => void }) => {
         containerClassName="w-full"
         label="Ingresa tu nombre"
         inputSize="lg"
+        value={registerData.name}
+        onChange={(e) =>
+          setRegisterData({ key: 'name', value: e.target.value })
+        }
       />
       <Input
         variant="dark"
@@ -100,6 +110,10 @@ const NamesForm = ({ navigate }: { navigate: () => void }) => {
         containerClassName="w-full mt-4"
         label="Ingresa tu edad"
         inputSize="lg"
+        value={registerData.age || ''}
+        onChange={(e) =>
+          setRegisterData({ key: 'age', value: Number(e.target.value) })
+        }
       />
       <Button variant="landing" className="mt-8 w-[75%]" onClick={navigate}>
         Comenzar aventura

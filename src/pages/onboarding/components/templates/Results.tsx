@@ -1,21 +1,30 @@
+// import { register } from '@/features/onbording/registerHttpCall';
+// import { register } from '@/features/onbording/registerHttpCall';
 import { Button, Progress, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { Loader } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// import { useOnboardingStore } from '../../store/onboarding-store';
 
 function Intro() {
   const navigate = useNavigate();
+  // const registerData = useOnboardingStore((state) => state.registerData);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    (async () => {
+      setLoading(true);
+      // const response = await register(registerData);
+      // if (response) {
+      //   setLoading(false);
+      // }
+    })();
   }, []);
 
   return (
     <OnboardingLayout
-      title={loading ? '' : 'Asi empezaremos Fernando: Explorador sin rumbo'}
+      title={loading ? '' : 'Así empezaremos Fernando: Explorador sin rumbo'}
     >
       {loading ? (
         <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] place-content-center py-4 xl:w-full">

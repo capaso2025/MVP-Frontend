@@ -2,7 +2,7 @@ import { Button, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useNavigate } from 'react-router-dom';
 
-function OnboardingIntro() {
+function OnboardingOutro() {
   const navigate = useNavigate();
 
   const gotoHome = () => {
@@ -19,7 +19,7 @@ function OnboardingIntro() {
   );
 }
 
-export default OnboardingIntro;
+export default OnboardingOutro;
 
 const IntroDetails = (props: { navigate: () => void }) => {
   const { navigate } = props;

@@ -86,9 +86,11 @@ function Lesson() {
         </div>
         <XIcon onClick={onCloseLesson} />
       </div>
-      {(currentLessonByParams?.activity &&
+      {(currentLessonByParams?.['activity'] &&
         activityByCurrentLesson[
-          currentLessonByParams?.activity as keyof typeof activityByCurrentLesson
+          currentLessonByParams?.[
+            'activity'
+          ] as keyof typeof activityByCurrentLesson
         ]) || <></>}
       <div className="flex items-center justify-between">
         <div />

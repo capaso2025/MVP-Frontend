@@ -26,16 +26,14 @@ function Questions() {
   const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
 
   const handleNext = () => {
-    if (
-      responses.find((resp) => resp.title === questions[currentIndex]?.question)
-    ) {
+    if (responses.find((resp) => resp.id === questions[currentIndex]?.id)) {
       setDirection('forward');
       setIsAnimating(true);
       setTimeout(() => {
         goToNext();
         setIsAnimating(false);
         setQuestionKey((prev) => prev + 1);
-      }, 200); // Duration matches the CSS animation
+      }, 200);
     }
   };
 
@@ -54,7 +52,7 @@ function Questions() {
 
   useEffect(() => {
     const currentQuestion = responses.find(
-      (resp) => resp.title === questions[currentIndex]?.question,
+      (resp) => resp.id === questions[currentIndex]?.id,
     );
     if (currentQuestion) {
       setCurrentQuestion(currentQuestion);
@@ -71,7 +69,6 @@ function Questions() {
     <OnboardingLayout title="Capaso">
       <div className="mx-auto grid h-full w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] overflow-x-hidden py-4 xl:w-full">
         <Progress value={calculatedProgress} size="sm" />
-
         <div className="mt-8 grid place-content-center">
           <div
             key={questionKey}
@@ -109,13 +106,12 @@ function Questions() {
             {questions[currentIndex]?.alternatives.map((opt) => (
               <div
                 key={opt.text}
-                className={`flex h-max cursor-pointer items-center gap-2 rounded-2xl border border-white/20 p-4 transition-all duration-200 ${currentQuestion?.title === questions[currentIndex]?.question && currentQuestion?.response.id === opt.score.toString() ? 'from-primary-light to-primary-dark bg-gradient-to-br shadow-md' : ''}`}
+                className={`flex h-max cursor-pointer items-center gap-2 rounded-2xl border border-white/20 p-4 transition-all duration-200 ${currentQuestion?.id === questions[currentIndex]?.id && currentQuestion?.response.value === opt.value.toString() ? 'from-primary-light to-primary-dark bg-gradient-to-br shadow-md' : ''}`}
                 onClick={() =>
                   setResponsesByQuestion({
-                    title: questions[currentIndex]?.question || '',
+                    id: questions[currentIndex]?.id || '',
                     response: {
-                      id: opt.score.toString(),
-                      value: opt.score.toString(),
+                      value: opt.value.toString(),
                     },
                   })
                 }
@@ -137,9 +133,8 @@ function Questions() {
             onClick={handleNext}
             variant="landing"
             disabled={
-              !responses.find(
-                (resp) => resp.title === questions[currentIndex]?.question,
-              )?.response.id
+              responses.find((resp) => resp.id === questions[currentIndex]?.id)
+                ?.response.value === undefined
             }
           >
             Avanzar

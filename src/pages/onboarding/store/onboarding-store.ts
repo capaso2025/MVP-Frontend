@@ -1,45 +1,44 @@
 import { create } from 'zustand';
-import { Category } from '../types/categories';
-
 export interface ResponseQuestion {
-  title: string;
+  id: string;
   response: {
-    id: string;
     value: string;
   };
 }
 interface OnboardingState {
+  registerData: {
+    name: string;
+    age: number;
+  };
+  setRegisterData: (data: { key: string; value: string | number }) => void;
   responses: ResponseQuestion[];
   setResponsesByQuestion: (response: ResponseQuestion) => void;
-  category: Category | undefined;
-  setCategory: (category: Category) => void;
 }
-import type { PersistOptions } from 'zustand/middleware';
-
-type OnboardingPersist = PersistOptions<OnboardingState>;
-
-export const useOnboardingStore = create<
-  OnboardingState,
-  [['zustand/persist', OnboardingPersist]]
->((set) => ({
-  responses: [],
-  category: 'capaso-ia',
-  setCategory: (category: Category) => {
-    set(() => ({
-      category,
+export const useOnboardingStore = create<OnboardingState>((set) => ({
+  registerData: {
+    name: '',
+    age: 0,
+  },
+  setRegisterData: (data: { key: string; value: string | number }) => {
+    set((state) => ({
+      registerData: {
+        ...state.registerData,
+        [data.key]: data.value,
+      },
     }));
   },
+  responses: [],
   setResponsesByQuestion: (res: ResponseQuestion) => {
     set((state) => {
-      const { title, response } = res;
+      const { id, response } = res;
       const existingResponseIndex = state.responses.findIndex(
-        (resp) => resp.title === title,
+        (resp) => resp.id === id,
       );
       if (existingResponseIndex !== -1) {
         const updatedResponses = [...state.responses];
         updatedResponses[existingResponseIndex] = {
           ...updatedResponses[existingResponseIndex],
-          title,
+          id,
           response,
         };
         return { responses: updatedResponses };
@@ -48,7 +47,7 @@ export const useOnboardingStore = create<
         responses: [
           ...state.responses,
           {
-            title,
+            id,
             response,
           },
         ],
