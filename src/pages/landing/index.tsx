@@ -54,7 +54,7 @@ function Landing() {
         <Footer />
       </Container>
 
-      <div className="fixed right-[-145px] bottom-8 z-50 w-max transition-all duration-200 hover:right-0 lg:right-[-165px]">
+      <div className="fixed right-[-165px] bottom-8 z-50 w-max transition-all duration-200 hover:right-0 lg:right-[-185px]">
         <QuestionsWidget as="a" href="#questions" />
       </div>
     </div>

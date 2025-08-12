@@ -61,18 +61,20 @@ function Results() {
         </div>
       ) : (
         <div className="mx-auto grid h-[90%] w-[90%] grid-rows-[auto_max-content]">
-          <div className="mx-auto mt-8 grid w-[80%] grid-cols-2 place-content-center gap-8">
-            <div className="grid gap-4">
-              {[1, 2, 3, 4].map((el) => (
-                <div className="flex items-center gap-8">
-                  <Typography>Tiempo</Typography>
-                  <Progress value={el * 25} size="lg" />
-                </div>
-              ))}
+          <div className="mx-auto mt-8 block w-[80%] grid-cols-2 place-content-center gap-8 md:grid">
+            <div className="grid gap-8 md:gap-4">
+              {['Tiempo', 'Foco', 'Soft Skills', 'Bienestar'].map(
+                (el, index) => (
+                  <div className="grid grid-cols-[100px_auto] gap-8">
+                    <Typography>{el}</Typography>
+                    <Progress value={index * 25} size="lg" />
+                  </div>
+                ),
+              )}
             </div>
             <img
               src="/assets/characters/capito-happy.png"
-              className="mx-auto"
+              className="mx-auto hidden md:block"
               alt="herramienta"
               width={300}
             />

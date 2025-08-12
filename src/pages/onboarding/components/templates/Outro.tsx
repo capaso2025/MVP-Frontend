@@ -13,7 +13,7 @@ function OnboardingOutro() {
       title={'¿¡Ya tenemos tu perfil, y esto es solo el comienzo!'}
     >
       <div className="mx-auto grid h-full w-[90%] max-w-7xl grid-rows-[auto_max-content] py-4 xl:w-full">
-        {<IntroDetails navigate={gotoHome} />}
+        {<OutroDetails navigate={gotoHome} />}
       </div>
     </OnboardingLayout>
   );
@@ -21,7 +21,7 @@ function OnboardingOutro() {
 
 export default OnboardingOutro;
 
-const IntroDetails = (props: { navigate: () => void }) => {
+const OutroDetails = (props: { navigate: () => void }) => {
   const { navigate } = props;
   return (
     <>
@@ -33,6 +33,12 @@ const IntroDetails = (props: { navigate: () => void }) => {
         para <br />
         ayudarte a avanzar con resultados que incluso tus padres podrán ver.
       </Typography>
+      <img
+        src="/assets/characters/capito-happy.png"
+        className="mx-auto"
+        alt="herramienta"
+        width={200}
+      />
       <div className={`grid place-content-center gap-16`}>
         <Typography className="font-normal" variant="h4">
           ¿Estás listo para construir esta historia?
