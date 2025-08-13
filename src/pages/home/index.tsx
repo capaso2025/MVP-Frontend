@@ -1,5 +1,4 @@
 import { Button, Progress, Typography } from '@/shared/ui';
-import CustomCalendar from '../sections/components/atoms/Calendar';
 import DailyTasks from '../sections/components/organisms/DailyTasks';
 import {
   ChartGanttIcon,
@@ -8,6 +7,7 @@ import {
   UserIcon,
 } from '@/shared/ui/atoms/Icon/Icon';
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '@/features/auth/auth-store';
 const MODULES = [
   {
     title: 'Enfocar tu atención',
@@ -83,12 +83,16 @@ const TOOLS = [
   },
 ];
 export default function Home() {
+  const user = useAuthStore((state) => state.user);
+  const profile = useAuthStore((state) => state.profile);
+
+  const randomGenerator = () => Math.floor(Math.random() * 100);
   return (
     <div>
       <div className="mt-8 grid grid-cols-[250px_auto] gap-8">
         <div className="grid place-content-center gap-2">
           <Typography variant="h4" className="text-primary text-left font-bold">
-            Hola, <span className="text-primary-2">Royal</span>
+            Hola, <span className="text-primary-2">{user?.firstName}</span>
           </Typography>
           <img
             src="/assets/characters/capo-example.png"
@@ -96,11 +100,11 @@ export default function Home() {
             width={250}
             height={250}
           />
-          <small className="text-center">Nivel 3 - Progreso personal</small>
+          <small className="text-center">Nivel 1 - Progreso personal</small>
         </div>
         <div>
           <Typography variant="h6" className="text-primary mb-4 font-bold">
-            Tus módulos recomendados - Camino Autodidacta Caótico
+            Tus módulos recomendados - {profile?.name}
           </Typography>
           <div className="grid grid-cols-2 gap-4">
             {MODULES.map((el) => (
@@ -137,29 +141,33 @@ export default function Home() {
         </Typography>
         <div className="grid grid-cols-[60%_auto] gap-8">
           <div className="grid h-max grid-cols-2 gap-4">
-            {TOOLS.map((el) => (
-              <Link
-                to={el.route}
-                className="bg-landing-dark hover:bg-landing-dark/80 rounded-lg p-4"
-              >
-                <div className="grid grid-cols-[max-content_auto] gap-2">
-                  {el.icon}
-                  <div className="flex flex-col gap-1">
-                    <Typography variant="h6" className="font-bold text-white">
-                      {el.title}
-                    </Typography>
-                    {el.description}
+            {TOOLS.map((el) => {
+              const randomValue = randomGenerator();
+              return (
+                <Link
+                  to={el.route}
+                  className="bg-landing-dark hover:bg-landing-dark/80 rounded-lg p-4"
+                >
+                  <div className="grid grid-cols-[max-content_auto] gap-2">
+                    {el.icon}
+                    <div className="flex flex-col gap-1">
+                      <Typography variant="h6" className="font-bold text-white">
+                        {el.title}
+                      </Typography>
+                      {el.description}
+                    </div>
                   </div>
-                </div>
-                <div className="mt-4 flex items-center gap-2">
-                  <Progress value={50} />
-                  <Typography>70%</Typography>
-                </div>
-              </Link>
-            ))}
+                  <div className="mt-4 flex items-center gap-2">
+                    <Progress value={randomValue} />
+                    <Typography>{randomValue}%</Typography>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
           <div className="grid gap-4">
-            <CustomCalendar />
+            <DailyTasks />
+            {/* <CustomCalendar /> */}
             <img
               src="/assets/characters/capo-pc.png"
               alt="capo"
@@ -167,7 +175,6 @@ export default function Home() {
               height={200}
               className="w-full rounded-2xl"
             />
-            <DailyTasks />
           </div>
         </div>
       </div>

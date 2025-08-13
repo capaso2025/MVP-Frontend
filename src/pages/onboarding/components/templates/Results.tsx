@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboardingStore } from '../../store/onboarding-store';
 import { RegisterApiResponse } from '@/features/onboarding/types/registerApiResponse.types';
+import { useAuthStore } from '@/features/auth/auth-store';
 
 function Results() {
   const navigate = useNavigate();
@@ -13,8 +14,11 @@ function Results() {
   const responses = useOnboardingStore((state) => state.responses);
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState<RegisterApiResponse | null>(null);
+  const setUser = useAuthStore((state) => state.setUser);
+  const setProfile = useAuthStore((state) => state.setProfile);
   useEffect(() => {
     (async () => {
+      if (!registerData.name || registerData.age === 0) return;
       setLoading(true);
       const questions: Record<string, string | number> = {};
       responses.forEach((response) => {
@@ -30,16 +34,18 @@ function Results() {
       setLoading(false);
       if (result) {
         setResponse(result);
+        setUser(result.user);
+        setProfile(result.profile);
       }
     })();
-  }, []);
+  }, [registerData.age, registerData.name]);
 
   return (
     <OnboardingLayout
       title={
         loading
           ? ''
-          : `Así empezaremos ${registerData.name}: Explorador sin rumbo`
+          : `Así empezaremos ${registerData.name}: ${response?.profile.name}`
       }
     >
       {loading ? (
@@ -61,18 +67,20 @@ function Results() {
         </div>
       ) : (
         <div className="mx-auto grid h-[90%] w-[90%] grid-rows-[auto_max-content]">
-          <div className="mx-auto mt-8 grid w-[80%] grid-cols-2 place-content-center gap-8">
-            <div className="grid gap-4">
-              {[1, 2, 3, 4].map((el) => (
-                <div className="flex items-center gap-8">
-                  <Typography>Tiempo</Typography>
-                  <Progress value={el * 25} size="lg" />
-                </div>
-              ))}
+          <div className="mx-auto mt-8 block w-[80%] grid-cols-2 place-content-center gap-8 md:grid">
+            <div className="grid gap-8 md:gap-4">
+              {['Tiempo', 'Foco', 'Soft Skills', 'Bienestar'].map(
+                (el, index) => (
+                  <div className="grid grid-cols-[100px_auto] gap-8">
+                    <Typography>{el}</Typography>
+                    <Progress value={index * 25} size="lg" variant="warning" />
+                  </div>
+                ),
+              )}
             </div>
             <img
               src="/assets/characters/capito-happy.png"
-              className="mx-auto"
+              className="mx-auto hidden md:block"
               alt="herramienta"
               width={300}
             />
