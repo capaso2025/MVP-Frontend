@@ -36,11 +36,29 @@ export const pricingPlans: PricingPlan[] = [
     title: 'Hobby',
     price: 'Free',
     priceNote: null,
-    description: 'Includes',
+    description: 'Incluye',
     features: [
-      { iconColor: 'text-green-500', text: 'Pro two-week trial' },
-      { iconColor: 'text-green-500', text: 'Limited agent requests' },
-      { iconColor: 'text-green-500', text: 'Limited tab completions' },
+      {
+        iconColor: 'text-green-500',
+        text: 'Acceso al onboarding completo y diagnóstico inicial.',
+      },
+      {
+        iconColor: 'text-green-500',
+        text: 'Primer roadmap básico (Nivel 1) desbloqueado.',
+      },
+      {
+        iconColor: 'text-green-500',
+        text: 'Avatar inicial sin personalización premium.',
+      },
+      {
+        iconColor: 'text-green-500',
+        text: 'Retos diarios limitados (hasta 7 por semana).',
+      },
+      { iconColor: 'text-green-500', text: 'Métricas de progreso básicas.' },
+      {
+        iconColor: 'text-green-500',
+        text: 'Acceso a comunidad general de Capaso.',
+      },
     ],
     actions: [
       {
@@ -59,17 +77,37 @@ export const pricingPlans: PricingPlan[] = [
   {
     key: 'pro',
     title: 'Pro',
-    price: '$20',
+    price: '$7',
     priceNote: '/mo',
-    description: 'Everything in Hobby, plus',
+    description: 'Todo lo de Hobby, más',
     features: [
-      { iconColor: 'text-green-400', text: 'Extended limits on agent' },
-      { iconColor: 'text-green-400', text: 'Unlimited tab completions' },
-      { iconColor: 'text-green-400', text: 'Access to Background Agents' },
-      { iconColor: 'text-green-400', text: 'Access to Bug Bot' },
       {
         iconColor: 'text-green-400',
-        text: 'Access to maximum context windows',
+        text: 'Acceso ilimitado a todos los módulos y niveles.',
+      },
+      {
+        iconColor: 'text-green-400',
+        text: 'Personalización avanzada del roadmap.',
+      },
+      {
+        iconColor: 'text-green-400',
+        text: 'Avatar premium y evoluciones exclusivas.',
+      },
+      {
+        iconColor: 'text-green-400',
+        text: 'Misiones semanales con recompensas especiales.',
+      },
+      {
+        iconColor: 'text-green-400',
+        text: 'Estadísticas avanzadas y reportes para padres.',
+      },
+      {
+        iconColor: 'text-green-400',
+        text: 'Retos y eventos en cohortes.',
+      },
+      {
+        iconColor: 'text-green-400',
+        text: 'Soporte prioritario.',
       },
     ],
     actions: [
@@ -77,7 +115,7 @@ export const pricingPlans: PricingPlan[] = [
         type: 'button',
         props: {
           variant: 'secondary',
-          children: 'Get Pro',
+          children: 'Obtener Pro',
         },
       },
       {
@@ -85,7 +123,7 @@ export const pricingPlans: PricingPlan[] = [
         props: {
           variant: 'ghost',
           className: 'text-white hover:bg-white/10 flex items-center gap-2',
-          children: ['More info', 'external'],
+          children: ['Más info', 'external'],
         },
       },
     ],
@@ -101,23 +139,38 @@ export const pricingPlans: PricingPlan[] = [
   },
   {
     key: 'ultra',
-    title: 'Ultra',
-    price: '$200',
+    title: 'Pro Anual',
+    price: '$70',
     priceNote: '/mo',
-    description: 'Everything in Pro, plus',
+    description: 'Todo lo de Pro Mensual, más:',
     features: [
       {
         iconColor: 'text-green-500',
-        text: '20x usage on all OpenAI, Claude, Gemini models',
+        text: 'Ahorro de 17% (equivalente a $5,83/mes).',
       },
-      { iconColor: 'text-green-500', text: 'Priority access to new features' },
+      {
+        iconColor: 'text-green-500',
+        text: 'Acceso prioritario a nuevas funcionalidades',
+      },
+      {
+        iconColor: 'text-green-500',
+        text: 'Invitación a eventos exclusivos de Capaso',
+      },
+      {
+        iconColor: 'text-green-500',
+        text: '2 meses adicionales gratis para un amigo o familiar',
+      },
+      {
+        iconColor: 'text-green-500',
+        text: 'Badge de “Miembro Fundador” en perfil y avatar',
+      },
     ],
     actions: [
       {
         type: 'button',
         props: {
           variant: 'secondary',
-          children: 'Get Ultra',
+          children: 'Obtener anual',
         },
       },
     ],
