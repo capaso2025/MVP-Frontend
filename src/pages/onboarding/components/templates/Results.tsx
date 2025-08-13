@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboardingStore } from '../../store/onboarding-store';
 import { RegisterApiResponse } from '@/features/onboarding/types/registerApiResponse.types';
+import { useAuthStore } from '@/features/auth/auth-store';
 
 function Results() {
   const navigate = useNavigate();
@@ -13,8 +14,11 @@ function Results() {
   const responses = useOnboardingStore((state) => state.responses);
   const [loading, setLoading] = useState(true);
   const [response, setResponse] = useState<RegisterApiResponse | null>(null);
+  const setUser = useAuthStore((state) => state.setUser);
+  const setProfile = useAuthStore((state) => state.setProfile);
   useEffect(() => {
     (async () => {
+      if (!registerData.name || registerData.age === 0) return;
       setLoading(true);
       const questions: Record<string, string | number> = {};
       responses.forEach((response) => {
@@ -30,16 +34,18 @@ function Results() {
       setLoading(false);
       if (result) {
         setResponse(result);
+        setUser(result.user);
+        setProfile(result.profile);
       }
     })();
-  }, []);
+  }, [registerData.age, registerData.name]);
 
   return (
     <OnboardingLayout
       title={
         loading
           ? ''
-          : `Así empezaremos ${registerData.name}: Explorador sin rumbo`
+          : `Así empezaremos ${registerData.name}: ${response?.profile.name}`
       }
     >
       {loading ? (
@@ -67,7 +73,7 @@ function Results() {
                 (el, index) => (
                   <div className="grid grid-cols-[100px_auto] gap-8">
                     <Typography>{el}</Typography>
-                    <Progress value={index * 25} size="lg" />
+                    <Progress value={index * 25} size="lg" variant="warning" />
                   </div>
                 ),
               )}

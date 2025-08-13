@@ -60,6 +60,12 @@ export interface IProgressProps extends HTMLAttributes<HTMLDivElement> {
    * @default true
    */
   rounded?: boolean;
+
+  /**
+   * Color de fondo de la barra de progreso
+   * @default 'var(--color-primary-light)'
+   */
+  backgroundColor?: string;
 }
 
 /**
@@ -77,6 +83,7 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
       animated = false,
       rounded = true,
       className = '',
+      backgroundColor,
       ...restProps
     },
     ref,
@@ -116,6 +123,7 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
       variantClasses[variant],
       rounded ? 'rounded-full' : '',
       animated ? 'animate-pulse' : '',
+      backgroundColor,
     ]
       .filter(Boolean)
       .join(' ');

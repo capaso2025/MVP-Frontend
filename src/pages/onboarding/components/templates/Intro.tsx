@@ -115,7 +115,12 @@ const NamesForm = ({ navigate }: { navigate: () => void }) => {
           setRegisterData({ key: 'age', value: Number(e.target.value) })
         }
       />
-      <Button variant="landing" className="mt-8 w-[75%]" onClick={navigate}>
+      <Button
+        variant="landing"
+        className="mt-8 w-[75%]"
+        onClick={navigate}
+        disabled={registerData.name.length === 0 || registerData.age === 0}
+      >
         Comenzar aventura
       </Button>
     </div>

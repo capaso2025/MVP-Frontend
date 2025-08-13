@@ -8,7 +8,7 @@ import { ApiError } from '@/api/error';
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const loginStore = useAuthStore((state) => state.login);
+  // const loginStore = useAuthStore((state) => state.login);
   const logoutStore = useAuthStore((state) => state.logout);
   const toggleLoading = useRenderStore((state) => state.toggleLoading);
   const closeModal = useRenderStore((state) => state.closeModal);
@@ -21,7 +21,7 @@ export const useLogin = () => {
       });
       navigate('/sections');
       closeModal();
-      loginStore(response.token, response.user);
+      // loginStore(response.token, response.user);
       localStorage.setItem('t', response.token);
       toast.success('Bienvenido de nuevo!');
     } catch (error) {
