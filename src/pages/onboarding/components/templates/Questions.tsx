@@ -85,15 +85,12 @@ function Questions() {
             <Typography variant="h5" className="font-normal">
               {questions[currentIndex]?.question}
             </Typography>
-            <Typography variant="body1" className="text-secondary text-center">
-              Esto ayuda a personalizar tu experiencia.
-            </Typography>
           </div>
         </div>
         <div>
           <div
             key={`alternatives-${questionKey}`}
-            className={`mx-auto grid h-full max-w-[50%] grid-cols-1 place-content-center gap-4 transition-all duration-200 ${
+            className={`mx-auto grid h-full max-w-[90%] grid-cols-1 place-content-center gap-4 transition-all duration-200 lg:max-w-[50%] ${
               isAnimating
                 ? direction === 'forward'
                   ? 'animate-slide-out-left'

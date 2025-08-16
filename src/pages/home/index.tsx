@@ -8,17 +8,22 @@ import {
 } from '@/shared/ui/atoms/Icon/Icon';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '@/features/auth/auth-store';
+import { Flag, Lightbulb, SquareChartGantt, Timer } from 'lucide-react';
 const MODULES = [
   {
+    icon: <Lightbulb className="text-primary" />,
     title: 'Enfocar tu atención',
   },
   {
+    icon: <SquareChartGantt className="text-primary" />,
     title: 'Planificar sin caos',
   },
   {
+    icon: <Flag className="text-primary" />,
     title: 'Establecer metas claras',
   },
   {
+    icon: <Timer className="text-primary" />,
     title: 'Domina tu tiempo',
   },
 ];
@@ -89,7 +94,7 @@ export default function Home() {
   const randomGenerator = () => Math.floor(Math.random() * 100);
   return (
     <div>
-      <div className="mt-8 grid grid-cols-[250px_auto] gap-8">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[250px_auto]">
         <div className="grid place-content-center gap-2">
           <Typography variant="h4" className="text-primary text-left font-bold">
             Hola, <span className="text-primary-2">{user?.firstName}</span>
@@ -99,6 +104,7 @@ export default function Home() {
             alt="Capaso"
             width={250}
             height={250}
+            className="mx-auto w-[60%] lg:w-[250px]"
           />
           <small className="text-center">Nivel 1 - Progreso personal</small>
         </div>
@@ -106,11 +112,11 @@ export default function Home() {
           <Typography variant="h6" className="text-primary mb-4 font-bold">
             Tus módulos recomendados - {profile?.name}
           </Typography>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {MODULES.map((el) => (
               <div className="bg-primary/5 rounded-lg p-4">
                 <div className="flex items-start gap-2">
-                  <img src="" alt="" width={20} height={20} />
+                  {el.icon}
                   <div>
                     <Typography variant="h6" className="text-primary font-bold">
                       {el.title}
@@ -124,7 +130,7 @@ export default function Home() {
                     </Typography>
                   </div>
                 </div>
-                <div className="mt-2 flex gap-2">
+                <div className="mt-2 flex flex-col gap-4 md:flex-row">
                   <Progress value={50} />
                   <Button variant="secondary" size="sm" className="w-full">
                     Continuar lección
@@ -139,8 +145,8 @@ export default function Home() {
         <Typography className="text-primary mb-4" variant="h3">
           Capo Herramientas
         </Typography>
-        <div className="grid grid-cols-[60%_auto] gap-8">
-          <div className="grid h-max grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-[60%_auto]">
+          <div className="grid h-max grid-cols-1 gap-4 sm:grid-cols-2">
             {TOOLS.map((el) => {
               const randomValue = randomGenerator();
               return (

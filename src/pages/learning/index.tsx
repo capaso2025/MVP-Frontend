@@ -88,7 +88,7 @@ export default function LearningPage() {
         </div>
 
         {/* Bottom Section - Modules */}
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
           <div className="col-span-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
             <div className="rounded-3xl border-2 border-gray-200 p-6">
               <div className="mb-4 flex items-center gap-3">
@@ -159,42 +159,44 @@ export default function LearningPage() {
               </div>
 
               <div className="grid grid-cols-3 gap-4">
-                <div className="text-center">
+                <div className="flex flex-col items-center justify-center text-center">
                   <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
                     <Book className="h-6 w-6 text-blue-600" />
                   </div>
-                  <span className="text-xs text-gray-700">Libro recome-</span>
+                  <span className="text-xs text-gray-700">
+                    Libro recomendado
+                  </span>
                 </div>
 
-                <div className="text-center">
+                <div className="flex flex-col items-center justify-center text-center">
                   <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
                     <Mountain className="h-6 w-6 text-purple-600" />
                   </div>
                   <span className="text-xs text-gray-700">Desafío semanal</span>
                 </div>
 
-                <div className="text-center">
+                <div className="flex flex-col items-center justify-center text-center">
                   <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
                     <Play className="h-6 w-6 text-blue-600" />
                   </div>
                   <span className="text-xs text-gray-700">Video externo</span>
                 </div>
 
-                <div className="text-center">
+                <div className="flex flex-col items-center justify-center text-center">
                   <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100">
                     <Users className="h-6 w-6 text-orange-600" />
                   </div>
                   <span className="text-xs text-gray-700">Acción social</span>
                 </div>
 
-                <div className="text-center">
+                <div className="flex flex-col items-center justify-center text-center">
                   <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
                     <Hourglass className="h-6 w-6 text-amber-600" />
                   </div>
                   <span className="text-xs text-gray-700">Temporizador</span>
                 </div>
 
-                <div className="text-center">
+                <div className="flex flex-col items-center justify-center text-center">
                   <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100">
                     <Music className="h-6 w-6 text-green-600" />
                   </div>

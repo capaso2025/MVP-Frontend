@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { useOnboardingStore } from '../../store/onboarding-store';
 import { RegisterApiResponse } from '@/features/onboarding/types/registerApiResponse.types';
 import { useAuthStore } from '@/features/auth/auth-store';
+import { useTranslation } from 'react-i18next';
 
 function Results() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const registerData = useOnboardingStore((state) => state.registerData);
   const responses = useOnboardingStore((state) => state.responses);
   const [loading, setLoading] = useState(true);
@@ -42,11 +44,7 @@ function Results() {
 
   return (
     <OnboardingLayout
-      title={
-        loading
-          ? ''
-          : `Así empezaremos ${registerData.name}: ${response?.profile.name}`
-      }
+      title={loading ? '' : `Así empezaremos ${registerData.name}`}
     >
       {loading ? (
         <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] place-content-center py-4 xl:w-full">
@@ -67,6 +65,9 @@ function Results() {
         </div>
       ) : (
         <div className="mx-auto grid h-[90%] w-[90%] grid-rows-[auto_max-content]">
+          <Typography variant="h3" className="mt-20 text-center">
+            {t(response.profile.name)}
+          </Typography>
           <div className="mx-auto mt-8 block w-[80%] grid-cols-2 place-content-center gap-8 md:grid">
             <div className="grid gap-8 md:gap-4">
               {['Tiempo', 'Foco', 'Soft Skills', 'Bienestar'].map(

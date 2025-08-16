@@ -47,7 +47,7 @@ export const OnboardingLayout = forwardRef<
           {typeof title === 'string' ? (
             <Typography
               variant="h4"
-              className="ml-4 hidden font-normal text-white sm:block"
+              className="!text-md ml-4 text-center font-normal text-white md:!text-xl"
             >
               {title}
             </Typography>

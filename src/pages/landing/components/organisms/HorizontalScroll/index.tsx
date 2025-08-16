@@ -94,7 +94,7 @@ function HorizontalScroll() {
                 </Typography>
                 <img
                   key={el.id}
-                  className="flex-shrink-0 rounded-2xl"
+                  className="w-[500px] flex-shrink-0 rounded-2xl object-cover lg:w-[650px]"
                   src={el.img}
                   width={650}
                   height={650}

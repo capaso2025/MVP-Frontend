@@ -1,6 +1,6 @@
 import { useResize } from '@/shared/hooks/use-resize';
 import { MENU } from '../../constants/menu';
-import Logo from '@/assets/capo-logo-dark.png';
+import Logo from '@/assets/capo-logo.png';
 import { useEffect } from 'react';
 import { Typography } from '@/shared/ui';
 import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
@@ -37,7 +37,7 @@ function RightMenu(props: {
 
   return (
     <div
-      className={`fixed top-0 left-0 z-50 flex h-screen w-full flex-col items-center justify-center bg-gradient-to-br from-[#ced8df] to-[#42455a] text-black transition-all ${opened ? 'animate-slide-x' : '-translate-x-full'}`}
+      className={`bg-landing-dark fixed top-0 left-0 z-500 flex h-screen w-full flex-col items-center justify-center text-white transition-all ${opened ? 'animate-slide-x' : '-translate-x-full'}`}
     >
       <div className="grid h-screen w-full grid-rows-[max-content_auto] gap-8 p-4">
         <div className="flex w-full items-center justify-between px-4">
@@ -45,7 +45,7 @@ function RightMenu(props: {
           <MenuIcon
             size={35}
             onClick={() => handleOpened()}
-            className="text-primary"
+            className="text-white"
           />
         </div>
         <div className="grid place-content-center">

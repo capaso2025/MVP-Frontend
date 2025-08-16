@@ -26,13 +26,13 @@ function OnboardingIntro() {
           <div className="text-center">
             <Typography
               variant="h4"
-              className="ml-4 hidden font-normal text-white sm:block"
+              className="text-md ml-4 font-normal text-white md:text-xl"
             >
               Antes de comenzar, necesitamos saber un poco más de ti
             </Typography>
             <Typography
               variant="h4"
-              className="ml-4 hidden font-normal text-white sm:block"
+              className="text-md ml-4 font-normal text-white md:text-xl"
             >
               ¿Como te llamas?
             </Typography>
@@ -65,7 +65,7 @@ const IntroDetails = (props: { navigate: () => void }) => {
         evolución
       </Typography>
       <div className={`grid place-content-center gap-16`}>
-        <div className="mx-auto grid max-w-[40%] grid-cols-2 place-content-center">
+        <div className="mx-auto grid w-full grid-cols-2 place-content-center lg:max-w-[40%]">
           <img
             src="/assets/characters/herramienta.png"
             width={250}
@@ -93,7 +93,7 @@ const NamesForm = ({ navigate }: { navigate: () => void }) => {
   const setRegisterData = useOnboardingStore((state) => state.setRegisterData);
 
   return (
-    <div className="mx-auto flex w-[50%] flex-col items-center justify-center">
+    <div className="mx-auto flex w-full flex-col items-center justify-center lg:w-[50%]">
       <Input
         variant="dark"
         containerClassName="w-full"
