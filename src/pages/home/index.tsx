@@ -9,6 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '@/features/auth/auth-store';
 import { Flag, Lightbulb, SquareChartGantt, Timer } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 const MODULES = [
   {
     icon: <Lightbulb className="text-primary" />,
@@ -90,6 +91,7 @@ const TOOLS = [
 export default function Home() {
   const user = useAuthStore((state) => state.user);
   const profile = useAuthStore((state) => state.profile);
+  const { t } = useTranslation();
 
   const randomGenerator = () => Math.floor(Math.random() * 100);
   return (
@@ -110,7 +112,7 @@ export default function Home() {
         </div>
         <div>
           <Typography variant="h6" className="text-primary mb-4 font-bold">
-            Tus módulos recomendados - {profile?.name}
+            Tus módulos recomendados - {t(profile?.name || '')}
           </Typography>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {MODULES.map((el) => (
