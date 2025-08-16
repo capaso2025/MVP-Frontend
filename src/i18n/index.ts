@@ -13,7 +13,7 @@ i18n
       en: { translation: en },
       es: { translation: es },
     },
-    fallbackLng: 'en', // idioma por defecto
+    fallbackLng: 'es', // idioma por defecto
     interpolation: {
       escapeValue: false, // react ya hace el escape
     },
