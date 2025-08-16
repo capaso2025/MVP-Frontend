@@ -7,7 +7,7 @@ export default function WhatIs() {
     <section
       ref={ref}
       className={
-        'grid grid-cols-2 place-content-center transition-all duration-500'
+        'grid grid-cols-1 place-content-center gap-8 transition-all duration-500 md:grid-cols-2'
       }
     >
       <div
@@ -21,7 +21,7 @@ export default function WhatIs() {
       <img
         src="/assets/characters/capito-excited-2.png"
         alt="Capaso"
-        className={`transition-all duration-500 ${hasBeenVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+        className={`mx-auto w-[90%] transition-all duration-500 md:w-[80%] ${hasBeenVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
         style={{ justifySelf: 'end' }}
       />
     </section>

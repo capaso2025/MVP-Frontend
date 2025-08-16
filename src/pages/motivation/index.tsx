@@ -40,7 +40,7 @@ export default function MotivationDashboard() {
 
             <img
               src="/assets/characters/capito-excited-2.png"
-              className="w-[250px]"
+              className="hidden w-[250px] md:block"
             />
           </div>
         </div>

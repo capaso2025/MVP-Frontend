@@ -44,6 +44,7 @@ function Sidebar(props: { items: MenuItemType[] }) {
             key={el.label}
             {...el}
             isSelected={sidebarItemIsSelected(el.path, el.include)}
+            onClick={toggleOpenedSidebar}
           />
         ))}
       </div>
@@ -58,11 +59,13 @@ const MenuItem = (props: {
   icon: string;
   path: string;
   isSelected: boolean;
+  onClick: () => void;
 }) => {
-  const { label, icon, path, isSelected } = props;
+  const { label, icon, path, isSelected, onClick } = props;
   return (
     <Link
       to={path}
+      onClick={onClick}
       className={`mb-2 flex w-full items-center gap-2 rounded-lg border-2 border-transparent p-4 transition-all duration-200 ${isSelected ? '!border-primary-lighter border-[1px]' : ''}`}
     >
       <img src={icon} width={30} />
