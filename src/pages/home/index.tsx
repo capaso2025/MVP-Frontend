@@ -1,15 +1,15 @@
 import { Button, Progress, Typography } from '@/shared/ui';
-import DailyTasks from '../sections/components/organisms/DailyTasks';
 import {
   ChartGanttIcon,
   CompassIcon,
   HeartHandshakeIcon,
   UserIcon,
 } from '@/shared/ui/atoms/Icon/Icon';
-import { Link, Navigate } from 'react-router-dom';
 import { useAuthStore } from '@/features/auth/auth-store';
 import { Flag, Lightbulb, SquareChartGantt, Timer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link, Navigate } from '@tanstack/react-router';
+import DailyTasks from './components/organisms/DailyTasks';
 const MODULES = [
   {
     icon: <Lightbulb className="text-primary" />,
@@ -43,7 +43,7 @@ const TOOLS = [
       </>
     ),
     icon: <CompassIcon className="text-white" />,
-    route: '/goals',
+    route: '/home/goals',
   },
   {
     title: 'Constructor de hábitos',
@@ -58,7 +58,7 @@ const TOOLS = [
         </Typography>
       </>
     ),
-    route: '/habits',
+    route: '/home/habits',
   },
   {
     title: 'Aprendizaje y reflexión',
@@ -73,7 +73,7 @@ const TOOLS = [
       </>
     ),
     icon: <ChartGanttIcon className="text-white" />,
-    route: '/learning',
+    route: '/home/learning',
   },
   {
     title: 'Motivación',
@@ -85,7 +85,7 @@ const TOOLS = [
       </>
     ),
     icon: <UserIcon className="text-white" />,
-    route: '/motivation',
+    route: '/home/motivation',
   },
 ];
 export default function Home() {

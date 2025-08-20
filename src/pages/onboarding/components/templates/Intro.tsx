@@ -3,7 +3,7 @@ import Input from '@/shared/ui/atoms/Input/Input';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useState } from 'react';
 import { useOnboardingStore } from '../../store/onboarding-store';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@tanstack/react-router';
 
 function OnboardingIntro() {
   const [introDetails, setIntroDetails] = useState(true);
@@ -15,7 +15,9 @@ function OnboardingIntro() {
 
   const goToOnboarding = () => {
     if (registerData.name.length === 0 || registerData.age === 0) return;
-    navigate('/onboarding/questions');
+    navigate({
+      to: '/onboarding/questions'
+    });
   };
   return (
     <OnboardingLayout

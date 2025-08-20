@@ -1,7 +1,7 @@
 import { Button, Typography } from '@/shared/ui';
-import { useNavigate } from 'react-router-dom';
 import capitoDesk from '@/assets/capito-desk.webp';
 import logo from '@/assets/capo-logo.png';
+import { useNavigate } from '@tanstack/react-router';
 
 function Main() {
   const navigate = useNavigate();
@@ -24,13 +24,17 @@ function Main() {
           </Typography>
           <div className="mt-14 grid grid-cols-1 gap-4">
             <Button
-              onClick={() => navigate('/onboarding')}
+              onClick={() => navigate({
+                to: "/onboarding"
+              })}
               size="md"
               variant="landing"
             >
               Comenzar
             </Button>
-            <Button onClick={() => navigate('/login')} variant="secondary">
+            <Button onClick={() => navigate({
+              to: "/login"
+            })} variant="secondary">
               Tengo una cuenta
             </Button>
           </div>

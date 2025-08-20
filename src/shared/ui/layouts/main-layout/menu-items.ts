@@ -22,15 +22,15 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     label: 'Calendario',
     icon: calendar,
-    path: '/calendar',
+    path: '/home/calendar',
   },
   {
     label: 'Capómetro',
     icon: timer,
-    path: '/timer',
+    path: '/home/timer',
   },
-  { label: 'Classroom', icon: classroom, path: '/classroom' },
-  { label: 'Perfil', icon: user, path: '/profile' },
+  { label: 'Classroom', icon: classroom, path: '/home/classroom' },
+  { label: 'Perfil', icon: user, path: '/home/profile' },
 ];
 export const NO_LOGGED_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
@@ -42,14 +42,14 @@ export const NO_LOGGED_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {
     label: 'Calendario',
     icon: calendar,
-    path: '/calendar',
+    path: '/home/calendar',
   },
   {
     label: 'Capómetro',
     icon: timer,
-    path: '/timer',
+    path: '/home/timer',
   },
-  { label: 'Classroom', icon: classroom, path: '/classroom' },
+  { label: 'Classroom', icon: classroom, path: '/home/classroom' },
 ];
 export const TEACHER_DEFAULT_MENU_ITEMS: MenuItem[] = [
   {

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useTimer } from '../hooks/use-timer';
 import MinimizedTimer from './MinimizedTimer';
+import { useLocation } from '@tanstack/react-router';
 
 export function TimerFloating() {
   const { isActive, isMinimized, toggleMinimized, position, updatePosition } =

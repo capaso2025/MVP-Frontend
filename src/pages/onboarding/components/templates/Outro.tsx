@@ -1,12 +1,14 @@
 import { Button, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@tanstack/react-router';
 
 function OnboardingOutro() {
   const navigate = useNavigate();
 
   const gotoHome = () => {
-    navigate('/home');
+    navigate({
+      to: '/home'
+    });
   };
   return (
     <OnboardingLayout

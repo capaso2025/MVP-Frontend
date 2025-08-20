@@ -87,7 +87,7 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
     const variantClasses: Record<TButtonVariant, string> = {
       primary: 'bg-primary text-white',
       secondary: 'bg-primary-lighter text-gray-900',
-      outline: 'bg-transparent border border-primary-light text-primary',
+      outline: 'bg-primary-light/30 border border-white/20 text-white',
       ghost: 'bg-transparent text-gray-700',
       danger: 'bg-red-600 text-white',
       input:

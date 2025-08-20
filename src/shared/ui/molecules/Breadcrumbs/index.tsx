@@ -1,5 +1,5 @@
+import { Link } from '@tanstack/react-router';
 import { ChevronDownIcon, HomeIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 function Breadcrumbs(props: {
   links: {

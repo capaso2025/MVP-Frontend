@@ -2,7 +2,7 @@ import { Play, Flame, Diamond, Star } from 'lucide-react';
 import { Button } from '@/shared/ui';
 import Breadcrumbs from '@/shared/ui/molecules/Breadcrumbs';
 
-export default function MotivationDashboard() {
+export default function Motivation() {
   return (
     <>
       <Breadcrumbs

@@ -1,9 +1,9 @@
 import { Button, Progress } from '@/shared/ui';
-import CustomCalendar from '../sections/components/atoms/Calendar';
 import { ChevronUp, Dumbbell, GraduationCap } from 'lucide-react';
 import Breadcrumbs from '@/shared/ui/molecules/Breadcrumbs';
+import CustomCalendar from '../home/components/atoms/Calendar';
 
-export default function GoalsDashboard() {
+export default function Goals() {
   return (
     <>
       <Breadcrumbs

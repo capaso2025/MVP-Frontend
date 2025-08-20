@@ -1,11 +1,11 @@
 import { Button, Progress, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { useBackNext } from '@/shared/hooks/useBackNext';
-import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../hooks/use-onboarding';
 import { useEffect, useState } from 'react';
 import { ResponseQuestion } from '../../store/onboarding-store';
 import { useOnboardingTransitions } from '../../hooks/use-onboarding-transitions';
+import { useNavigate } from '@tanstack/react-router';
 
 function Questions() {
   const navigate = useNavigate();
@@ -13,10 +13,14 @@ function Questions() {
   const { currentIndex, goToNext, goToPrevious, isFirstStep } = useBackNext({
     length: questions.length,
     finishFn: () => {
-      navigate('/onboarding/results');
+      navigate({
+        to: '/onboarding/results',
+      });
     },
     previousFn: () => {
-      navigate('/onboarding');
+      navigate({
+        to: '/onboarding',
+      });
     },
   });
   const { isAnimating, questionKey, direction, handleNext, handlePrevious } = useOnboardingTransitions({

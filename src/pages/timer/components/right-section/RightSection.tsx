@@ -1,6 +1,6 @@
-import CustomCalendar from '@/pages/sections/components/atoms/Calendar';
-import CreateProfile from '@/pages/sections/components/organisms/CreateProfile';
-import DailyTasks from '@/pages/sections/components/organisms/DailyTasks';
+import CustomCalendar from "@/pages/home/components/atoms/Calendar";
+import CreateProfile from "@/pages/home/components/organisms/CreateProfile";
+import DailyTasks from "@/pages/home/components/organisms/DailyTasks";
 
 function RightSection() {
   return (

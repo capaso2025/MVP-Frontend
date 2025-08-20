@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from '@tanstack/react-router';
 import { Button } from '../../atoms/Button';
 import Spacer from '../../atoms/Spacer';
 import { Typography } from '../../atoms/Typography';
@@ -6,7 +6,7 @@ import { useRenderStore } from '@/shared/store/render-store';
 import { useDummyStore } from '@/shared/store/dummy-store';
 
 function FinishedMessage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const setRole = useDummyStore((state) => state.setRole);
   const closeModalData = useRenderStore((state) => state.closeModal);
   return (
@@ -29,7 +29,7 @@ function FinishedMessage() {
           variant="landing"
           size="lg"
           onClick={() => {
-            navigate('/teacher/classroom');
+            // navigate('/teacher/classroom');
             setRole('teacher');
             closeModalData();
           }}

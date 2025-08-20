@@ -7,8 +7,8 @@ import { usePassword } from '@/shared/hooks/usePassword';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Spacer from '@/shared/ui/atoms/Spacer';
-import LogoDark from '@/assets/capo-logo-dark.png';
-import { useNavigate } from 'react-router-dom';
+import Logo from '@/assets/capo-logo.png';
+import { useNavigate } from '@tanstack/react-router';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
@@ -23,18 +23,20 @@ function Login(props: { onClickSignup?: () => void }) {
   const navigate = useNavigate();
 
   return (
-    <>
+    <div className='bg-landing-dark'>
       <Button
         variant="outline"
         className="absolute top-4 right-4"
         onClick={onClickSignup}
       >
-        <Typography className="text-primary font-bold">Regístrate</Typography>
+        <Typography>Regístrate</Typography>
       </Button>
-      <div className="mx-auto mt-2 max-w-5xl">
+      <div className="mx-auto pt-2 max-w-5xl">
         <img
-          onClick={() => navigate('/')}
-          src={LogoDark}
+          onClick={() => navigate({
+            to: "."
+          })}
+          src={Logo}
           width={50}
           height={50}
           alt="logo de capo"
@@ -50,9 +52,8 @@ function Login(props: { onClickSignup?: () => void }) {
             handleSubmit();
           }}
         >
-          <Typography variant="h2" className="text-primary mb-12">
-            Ingresa tus credenciales para{' '}
-            <span className="text-primary-2">iniciar sesión</span>
+          <Typography variant="h2" className="mb-12">
+            Iniciar sesión
           </Typography>
           <Input
             type="email"
@@ -62,9 +63,13 @@ function Login(props: { onClickSignup?: () => void }) {
             onChange={(ev) => setValue('email', ev.target.value)}
             placeholder="example@mail.com"
             errors={errors}
+            inputSize="lg"
+            variant="dark"
           />
           <Spacer size="md" />
           <Input
+            variant="dark"
+            inputSize="lg"
             name="password"
             label="Contraseña"
             type={showPassword ? 'text' : 'password'}
@@ -75,19 +80,11 @@ function Login(props: { onClickSignup?: () => void }) {
             errors={errors}
           />
           <Spacer size="md" />
-          <Button size="lg" variant="primary" className="w-full" type="submit">
-            <Typography className="ml-2 font-bold text-white">
-              Ingresar
+          <Button variant="landing" className="w-full mt-4" type="submit">
+            <Typography>
+              Ingresar a Capaso
             </Typography>
           </Button>
-          {/* <div>
-            <Typography
-              variant="subtitle2"
-              className="text-primary mt-4 cursor-pointer text-right"
-            >
-              Olvidaste tu contraseña?
-            </Typography>
-          </div> */}
         </form>
         <div className="hidden md:block">
           <img
@@ -97,7 +94,7 @@ function Login(props: { onClickSignup?: () => void }) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

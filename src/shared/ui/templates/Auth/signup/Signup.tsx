@@ -9,9 +9,12 @@ import { DatePicker } from '@/shared/ui/molecules/DatePicker';
 import { EyeIcon, EyeOffIcon } from '@/shared/ui/atoms/Icon/Icon';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Spacer from '@/shared/ui/atoms/Spacer';
+import { useNavigate } from '@tanstack/react-router';
+import Logo from '@/assets/capo-logo.png';
 
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;
+  const navigate = useNavigate();
   const { executeSignup } = useSignup();
   const { showPassword, togglePasswordVisibility } = usePassword();
   const { errors, values, handleSubmit, setValue } = useForm<SignupData>({
@@ -28,16 +31,29 @@ function Signup(props: { onClickLogin?: () => void }) {
   });
 
   return (
-    <>
+    <div className='bg-landing-dark'>
       <Button
         variant="outline"
         className="absolute top-4 right-4"
         onClick={onClickLogin}
       >
-        <Typography className="text-primary font-bold">
+        <Typography>
           Iniciar sesión
         </Typography>
       </Button>
+      <div className="mx-auto pt-2 max-w-5xl">
+        <img
+          onClick={() => navigate({
+            to: "."
+          })}
+          src={Logo}
+          width={50}
+          height={50}
+          alt="logo de capo"
+          color="text-primary"
+          className="cursor-pointer p-1"
+        />
+      </div>
       <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
         <form
           className="mx-auto -mt-8 w-full place-content-center px-4"
@@ -46,13 +62,15 @@ function Signup(props: { onClickLogin?: () => void }) {
             handleSubmit();
           }}
         >
-          <Typography variant="h2" className="text-primary mb-12">
+          <Typography variant="h2" className="text-white mb-12">
             Completa tus datos para{' '}
-            <span className="text-[#c3a780]">registrarte</span>
+            <span className="text-primary-2">registrarte</span>
           </Typography>
           <div className="grid grid-cols-2 gap-4">
             <Input
               type="text"
+              variant="dark"
+              inputSize="lg"
               value={values.name}
               onChange={(ev) => setValue('name', ev.target.value)}
               label="Nombre"
@@ -61,6 +79,8 @@ function Signup(props: { onClickLogin?: () => void }) {
             />
             <Input
               type="text"
+              variant="dark"
+              inputSize="lg"
               value={values.lastName}
               onChange={(ev) => setValue('lastName', ev.target.value)}
               label="Apellidos"
@@ -79,6 +99,8 @@ function Signup(props: { onClickLogin?: () => void }) {
           <Spacer size='md' />
           <Input
             type="email"
+            variant="dark"
+            inputSize="lg"
             value={values.email}
             onChange={(ev) => setValue('email', ev.target.value)}
             label="Correo electrónico"
@@ -91,6 +113,8 @@ function Signup(props: { onClickLogin?: () => void }) {
             <Input
               type={showPassword ? 'text' : 'password'}
               value={values.password}
+              variant="dark"
+              inputSize="lg"
               onChange={(ev) => setValue('password', ev.target.value)}
               label="Contraseña"
               placeholder='********'
@@ -109,11 +133,13 @@ function Signup(props: { onClickLogin?: () => void }) {
               placeholder='********'
               name='confirmPassword'
               errors={errors}
+              variant="dark"
+              inputSize="lg"
             />
           </div>
           <Spacer size='md' />
-          <Button size="lg" variant="primary" className="w-full" type="submit">
-            <Typography className="ml-2 font-bold text-white">
+          <Button variant="landing" className="w-full mt-4" type="submit">
+            <Typography>
               Registrarme
             </Typography>
           </Button>
@@ -126,7 +152,7 @@ function Signup(props: { onClickLogin?: () => void }) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

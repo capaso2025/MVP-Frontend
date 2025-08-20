@@ -3,7 +3,7 @@ import { Button, Progress, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { Loader, XCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@tanstack/react-router';
 import { useOnboardingStore } from '../../store/onboarding-store';
 import { useAuthStore } from '@/features/auth/auth-store';
 import { useTranslation } from 'react-i18next';
@@ -59,7 +59,9 @@ function Results() {
           <div className="flex flex-col items-center gap-8">
             <XCircleIcon className="text-primary-2 scale-200" size={35} />
             <p>Ups! Ha ocurrido un error.</p>
-            <Button onClick={() => navigate('/onboarding')} variant="landing">
+            <Button onClick={() => navigate({
+              to: '/onboarding'
+            })} variant="landing">
               Volver a intentar
             </Button>
           </div>
@@ -89,7 +91,9 @@ function Results() {
           </div>
           <div className="mt-8 flex items-center justify-end">
             <Button
-              onClick={() => navigate('/onboarding/outro')}
+              onClick={() => navigate({
+                to: '/onboarding/finish'
+              })}
               variant="landing"
             >
               Continuar

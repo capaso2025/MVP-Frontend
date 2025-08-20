@@ -1,15 +1,14 @@
-import { Outlet } from 'react-router-dom';
 import Sidebar from '../../organisms/sidebar';
 import { TimerFloating } from '@/pages/timer/components/TimerFloating';
-import HeaderActions from '@/pages/sections/components/organisms/HeaderActions';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useEffect } from 'react';
 import { useRenderStore } from '@/shared/store/render-store';
 import { DEFAULT_MENU_ITEMS, NO_LOGGED_DEFAULT_MENU_ITEMS } from './menu-items';
 import { useAuthStore } from '@/features/auth/auth-store';
+import { Outlet } from '@tanstack/react-router';
 // import { useDummyStore } from '@/shared/store/dummy-store';
 
-function MenuLayout() {
+function HomeLayout({ children }: { children: React.ReactNode }) {
   const { isMobile } = useResize();
   // const role = useDummyStore((state) => state.role);
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -33,7 +32,7 @@ function MenuLayout() {
       {isMobile ? <></> : <div className="w-[300px]" />}
       <div className={isMobile ? 'w-auto' : 'ml-[300px]'}>
         <main className="mx-auto w-full p-4 lg:w-[1050px]">
-          <HeaderActions />
+          {/* <HeaderActions /> */}
           <div className="mt-4 grid grid-cols-1 gap-8">
             <Outlet />
           </div>
@@ -44,4 +43,4 @@ function MenuLayout() {
   );
 }
 
-export default MenuLayout;
+export default HomeLayout;

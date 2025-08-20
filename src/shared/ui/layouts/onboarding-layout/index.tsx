@@ -3,9 +3,9 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { Button } from '@/shared/ui/atoms/Button';
 import { Typography } from '@/shared/ui/atoms/Typography';
 import { useRenderStore } from '@/shared/store/render-store';
-import { useNavigate } from 'react-router-dom';
 import { XIcon } from '../../atoms/Icon/Icon';
 import capoLogo from '@/assets/capo-logo.png';
+import { useNavigate } from '@tanstack/react-router';
 
 export interface OnboardingLayoutProps
   extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -28,7 +28,9 @@ export const OnboardingLayout = forwardRef<
       title: '¿Estás seguro que deseas salir?',
       description: 'Si abandonas ahora, perderás tu progreso.',
       onConfirm: () => {
-        navigate('/');
+        navigate({
+          to: '/',
+        });
       },
       confirmText: 'Sí, salir',
     });

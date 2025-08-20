@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../auth-store';
 import { useRenderStore } from '@/shared/store/render-store';
 import { toast } from 'react-toastify';
 import { login } from '../loginHttpCall';
 import { LoginData } from '../types/loginData.types';
 import { ApiError } from '@/api/error';
+import { useNavigate } from '@tanstack/react-router';
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -19,7 +19,9 @@ export const useLogin = () => {
         email: values.email,
         password: values.password,
       });
-      navigate('/sections');
+      navigate({
+        to: '/home',
+      });
       closeModal();
       // loginStore(response.token, response.user);
       localStorage.setItem('t', response.token);
@@ -36,7 +38,9 @@ export const useLogin = () => {
   const executeLogout = async () => {
     logoutStore();
     localStorage.removeItem('t');
-    navigate('/');
+    navigate({
+      to: '/home',
+    });
   };
 
   return {

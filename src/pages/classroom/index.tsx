@@ -10,7 +10,7 @@ import { Button, Typography } from '@/shared/ui';
 import { useState } from 'react';
 import { CLASSES, STUDENTS } from './dummy';
 
-export default function TeacherDashboard() {
+export default function Classroom() {
   const [selectedClass, setSelectedClass] = useState<number | null>(null);
 
   const handleClassClick = (classId: number) => {

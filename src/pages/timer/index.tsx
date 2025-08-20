@@ -5,7 +5,7 @@ import TimerActions from './components/TimerActions';
 import { TimerMode } from './types/TimerContext.types';
 import { TaskList } from './components/TasksList';
 import Chronometer from './components/Chronometer';
-import RightSection from '@/shared/ui/organisms/right-section/RightSection';
+import RightSection from '@/pages/timer/components/right-section/RightSection';
 
 export default function TimerPage() {
   const { mode, timeLeft, setMode } = useTimer();

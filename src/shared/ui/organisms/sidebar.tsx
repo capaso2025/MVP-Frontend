@@ -1,10 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
 import { Typography } from '../atoms/Typography';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useRenderStore } from '@/shared/store/render-store';
 import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
 import capoLogo from '@/assets/capo-logo.png';
 import { MenuItem as MenuItemType } from '../layouts/main-layout/menu-items';
+import { Link, useLocation } from '@tanstack/react-router';
 
 function Sidebar(props: { items: MenuItemType[] }) {
   const { items } = props;
