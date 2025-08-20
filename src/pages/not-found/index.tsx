@@ -11,9 +11,9 @@ const NotFoundPage: FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center p-4">
+    <div className="bg-landing-dark flex min-h-screen flex-col items-center justify-center p-4">
       <div className="max-w-xl text-center">
-        <div className="text-primary mb-6">
+        <div className="text-white mb-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="120"

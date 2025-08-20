@@ -5,7 +5,6 @@ import { Loader, XCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useOnboardingStore } from '../../store/onboarding-store';
-import { RegisterApiResponse } from '@/features/onboarding/types/registerApiResponse.types';
 import { useAuthStore } from '@/features/auth/auth-store';
 import { useTranslation } from 'react-i18next';
 
@@ -15,9 +14,10 @@ function Results() {
   const registerData = useOnboardingStore((state) => state.registerData);
   const responses = useOnboardingStore((state) => state.responses);
   const [loading, setLoading] = useState(true);
-  const [response, setResponse] = useState<RegisterApiResponse | null>(null);
   const setUser = useAuthStore((state) => state.setUser);
   const setProfile = useAuthStore((state) => state.setProfile);
+  const profile = useAuthStore((state) => state.profile);
+
   useEffect(() => {
     (async () => {
       if (!registerData.name || registerData.age === 0) return;
@@ -35,9 +35,10 @@ function Results() {
       });
       setLoading(false);
       if (result) {
-        setResponse(result);
         setUser(result.user);
         setProfile(result.profile);
+        localStorage.setItem('profile', JSON.stringify(result.profile));
+        localStorage.setItem('user', JSON.stringify(result.user));
       }
     })();
   }, [registerData.age, registerData.name]);
@@ -50,10 +51,10 @@ function Results() {
         <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] place-content-center py-4 xl:w-full">
           <div className="flex flex-col items-center gap-8">
             <Loader className="text-primary-2 scale-200 animate-spin" />
-            <p>Generando ruta de aprendizaje...</p>
+            Generando ruta de aprendizaje...
           </div>
         </div>
-      ) : !response ? (
+      ) : !profile ? (
         <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] place-content-center py-4 xl:w-full">
           <div className="flex flex-col items-center gap-8">
             <XCircleIcon className="text-primary-2 scale-200" size={35} />
@@ -66,7 +67,7 @@ function Results() {
       ) : (
         <div className="mx-auto grid h-[90%] w-[90%] grid-rows-[auto_max-content]">
           <Typography variant="h3" className="mt-20 text-center">
-            {t(response.profile.name)}
+            {t(profile?.name || "")}
           </Typography>
           <div className="mx-auto mt-8 block w-[80%] grid-cols-2 place-content-center gap-8 md:grid">
             <div className="grid gap-8 md:gap-4">
@@ -95,8 +96,9 @@ function Results() {
             </Button>
           </div>
         </div>
-      )}
-    </OnboardingLayout>
+      )
+      }
+    </OnboardingLayout >
   );
 }
 

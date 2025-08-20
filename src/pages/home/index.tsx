@@ -6,7 +6,7 @@ import {
   HeartHandshakeIcon,
   UserIcon,
 } from '@/shared/ui/atoms/Icon/Icon';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useAuthStore } from '@/features/auth/auth-store';
 import { Flag, Lightbulb, SquareChartGantt, Timer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -94,6 +94,9 @@ export default function Home() {
   const { t } = useTranslation();
 
   const randomGenerator = () => Math.floor(Math.random() * 100);
+
+  if (!localStorage.getItem('profile') || !localStorage.getItem('user')) return <Navigate to="/onboarding" replace />;
+
   return (
     <div>
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[250px_auto]">

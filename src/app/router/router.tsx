@@ -84,16 +84,16 @@ function AppRouter() {
         {/* Home */}
         <Route path="/" element={<MainLayout />}>
           <Route path="/home" element={<HomePage />} />
-          <Route path="/sections" element={<SectionsPage />} />
-          <Route path="/modules/:sectionId" element={<LearnPage />} />
-          <Route
+          {/* <Route path="/sections" element={<SectionsPage />} /> */}
+          {/* <Route path="/modules/:sectionId" element={<LearnPage />} /> */}
+          {/* <Route
             path="/modules/:sectionId/:moduleId"
             element={<LessonPathPage />}
-          />
+          /> */}
           <Route path="/calendar" element={<CalendarPage />} />
           <Route path="/classroom" element={<ClassroomPage />} />
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          {/* <Route path="/shop" element={<ShopPage />} /> */}
+          {/* <Route path="/profile" element={<ProfilePage />} /> */}
           <Route path="/timer" element={<TimerPage />} />
           <Route path="/goals" element={<GoalsPage />} />
           <Route path="/habits" element={<HabitsPage />} />
@@ -106,10 +106,10 @@ function AppRouter() {
           <Route path="/insight" element={<InsightPage />} />
           <Route path="/chats" element={<ChatsPage />} />
         </Route>
-        <Route
+        {/* <Route
           path="/lesson/:sectionId/:moduleId/:lessonId"
           element={<LessonPage />}
-        />
+        /> */}
 
         {/* Ruta 404 - No encontrado */}
         <Route path="*" element={<NotFoundPage />} />

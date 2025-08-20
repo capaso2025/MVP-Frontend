@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useOnboarding } from '../../hooks/use-onboarding';
 import { useEffect, useState } from 'react';
 import { ResponseQuestion } from '../../store/onboarding-store';
+import { useOnboardingTransitions } from '../../hooks/use-onboarding-transitions';
 
 function Questions() {
   const navigate = useNavigate();
@@ -18,34 +19,15 @@ function Questions() {
       navigate('/onboarding');
     },
   });
+  const { isAnimating, questionKey, direction, handleNext, handlePrevious } = useOnboardingTransitions({
+    currentIndex,
+    goToNext,
+    goToPrevious,
+  });
   const [currentQuestion, setCurrentQuestion] = useState<
     ResponseQuestion | undefined
   >(undefined);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [questionKey, setQuestionKey] = useState(0);
-  const [direction, setDirection] = useState<'forward' | 'backward'>('forward');
 
-  const handleNext = () => {
-    if (responses.find((resp) => resp.id === questions[currentIndex]?.id)) {
-      setDirection('forward');
-      setIsAnimating(true);
-      setTimeout(() => {
-        goToNext();
-        setIsAnimating(false);
-        setQuestionKey((prev) => prev + 1);
-      }, 200);
-    }
-  };
-
-  const handlePrevious = () => {
-    setDirection('backward');
-    setIsAnimating(true);
-    setTimeout(() => {
-      goToPrevious();
-      setIsAnimating(false);
-      setQuestionKey((prev) => prev + 1);
-    }, 200);
-  };
   const calculatedProgress = Math.round(
     ((currentIndex + 1) / questions.length) * 100,
   );
@@ -61,9 +43,6 @@ function Questions() {
     }
   }, [responses, currentIndex, questions]);
 
-  useEffect(() => {
-    setQuestionKey((prev) => prev + 1);
-  }, [currentIndex]);
 
   return (
     <OnboardingLayout title="Capaso">
@@ -72,15 +51,14 @@ function Questions() {
         <div className="mt-8 grid place-content-center">
           <div
             key={questionKey}
-            className={`transition-all duration-200 ${
-              isAnimating
-                ? direction === 'forward'
-                  ? 'animate-slide-out-left'
-                  : 'animate-slide-out-right'
-                : direction === 'forward'
-                  ? 'animate-slide-in-right'
-                  : 'animate-slide-in-left'
-            }`}
+            className={`transition-all duration-200 ${isAnimating
+              ? direction === 'forward'
+                ? 'animate-slide-out-left'
+                : 'animate-slide-out-right'
+              : direction === 'forward'
+                ? 'animate-slide-in-right'
+                : 'animate-slide-in-left'
+              }`}
           >
             <Typography variant="h5" className="font-normal">
               {questions[currentIndex]?.question}
@@ -90,15 +68,14 @@ function Questions() {
         <div>
           <div
             key={`alternatives-${questionKey}`}
-            className={`mx-auto grid h-full max-w-[90%] grid-cols-1 place-content-center gap-4 transition-all duration-200 lg:max-w-[50%] ${
-              isAnimating
-                ? direction === 'forward'
-                  ? 'animate-slide-out-left'
-                  : 'animate-slide-out-right'
-                : direction === 'forward'
-                  ? 'animate-slide-in-right'
-                  : 'animate-slide-in-left'
-            }`}
+            className={`mx-auto grid h-full max-w-[90%] grid-cols-1 place-content-center gap-4 transition-all duration-200 lg:max-w-[50%] ${isAnimating
+              ? direction === 'forward'
+                ? 'animate-slide-out-left'
+                : 'animate-slide-out-right'
+              : direction === 'forward'
+                ? 'animate-slide-in-right'
+                : 'animate-slide-in-left'
+              }`}
           >
             {questions[currentIndex]?.alternatives.map((opt) => (
               <div
