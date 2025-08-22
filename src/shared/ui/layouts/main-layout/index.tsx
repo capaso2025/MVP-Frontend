@@ -35,11 +35,14 @@ function HomeLayout() {
       />
       {isMobile ? <></> : <div className="w-[300px]" />}
       <div className={isMobile ? 'w-auto' : 'ml-[300px]'}>
-        <main className="mx-auto relative w-full p-4 lg:w-[1050px]">
-          <div className='absolute right-4'>
-            <div className='flex gap-4 items-center cursor-pointer'>
+        <main className="relative mx-auto w-full p-4 lg:w-[1050px]">
+          <div className="absolute right-4">
+            <div
+              className="flex cursor-pointer items-center gap-4"
+              onClick={() => setShowRightSection(true)}
+            >
               <Typography>Fernando Altamirano</Typography>
-              <Avatar src='/assets/characters/capito-excited.png' />
+              <Avatar src="/assets/characters/capito-excited.png" />
             </div>
           </div>
           <div className="mt-4">
@@ -48,8 +51,10 @@ function HomeLayout() {
         </main>
       </div>
       <TimerFloating />
-      {/* RightSection Drawer Overlay */}
-      <RightSection open={showRightSection} onClose={() => setShowRightSection(false)} />
+      <RightSection
+        open={showRightSection}
+        onClose={() => setShowRightSection(false)}
+      />
     </div>
   );
 }
