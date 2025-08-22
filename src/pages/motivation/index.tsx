@@ -73,8 +73,8 @@ export default function MotivationPage() {
             <Spacer size="sm" />
             <Card className="overflow-hidden" withNoPadding>
               <iframe
-                src="https://www.youtube.com/embed/th6bih9JVcY"
-                title="La Disciplina Es Poder."
+                src="https://www.youtube.com/embed/ngvOyccUzzY"
+                title="David Goggins - How To Break Free From Your Old Self (4K)"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
