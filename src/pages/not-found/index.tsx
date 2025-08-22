@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { Button, Typography } from '@shared/ui';
+import { useNavigate } from '@tanstack/react-router';
 
 /**
  * Página 404 - No encontrada
@@ -47,12 +47,11 @@ const NotFoundPage: FC = () => {
         </Typography>
 
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
-          <Button variant="primary" onClick={() => navigate('/')}>
+          <Button variant="primary" onClick={() => navigate({
+            to: '/',
+            replace: true
+          })}>
             Volver al inicio
-          </Button>
-
-          <Button variant="outline" onClick={() => navigate(-1)}>
-            Volver atrás
           </Button>
         </div>
       </div>

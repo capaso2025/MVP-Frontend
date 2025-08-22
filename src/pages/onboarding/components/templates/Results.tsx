@@ -1,4 +1,4 @@
-import { register } from '@/features/onboarding/registerHttpCall';
+import { onboarding } from '@/features/onboarding/onboardingHttpCall';
 import { Button, Progress, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { Loader, XCircleIcon } from 'lucide-react';
@@ -28,7 +28,7 @@ function Results() {
           ? response.response.value
           : Number(response.response.value);
       });
-      const result = await register({
+      const result = await onboarding({
         ...questions,
         age: registerData.age,
         firstName: registerData.name,

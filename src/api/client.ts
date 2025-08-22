@@ -34,10 +34,10 @@ export class ApiClient {
     }
     return response.json();
   }
-  async get<T>(baseUrl: string, options?: HttpRequestOptions): Promise<T> {
+  async get<T>(path: string, options?: HttpRequestOptions): Promise<T> {
     const headers = this.getHeaders({ optHeaders: options?.headers });
 
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'GET',
       headers,
     });
@@ -46,12 +46,12 @@ export class ApiClient {
   }
 
   async post<T, D = unknown>(
-    baseUrl: string,
+    path: string,
     data: D,
     options?: HttpRequestOptions,
   ): Promise<T> {
     const headers = this.getHeaders({ optHeaders: options?.headers });
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'POST',
       headers,
       body: JSON.stringify(data),
@@ -61,13 +61,13 @@ export class ApiClient {
   }
 
   async put<T, D>(
-    baseUrl: string,
+    path: string,
     data: D,
     options?: HttpRequestOptions,
   ): Promise<T> {
     const headers = this.getHeaders({ optHeaders: options?.headers });
 
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'PUT',
       headers,
       body: JSON.stringify(data),
@@ -76,9 +76,9 @@ export class ApiClient {
     return this.handleResponse<T>(response);
   }
 
-  async delete<T>(baseUrl: string, options?: HttpRequestOptions): Promise<T> {
+  async delete<T>(path: string, options?: HttpRequestOptions): Promise<T> {
     const headers = this.getHeaders({ optHeaders: options?.headers });
-    const response = await fetch(baseUrl, {
+    const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'DELETE',
       headers,
     });

@@ -3,5 +3,5 @@ export type ValidationFn<T> = (
   keysList: string[],
 ) => {
   isValid: boolean;
-  errors: Partial<T>;
+  errors: Record<string, string>;
 };

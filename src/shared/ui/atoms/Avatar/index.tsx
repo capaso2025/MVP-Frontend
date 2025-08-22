@@ -7,7 +7,7 @@ function Avatar(props: {
   const { name, src, onClick, size = '50' } = props;
   return (
     <div
-      className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-red-500"
+      className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-gray-200"
       style={{ width: size, height: size }}
       onClick={onClick}
     >

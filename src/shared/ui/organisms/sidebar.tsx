@@ -66,10 +66,10 @@ const MenuItem = (props: {
     <Link
       to={path}
       onClick={onClick}
-      className={`mb-2 flex w-full items-center gap-2 rounded-lg border-2 border-transparent p-4 transition-all duration-200 ${isSelected ? '!border-primary-lighter border-[1px]' : ''}`}
+      className={`mb-2 flex w-full items-center gap-2 rounded-full border-[1px] border-transparent px-4 py-2 transition-all duration-100 ${isSelected ? '!border-primary-lighter bg-primary-light/20' : ''}`}
     >
       <img src={icon} width={30} />
-      <Typography className="font-bold text-white">{label}</Typography>
+      <Typography className="text-white">{label}</Typography>
     </Link>
   );
 };

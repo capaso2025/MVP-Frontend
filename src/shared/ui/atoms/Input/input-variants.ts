@@ -5,7 +5,7 @@ export const inputVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-foreground',
+        default: 'bg-foreground text-primary',
         secondary: 'bg-secondary',
         error: 'bg-error-light border border-error',
         dark: 'bg-primary border border-secondary/30 text-white placeholder:text-white/50',
