@@ -1,8 +1,8 @@
-import home from '@/assets/home.png';
-import calendar from '@/assets/calendar.png';
-import timer from '@/assets/timer.png';
+import home from '@/assets/casa-ecologica.png';
+import calendar from '@/assets/calendario.png';
+import timer from '@/assets/cronografo.png';
 import user from '@/assets/profile.png';
-import classroom from '@/assets/classroom.png';
+import classroom from '@/assets/colegio.png';
 import message from '@/assets/chat.png';
 
 export interface MenuItem {

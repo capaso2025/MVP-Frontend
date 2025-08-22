@@ -5,6 +5,7 @@ import { MenuIcon } from '@/shared/ui/atoms/Icon/Icon';
 import capoLogo from '@/assets/capo-logo.png';
 import { MenuItem as MenuItemType } from '../layouts/main-layout/menu-items';
 import { Link, useLocation } from '@tanstack/react-router';
+import { SparklesIcon } from 'lucide-react';
 
 function Sidebar(props: { items: MenuItemType[] }) {
   const { items } = props;
@@ -25,7 +26,7 @@ function Sidebar(props: { items: MenuItemType[] }) {
 
   return (
     <aside
-      className={`bg-landing-dark shadow-secondary-dark fixed z-[90] grid h-screen min-w-[300px] grid-rows-[120px_auto] gap-2 rounded-r-2xl bg-gradient-to-br px-4 py-8 text-white shadow-xl ${isMobile ? 'translate-x-[-1000px]' : ''} ${openedSidebar ? '!translate-x-0' : ''} transition-transform duration-300`}
+      className={`bg-landing-dark shadow-secondary-dark fixed z-[90] grid h-screen min-w-[300px] grid-rows-[180px_auto] gap-2 rounded-r-2xl bg-gradient-to-br px-4 py-8 text-white shadow-xl ${isMobile ? 'translate-x-[-1000px]' : ''} ${openedSidebar ? '!translate-x-0' : ''} transition-transform duration-300`}
     >
       <div>
         <div className="flex justify-end xl:hidden">
@@ -37,6 +38,13 @@ function Sidebar(props: { items: MenuItemType[] }) {
           width={70}
           className="mx-auto mt-0 xl:mt-4"
         />
+        <div className="bg-primary-dark/50 mt-8 mb-4 flex items-center gap-2 rounded-full border border-gray-200/20 px-2 py-2">
+          <SparklesIcon className="text-green-300" />
+          <input
+            placeholder="Consulta con Capaso IA"
+            className="outline-none placeholder:text-sm"
+          />
+        </div>
       </div>
       <div>
         {items.map((el) => (
