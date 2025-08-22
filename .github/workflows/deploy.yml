@@ -1,0 +1,129 @@
+name: Deploy React Frontend (Free Tier)
+on:
+  push:
+    branches: 
+      - releases
+      - main1 
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FUNCTION_NAME: react-frontend
+      FRONTEND_BUCKET: react-frontend-bucket-dev-01
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          
+      # Descargar el estado anterior si existe
+      - name: Download Previous State
+        working-directory: terraform
+        run: |
+          aws s3 cp s3://bucket-dev-capo-app-01/terraform-states/${FUNCTION_NAME}-terraform.tfstate . || true
+          
+          if [ -f "${FUNCTION_NAME}-terraform.tfstate" ]; then
+            echo "Estado previo encontrado y descargado"
+            cp ${FUNCTION_NAME}-terraform.tfstate terraform.tfstate
+          else
+            echo "No se encontró estado previo, se creará uno nuevo"
+          fi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          # cache: 'npm'  # Cachear dependencias para acelerar builds
+      
+      - name: Install dependencies
+        run: npm install --no-audit --prefer-offline  # Opciones para build más rápido
+        
+      # Crear el archivo .env
+      - name: Create production env file
+        run: |
+          echo "VITE_API_BASE_URL=${{ secrets.VITE_API_BASE_URL }}" > .env
+          echo "VITE_API_TIMEOUT=${{ secrets.VITE_API_TIMEOUT }}" >> .env
+          echo "VITE_FEATURE_FLAG_NEW_UI=${{ secrets.VITE_FEATURE_FLAG_NEW_UI }}" >> .env
+          echo "VITE_FEATURE_FLAG_ANALYTICS=${{ secrets.VITE_FEATURE_FLAG_ANALYTICS }}" >> .env
+          echo "VITE_AUTH_DOMAIN=${{ secrets.VITE_AUTH_DOMAIN }}" >> .env
+          echo "VITE_AUTH_CLIENT_ID=${{ secrets.VITE_AUTH_CLIENT_ID }}" >> .env
+          echo "VITE_AUTH_REDIRECT_URI=${{ secrets.VITE_AUTH_REDIRECT_URI }}" >> .env
+          echo "VITE_LOGGING_LEVEL=${{ secrets.VITE_LOGGING_LEVEL }}" >> .env
+      
+      - name: Install Terser
+        run: npm install -D terser
+      # Build con configuraciones de producción
+      - name: Build React app (optimized)
+        run: npx vite build --mode production
+      
+      # Deploy optimizado con compresión GZIP para archivos
+      - name: Deploy to S3 bucket (optimized)
+        if: github.ref == 'refs/heads/releases' || github.ref == 'refs/heads/main'
+        run: |
+          # Sincronizar archivos con flags optimizados
+          # --size-only reduce el número de operaciones HEAD
+          # --delete elimina archivos obsoletos
+          # --exclude archivos innecesarios
+          aws s3 sync dist/ s3://${{ env.FRONTEND_BUCKET }} \
+            --delete \
+            --size-only \
+            --exclude "*.map" \
+            --exclude ".DS_Store" \
+            --exclude "*.tmp" \
+            --cache-control "max-age=31536000,public" 
+            
+          # Subir index.html con un TTL menor para actualizaciones rápidas
+          aws s3 cp dist/index.html s3://${{ env.FRONTEND_BUCKET }}/index.html \
+            --cache-control "max-age=0,no-cache,no-store,must-revalidate" \
+            --content-type "text/html; charset=utf-8"
+          
+          echo "Frontend desplegado en el bucket: ${{ env.FRONTEND_BUCKET }}"
+      
+      # Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init
+      
+      - name: Terraform Apply
+        working-directory: terraform
+        if: github.ref == 'refs/heads/releases' || github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve -var="env=dev" -var="frontend_bucket_name=${{ env.FRONTEND_BUCKET }}"
+
+      # Guardar el estado de Terraform
+      - name: Save Terraform State
+        if: success() && (github.ref == 'refs/heads/releases' || github.ref == 'refs/heads/main')
+        working-directory: terraform
+        run: |
+          if [ -f "terraform.tfstate" ]; then
+            cp terraform.tfstate ${FUNCTION_NAME}-terraform.tfstate
+            aws s3 cp ${FUNCTION_NAME}-terraform.tfstate s3://bucket-dev-capo-app-01/terraform-states/
+            echo "Estado guardado exitosamente en S3"
+          fi
+          
+      # Invalidación selectiva con ID fijo para evitar problemas
+      - name: Invalidate CloudFront cache (fixed ID)
+        if: github.ref == 'refs/heads/releases' || github.ref == 'refs/heads/main'
+        run: |
+          echo "Usando CloudFront Distribution ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}"
+          
+          # Crear invalidación usando el ID fijo definido en las variables de entorno
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/index.html"
+                
+          echo "Invalidación selectiva de CloudFront completada"
+
+          

@@ -1,19 +1,28 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path from "path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    tanstackRouter({
+      target: 'react',
+      autoCodeSplitting: true,
+    }),
+    react(),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@app": path.resolve(__dirname, "./src/app"),
-      "@pages": path.resolve(__dirname, "./src/pages"),
-      "@widgets": path.resolve(__dirname, "./src/widgets"),
-      "@features": path.resolve(__dirname, "./src/features"),
-      "@entities": path.resolve(__dirname, "./src/entities"),
-      "@shared": path.resolve(__dirname, "./src/shared"),
+      '@': path.resolve(__dirname, './src'),
+      '@app': path.resolve(__dirname, './src/app'),
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@widgets': path.resolve(__dirname, './src/widgets'),
+      '@features': path.resolve(__dirname, './src/features'),
+      '@entities': path.resolve(__dirname, './src/entities'),
+      '@shared': path.resolve(__dirname, './src/shared'),
     },
   },
   server: {
@@ -22,10 +31,10 @@ export default defineConfig({
     cors: true,
   },
   build: {
-    outDir: "dist",
+    outDir: 'dist',
     sourcemap: true,
     // Opciones de optimización para producción
-    minify: "terser",
+    minify: 'esbuild',
     terserOptions: {
       compress: {
         drop_console: true,
@@ -34,16 +43,15 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
-          router: ["react-router-dom"],
-          tanstack: ["@tanstack/react-query"],
+          react: ['react', 'react-dom'],
+          tanstack: ['@tanstack/react-query'],
         },
       },
     },
   },
   optimizeDeps: {
     esbuildOptions: {
-      target: "esnext",
+      target: 'esnext',
     },
   },
 });

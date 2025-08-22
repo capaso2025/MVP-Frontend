@@ -1,0 +1,199 @@
+name: Destroy React Frontend Infrastructure
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_destroy:
+        description: 'Escribe "DESTROY" para confirmar la eliminación de recursos'
+        required: true
+        type: string
+      environment:
+        description: 'Ambiente a destruir'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  validate-input:
+    runs-on: ubuntu-latest
+    outputs:
+      should_destroy: ${{ steps.validate.outputs.should_destroy }}
+    steps:
+      - name: Validate destruction confirmation
+        id: validate
+        run: |
+          if [ "${{ github.event.inputs.confirm_destroy }}" = "DESTROY" ]; then
+            echo "should_destroy=true" >> $GITHUB_OUTPUT
+            echo "✅ Confirmación de destrucción válida"
+          else
+            echo "should_destroy=false" >> $GITHUB_OUTPUT
+            echo "❌ Confirmación inválida. Debes escribir exactamente 'DESTROY'"
+            exit 1
+          fi
+
+  destroy:
+    runs-on: ubuntu-latest
+    needs: validate-input
+    if: needs.validate-input.outputs.should_destroy == 'true'
+    env:
+      FUNCTION_NAME: react-frontend
+      FRONTEND_BUCKET: react-frontend-bucket-${{ github.event.inputs.environment }}-01
+      ENVIRONMENT: ${{ github.event.inputs.environment }}
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Nota: Mantenemos el bucket S3 intacto con sus archivos
+      - name: Check S3 bucket status
+        run: |
+          echo "📦 Verificando estado del bucket S3: ${{ env.FRONTEND_BUCKET }}"
+          
+          if aws s3api head-bucket --bucket ${{ env.FRONTEND_BUCKET }} 2>/dev/null; then
+            OBJECT_COUNT=$(aws s3 ls s3://${{ env.FRONTEND_BUCKET }} --recursive | wc -l)
+            echo "✅ Bucket encontrado con ${OBJECT_COUNT} objetos"
+            echo "ℹ️  El bucket y sus archivos se mantendrán intactos"
+          else
+            echo "⚠️ Bucket no existe o no es accesible"
+          fi
+
+      # Invalidar CloudFront antes de destruir (opcional pero recomendado)
+      - name: Final CloudFront cache invalidation
+        run: |
+          if [ -n "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" ]; then
+            echo "🔄 Invalidando caché de CloudFront una última vez..."
+            aws cloudfront create-invalidation \
+              --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+              --paths "/*" || echo "⚠️ No se pudo invalidar CloudFront"
+          else
+            echo "⚠️ CLOUDFRONT_DISTRIBUTION_ID no configurado"
+          fi
+
+      # Descargar el estado de Terraform
+      - name: Download Terraform State
+        working-directory: terraform
+        run: |
+          echo "📥 Descargando estado de Terraform..."
+          aws s3 cp s3://bucket-dev-capo-app-01/terraform-states/${FUNCTION_NAME}-terraform.tfstate . || true
+          
+          if [ -f "${FUNCTION_NAME}-terraform.tfstate" ]; then
+            echo "✅ Estado de Terraform encontrado"
+            cp ${FUNCTION_NAME}-terraform.tfstate terraform.tfstate
+            
+            # Mostrar recursos que serán destruidos
+            echo "📋 Recursos que serán destruidos:"
+            terraform show -json terraform.tfstate | jq -r '.values.root_module.resources[].address' || echo "No se pudo mostrar recursos"
+          else
+            echo "⚠️ No se encontró estado de Terraform. Los recursos podrían no existir o fueron creados manualmente"
+            exit 0
+          fi
+
+      # Setup Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        
+      - name: Terraform Init
+        working-directory: terraform
+        run: terraform init
+
+      # Plan de destrucción (para verificar qué se va a eliminar)
+      - name: Terraform Destroy Plan
+        working-directory: terraform
+        run: |
+          echo "🔍 Generando plan de destrucción..."
+          terraform plan -destroy \
+            -var="env=${{ env.ENVIRONMENT }}" \
+            -var="frontend_bucket_name=${{ env.FRONTEND_BUCKET }}" \
+            -out=destroy.tfplan
+          
+          echo "📋 Recursos que serán destruidos:"
+          terraform show destroy.tfplan
+
+      # Destrucción real de la infraestructura
+      - name: Terraform Destroy
+        working-directory: terraform
+        run: |
+          echo "💥 Iniciando destrucción de infraestructura..."
+          terraform apply destroy.tfplan
+          echo "✅ Infraestructura destruida exitosamente"
+
+      # Limpiar el estado de Terraform del S3
+      - name: Clean Terraform State from S3
+        run: |
+          echo "🧹 Limpiando estado de Terraform de S3..."
+          aws s3 rm s3://bucket-dev-capo-app-01/terraform-states/${FUNCTION_NAME}-terraform.tfstate || echo "⚠️ Estado ya eliminado o no existe"
+          echo "✅ Estado de Terraform limpiado"
+
+      # Verificación final (sin verificar bucket que se mantiene)
+      - name: Verify Destruction
+        run: |
+          echo "🔍 Verificando que los recursos fueron eliminados..."
+          
+          # Verificar CloudFront (opcional, puede tomar tiempo en propagarse)
+          if [ -n "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" ]; then
+            DISTRIBUTION_STATUS=$(aws cloudfront get-distribution --id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --query 'Distribution.Status' --output text 2>/dev/null || echo "NotFound")
+            if [ "$DISTRIBUTION_STATUS" = "NotFound" ]; then
+              echo "✅ Distribución de CloudFront eliminada"
+            else
+              echo "⚠️ Distribución de CloudFront aún existe (Estado: $DISTRIBUTION_STATUS)"
+              echo "Nota: Las distribuciones de CloudFront pueden tardar en eliminarse completamente"
+            fi
+          fi
+          
+          # Verificar que el bucket siga existiendo (como debe ser)
+          if aws s3api head-bucket --bucket ${{ env.FRONTEND_BUCKET }} 2>/dev/null; then
+            echo "✅ Bucket S3 conservado correctamente: ${{ env.FRONTEND_BUCKET }}"
+          else
+            echo "⚠️ Bucket S3 no encontrado (esto puede ser normal según tu configuración)"
+          fi
+          
+          echo "🎉 Proceso de destrucción completado - Bucket S3 conservado"
+
+  post-destroy-cleanup:
+    runs-on: ubuntu-latest
+    needs: [validate-input, destroy]
+    if: always() && needs.destroy.result == 'success'
+    steps:
+      - name: Create cleanup issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🗑️ Infraestructura destruida - ${context.payload.inputs.environment}`,
+              body: `## Resumen de Destrucción
+              
+              La infraestructura del ambiente **${context.payload.inputs.environment}** ha sido destruida exitosamente.
+              
+              ### Recursos eliminados:
+              - ✅ Distribución CloudFront
+              - ✅ Registros Route53 (si existían)
+              - ✅ Estado de Terraform
+              - ℹ️  Bucket S3 conservado: react-frontend-bucket-${context.payload.inputs.environment}-01
+              
+              ### Ejecutado por:
+              - Usuario: @${context.actor}
+              - Commit: ${context.sha}
+              - Fecha: ${new Date().toISOString()}
+              
+              ### Próximos pasos:
+              - [ ] Verificar que no queden costos asociados en AWS
+              - [ ] Confirmar que los dominios apunten correctamente
+              - [ ] Actualizar documentación si es necesario
+              
+              cc: @${context.actor}`,
+              labels: ['infrastructure', 'destruction', 'cleanup']
+            })
