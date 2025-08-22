@@ -51,7 +51,7 @@ function Questions() {
   return (
     <OnboardingLayout title="Capaso">
       <div className="mx-auto grid h-full w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] overflow-x-hidden py-4 xl:w-full">
-        <Progress value={calculatedProgress} size="sm" />
+        <Progress value={calculatedProgress} size="sm" className='bg-gradient-to-br from-primary-light to-primary' />
         <div className="mt-8 grid place-content-center">
           <div
             key={questionKey}
@@ -94,7 +94,7 @@ function Questions() {
                   })
                 }
               >
-                <Typography>{opt.text}</Typography>
+                <Typography className='text-white'>{opt.text}</Typography>
               </div>
             ))}
           </div>

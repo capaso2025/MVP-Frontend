@@ -122,7 +122,7 @@ export default function DailyTasksListModalContent() {
             <h2 className="text-xl font-semibold text-gray-900 capitalize">
               {selectedCategory}
             </h2>
-            <Button variant="outline" size="md" onClick={openModalData}>
+            <Button variant="primary" size="md" onClick={openModalData}>
               <PlusIcon />
               Nuevo
             </Button>
@@ -231,7 +231,7 @@ function EmptyState({ category }: { category: ReminderCategory }) {
 
   return (
     <div className="flex flex-col items-center justify-center py-12 text-center">
-      <div className="mb-4 rounded-full bg-gray-100 p-4">
+      <div className="mb-4 rounded-full bg-primary p-4">
         <CheckIcon />
       </div>
       <h3 className="mb-2 text-lg font-medium text-gray-900">

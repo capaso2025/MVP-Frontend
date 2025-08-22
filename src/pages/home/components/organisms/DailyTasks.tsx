@@ -1,11 +1,12 @@
 import { useRenderStore } from '@/shared/store/render-store';
 import DailyTasksListModalContent from '../templates/DailyTasksListModalContent';
+import { Card } from '@/shared/ui/atoms/Card';
 
 function DailyTasks() {
   const setModalData = useRenderStore((state) => state.setModalData);
   return (
-    <div
-      className="rounded-lg border border-gray-200 p-6"
+    <Card
+      className='cursor-pointer'
       onClick={() => {
         setModalData({
           children: <DailyTasksListModalContent />,
@@ -26,7 +27,7 @@ function DailyTasks() {
           <span>En proceso</span>
         </li>
       </ul>
-    </div>
+    </Card>
   );
 }
 

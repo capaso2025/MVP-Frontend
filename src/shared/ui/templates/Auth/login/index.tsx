@@ -29,7 +29,7 @@ function Login(props: { onClickSignup?: () => void }) {
         className="absolute top-4 right-4"
         onClick={onClickSignup}
       >
-        <Typography>Regístrate</Typography>
+        <Typography className='text-white'>Regístrate</Typography>
       </Button>
       <div className="mx-auto pt-2 max-w-5xl">
         <img
@@ -44,7 +44,7 @@ function Login(props: { onClickSignup?: () => void }) {
           className="cursor-pointer p-1"
         />
       </div>
-      <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
+      <div className="mx-auto grid h-[calc(100vh-58px)] max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
         <form
           className="mx-auto -mt-8 w-full place-content-center px-4"
           onSubmit={(ev) => {
@@ -81,7 +81,7 @@ function Login(props: { onClickSignup?: () => void }) {
           />
           <Spacer size="md" />
           <Button variant="landing" className="w-full mt-4" type="submit">
-            <Typography>
+            <Typography className='text-white'>
               Ingresar a Capaso
             </Typography>
           </Button>

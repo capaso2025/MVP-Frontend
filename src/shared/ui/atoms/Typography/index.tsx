@@ -1,15 +1,15 @@
 import { forwardRef, HTMLAttributes } from 'react';
 interface Props {
   variant?:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'body1'
-    | 'body2'
-    | 'subtitle';
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'body1'
+  | 'body2'
+  | 'subtitle';
   className?: string;
   as?: React.ElementType;
   children: React.ReactNode;
@@ -21,7 +21,7 @@ export const Typography = forwardRef<
   ({
     children,
     variant = 'body1',
-    className = 'text-white',
+    className = 'text-primary',
     as: Component = 'p',
     ...rest
   }) => {
@@ -38,7 +38,7 @@ export const Typography = forwardRef<
     };
 
     return (
-      <Component className={`${variants[variant]} ${className}`} {...rest}>
+      <Component className={` ${variants[variant]} ${className} leading-normal`} {...rest}>
         {children}
       </Component>
     );

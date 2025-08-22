@@ -85,9 +85,9 @@ export const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   ) => {
     // Mapeo de variantes a clases CSS
     const variantClasses: Record<TButtonVariant, string> = {
-      primary: 'bg-primary text-white',
+      primary: 'bg-gradient-to-r from-primary-light to-primary-dark text-white',
       secondary: 'bg-primary-lighter text-gray-900',
-      outline: 'bg-primary-light/30 border border-white/20 text-white',
+      outline: 'bg-transparent border border-primary/20 text-primary',
       ghost: 'bg-transparent text-gray-700',
       danger: 'bg-red-600 text-white',
       input:

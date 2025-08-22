@@ -77,7 +77,7 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
     {
       value,
       max = 100,
-      variant = 'default',
+      variant,
       size = 'md',
       showLabel = false,
       animated = false,
@@ -91,6 +91,7 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
     // Normalizar el valor entre 0 y 100
     const normalizedValue = Math.min(Math.max(0, value), max);
     const percentage = Math.round((normalizedValue / max) * 100);
+
 
     // Mapeo de variantes a clases CSS
     const variantClasses: Record<TProgressVariant, string> = {
@@ -113,14 +114,13 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
       'w-full bg-gray-200 overflow-hidden',
       rounded ? 'rounded-full' : '',
       sizeClasses[size],
-      className,
     ]
       .filter(Boolean)
       .join(' ');
 
-    // Construir las clases para la barra de progreso
+    // El className solo se aplica a la barra de porcentaje lleno si no hay variant
     const progressBarClasses = [
-      variantClasses[variant],
+      variant ? variantClasses[variant] : className,
       rounded ? 'rounded-full' : '',
       animated ? 'animate-pulse' : '',
       backgroundColor,
@@ -147,8 +147,9 @@ export const Progress = forwardRef<HTMLDivElement, IProgressProps>(
           style={{
             width: `${percentage}%`,
             height: '100%',
-            backgroundColor: `var(--color-primary-light)`,
-          }} //TODO: Corregir para altura y fondo
+            // Solo poner backgroundColor inline si se pasa la prop backgroundColor
+            ...(backgroundColor ? { backgroundColor } : {}),
+          }}
         />
         {showLabel && (
           <div className="mt-1 text-center text-xs font-medium">

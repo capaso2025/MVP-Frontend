@@ -19,6 +19,7 @@ import { Route as OnboardingResultsRouteImport } from './routes/onboarding/resul
 import { Route as OnboardingQuestionsRouteImport } from './routes/onboarding/questions'
 import { Route as OnboardingFinishRouteImport } from './routes/onboarding/finish'
 import { Route as HomeTimerRouteImport } from './routes/home/timer'
+import { Route as HomeObjetivesRouteImport } from './routes/home/objetives'
 import { Route as HomeMotivationRouteImport } from './routes/home/motivation'
 import { Route as HomeLearningRouteImport } from './routes/home/learning'
 import { Route as HomeHabitsRouteImport } from './routes/home/habits'
@@ -76,6 +77,11 @@ const HomeTimerRoute = HomeTimerRouteImport.update({
   path: '/timer',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeObjetivesRoute = HomeObjetivesRouteImport.update({
+  id: '/objetives',
+  path: '/objetives',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const HomeMotivationRoute = HomeMotivationRouteImport.update({
   id: '/motivation',
   path: '/motivation',
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/home/habits': typeof HomeHabitsRoute
   '/home/learning': typeof HomeLearningRoute
   '/home/motivation': typeof HomeMotivationRoute
+  '/home/objetives': typeof HomeObjetivesRoute
   '/home/timer': typeof HomeTimerRoute
   '/onboarding/finish': typeof OnboardingFinishRoute
   '/onboarding/questions': typeof OnboardingQuestionsRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByTo {
   '/home/habits': typeof HomeHabitsRoute
   '/home/learning': typeof HomeLearningRoute
   '/home/motivation': typeof HomeMotivationRoute
+  '/home/objetives': typeof HomeObjetivesRoute
   '/home/timer': typeof HomeTimerRoute
   '/onboarding/finish': typeof OnboardingFinishRoute
   '/onboarding/questions': typeof OnboardingQuestionsRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/home/habits': typeof HomeHabitsRoute
   '/home/learning': typeof HomeLearningRoute
   '/home/motivation': typeof HomeMotivationRoute
+  '/home/objetives': typeof HomeObjetivesRoute
   '/home/timer': typeof HomeTimerRoute
   '/onboarding/finish': typeof OnboardingFinishRoute
   '/onboarding/questions': typeof OnboardingQuestionsRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/home/habits'
     | '/home/learning'
     | '/home/motivation'
+    | '/home/objetives'
     | '/home/timer'
     | '/onboarding/finish'
     | '/onboarding/questions'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/home/habits'
     | '/home/learning'
     | '/home/motivation'
+    | '/home/objetives'
     | '/home/timer'
     | '/onboarding/finish'
     | '/onboarding/questions'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/home/habits'
     | '/home/learning'
     | '/home/motivation'
+    | '/home/objetives'
     | '/home/timer'
     | '/onboarding/finish'
     | '/onboarding/questions'
@@ -300,6 +312,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeTimerRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/home/objetives': {
+      id: '/home/objetives'
+      path: '/objetives'
+      fullPath: '/home/objetives'
+      preLoaderRoute: typeof HomeObjetivesRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/home/motivation': {
       id: '/home/motivation'
       path: '/motivation'
@@ -352,6 +371,7 @@ interface HomeRouteRouteChildren {
   HomeHabitsRoute: typeof HomeHabitsRoute
   HomeLearningRoute: typeof HomeLearningRoute
   HomeMotivationRoute: typeof HomeMotivationRoute
+  HomeObjetivesRoute: typeof HomeObjetivesRoute
   HomeTimerRoute: typeof HomeTimerRoute
   HomeIndexRoute: typeof HomeIndexRoute
 }
@@ -363,6 +383,7 @@ const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeHabitsRoute: HomeHabitsRoute,
   HomeLearningRoute: HomeLearningRoute,
   HomeMotivationRoute: HomeMotivationRoute,
+  HomeObjetivesRoute: HomeObjetivesRoute,
   HomeTimerRoute: HomeTimerRoute,
   HomeIndexRoute: HomeIndexRoute,
 }

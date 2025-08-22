@@ -36,9 +36,8 @@ function Modal() {
       className={`animate-fade-in bg-custom absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
     >
       <div
-        className={`bg-foreground relative overflow-auto shadow-xl ${fullScreen ? 'h-full w-full' : 'border-primary-lighter mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl border-2 p-4 md:min-w-[400px]'} ${
-          containerClassName || ''
-        }`}
+        className={`bg-foreground relative overflow-auto shadow-xl ${fullScreen ? 'h-full w-full' : 'mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl  p-4 md:min-w-[400px]'} ${containerClassName || ''
+          }`}
       >
         {noCloseButton ? null : (
           <div
@@ -57,8 +56,8 @@ function Modal() {
         )}
         {title && (
           <Typography
-            variant="h2"
-            className="text-foreground mt-4 mb-2 text-center"
+            variant="h4"
+            className="text-primary mt-4 mb-2 text-center"
           >
             {title}
           </Typography>

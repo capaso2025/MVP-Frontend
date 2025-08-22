@@ -5,7 +5,6 @@ import { usePassword } from '@/shared/hooks/usePassword';
 import { useSignup } from '@/features/auth/signup/hooks/useSignup';
 import { Button } from '@/shared/ui/atoms/Button';
 import { Typography } from '@/shared/ui/atoms/Typography';
-import { DatePicker } from '@/shared/ui/molecules/DatePicker';
 import { EyeIcon, EyeOffIcon } from '@/shared/ui/atoms/Icon/Icon';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Spacer from '@/shared/ui/atoms/Spacer';
@@ -22,9 +21,7 @@ function Signup(props: { onClickLogin?: () => void }) {
     keysList: [
       'email',
       'password',
-      'name',
       'lastName',
-      'birthdate',
       'confirmPassword',
     ],
     onSubmit: executeSignup,
@@ -37,7 +34,7 @@ function Signup(props: { onClickLogin?: () => void }) {
         className="absolute top-4 right-4"
         onClick={onClickLogin}
       >
-        <Typography>
+        <Typography className='text-white'>
           Iniciar sesión
         </Typography>
       </Button>
@@ -89,14 +86,6 @@ function Signup(props: { onClickLogin?: () => void }) {
             />
           </div>
           <Spacer size='md' />
-          <DatePicker
-            onChange={(date) => setValue('birthdate', date)}
-            label="Fecha de nacimiento"
-            placeholder="dd/mm/aaaa"
-            name="birthdate"
-            errors={errors}
-          />
-          <Spacer size='md' />
           <Input
             type="email"
             variant="dark"
@@ -139,7 +128,7 @@ function Signup(props: { onClickLogin?: () => void }) {
           </div>
           <Spacer size='md' />
           <Button variant="landing" className="w-full mt-4" type="submit">
-            <Typography>
+            <Typography className='text-white'>
               Registrarme
             </Typography>
           </Button>

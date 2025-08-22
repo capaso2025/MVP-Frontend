@@ -1,0 +1,14 @@
+import { apiClient } from '@/api/client';
+import { CreateGoalPayload, CreateGoalResponse } from '../models/create-goal';
+
+export const createGoals = async (
+  data: CreateGoalPayload,
+): Promise<CreateGoalResponse | null> => {
+  try {
+    const response = await apiClient.post<CreateGoalResponse>('/goals', data);
+    return response;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};

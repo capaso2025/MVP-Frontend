@@ -74,7 +74,7 @@ const IntroDetails = (props: { navigate: () => void }) => {
             height={250}
           />
           <div className="grid place-content-center">
-            <Typography>
+            <Typography className='text-white'>
               Estoy calibrando mis sensores... responde con calma y te mostraré
               tu verdadero potencial
             </Typography>

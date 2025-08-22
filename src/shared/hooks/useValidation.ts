@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const useValidation = <T>(params: { validator: ValidationFn<T> }) => {
   const { validator } = params;
-  const [errors, setErrors] = useState<Partial<T>>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   return {
     errors,
