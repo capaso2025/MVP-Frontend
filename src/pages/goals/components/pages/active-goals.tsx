@@ -10,7 +10,13 @@ function ActiveGoals() {
   return <div>
     <ModuleTitle text='Metas Activas' />
     <Spacer size="md" />
-    <GoalPreview goals={goals} />
+    <div className="flex flex-col gap-4">
+      {
+        goals?.map(goal => (
+          <GoalPreview key={goal.id} data={goal} />
+        ))
+      }
+    </div>
   </div>
 }
 
