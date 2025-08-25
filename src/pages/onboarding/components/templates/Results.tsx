@@ -1,4 +1,4 @@
-import { onboarding } from '@/features/onboarding/onboardingHttpCall';
+import { onboarding } from '@/features/onboarding/onboarding-http';
 import { Button, Progress, Typography } from '@/shared/ui';
 import { OnboardingLayout } from '@/shared/ui/layouts/onboarding-layout';
 import { Loader, XCircleIcon } from 'lucide-react';
@@ -20,7 +20,7 @@ function Results() {
 
   useEffect(() => {
     (async () => {
-      if (!registerData.name || registerData.age === 0) return;
+      if (!registerData.name || registerData.age === 0) return setLoading(false);
       setLoading(true);
       const questions: Record<string, string | number> = {};
       responses.forEach((response) => {
@@ -37,8 +37,8 @@ function Results() {
       if (result) {
         setUser(result.user);
         setProfile(result.profile);
-        localStorage.setItem('profile', JSON.stringify(result.profile));
-        localStorage.setItem('user', JSON.stringify(result.user));
+        sessionStorage.setItem('profile', JSON.stringify(result.profile));
+        sessionStorage.setItem('user', JSON.stringify(result.user));
       }
     })();
   }, [registerData.age, registerData.name]);
@@ -76,7 +76,7 @@ function Results() {
               {['Tiempo', 'Foco', 'Soft Skills', 'Bienestar'].map(
                 (el, index) => (
                   <div className="grid grid-cols-[100px_auto] gap-8">
-                    <Typography>{el}</Typography>
+                    <Typography className='text-white'>{el}</Typography>
                     <Progress value={index * 25} size="lg" variant="warning" />
                   </div>
                 ),

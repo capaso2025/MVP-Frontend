@@ -1,7 +1,7 @@
 import ModuleTitle from "@/shared/ui/atoms/ModuleTitle";
 import Spacer from "@/shared/ui/atoms/Spacer";
 import Breadcrumbs from "@/shared/ui/molecules/Breadcrumbs";
-import Categories from "../goals/components/organisms/categories";
+// import Categories from "../goals/components/organisms/categories";
 import Tip from "../../shared/ui/organisms/tip";
 import { Card } from "@/shared/ui/atoms/Card";
 import gymImage from '@/assets/gimnasio.png'
@@ -62,7 +62,7 @@ export default function HabitsPage() {
         <Tip />
       </div>
       <div>
-        <Categories />
+        {/* <Categories /> */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-8">
           {
             ITEMS.map((habit) => <Card withHover className="text-center">

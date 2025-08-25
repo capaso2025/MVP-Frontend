@@ -13,7 +13,7 @@ function Avatar(props: {
       alt="Capaso"
       width={250}
       height={250}
-      className="mx-auto w-[60%] lg:w-[250px]"
+      className="mx-auto max-w-[200px] md:w-[250px]"
     />
     <small className="text-center">Nivel 1 - Progreso personal</small>
   </div>

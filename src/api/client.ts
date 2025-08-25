@@ -8,7 +8,7 @@ export class ApiClient {
     optHeaders?: Record<string, string> | undefined;
   }) {
     const { withAuth = true, optHeaders = {} } = params;
-    const headers = { ...apiConfig.getHeaders() };
+    const headers: Record<string, string> = {};
     if (withAuth) {
       headers['Authorization'] = `bearer ${localStorage.getItem('t')}`;
     }
@@ -49,8 +49,15 @@ export class ApiClient {
     path: string,
     data: D,
     options?: HttpRequestOptions,
+    withAuth = true,
   ): Promise<T> {
-    const headers = this.getHeaders({ optHeaders: options?.headers });
+    const headers = this.getHeaders({
+      optHeaders: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
+      withAuth,
+    });
     const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'POST',
       headers,
