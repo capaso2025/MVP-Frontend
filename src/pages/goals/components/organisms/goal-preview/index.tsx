@@ -1,14 +1,14 @@
 import { GetGoalsResponse } from "@/features/goals/models/get-goals-response";
+import { Goal } from "@/features/goals/models/goal";
 import { Button, Progress, Typography } from "@/shared/ui";
 import Badge from "@/shared/ui/atoms/Badge";
 import { Card } from "@/shared/ui/atoms/Card";
 import Spacer from "@/shared/ui/atoms/Spacer";
 
 function GoalPreview(props: {
-  goals: GetGoalsResponse | undefined
+  data: Goal | undefined
 }) {
-  const { goals } = props
-  const data = goals?.[0]
+  const { data } = props;
   return <Card>
     <div className="flex items-center justify-between">
       <div>

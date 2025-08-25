@@ -4,7 +4,7 @@ import { Progress, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import Spacer from '@/shared/ui/atoms/Spacer';
 function Categories(props: {
-  goals: GetGoalsResponse
+  goals: GetGoalsResponse | undefined
 }) {
   const { goals } = props;
   return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">

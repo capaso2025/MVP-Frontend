@@ -14,7 +14,7 @@ export default function Goals() {
       <Typography variant='h5' className='font-semibold mb-2'>Area de vida - META</Typography>
       <Categories goals={goals} />
     </div>
-      <GoalPreview goals={goals} />
+      <GoalPreview data={goals?.[0]} />
       <Objetives /></>
   );
 }
