@@ -1,4 +1,3 @@
-import { GetGoalsResponse } from "@/features/goals/models/get-goals-response";
 import { Goal } from "@/features/goals/models/goal";
 import { Button, Progress, Typography } from "@/shared/ui";
 import Badge from "@/shared/ui/atoms/Badge";
