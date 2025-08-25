@@ -1,3 +1,4 @@
+import { OnboardingApiResponse } from '@/features/onboarding/types/onboarding-response';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -17,4 +18,18 @@ export const validationEmptyKeys = <T>(
     }
   });
   return errors;
+};
+
+export const getParsedUserFromStorage = ():
+  | OnboardingApiResponse['user']
+  | null => {
+  try {
+    const user = sessionStorage.getItem('user');
+    if (user) {
+      return JSON.parse(user);
+    }
+  } catch (error) {
+    console.log('🏝️ ~ getParsedUserFromStorage ~ error:', error);
+  }
+  return null;
 };

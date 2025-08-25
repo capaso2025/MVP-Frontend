@@ -30,7 +30,7 @@ function Input(props: ExtendedInputProps) {
       <div className="relative">
         <RawInput
           {...rawInputProps}
-          className={`placeholder:text-foreground-secondary/50 w-full ${rawInputProps.className || ''}`}
+          className={`w-full ${rawInputProps.className || ''}`}
           variant={
             rawInputProps.name && errors?.[rawInputProps.name]
               ? 'error'

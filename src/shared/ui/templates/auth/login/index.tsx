@@ -1,8 +1,8 @@
 import { Button } from '../../../atoms/Button';
 import { Typography } from '../../../atoms/Typography';
 import { useForm } from '@/shared/hooks/useForm';
-import { LoginData } from '@/features/auth/login/types/loginData.types';
-import { validateLogin } from '@/features/auth/login/loginValidator';
+import { LoginData } from '@/features/auth/login/login-data';
+import { validateLogin } from '@/features/auth/login/login-validator';
 import { usePassword } from '@/shared/hooks/usePassword';
 import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import Input from '@/shared/ui/atoms/Input/Input';
@@ -34,14 +34,14 @@ function Login(props: { onClickSignup?: () => void }) {
       <div className="mx-auto pt-2 max-w-5xl">
         <img
           onClick={() => navigate({
-            to: "."
+            to: "/"
           })}
           src={Logo}
           width={50}
           height={50}
           alt="logo de capo"
           color="text-primary"
-          className="cursor-pointer p-1"
+          className="cursor-pointer p-1 ml-2 lg:ml-0"
         />
       </div>
       <div className="mx-auto grid h-[calc(100vh-58px)] max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">

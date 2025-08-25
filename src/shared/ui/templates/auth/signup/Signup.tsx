@@ -1,8 +1,8 @@
 import { useForm } from '@/shared/hooks/useForm';
-import { SignupData } from '@/features/auth/signup/signupData.types';
-import { validateSignup } from '@/features/auth/signup/signupValidator';
+import { SignupData } from '@/features/auth/signup/signup-data';
+import { validateSignup } from '@/features/auth/signup/signup-validator';
 import { usePassword } from '@/shared/hooks/usePassword';
-import { useSignup } from '@/features/auth/signup/hooks/useSignup';
+import { useSignup } from '@/features/auth/signup/hooks/use-signup';
 import { Button } from '@/shared/ui/atoms/Button';
 import { Typography } from '@/shared/ui/atoms/Typography';
 import { EyeIcon, EyeOffIcon } from '@/shared/ui/atoms/Icon/Icon';
@@ -10,6 +10,7 @@ import Input from '@/shared/ui/atoms/Input/Input';
 import Spacer from '@/shared/ui/atoms/Spacer';
 import { useNavigate } from '@tanstack/react-router';
 import Logo from '@/assets/capo-logo.png';
+import { getParsedUserFromStorage } from '@/shared/lib/utils';
 
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;
@@ -41,17 +42,17 @@ function Signup(props: { onClickLogin?: () => void }) {
       <div className="mx-auto pt-2 max-w-5xl">
         <img
           onClick={() => navigate({
-            to: "."
+            to: "/"
           })}
           src={Logo}
           width={50}
           height={50}
           alt="logo de capo"
           color="text-primary"
-          className="cursor-pointer p-1"
+          className="cursor-pointer p-1 ml-2 lg:ml-0"
         />
       </div>
-      <div className="mx-auto grid h-screen max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
+      <div className="mx-auto grid h-[calc(100vh-58px)] max-w-5xl grid-cols-1 place-content-center md:grid-cols-2 md:gap-2 lg:gap-16">
         <form
           className="mx-auto -mt-8 w-full place-content-center px-4"
           onSubmit={(ev) => {
@@ -68,8 +69,8 @@ function Signup(props: { onClickLogin?: () => void }) {
               type="text"
               variant="dark"
               inputSize="lg"
-              value={values.name}
-              onChange={(ev) => setValue('name', ev.target.value)}
+              defaultValue={getParsedUserFromStorage()?.firstName}
+              disabled
               label="Nombre"
               name='name'
               errors={errors}

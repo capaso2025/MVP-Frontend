@@ -5,7 +5,7 @@ export const createGoals = async (
   data: CreateGoalPayload,
 ): Promise<CreateGoalResponse | null> => {
   try {
-    const response = await apiClient.post<CreateGoalResponse>('/goals', data);
+    const response = await apiClient.post<CreateGoalResponse>('/goal', data);
     return response;
   } catch (error) {
     console.error(error);

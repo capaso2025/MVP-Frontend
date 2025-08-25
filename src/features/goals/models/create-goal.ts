@@ -1,3 +1,5 @@
+import { Goal } from './goal';
+
 export interface CreateGoalPayload {
   title: string;
   description: string;
@@ -9,7 +11,4 @@ export interface CreateGoalPayload {
   frequency: string;
 }
 
-export interface CreateGoalResponse {
-  id: string;
-  // ...otros campos que devuelva el backend
-}
+export type CreateGoalResponse = Goal;

@@ -41,7 +41,7 @@ function HomeLayout() {
               className="flex cursor-pointer items-center gap-4"
               onClick={() => setShowRightSection(true)}
             >
-              <Typography>Fernando Altamirano</Typography>
+              <Typography className='hidden md:block'>Fernando Altamirano</Typography>
               <Avatar src="/assets/characters/capito-excited.png" />
             </div>
           </div>
