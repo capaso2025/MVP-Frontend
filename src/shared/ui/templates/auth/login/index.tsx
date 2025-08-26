@@ -12,7 +12,7 @@ import { useNavigate } from '@tanstack/react-router';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
-  const { executeLogin } = useLogin();
+  const { mutate: executeLogin } = useLogin();
   const { showPassword, togglePasswordVisibility } = usePassword();
   const { errors, values, handleSubmit, setValue } = useForm<LoginData>({
     validator: validateLogin,

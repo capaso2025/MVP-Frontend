@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { CancelGoalPayload, CancelGoalResponse } from '../models/cancel-goal';
 import { cancelGoal } from '../services/cancel-goal';
 
-export const useCancelGoals = () => {
+export const useCancelGoal = () => {
   return useMutation<CancelGoalResponse, Error, CancelGoalPayload>({
     mutationKey: ['cancel-goals'],
     mutationFn: async (payload: CancelGoalPayload) => {

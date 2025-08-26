@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { ExtendGoalPayload, ExtendGoalResponse } from '../models/extend-goal';
 import { extendGoal } from '../services/extend-goal';
 
-export const useExtendGoals = () => {
+export const useExtendGoal = () => {
   return useMutation<ExtendGoalResponse, Error, ExtendGoalPayload>({
     mutationKey: ['extend-goals'],
     mutationFn: async (payload: ExtendGoalPayload) => {

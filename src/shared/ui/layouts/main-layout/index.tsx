@@ -3,18 +3,16 @@ import { TimerFloating } from '@/pages/timer/components/TimerFloating';
 import { useResize } from '@/shared/hooks/use-resize';
 import { useEffect, useState } from 'react';
 import { useRenderStore } from '@/shared/store/render-store';
-import { DEFAULT_MENU_ITEMS, NO_LOGGED_DEFAULT_MENU_ITEMS } from './menu-items';
-import { useAuthStore } from '@/features/auth/auth-store';
+import { DEFAULT_MENU_ITEMS } from './menu-items';
 import { Outlet } from '@tanstack/react-router';
 import { Typography } from '../../atoms/Typography';
 import Avatar from '../../atoms/Avatar';
 import RightSection from '../../organisms/right-section';
-// import { useDummyStore } from '@/shared/store/dummy-store';
+import { useGetInfo } from '@/features/auth/info/hooks/use-get-info';
 
 function HomeLayout() {
   const { isMobile } = useResize();
-  // const role = useDummyStore((state) => state.role);
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const { data: userInfo } = useGetInfo();
   const setOpenedSidebar = useRenderStore((state) => state.setOpenedSidebar);
   const [showRightSection, setShowRightSection] = useState(false);
   useEffect(() => {
@@ -23,14 +21,11 @@ function HomeLayout() {
     }
   }, [isMobile, setOpenedSidebar]);
 
-  // if (!isAuthenticated || role === 'teacher')
-  //   return <Navigate to="/login" replace />;
-
   return (
     <div className="text-primary relative">
       <Sidebar
         items={
-          !isAuthenticated ? NO_LOGGED_DEFAULT_MENU_ITEMS : DEFAULT_MENU_ITEMS
+          DEFAULT_MENU_ITEMS
         }
       />
       {isMobile ? <></> : <div className="w-[300px]" />}
@@ -41,7 +36,7 @@ function HomeLayout() {
               className="flex cursor-pointer items-center gap-4"
               onClick={() => setShowRightSection(true)}
             >
-              <Typography className='hidden md:block'>Fernando Altamirano</Typography>
+              <Typography className='hidden md:block'>{userInfo?.firstName} {userInfo?.lastName}</Typography>
               <Avatar src="/assets/characters/capito-excited.png" />
             </div>
           </div>

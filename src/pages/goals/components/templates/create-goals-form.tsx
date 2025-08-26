@@ -1,4 +1,4 @@
-import { useCreateGoals } from '@/features/goals/hooks/use-create-goal';
+import { useCreateGoal } from '@/features/goals/hooks/use-create-goal';
 import { CreateGoalPayload } from '@/features/goals/models/create-goal';
 import { createGoalValidator } from '@/features/goals/validators/create-goal-validator';
 import { CATEGORIES } from '@/shared/constants/categories';
@@ -20,7 +20,7 @@ const KEYS_LIST = [
   'frequency',
 ];
 function CreateGoalsForm() {
-  const { mutate } = useCreateGoals();
+  const { mutate } = useCreateGoal();
   function onSubmit(data: CreateGoalPayload) {
     mutate(
       {

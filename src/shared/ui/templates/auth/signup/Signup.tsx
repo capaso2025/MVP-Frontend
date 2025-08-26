@@ -15,7 +15,7 @@ import { getParsedUserFromStorage } from '@/shared/lib/utils';
 function Signup(props: { onClickLogin?: () => void }) {
   const { onClickLogin } = props;
   const navigate = useNavigate();
-  const { executeSignup } = useSignup();
+  const { mutate: executeSignup } = useSignup();
   const { showPassword, togglePasswordVisibility } = usePassword();
   const { errors, values, handleSubmit, setValue } = useForm<SignupData>({
     validator: validateSignup,

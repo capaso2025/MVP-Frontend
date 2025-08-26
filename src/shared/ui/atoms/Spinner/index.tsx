@@ -1,7 +1,16 @@
 import styles from './styles.module.css';
 
-function Spinner() {
-  return <div className={styles["loader"]}></div>
+
+interface SpinnerProps {
+  className?: string;
+}
+
+function Spinner({ className }: SpinnerProps) {
+  return (
+    <div
+      className={className ? `${styles["loader"]} ${className}` : styles["loader"]}
+    ></div>
+  );
 }
 
 export default Spinner;

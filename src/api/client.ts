@@ -22,6 +22,10 @@ export class ApiClient {
 
   private async handleResponse<T>(response: Response): Promise<T> {
     if (!response.ok) {
+      if (response.status === 401) {
+        // localStorage.removeItem('t');
+        // window.location.replace('/login');
+      }
       const errorData = await response.json().catch(() => ({}));
       throw new ApiError({
         status: response.status,
@@ -34,8 +38,12 @@ export class ApiClient {
     }
     return response.json();
   }
-  async get<T>(path: string, options?: HttpRequestOptions): Promise<T> {
-    const headers = this.getHeaders({ optHeaders: options?.headers });
+  async get<T>(
+    path: string,
+    options?: HttpRequestOptions,
+    withAuth = true,
+  ): Promise<T> {
+    const headers = this.getHeaders({ optHeaders: options?.headers, withAuth });
 
     const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'GET',
@@ -76,6 +84,22 @@ export class ApiClient {
 
     const response = await fetch(`${apiConfig.baseUrl}${path}`, {
       method: 'PUT',
+      headers,
+      body: JSON.stringify(data),
+    });
+
+    return this.handleResponse<T>(response);
+  }
+
+  async patch<T, D>(
+    path: string,
+    data: D,
+    options?: HttpRequestOptions,
+  ): Promise<T> {
+    const headers = this.getHeaders({ optHeaders: options?.headers });
+
+    const response = await fetch(`${apiConfig.baseUrl}${path}`, {
+      method: 'PATCH',
       headers,
       body: JSON.stringify(data),
     });

@@ -33,3 +33,16 @@ export const getParsedUserFromStorage = ():
   }
   return null;
 };
+export const getParsedProfileFromStorage = ():
+  | OnboardingApiResponse['profile']
+  | null => {
+  try {
+    const profile = sessionStorage.getItem('profile');
+    if (profile) {
+      return JSON.parse(profile);
+    }
+  } catch (error) {
+    console.log('🏝️ ~ getParsedProfileFromStorage ~ error:', error);
+  }
+  return null;
+};
