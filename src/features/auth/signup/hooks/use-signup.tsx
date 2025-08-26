@@ -4,6 +4,7 @@ import { useRenderStore } from '@/shared/store/render-store';
 import { useNavigate } from '@tanstack/react-router';
 import { getParsedUserFromStorage } from '@/shared/lib/utils';
 import ResponseModal from '@/shared/ui/templates/response-modal';
+import { useMutation } from '@tanstack/react-query';
 
 export const useSignup = () => {
   const navigate = useNavigate();
@@ -36,7 +37,6 @@ export const useSignup = () => {
           type='success' />,
       });
     } catch (error) {
-      console.log('🏝️ ~ executeSignup ~ error:', error);
       setModalData({
         noCloseButton: true,
         children: <ResponseModal onClick={() => {
@@ -49,5 +49,8 @@ export const useSignup = () => {
     }
   };
 
-  return { executeSignup };
+  return useMutation({
+    mutationKey: ['signup'],
+    mutationFn: executeSignup,
+  });
 };

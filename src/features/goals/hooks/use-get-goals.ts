@@ -2,12 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import { getGoals } from '../services/get-goals';
 import { GetGoalsResponse } from '../models/get-goals-response';
 
-export const useGetGoals = () => {
+export const useGetGoals = (params?: { enabled?: boolean }) => {
+  const { enabled = true } = params || {};
   return useQuery<GetGoalsResponse>({
     queryKey: ['goals'],
     queryFn: getGoals,
-    refetchOnMount: true,
+    // refetchOnMount: true,
     staleTime: 0,
+    enabled,
     placeholderData: [],
     // initialData: [
     //   {

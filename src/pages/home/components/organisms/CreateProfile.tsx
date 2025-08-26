@@ -1,12 +1,9 @@
-import { useAuthStore } from '@/features/auth/auth-store';
 import { Button, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import { useNavigate } from '@tanstack/react-router';
 
 function CreateProfile() {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const navigate = useNavigate();
-  if (isAuthenticated) return <></>;
 
   return (
     <Card>

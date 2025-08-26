@@ -1,18 +1,15 @@
-import { useAuthStore } from '../../auth-store';
 import { useRenderStore } from '@/shared/store/render-store';
 import { login } from '../login-http';
 import { LoginData } from '../login-data';
 import { useNavigate } from '@tanstack/react-router';
 import ResponseModal from '@/shared/ui/templates/response-modal';
+import { useMutation } from '@tanstack/react-query';
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const logoutStore = useAuthStore((state) => state.logout);
-  const setUser = useAuthStore((state) => state.setUser);
   const toggleLoading = useRenderStore((state) => state.toggleLoading);
   const setModalData = useRenderStore((state) => state.setModalData);
   const closeModal = useRenderStore((state) => state.closeModal);
-  const setIsAuthenticated = useAuthStore((state) => state.setIsAuthenticated);
   const executeLogin = async (values: LoginData) => {
     try {
       toggleLoading();
@@ -23,8 +20,6 @@ export const useLogin = () => {
       navigate({
         to: '/home',
       });
-      setUser(response.user);
-      setIsAuthenticated(true);
       localStorage.setItem('t', response.token);
     } catch (error) {
       setModalData({
@@ -36,16 +31,9 @@ export const useLogin = () => {
     }
   };
 
-  const executeLogout = async () => {
-    logoutStore();
-    localStorage.removeItem('t');
-    navigate({
-      to: '/home',
-    });
-  };
 
-  return {
-    executeLogin,
-    executeLogout,
-  };
+  return useMutation({
+    mutationKey: ['login'],
+    mutationFn: executeLogin,
+  });
 };

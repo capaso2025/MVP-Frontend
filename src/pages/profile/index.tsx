@@ -1,7 +1,6 @@
 import { Button, Typography } from '@/shared/ui';
 import { useState } from 'react';
 import StatisticsPanel from './components/Statistics';
-import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import { useProfile } from '@/features/profile/hooks/useProfile';
 import Spinner from '@/shared/ui/atoms/Spinner';
 import { format } from 'date-fns';
@@ -10,7 +9,6 @@ import Input from '@/shared/ui/atoms/Input/Input';
 
 export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
-  const { executeLogout } = useLogin();
   const { profile, loading } = useProfile();
 
   if (loading)
@@ -120,7 +118,10 @@ export default function ProfilePage() {
               <Button
                 variant="outline"
                 className="w-full"
-                onClick={executeLogout}
+                onClick={() => {
+                  localStorage.removeItem('t');
+                  window.location.replace('/login');
+                }}
               >
                 Cerrar sesión
               </Button>

@@ -5,7 +5,7 @@ import {
 } from '../models/complete-goal';
 import { completeGoal } from '../services/complete-goal';
 
-export const useCompleteGoals = () => {
+export const useCompleteGoal = () => {
   return useMutation<CompleteGoalResponse, Error, CompleteGoalPayload>({
     mutationKey: ['complete-goals'],
     mutationFn: async (payload: CompleteGoalPayload) => {
