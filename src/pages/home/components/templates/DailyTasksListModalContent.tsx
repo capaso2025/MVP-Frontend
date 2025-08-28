@@ -53,13 +53,14 @@ export default function DailyTasksListModalContent() {
     addReminder(reminder);
     setModalData({
       children: <DailyTasksListModalContent />,
-      containerClassName: '!min-w-[900px] min-h-[500px]',
+      containerClassName: '!min-w-[900px] min-h-[500px] bg-white',
     });
   };
 
   const openModalData = () => {
     setModalData({
       children: <AddDailyTask addReminder={handleAddReminder} />,
+      containerClassName: 'bg-white',
     });
   };
 

@@ -2,11 +2,14 @@ import { SignupData } from '../signup-data';
 import { signup } from '../signupHttpCall';
 import { useRenderStore } from '@/shared/store/render-store';
 import { useNavigate } from '@tanstack/react-router';
-import { getParsedUserFromStorage } from '@/shared/lib/utils';
 import ResponseModal from '@/shared/ui/templates/response-modal';
 import { useMutation } from '@tanstack/react-query';
+import { getFromSessionStorage } from '@/shared/lib/utils';
 
-export const useSignup = () => {
+export const useSignup = (params?: {
+  successAction?: ((email: string, password: string) => void) | undefined
+}) => {
+  const { successAction } = params || {};
   const navigate = useNavigate();
   const toggleLoading = useRenderStore((state) => state.toggleLoading);
   const setModalData = useRenderStore((state) => state.setModalData);
@@ -22,11 +25,15 @@ export const useSignup = () => {
           lastName: values.lastName,
           confirmPassword: values.confirmPassword,
         },
-        getParsedUserFromStorage()?.id || '',
+        getFromSessionStorage('user.id')
       );
+      if (successAction) return successAction(values.email, values.password)
       navigate({
         to: '/login',
       });
+      sessionStorage.removeItem('user.id');
+      sessionStorage.removeItem('profile.name');
+      sessionStorage.removeItem('user.firstName');
       setModalData({
         noCloseButton: true,
         children: <ResponseModal
