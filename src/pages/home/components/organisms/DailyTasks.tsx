@@ -10,7 +10,7 @@ function DailyTasks() {
       onClick={() => {
         setModalData({
           children: <DailyTasksListModalContent />,
-          containerClassName: '!min-w-[900px] min-h-[500px]',
+          containerClassName: '!min-w-[900px] min-h-[500px] bg-white',
         });
       }}
     >

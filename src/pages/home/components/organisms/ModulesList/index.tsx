@@ -24,7 +24,7 @@ const MODULES = [
 ];
 function ModulesList() {
   return <div className="relative">
-    <div className="absolute top-0 grid place-content-center left-0 right-0 bottom-0 bg-background/40 z-[100]">
+    <div className="absolute top-0 grid place-content-center left-0 right-0 bottom-0 bg-background/40 z-20">
       <Typography variant="h2">Próximamente</Typography>
     </div>
     <div className="opacity-50">

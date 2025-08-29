@@ -7,8 +7,7 @@ import { useState } from 'react';
 import Input from '@/shared/ui/atoms/Input/Input';
 
 function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
-  const { addReminder } = props;
-  console.log('🏝️ ~ AddDailyTask ~ addReminder:', addReminder);
+  console.log("🏝️ ~ AddDailyTask ~ props:", props)
   const [newReminder, setNewReminder] = useState({
     title: '',
     category: 'hoy' as ReminderCategory,
@@ -19,7 +18,7 @@ function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
   return (
     <div>
       <div className="sm:max-w-md">
-        <Typography className="text-center">Nuevo Recordatorio</Typography>
+        <Typography className="text-center text-primary">Nuevo Recordatorio</Typography>
         <div className="space-y-4 py-4">
           <div className="space-y-2">
             <Input

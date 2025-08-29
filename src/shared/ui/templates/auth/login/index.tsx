@@ -8,12 +8,14 @@ import { useLogin } from '@/features/auth/login/hooks/useLogin';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Spacer from '@/shared/ui/atoms/Spacer';
 import Logo from '@/assets/capo-logo.png';
-import { useNavigate } from '@tanstack/react-router';
+import { Navigate, useNavigate } from '@tanstack/react-router';
+import { useAuthStore } from '@/features/auth/store/auth-store';
 
 function Login(props: { onClickSignup?: () => void }) {
   const { onClickSignup } = props;
   const { mutate: executeLogin } = useLogin();
   const { showPassword, togglePasswordVisibility } = usePassword();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const { errors, values, handleSubmit, setValue } = useForm<LoginData>({
     validator: validateLogin,
     keysList: ['email', 'password'],
@@ -21,6 +23,8 @@ function Login(props: { onClickSignup?: () => void }) {
     onSubmit: executeLogin,
   });
   const navigate = useNavigate();
+
+  if (isAuthenticated) return <Navigate to="/home" replace />
 
   return (
     <div className='bg-landing-dark'>

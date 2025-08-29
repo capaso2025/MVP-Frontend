@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { useOnboardingStore } from '../../store/onboarding-store';
 import { useTranslation } from 'react-i18next';
-import { getParsedProfileFromStorage } from '@/shared/lib/utils';
 
 function Results() {
   const navigate = useNavigate();
@@ -14,6 +13,7 @@ function Results() {
   const registerData = useOnboardingStore((state) => state.registerData);
   const responses = useOnboardingStore((state) => state.responses);
   const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -30,10 +30,14 @@ function Results() {
         age: registerData.age,
         firstName: registerData.name,
       });
+      console.log(result)
       setLoading(false);
       if (result) {
-        sessionStorage.setItem('profile', JSON.stringify(result.profile));
-        sessionStorage.setItem('user', JSON.stringify(result.user));
+        setSuccess(true);
+        sessionStorage.setItem('user.id', result.user.id);
+        sessionStorage.setItem('user.firstName', result.user.firstName);
+        sessionStorage.setItem('profile.name', result.profile.name);
+
       }
     })();
   }, [registerData.age, registerData.name]);
@@ -49,7 +53,7 @@ function Results() {
             Generando ruta de aprendizaje...
           </div>
         </div>
-      ) : !getParsedProfileFromStorage()?.id ? (
+      ) : !success ? (
         <div className="mx-auto grid h-[calc(100vh-132px)] w-[90%] max-w-7xl grid-rows-[max-content_auto_max-content] place-content-center py-4 xl:w-full">
           <div className="flex flex-col items-center gap-8">
             <XCircleIcon className="text-primary-2 scale-200" size={35} />
@@ -64,7 +68,7 @@ function Results() {
       ) : (
         <div className="mx-auto grid h-[90%] w-[90%] grid-rows-[auto_max-content]">
           <Typography variant="h3" className="mt-20 text-center">
-            {t(getParsedProfileFromStorage()?.name || "")}
+            {t(sessionStorage.getItem("profile.name") || "")}
           </Typography>
           <div className="mx-auto mt-8 block w-[80%] grid-cols-2 place-content-center gap-8 md:grid">
             <div className="grid gap-8 md:gap-4">

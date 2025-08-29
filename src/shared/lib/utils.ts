@@ -1,4 +1,3 @@
-import { OnboardingApiResponse } from '@/features/onboarding/types/onboarding-response';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,29 +19,19 @@ export const validationEmptyKeys = <T>(
   return errors;
 };
 
-export const getParsedUserFromStorage = ():
-  | OnboardingApiResponse['user']
-  | null => {
+export const getFromSessionStorage = (key: string) => {
   try {
-    const user = sessionStorage.getItem('user');
-    if (user) {
-      return JSON.parse(user);
+    const item = sessionStorage.getItem(key);
+    if (item) {
+      // validate if json
+      const isJson = item.startsWith('{') && item.endsWith('}');
+      if (isJson) {
+        return JSON.parse(item);
+      }
+      return item;
     }
   } catch (error) {
-    console.log('🏝️ ~ getParsedUserFromStorage ~ error:', error);
-  }
-  return null;
-};
-export const getParsedProfileFromStorage = ():
-  | OnboardingApiResponse['profile']
-  | null => {
-  try {
-    const profile = sessionStorage.getItem('profile');
-    if (profile) {
-      return JSON.parse(profile);
-    }
-  } catch (error) {
-    console.log('🏝️ ~ getParsedProfileFromStorage ~ error:', error);
+    console.log('🏝️ ~ getFromSessionStorage ~ error:', error);
   }
   return null;
 };

@@ -15,7 +15,7 @@ function Loading() {
   }, [loading]);
 
   return loading ? (
-    <div className="absolute top-0 right-0 bottom-0 left-0 z-[1000] grid place-content-center bg-[#162335bf]">
+    <div className="absolute top-0 right-0 bottom-0 left-0 z-[10000000] grid place-content-center bg-[#162335bf]">
       <div className='flex items-center justify-center mb-8'>
         <Spinner />
       </div>

@@ -37,7 +37,8 @@ function GoalsLayout() {
     {
       icon: CheckCircle,
       text: 'Metas completadas',
-      route: "/home/goals/completed"
+      route: "/home/goals/completed",
+      onClick: () => navigate({ to: "/home/goals/active" }),
     },
   ];
 
