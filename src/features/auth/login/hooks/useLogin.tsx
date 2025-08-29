@@ -1,7 +1,6 @@
 import { useRenderStore } from '@/shared/store/render-store';
 import { login } from '../login-http';
 import { LoginData } from '../login-data';
-import { useNavigate } from '@tanstack/react-router';
 import ResponseModal from '@/shared/ui/templates/response-modal';
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '../../store/auth-store';

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Input from '@/shared/ui/atoms/Input/Input';
 
 function AddDailyTask(props: { addReminder: (data: Reminder) => void }) {
-  const { addReminder } = props;
+  console.log("🏝️ ~ AddDailyTask ~ props:", props)
   const [newReminder, setNewReminder] = useState({
     title: '',
     category: 'hoy' as ReminderCategory,
