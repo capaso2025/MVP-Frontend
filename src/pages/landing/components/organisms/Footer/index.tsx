@@ -20,7 +20,7 @@ function Footer() {
           </Typography>
           <div className="mt-2 flex justify-center space-x-4">
             <a
-              href="https://www.instagram.com/capo_latam/"
+              href="https://www.instagram.com/capaso_latam/"
               target="_blank"
               rel="noopener noreferrer"
             >
