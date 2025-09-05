@@ -5,7 +5,6 @@ export const cancelGoal = async (
   data: CancelGoalPayload,
 ): Promise<CancelGoalResponse | null> => {
   try {
-    throw new Error('Simulated error for testing purposes');
     const response = await apiClient.post<CancelGoalResponse>(
       `/goal/${data.id}/cancel`,
       {},
