@@ -1,10 +1,12 @@
 import { useCreateGoal } from '@/features/goals/hooks/use-create-goal';
+import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import { CreateGoalPayload } from '@/features/goals/models/create-goal';
 import { createGoalValidator } from '@/features/goals/validators/create-goal-validator';
 import { CATEGORIES } from '@/shared/constants/categories';
 import { FREQUENCY } from '@/shared/constants/frequency';
 import { SIZE } from '@/shared/constants/size';
 import { useForm } from '@/shared/hooks/useForm';
+import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Typography } from '@/shared/ui';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Select from '@/shared/ui/molecules/Select';
@@ -21,6 +23,8 @@ const KEYS_LIST = [
 ];
 function CreateGoalsForm() {
   const { mutate } = useCreateGoal();
+  const closeModal = useRenderStore((state) => state.closeModal);
+  const { refetch: refetchGoals } = useGetGoals();
   function onSubmit(data: CreateGoalPayload) {
     mutate(
       {
@@ -30,6 +34,8 @@ function CreateGoalsForm() {
       {
         onSuccess: () => {
           console.log('Meta registrada:', data);
+          closeModal();
+          refetchGoals();
         },
         onError: (error) => {
           console.error('Error al registrar la meta:', error);

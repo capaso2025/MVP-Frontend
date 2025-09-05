@@ -1,6 +1,6 @@
-import HabitBuilder from '@/pages/habits'
+import HabitsLayout from '@/pages/habits/components/templates/habits-layout'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/home/habits')({
-  component: HabitBuilder,
+  component: HabitsLayout,
 })

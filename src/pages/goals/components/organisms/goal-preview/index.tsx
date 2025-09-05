@@ -1,5 +1,6 @@
 import { useCancelGoal } from '@/features/goals/hooks/use-cancel-goal';
 import { useCompleteGoal } from '@/features/goals/hooks/use-complete-goal';
+import { useCreateGoalLog } from '@/features/goals/hooks/use-create-goal-log';
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import { useUpdateGoal } from '@/features/goals/hooks/use-update-goal';
 import { Goal } from '@/features/goals/models/goal';
@@ -14,7 +15,7 @@ import { useState } from 'react';
 
 function GoalPreview(props: { data: Goal | undefined }) {
   const { data } = props;
-  const { mutate: executeUpdate } = useUpdateGoal();
+  const { mutate: executeCreateLog } = useCreateGoalLog();
   const { mutate: executeComplete } = useCompleteGoal();
   const { refetch } = useGetGoals({ enabled: false });
   const { mutate: executeCancel } = useCancelGoal();
@@ -22,9 +23,11 @@ function GoalPreview(props: { data: Goal | undefined }) {
   const [updatedProgress, setUpdatedProgress] = useState(data?.progress || 0);
 
   const handleUpdate = () => {
-    executeUpdate({
-      id: data?.id!,
-      progress: updatedProgress,
+    executeCreateLog({
+      goalId: data?.id!,
+      value: updatedProgress,
+      comment: `Progreso actualizado a ${updatedProgress}%`,
+      evidenceUrl: ""
     });
   };
 

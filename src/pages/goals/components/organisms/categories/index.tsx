@@ -1,27 +1,41 @@
-import { GetGoalsResponse } from '@/features/goals/models/get-goals-response';
 import { CATEGORIES } from '@/shared/constants/categories';
 import { Progress, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import Spacer from '@/shared/ui/atoms/Spacer';
-function Categories(props: {
-  goals: GetGoalsResponse | undefined
+function Categories<T>(props: {
+  data: T[] | undefined;
+  nameCategoryKey: keyof T;
+  progressKey: keyof T;
 }) {
-  const { goals } = props;
-  return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-    {CATEGORIES.map(({ icon, label, progressClass, id }) => {
-      const filteredGoals = goals?.filter(goal => goal.category === id);
-      const value = filteredGoals?.length ? Math.round(filteredGoals.reduce((acc, goal) => acc + (goal.progress || 0), 0) / filteredGoals.length) : 0;
-      return <Card key={label} className="flex-1">
-        <div className="flex items-center justify-between gap-2">
-          {icon}
-          <Typography>{value}%</Typography>
-        </div>
-        <Spacer size="sm" />
-        <Typography>{label}</Typography>
-        <Progress value={value} className={progressClass} />
-      </Card>
-    })}
-  </div>
-};
+  const { data, nameCategoryKey, progressKey } = props;
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+      {CATEGORIES.map(({ icon, label, progressClass, id }) => {
+        const filteredElements = data?.filter(
+          (el) => el[nameCategoryKey] === id,
+        );
+        const value = filteredElements?.length
+          ? Math.round(
+            filteredElements.reduce(
+              (acc, el) => acc + +(el[progressKey] || 0),
+              0,
+            ) / filteredElements.length,
+          )
+          : 0;
+        return (
+          <Card key={label} className="flex-1">
+            <div className="flex items-center justify-between gap-2">
+              {icon}
+              <Typography>{value}%</Typography>
+            </div>
+            <Spacer size="sm" />
+            <Typography>{label}</Typography>
+            <Progress value={value} className={progressClass} />
+          </Card>
+        );
+      })}
+    </div>
+  );
+}
 
 export default Categories;

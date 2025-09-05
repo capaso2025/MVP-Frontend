@@ -12,7 +12,7 @@ export default function Goals() {
   return (
     <><div>
       <Typography variant='h5' className='font-semibold mb-2'>Area de vida - META</Typography>
-      <Categories goals={goals} />
+      <Categories data={goals} nameCategoryKey='category' progressKey='progress' />
     </div>
       <GoalPreview data={goals?.filter(goal => goal.status !== 'FAILED')?.[0]} />
       <Objetives /></>

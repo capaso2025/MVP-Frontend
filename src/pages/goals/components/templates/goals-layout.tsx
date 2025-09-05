@@ -7,12 +7,13 @@ import { CheckCircle, Edit, Goal, Search } from "lucide-react";
 import CreateGoalsForm from "./create-goals-form";
 import Tip from "@/shared/ui/organisms/tip";
 import Actions from "@/shared/ui/organisms/actions";
+import { useMemo } from "react";
 
 function GoalsLayout() {
-
   const navigate = useNavigate();
   const setModalData = useRenderStore(state => state.setModalData);
-  const ITEMS = [
+  const breadcrumbs = useRenderStore(state => state.breadcrumbs);
+  const ITEMS = useMemo(() => [
     {
       icon: Goal,
       text: 'Inicio',
@@ -40,13 +41,12 @@ function GoalsLayout() {
       route: "/home/goals/completed",
       onClick: () => navigate({ to: "/home/goals/active" }),
     },
-  ];
-
+  ], []);
 
   return <><ModuleTitle text="Metas y seguimientos" />
     <Spacer size="md" />
     <Breadcrumbs
-      links={[
+      links={breadcrumbs || [
         { text: 'Inicio', href: '/home' },
         { text: 'Metas y seguimientos', href: '/goals' },
       ]}
