@@ -2,7 +2,6 @@ import { useCancelGoal } from '@/features/goals/hooks/use-cancel-goal';
 import { useCompleteGoal } from '@/features/goals/hooks/use-complete-goal';
 import { useCreateGoalLog } from '@/features/goals/hooks/use-create-goal-log';
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
-import { useUpdateGoal } from '@/features/goals/hooks/use-update-goal';
 import { Goal } from '@/features/goals/models/goal';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Typography } from '@/shared/ui';
