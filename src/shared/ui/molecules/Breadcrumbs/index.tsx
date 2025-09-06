@@ -4,7 +4,7 @@ import { ChevronDownIcon, HomeIcon } from 'lucide-react';
 function Breadcrumbs(props: {
   links: {
     text: string;
-    href: string;
+    href?: string;
   }[];
   className?: string;
 }) {
@@ -21,7 +21,7 @@ function Breadcrumbs(props: {
             ) : (
               <Link
                 className="text-t-secondary flex items-center"
-                to={link.href}
+                to={link.href || '#'}
               >
                 <span>{link.text}</span>
                 <ChevronDownIcon className="text-t-secondary scale-75 -rotate-90" />

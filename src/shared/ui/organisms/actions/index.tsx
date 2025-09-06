@@ -20,7 +20,7 @@ function Actions(props: {
       Descubre
     </Typography>
     {items.map(({ icon: Icon, text, onClick, route }) => {
-      const selected = route === location.pathname;
+      const selected = route === location.pathname
       return (
         <div
           key={text}

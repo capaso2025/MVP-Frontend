@@ -20,6 +20,11 @@ type AlertDialogData = {
   show: boolean;
 };
 
+type Breadcrumb = {
+  text: string;
+  href?: string;
+};
+
 interface RenderState {
   modalData: ModalData;
   setModalData: (value: ModalData) => void;
@@ -33,6 +38,8 @@ interface RenderState {
   openedSidebar: boolean;
   setOpenedSidebar: (value: boolean) => void;
   toggleOpenedSidebar: () => void;
+  breadcrumbs: Breadcrumb[] | null;
+  setBreadcrumbs: (value: Breadcrumb[] | null) => void;
 }
 
 const initialModalData: ModalData = {
@@ -54,6 +61,12 @@ const initialAlertDialogData = {
 };
 export const useRenderStore = create<RenderState>()((set) => ({
   modalData: initialModalData,
+  breadcrumbs: null,
+  setBreadcrumbs: (value) => {
+    set(() => ({
+      breadcrumbs: value,
+    }));
+  },
   setModalData: (value: ModalData) => {
     set(() => ({
       modalData: value,

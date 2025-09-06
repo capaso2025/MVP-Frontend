@@ -11,7 +11,7 @@ export const cancelGoal = async (
     );
     return response;
   } catch (error) {
-    console.error(error);
-    return null;
+    console.error('Error canceling goal:', error);
+    throw error;
   }
 };

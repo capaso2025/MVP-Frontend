@@ -1,5 +1,5 @@
 import { apiClient } from '@/api/client';
-import { GetGoalsResponse } from '../models/get-goals-response';
+import { GetGoalsResponse } from '../models/get-goals';
 
 export const getActiveGoals = () => {
   try {
