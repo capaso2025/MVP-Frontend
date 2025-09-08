@@ -4,6 +4,7 @@ import Objetives from '../organisms/objetives';
 import { Typography } from '@/shared/ui';
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import Spinner from '@/shared/ui/atoms/Spinner';
+import ActiveGoals from './active-goals';
 
 export default function Goals() {
   const { data: goals, isFetching } = useGetGoals();
@@ -14,7 +15,7 @@ export default function Goals() {
       <Typography variant='h5' className='font-semibold mb-2'>Area de vida - META</Typography>
       <Categories data={goals} nameCategoryKey='category' progressKey='progress' />
     </div>
-      <GoalPreview data={goals?.filter(goal => goal.status !== 'FAILED')?.[0]} />
-      <Objetives /></>
+      <ActiveGoals />
+    </>
   );
 }

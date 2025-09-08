@@ -3,7 +3,7 @@ import ModuleTitle from "@/shared/ui/atoms/ModuleTitle";
 import Spacer from "@/shared/ui/atoms/Spacer";
 import Breadcrumbs from "@/shared/ui/molecules/Breadcrumbs";
 import { Outlet, useNavigate } from "@tanstack/react-router";
-import { CheckCircle, Edit, Goal, Search } from "lucide-react";
+import { Edit, Goal } from "lucide-react";
 import CreateGoalsForm from "./create-goals-form";
 import Tip from "@/shared/ui/organisms/tip";
 import Actions from "@/shared/ui/organisms/actions";
@@ -28,18 +28,6 @@ function GoalsLayout() {
         title: 'Crear nueva meta',
         children: <CreateGoalsForm />
       }),
-    },
-    {
-      icon: Search,
-      text: 'Ver mis metas activas',
-      onClick: () => navigate({ to: "/home/goals/active" }),
-      route: "/home/goals/active"
-    },
-    {
-      icon: CheckCircle,
-      text: 'Metas completadas',
-      route: "/home/goals/completed",
-      onClick: () => navigate({ to: "/home/goals/active" }),
     },
   ], []);
 

@@ -23,7 +23,7 @@ export const CATEGORIES =
     {
       id: 'SOCIAL',
       icon: <UsersIcon className="text-blue-400 font-bold" />,
-      label: 'Relaciones',
+      label: 'Social',
       progressClass: 'bg-blue-400',
     },
   ]

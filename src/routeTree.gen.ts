@@ -28,7 +28,6 @@ import { Route as HomeHabitsRouteRouteImport } from './routes/home/habits/route'
 import { Route as HomeGoalsRouteRouteImport } from './routes/home/goals/route'
 import { Route as HomeHabitsIndexRouteImport } from './routes/home/habits/index'
 import { Route as HomeGoalsIndexRouteImport } from './routes/home/goals/index'
-import { Route as HomeGoalsActiveRouteImport } from './routes/home/goals/active'
 import { Route as HomeHabitsDetailIdRouteImport } from './routes/home/habits/detail/$id'
 
 const SignupRoute = SignupRouteImport.update({
@@ -126,11 +125,6 @@ const HomeGoalsIndexRoute = HomeGoalsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeGoalsRouteRoute,
 } as any)
-const HomeGoalsActiveRoute = HomeGoalsActiveRouteImport.update({
-  id: '/active',
-  path: '/active',
-  getParentRoute: () => HomeGoalsRouteRoute,
-} as any)
 const HomeHabitsDetailIdRoute = HomeHabitsDetailIdRouteImport.update({
   id: '/detail/$id',
   path: '/detail/$id',
@@ -155,7 +149,6 @@ export interface FileRoutesByFullPath {
   '/onboarding/results': typeof OnboardingResultsRoute
   '/home/': typeof HomeIndexRoute
   '/onboarding': typeof OnboardingIndexRoute
-  '/home/goals/active': typeof HomeGoalsActiveRoute
   '/home/goals/': typeof HomeGoalsIndexRoute
   '/home/habits/': typeof HomeHabitsIndexRoute
   '/home/habits/detail/$id': typeof HomeHabitsDetailIdRoute
@@ -175,7 +168,6 @@ export interface FileRoutesByTo {
   '/onboarding/results': typeof OnboardingResultsRoute
   '/home': typeof HomeIndexRoute
   '/onboarding': typeof OnboardingIndexRoute
-  '/home/goals/active': typeof HomeGoalsActiveRoute
   '/home/goals': typeof HomeGoalsIndexRoute
   '/home/habits': typeof HomeHabitsIndexRoute
   '/home/habits/detail/$id': typeof HomeHabitsDetailIdRoute
@@ -199,7 +191,6 @@ export interface FileRoutesById {
   '/onboarding/results': typeof OnboardingResultsRoute
   '/home/': typeof HomeIndexRoute
   '/onboarding/': typeof OnboardingIndexRoute
-  '/home/goals/active': typeof HomeGoalsActiveRoute
   '/home/goals/': typeof HomeGoalsIndexRoute
   '/home/habits/': typeof HomeHabitsIndexRoute
   '/home/habits/detail/$id': typeof HomeHabitsDetailIdRoute
@@ -224,7 +215,6 @@ export interface FileRouteTypes {
     | '/onboarding/results'
     | '/home/'
     | '/onboarding'
-    | '/home/goals/active'
     | '/home/goals/'
     | '/home/habits/'
     | '/home/habits/detail/$id'
@@ -244,7 +234,6 @@ export interface FileRouteTypes {
     | '/onboarding/results'
     | '/home'
     | '/onboarding'
-    | '/home/goals/active'
     | '/home/goals'
     | '/home/habits'
     | '/home/habits/detail/$id'
@@ -267,7 +256,6 @@ export interface FileRouteTypes {
     | '/onboarding/results'
     | '/home/'
     | '/onboarding/'
-    | '/home/goals/active'
     | '/home/goals/'
     | '/home/habits/'
     | '/home/habits/detail/$id'
@@ -419,13 +407,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeGoalsIndexRouteImport
       parentRoute: typeof HomeGoalsRouteRoute
     }
-    '/home/goals/active': {
-      id: '/home/goals/active'
-      path: '/active'
-      fullPath: '/home/goals/active'
-      preLoaderRoute: typeof HomeGoalsActiveRouteImport
-      parentRoute: typeof HomeGoalsRouteRoute
-    }
     '/home/habits/detail/$id': {
       id: '/home/habits/detail/$id'
       path: '/detail/$id'
@@ -437,12 +418,10 @@ declare module '@tanstack/react-router' {
 }
 
 interface HomeGoalsRouteRouteChildren {
-  HomeGoalsActiveRoute: typeof HomeGoalsActiveRoute
   HomeGoalsIndexRoute: typeof HomeGoalsIndexRoute
 }
 
 const HomeGoalsRouteRouteChildren: HomeGoalsRouteRouteChildren = {
-  HomeGoalsActiveRoute: HomeGoalsActiveRoute,
   HomeGoalsIndexRoute: HomeGoalsIndexRoute,
 }
 

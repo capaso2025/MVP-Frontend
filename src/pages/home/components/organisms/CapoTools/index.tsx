@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 const TOOLS = [
   {
-    title: 'Metas  y seguimientos',
+    title: 'Mi camino',
     description: 'Fija tus objetivos y revisa tu avance día a día.',
     icon: <CompassIcon className="text-purple-400" />,
     route: '/home/goals',
