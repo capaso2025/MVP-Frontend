@@ -1,40 +1,25 @@
 import { useCancelGoal } from '@/features/goals/hooks/use-cancel-goal';
-import { useCompleteGoal } from '@/features/goals/hooks/use-complete-goal';
-import { useCreateGoalLog } from '@/features/goals/hooks/use-create-goal-log';
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import { Goal } from '@/features/goals/models/goal';
 import { useRenderStore } from '@/shared/store/render-store';
-import { Button, Typography } from '@/shared/ui';
+import { Progress, Typography } from '@/shared/ui';
 import Badge from '@/shared/ui/atoms/Badge';
 import { Card } from '@/shared/ui/atoms/Card';
 import Spacer from '@/shared/ui/atoms/Spacer';
 import DropdownMenu from '@/shared/ui/organisms/dropdown';
-import { EllipsisVertical } from 'lucide-react';
+import { ChevronRight, EllipsisVertical, GoalIcon } from 'lucide-react';
 import { useState } from 'react';
+import Objetives from '../objetives';
+import { CATEGORIES_CONFIG } from '@/shared/constants/categories';
 
 function GoalPreview(props: { data: Goal | undefined }) {
   const { data } = props;
-  const { mutate: executeCreateLog } = useCreateGoalLog();
-  const { mutate: executeComplete } = useCompleteGoal();
   const { refetch } = useGetGoals({ enabled: false });
   const { mutate: executeCancel } = useCancelGoal();
-  const setAlertDialogData = useRenderStore(state => state.setAlertDialogData);
-  const [updatedProgress, setUpdatedProgress] = useState(data?.progress || 0);
-
-  const handleUpdate = () => {
-    executeCreateLog({
-      goalId: data?.id!,
-      value: updatedProgress,
-      comment: `Progreso actualizado a ${updatedProgress}%`,
-      evidenceUrl: ""
-    });
-  };
-
-  const handleComplete = () => {
-    executeComplete({
-      id: data?.id!,
-    });
-  };
+  const [showObjetives, setShowObjectives] = useState(false);
+  const setAlertDialogData = useRenderStore(
+    (state) => state.setAlertDialogData,
+  );
 
   const handleCancel = () => {
     setAlertDialogData({
@@ -47,84 +32,81 @@ function GoalPreview(props: { data: Goal | undefined }) {
         });
         refetch();
       },
-      confirmText: 'Sí, cancelar'
+      confirmText: 'Sí, cancelar',
     });
   };
 
-  if (!data) return <></>
+
+  if (!data) return <></>;
+
+  const badge = CATEGORIES_CONFIG[data.category as keyof typeof CATEGORIES_CONFIG];
   return (
     <Card>
-      <div className="flex items-center justify-between">
-        <div>
-          <Typography className="font-semibold" variant="h5">
-            {data?.title}
-          </Typography>
-          <Typography as="small" className="text-gray-600" variant="body2">
-            Fecha limite:{' '}
-            {data?.deadline.split('T')[0]?.split('-').reverse().join('/')}
-          </Typography>
+      <div className="flex items-start gap-4">
+        <div className="bg-primary/10 rounded-full p-2 hidden md:block">
+          <GoalIcon size={30} className="text-primary" />
         </div>
+        <div className="w-full">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-end gap-2">
+                <Typography className="font-semibold" variant="h5">
+                  {data?.title}{' '}
+                </Typography>
+                <Badge
+                  text={badge?.label || 'Sin categoría'}
+                  className={`${badge?.bgClass} ${badge?.textClass}`}
+                />
+              </div>
+              <Typography className="text-foreground-secondary">
+                {data?.description}
+              </Typography>
+            </div>
 
-        <div className='flex items-center gap-2'>
-          <Badge
-            text={data?.category || ''}
-            className="bg-red-200 text-red-600"
-          />
-          <DropdownMenu trigger={<EllipsisVertical />} options={[
-            {
-              text: 'Editar',
-              onClick: () => console.log('editar')
-            },
-            {
-              text: 'Cancelar meta',
-              onClick: handleCancel
-            }
-          ]} />
+            <div className="flex items-center gap-2">
+              <ChevronRight
+                className={
+                  showObjetives
+                    ? 'rotate-90 transition-transform'
+                    : 'transition-transform'
+                }
+                onClick={() => setShowObjectives(!showObjetives)}
+              />
+              <DropdownMenu
+                trigger={<EllipsisVertical />}
+                options={[
+                  {
+                    text: 'Editar',
+                    onClick: () => console.log('editar'),
+                  },
+                  {
+                    text: 'Cancelar meta',
+                    onClick: handleCancel,
+                  },
+                ]}
+              />
+            </div>
+          </div>
+          <Spacer size="lg" />
+          <div className='mb-6'>
+            <div className="mb-2 flex justify-between">
+              <Typography variant="body2">Progreso general</Typography>
+              <Typography variant="body2">{0}%</Typography>
+            </div>
+            <Progress className='bg-gradient-to-br from-primary to-primary-light' value={data.progress} />
+            <div className="my-2 flex justify-between">
+              <Typography
+                as="small"
+                className="text-foreground-secondary"
+                variant="caption"
+              >
+                1 de objetivos completados
+              </Typography>
+            </div>
+          </div>
+          {showObjetives && <Objetives show={showObjetives} goalId={data?.id!} />}
         </div>
       </div>
-      <Spacer size="lg" />
-      <div>
-        <div className="mb-2 flex justify-between">
-          <Typography variant="body2">Progreso general</Typography>
-          <Typography variant="body2">{updatedProgress || 0}%</Typography>
-        </div>
-        <input
-          className="w-full"
-          type="range"
-          min="0"
-          max="100"
-          value={updatedProgress}
-          onChange={(e) => setUpdatedProgress(Number(e.target.value))}
-        />
-      </div>
-      <Spacer size="md" />
-      {updatedProgress === 100 ? (
-        <div className="flex justify-end">
-          <Button size="sm" onClick={handleComplete}>Marcar como completado</Button>
-        </div>
-      ) : (
-        <div className="flex justify-end gap-4">
-          <Button
-            variant="outline"
-            className="border border-gray-200"
-            size="sm"
-            onClick={handleUpdate}
-            disabled={updatedProgress === data?.progress}
-          >
-            Actualizar progreso
-          </Button>
-          {updatedProgress !== data?.progress && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setUpdatedProgress(data?.progress || 0)}
-              disabled={updatedProgress === data?.progress}
-            >
-              Restablecer
-            </Button>
-          )}
-        </div>
-      )}
     </Card>
   );
 }

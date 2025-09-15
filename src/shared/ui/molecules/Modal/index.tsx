@@ -36,7 +36,7 @@ function Modal() {
       className={`animate-fade-in bg-custom absolute top-0 right-0 bottom-0 left-0 h-screen w-screen ${fullScreen ? '' : 'flex items-center p-4 backdrop-blur-sm backdrop-brightness-50'}`}
     >
       <div
-        className={`relative overflow-auto shadow-xl ${fullScreen ? 'h-full w-full' : 'mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl  p-4 md:min-w-[400px]'} ${containerClassName || 'bg-landing-dark'
+        className={`relative overflow-hidden shadow-xl max-h-[95vh] p-4 ${fullScreen ? 'h-full w-full' : 'mx-auto min-h-[200px] w-[90%] max-w-[500px] rounded-2xl  p-4 md:min-w-[400px]'} ${containerClassName || 'bg-landing-dark'
           }`}
       >
         {noCloseButton ? null : (
@@ -67,7 +67,9 @@ function Modal() {
             {description}
           </Typography>
         )}
-        {children}
+        <div className='overflow-y-auto py-4 px-2 scrollbar-hide'>
+          {children}
+        </div>
       </div>
     </div>,
     document.getElementById('modal') as HTMLElement,

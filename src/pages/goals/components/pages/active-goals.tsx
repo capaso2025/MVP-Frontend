@@ -1,12 +1,11 @@
-import { useGetActiveGoals } from '@/features/goals/hooks/use-get-active-goals';
-import ModuleTitle from '@/shared/ui/atoms/ModuleTitle';
 import Spacer from '@/shared/ui/atoms/Spacer';
 import Spinner from '@/shared/ui/atoms/Spinner';
 import GoalPreview from '../organisms/goal-preview';
 import { Button, Typography } from '@/shared/ui';
+import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 
 function ActiveGoals() {
-  const { data: goals, isFetching, refetch } = useGetActiveGoals();
+  const { data: goals, isFetching, refetch } = useGetGoals();
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -22,7 +21,9 @@ function ActiveGoals() {
         </div>
       ) : !goals?.length ? <Typography>No tienes metas activas</Typography> : (
         <div className="flex flex-col gap-4">
-          {goals?.map((goal) => <GoalPreview key={goal.id} data={goal} />)}
+          {goals
+            ?.filter((goal) => goal.status !== "FAILED")
+            .map((goal) => <GoalPreview key={goal.id} data={goal} />)}
         </div>
       )}
     </div>

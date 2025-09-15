@@ -1,4 +1,11 @@
 {
   "welcome": "Bienvenido a la aplicación",
-  "logout": "Cerrar sesión"
+  "logout": "Cerrar sesión",
+  "MONDAY": "Lunes",
+  "TUESDAY": "Martes",
+  "WEDNESDAY": "Miércoles",
+  "THURSDAY": "Jueves",
+  "FRIDAY": "Viernes",
+  "SATURDAY": "Sábado",
+  "SUNDAY": "Domingo"
 }

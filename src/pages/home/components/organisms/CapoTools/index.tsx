@@ -1,3 +1,4 @@
+import { MODULE_TITLES } from '@/shared/constants/module-titles';
 import { Progress, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import ModuleTitle from '@/shared/ui/atoms/ModuleTitle';
@@ -10,28 +11,28 @@ import {
 } from 'lucide-react';
 const TOOLS = [
   {
-    title: 'Mi camino',
+    title: MODULE_TITLES.GOALS,
     description: 'Fija tus objetivos y revisa tu avance día a día.',
     icon: <CompassIcon className="text-purple-400" />,
     route: '/home/goals',
     color: 'bg-purple-400',
   },
   {
-    title: 'Constructor de hábitos',
+    title: MODULE_TITLES.HABITS,
     icon: <HeartHandshakeIcon className="text-green-400" />,
     description: 'Crea rutinas simples y conviértelas en hábitos duraderos.',
     route: '/home/habits',
     color: 'bg-green-400',
   },
   {
-    title: 'Aprendizaje y reflexión',
+    title: MODULE_TITLES.LEARNING,
     description: 'Recibe reportes claros y consejos para mejorar.',
     icon: <ChartGanttIcon className="text-blue-400" />,
     route: '/home/learning',
     color: 'bg-blue-400',
   },
   {
-    title: 'Motivación',
+    title: MODULE_TITLES.MOTIVATION,
     description: 'Encuentra retos y recompensas que te mantienen enfocado.',
     icon: <UserIcon className="text-red-400" />,
     color: 'bg-red-400',

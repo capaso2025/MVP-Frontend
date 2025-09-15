@@ -9,6 +9,7 @@ interface Props {
   | 'h6'
   | 'body1'
   | 'body2'
+  | 'caption'
   | 'subtitle';
   className?: string;
   as?: React.ElementType;
@@ -35,6 +36,7 @@ export const Typography = forwardRef<
       subtitle: 'text-base lg:text-lg font-normal',
       body1: 'text-sm lg:text-base',
       body2: 'text-xs lg:text-sm',
+      caption: 'text-xxs',
     };
 
     return (

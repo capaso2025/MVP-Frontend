@@ -4,11 +4,13 @@ export interface CreateGoalPayload {
   title: string;
   description: string;
   category: string;
-  type: string;
+  // type: string;
   targetValue: number;
-  unit: string;
+  targetUnit: string;
   deadline: string;
   frequency: string;
+  daysOfWeek?: string[];
+  customDates?: string[];
 }
 
 export type CreateGoalResponse = Goal;

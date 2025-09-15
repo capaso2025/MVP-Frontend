@@ -9,6 +9,7 @@ import { Calendar, Clock, Trophy } from 'lucide-react';
 import { useRenderStore } from '@/shared/store/render-store';
 import { useEffect, useState } from 'react';
 import { useCompleteHabit } from '@/features/habits/hooks/use-complete.habit';
+import { MODULE_TITLES } from '@/shared/constants/module-titles';
 
 function HabitDetails() {
   const params = useParams({
@@ -27,7 +28,7 @@ function HabitDetails() {
   useEffect(() => {
     setBreadcrumbs([
       { text: 'Inicio', href: '/home' },
-      { text: 'Constructor de hábitos', href: '/home/habits' },
+      { text: MODULE_TITLES.HABITS, href: '/home/habits' },
       { text: 'Detalle del hábito' },
     ])
 
