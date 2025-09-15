@@ -1,3 +1,4 @@
+import { MODULE_TITLES } from '@/shared/constants/module-titles';
 import { Button, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import ModuleTitle from '@/shared/ui/atoms/ModuleTitle';
@@ -8,12 +9,12 @@ import { ArrowRight, Book, Lightbulb, Plus } from 'lucide-react';
 export default function LearningPage() {
   return (
     <div>
-      <ModuleTitle text="Aprendizaje y reflexión" />
+      <ModuleTitle text={MODULE_TITLES.LEARNING} />
       <Spacer size="md" />
       <Breadcrumbs
         links={[
           { text: 'Inicio', href: '/home' },
-          { text: 'Aprendizaje y reflexión', href: '/home/learning' },
+          { text: MODULE_TITLES.LEARNING, href: '/home/learning' },
         ]}
       />
       <Spacer size="lg" />

@@ -2,7 +2,7 @@ import { useCreateGoal } from '@/features/goals/hooks/use-create-goal';
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import { CreateGoalPayload } from '@/features/goals/models/create-goal';
 import { createGoalValidator } from '@/features/goals/validators/create-goal-validator';
-import { CATEGORIES } from '@/shared/constants/categories';
+import { CATEGORIES_CONFIG } from '@/shared/constants/categories';
 import { FREQUENCY } from '@/shared/constants/frequency';
 import { SIZE } from '@/shared/constants/size';
 import { useForm } from '@/shared/hooks/useForm';
@@ -11,13 +11,12 @@ import { Button, Typography } from '@/shared/ui';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Select from '@/shared/ui/molecules/Select';
 
-const KEYS_LIST = [
+const KEYS_LIST: (keyof CreateGoalPayload)[] = [
   'title',
   'description',
   'category',
-  'type',
+  'targetUnit',
   'targetValue',
-  'unit',
   'deadline',
   'frequency',
 ];
@@ -78,7 +77,7 @@ function CreateGoalsForm() {
         Categoría
       </Typography>
       <div className="grid grid-cols-2 gap-2 mb-4">
-        {CATEGORIES.map((el) => {
+        {Object.values(CATEGORIES_CONFIG).map((el) => {
           return (
             <div
               onClick={() =>
@@ -120,8 +119,8 @@ function CreateGoalsForm() {
         />
         <Input
           label="Unidad"
-          name="unit"
-          value={values.unit}
+          name="targetUnit"
+          value={values.targetUnit}
           onChange={onChange}
           errors={errors}
           placeholder="Ej: libros, km, horas..."

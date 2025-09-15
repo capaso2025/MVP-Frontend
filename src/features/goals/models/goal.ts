@@ -4,18 +4,12 @@ export interface Goal {
   title: string;
   description: string;
   category: string;
-  type: string;
   targetValue: number;
-  unit: string;
+  targetUnit: string;
   deadline: string;
   frequency: string;
   progress: number;
   status: string;
-  hasStreak: boolean;
-  streakCount: number;
-  xpEarned: number;
-  gemsEarned: number;
-  extendedOnce: boolean;
   createdAt: string;
   updatedAt: string;
 }

@@ -85,41 +85,39 @@ export const Checkbox = forwardRef<HTMLInputElement, ICheckboxProps>(
 
     return (
       <div className={containerClasses}>
-        <div className="flex flex-col">
-          <label
-            htmlFor={inputId}
-            className={`text-sm font-medium ${disabled ? 'text-gray-400' : error ? 'text-error' : 'text-gray-700'} cursor-pointer`}
-          >
-            <div className="group relative flex items-center">
-              <input
-                ref={ref}
-                type="checkbox"
-                id={inputId}
-                disabled={disabled}
-                className="absolute h-5 w-5 cursor-pointer opacity-0 disabled:cursor-not-allowed"
-                {...restProps}
-              />
-              <div className={checkboxClasses}>
-                {restProps.checked && (
-                  <CheckIcon className={disabled ? 'text-gray-500' : 'text-primary'} />
-                )}
-              </div>
+        <label
+          htmlFor={inputId}
+          className={`text-sm flex items-center gap-1 font-medium ${disabled ? 'text-gray-400' : error ? 'text-error' : 'text-gray-700'} cursor-pointer`}
+        >
+          <div className="group relative flex items-center">
+            <input
+              ref={ref}
+              type="checkbox"
+              id={inputId}
+              disabled={disabled}
+              className="absolute h-5 w-5 cursor-pointer opacity-0 disabled:cursor-not-allowed"
+              {...restProps}
+            />
+            <div className={checkboxClasses}>
+              {restProps.checked && (
+                <CheckIcon className={disabled ? 'text-gray-500' : 'text-primary'} />
+              )}
             </div>
-            {label || ''}
-          </label>
+          </div>
+          {label || ''}
+        </label>
 
-          {helpText && !error && (
-            <Typography className={compact ? 'mt-0.5' : 'mt-1'}>
-              {helpText}
-            </Typography>
-          )}
+        {helpText && !error && (
+          <Typography className={compact ? 'mt-0.5' : 'mt-1'}>
+            {helpText}
+          </Typography>
+        )}
 
-          {error && errorMessage && (
-            <Typography className={compact ? 'mt-0.5' : 'mt-1'}>
-              {errorMessage}
-            </Typography>
-          )}
-        </div>
+        {error && errorMessage && (
+          <Typography className={compact ? 'mt-0.5' : 'mt-1'}>
+            {errorMessage}
+          </Typography>
+        )}
       </div>
     );
   },

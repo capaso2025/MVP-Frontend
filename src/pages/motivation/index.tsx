@@ -1,3 +1,4 @@
+import { MODULE_TITLES } from '@/shared/constants/module-titles';
 import { Button, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import ModuleTitle from '@/shared/ui/atoms/ModuleTitle';
@@ -8,12 +9,12 @@ import { Book } from 'lucide-react';
 export default function MotivationPage() {
   return (
     <div>
-      <ModuleTitle text="Motivación" />
+      <ModuleTitle text={MODULE_TITLES.MOTIVATION} />
       <Spacer size="md" />
       <Breadcrumbs
         links={[
           { text: 'Inicio', href: '/home' },
-          { text: 'Motivación', href: '/home/motivation' },
+          { text: MODULE_TITLES.MOTIVATION, href: '/home/motivation' },
         ]}
       />
       <Spacer size="lg" />

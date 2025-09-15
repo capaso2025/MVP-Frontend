@@ -5,10 +5,9 @@ export const createGoalValidator = (data: CreateGoalPayload) => {
   if (!data.title) errors.title = 'El título es obligatorio';
   if (!data.description) errors.description = 'La descripción es obligatoria';
   if (!data.category) errors.category = 'La categoría es obligatoria';
-  if (!data.type) errors.type = 'El tipo es obligatorio';
   if (!data.targetValue)
     errors.targetValue = 'El valor objetivo es obligatorio';
-  if (!data.unit) errors.unit = 'La unidad es obligatoria';
+  if (!data.targetUnit) errors.targetUnits = 'La unidad es obligatoria';
   if (!data.deadline) errors.deadline = 'La fecha límite es obligatoria';
   if (!data.frequency) errors.frequency = 'La frecuencia es obligatoria';
 

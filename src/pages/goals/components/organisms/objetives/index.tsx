@@ -1,76 +1,73 @@
-import { Typography } from "@/shared/ui";
-import { Card } from "@/shared/ui/atoms/Card";
-import Spacer from "@/shared/ui/atoms/Spacer";
-import Tabs from "@/shared/ui/molecules/Tabs";
-import { useNavigate } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useGetObjetives } from '@/features/objetives/hooks/use-get-objetives';
+import { useRenderStore } from '@/shared/store/render-store';
+import { Button, Typography } from '@/shared/ui';
+import Spinner from '@/shared/ui/atoms/Spinner';
+import { format } from 'date-fns';
+import { Calendar, Circle, PlusIcon } from 'lucide-react';
+import CreateObjetivesForm from '../../templates/create-objetives-form';
 
-const DEFAULT_TAB = 'short-term';
-const TABS = [
-  {
-    label: "Corto plazo",
-    value: "short-term"
-  },
-  {
-    label: "Mediano plazo",
-    value: "medium-term"
-  },
-  {
-    label: "Largo plazo",
-    value: "long-term"
-  }
-]
-function Objetives() {
-  const [selectedTab, setSelectedTab] = useState<string>(DEFAULT_TAB);
-  const navigate = useNavigate()
-  const objectivesByTab: Record<string, { period: string; objectives: string[] }> = {
-    'short-term': {
-      period: "Proximas 4 semanas",
-      objectives: ['Leer un libro', 'Hacer ejercicio 3 veces a la semana']
-    },
-    'medium-term': {
-      period: "2 - 6 meses",
-      objectives: ['Aprender React', 'Ahorrar para un viaje']
-    },
-    'long-term': {
-      period: "6 meses - 1 año",
-      objectives: ['Graduarme de la universidad', 'Comprar una casa']
-    }
+function Objetives(props: { show: boolean; goalId: string }) {
+  const { show, goalId } = props;
+  const setModalData = useRenderStore((state) => state.setModalData);
+  const { data: objectives, isLoading } = useGetObjetives(goalId);
+
+  const handleAddObjetives = () => {
+    setModalData({
+      containerClassName: 'bg-white',
+      title: 'Crear objetivo específico',
+      children: <CreateObjetivesForm goalId={goalId} />,
+    });
   };
-  return (
-    <Card>
-      <div className="flex justify-between">
-        <Typography className="font-semibold" variant="h5">
-          Objetivos
-        </Typography>
-        <div className="flex gap-1 cursor-pointer" onClick={() => navigate({ to: '/home/objetives' })}>
-          <Typography variant="body2">Ver mas</Typography>
-          <ArrowRight size={20} />
-        </div>
+
+  if (!show) return <></>;
+
+  if (isLoading)
+    return (
+      <div className="mt-4 grid place-content-center">
+        <Spinner className="scale-50" />
       </div>
-      <Typography
-        as="small"
-        className="text-gray-600"
-        variant="body2"
-      >
-        Organiza tus metas según el tiempo de ejecución
-      </Typography>
-      <Spacer size='lg' />
-      <Tabs tabs={TABS} onChange={(value) => setSelectedTab(value)} defaultTab={DEFAULT_TAB} />
-      <Typography variant="body1" className="font-semibold">
-        {objectivesByTab[selectedTab]?.period}
-      </Typography>
-      <Spacer size="md" />
-      <ul className="space-y-2">
-        {objectivesByTab[selectedTab]?.objectives.map((obj, idx) => (
-          <Typography as="li" variant="body2" key={idx} className="bg-gray-100/50 rounded p-2">
-            {obj}
-          </Typography>
-        ))}
-      </ul>
-    </Card>
-  )
-};
+    );
+  return (
+    <>
+      <div className="flex items-center justify-between">
+        <Typography variant="body2">Objetivos específicos</Typography>
+        <Button onClick={handleAddObjetives} variant="ghost">
+          <PlusIcon size={20} />
+          <Typography variant="body2">Añadir</Typography>
+        </Button>
+      </div>
+      {!objectives?.length ? (
+        <Typography className="text-foreground-secondary text-center">
+          No hay objetivos específicos
+        </Typography>
+      ) : (
+        objectives?.map((objective) => (
+          <div
+            key={objective.id}
+            className="border border-primary-light/15 mb-2 flex items-start gap-4 rounded-lg p-4"
+          >
+            <Circle size={20} />
+            <div>
+              <Typography variant="body2">{objective.title}</Typography>
+              <Typography
+                variant="caption"
+                className="text-foreground-secondary"
+              >
+                {objective.notes}
+              </Typography>
+              <Typography
+                variant="caption"
+                className="text-foreground-secondary mt-2 flex items-center gap-1"
+              >
+                <Calendar size={14} />
+                {format(objective.startDate, 'dd-MM-yyyy')}
+              </Typography>
+            </div>
+          </div>
+        ))
+      )}
+    </>
+  );
+}
 
 export default Objetives;

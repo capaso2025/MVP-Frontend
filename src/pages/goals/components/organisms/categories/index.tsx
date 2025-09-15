@@ -1,4 +1,4 @@
-import { CATEGORIES } from '@/shared/constants/categories';
+import { CATEGORIES_CONFIG } from '@/shared/constants/categories';
 import { Progress, Typography } from '@/shared/ui';
 import { Card } from '@/shared/ui/atoms/Card';
 import Spacer from '@/shared/ui/atoms/Spacer';
@@ -10,7 +10,7 @@ function Categories<T>(props: {
   const { data, nameCategoryKey, progressKey } = props;
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-      {CATEGORIES.map(({ icon, label, progressClass, id }) => {
+      {Object.values(CATEGORIES_CONFIG).map(({ icon, label, progressClass, id }) => {
         const filteredElements = data?.filter(
           (el) => el[nameCategoryKey] === id,
         );

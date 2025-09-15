@@ -3,6 +3,7 @@ import React from 'react';
 import UserStats from '../user-stats';
 import { Typography } from '../../atoms/Typography';
 import { Button } from '../../atoms/Button';
+import { useGetInfo } from '@/features/auth/info/hooks/use-get-info';
 
 interface RightSectionProps {
   open: boolean;
@@ -10,6 +11,7 @@ interface RightSectionProps {
 }
 
 const RightSection: React.FC<RightSectionProps> = ({ open, onClose }) => {
+  const { data } = useGetInfo();
   return (
     <>
       <div
@@ -25,7 +27,7 @@ const RightSection: React.FC<RightSectionProps> = ({ open, onClose }) => {
       >
         <Button variant='ghost' className="absolute top-4 right-4 text-xl" onClick={onClose} aria-label="Cerrar"><X /></Button>
         <div>
-          <Typography className='font-semibold mb-4' variant='h4'>Hola, <Typography variant='h4' as="span" className='text-primary-2'>Fernando</Typography></Typography>
+          <Typography className='font-semibold mb-4' variant='h4'>Hola, <Typography variant='h4' as="span" className='text-primary-2'>{data?.firstName}</Typography></Typography>
           <UserStats />
         </div>
         <Button variant='outline' onClick={() => {

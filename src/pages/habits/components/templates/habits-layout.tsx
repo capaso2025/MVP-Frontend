@@ -7,6 +7,7 @@ import Actions from "@/shared/ui/organisms/actions";
 import { useMemo } from "react";
 import { Clock1, Goal } from "lucide-react";
 import { useRenderStore } from "@/shared/store/render-store";
+import { MODULE_TITLES } from "@/shared/constants/module-titles";
 
 function HabitsLayout() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ function HabitsLayout() {
     <Breadcrumbs
       links={breadcrumbs || [
         { text: 'Inicio', href: '/home' },
-        { text: 'Constructor de hábitos' },
+        { text: MODULE_TITLES.HABITS },
       ]}
     />
     <Spacer size="lg" />
