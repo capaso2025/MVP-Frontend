@@ -1,7 +1,6 @@
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import { createObjetiveValidator } from '@/features/objetives/validators/create-objetive-validator';
 import { useCreateObjetive } from '@/features/objetives/hooks/use-create-objetive';
-import { CreateObjetivePayload } from '@/features/objetives/models/create-objetive';
 import { useForm } from '@/shared/hooks/useForm';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Checkbox, Typography } from '@/shared/ui';
