@@ -1,6 +1,6 @@
-import { ObjetivesFormInputs } from '@/pages/goals/types/objetives-form-inputs';
+import { ObjectivesFormInputs } from '@/pages/goals/types/objectives-form-inputs';
 
-export const createObjetiveValidator = (data: ObjetivesFormInputs) => {
+export const createObjectiveValidator = (data: ObjectivesFormInputs) => {
   const errors: Record<string, string> = {};
   if (!data.title) errors.title = 'El título es obligatorio';
   if (!data.notes) errors.notes = 'Las notas son obligatorias';
@@ -8,6 +8,9 @@ export const createObjetiveValidator = (data: ObjetivesFormInputs) => {
   if (!data.difficulty) errors.difficulty = 'La dificultad es obligatoria';
   if (!data.startDate) errors.startDate = 'La fecha de inicio es obligatoria';
   if (!data.repeats) errors.repeats = 'La frecuencia es obligatoria';
+  if (data.repeats && (!data.repeatEvery || +data.repeatEvery < 1)) {
+    errors.repeatEvery = 'El valor debe ser mayor que 0';
+  }
   return {
     isValid: Object.keys(errors).length === 0,
     errors,

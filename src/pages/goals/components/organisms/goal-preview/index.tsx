@@ -9,14 +9,14 @@ import Spacer from '@/shared/ui/atoms/Spacer';
 import DropdownMenu from '@/shared/ui/organisms/dropdown';
 import { ChevronRight, EllipsisVertical, GoalIcon } from 'lucide-react';
 import { useState } from 'react';
-import Objetives from '../objetives';
+import Objectives from '../objectives';
 import { CATEGORIES_CONFIG } from '@/shared/constants/categories';
 
 function GoalPreview(props: { data: Goal | undefined }) {
   const { data } = props;
   const { refetch } = useGetGoals({ enabled: false });
   const { mutate: executeCancel } = useCancelGoal();
-  const [showObjetives, setShowObjectives] = useState(false);
+  const [showObjectives, setShowObjectives] = useState(false);
   const setAlertDialogData = useRenderStore(
     (state) => state.setAlertDialogData,
   );
@@ -47,7 +47,7 @@ function GoalPreview(props: { data: Goal | undefined }) {
           <GoalIcon size={30} className="text-primary" />
         </div>
         <div className="w-full">
-          <div className="flex items-center justify-between">
+          <div className="flex items-start justify-between gap-2 md:gap-8">
             <div>
               <div className="flex items-end gap-2">
                 <Typography className="font-semibold" variant="h5">
@@ -66,11 +66,11 @@ function GoalPreview(props: { data: Goal | undefined }) {
             <div className="flex items-center gap-2">
               <ChevronRight
                 className={
-                  showObjetives
+                  showObjectives
                     ? 'rotate-90 transition-transform'
                     : 'transition-transform'
                 }
-                onClick={() => setShowObjectives(!showObjetives)}
+                onClick={() => setShowObjectives(!showObjectives)}
               />
               <DropdownMenu
                 trigger={<EllipsisVertical />}
@@ -100,11 +100,11 @@ function GoalPreview(props: { data: Goal | undefined }) {
                 className="text-foreground-secondary"
                 variant="caption"
               >
-                1 de objetivos completados
+                {data.completedObjectives} de {data.activeObjectives} objetivos completados
               </Typography>
             </div>
           </div>
-          {showObjetives && <Objetives show={showObjetives} goalId={data?.id!} />}
+          {showObjectives && <Objectives show={showObjectives} goalId={data?.id!} />}
         </div>
       </div>
     </Card>

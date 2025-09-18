@@ -3,13 +3,14 @@ import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
 import { CreateGoalPayload } from '@/features/goals/models/create-goal';
 import { createGoalValidator } from '@/features/goals/validators/create-goal-validator';
 import { CATEGORIES_CONFIG } from '@/shared/constants/categories';
-import { FREQUENCY } from '@/shared/constants/frequency';
 import { SIZE } from '@/shared/constants/size';
+import { Frequency } from '@/shared/enums/frequency';
 import { useForm } from '@/shared/hooks/useForm';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Typography } from '@/shared/ui';
 import Input from '@/shared/ui/atoms/Input/Input';
 import Select from '@/shared/ui/molecules/Select';
+import { toast } from 'react-toastify';
 
 const KEYS_LIST: (keyof CreateGoalPayload)[] = [
   'title',
@@ -21,7 +22,7 @@ const KEYS_LIST: (keyof CreateGoalPayload)[] = [
   'frequency',
 ];
 function CreateGoalsForm() {
-  const { mutate } = useCreateGoal();
+  const { mutate, isPending } = useCreateGoal();
   const closeModal = useRenderStore((state) => state.closeModal);
   const { refetch: refetchGoals } = useGetGoals();
   function onSubmit(data: CreateGoalPayload) {
@@ -37,12 +38,13 @@ function CreateGoalsForm() {
           refetchGoals();
         },
         onError: (error) => {
-          console.error('Error al registrar la meta:', error);
+          toast.error(error.message || 'Error al registrar la meta');
+          console.log(error.message);
         },
       },
     );
   }
-  const { errors, onChange, handleSubmit, onSelectChange, values, loading } = useForm({
+  const { errors, onChange, handleSubmit, onSelectChange, values } = useForm({
     onSubmit,
     validator: createGoalValidator,
     keysList: KEYS_LIST,
@@ -53,6 +55,7 @@ function CreateGoalsForm() {
         e.preventDefault();
         handleSubmit();
       }}
+      className='h-full'
     >
       <Input
         label="Titulo"
@@ -139,17 +142,17 @@ function CreateGoalsForm() {
         Categoría
       </Typography>
       <div className="grid grid-cols-3 gap-2 mb-4">
-        {FREQUENCY.map((el) => {
+        {Object.values(Frequency).map((el) => {
           return (
             <div
               onClick={() =>
                 onChange({
-                  target: { name: 'frequency', value: el.id }
+                  target: { name: 'frequency', value: el }
                 } as unknown as React.ChangeEvent<HTMLInputElement>)
               }
-              className={`flex items-center cursor-pointer gap-2 rounded-md border border-gray-300 p-2 ${values.frequency === el.id ? 'bg-blue-100' : ''}`}
+              className={`flex items-center cursor-pointer gap-2 rounded-md border border-gray-300 p-2 ${values.frequency === el ? 'bg-blue-100' : ''}`}
             >
-              <Typography variant='body2'>{el.label}</Typography>
+              <Typography variant='body2'>{el}</Typography>
             </div>
           );
         })}
@@ -158,7 +161,7 @@ function CreateGoalsForm() {
         className="mt-4 w-full"
         size="md"
         type="submit"
-        isLoading={loading}
+        isLoading={isPending}
       >
         Registrar meta
       </Button>

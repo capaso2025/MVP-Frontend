@@ -20,11 +20,6 @@ export const DEFAULT_MENU_ITEMS: MenuItem[] = [
     include: ['/goals', '/habits', '/learning', '/motivation'],
   },
   {
-    label: 'Calendario',
-    icon: calendar,
-    path: '/home/calendar',
-  },
-  {
     label: 'Capómetro',
     icon: timer,
     path: '/home/timer',
@@ -37,7 +32,7 @@ export const NO_LOGGED_DEFAULT_MENU_ITEMS: MenuItem[] = [
     label: 'Inicio',
     icon: home,
     path: '/home',
-    include: ['/goals', '/habits', '/learning', '/motivation', '/objetives'],
+    include: ['/goals', '/habits', '/learning', '/motivation', '/objectives'],
   },
   {
     label: 'Calendario',

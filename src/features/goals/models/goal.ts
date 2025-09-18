@@ -12,4 +12,6 @@ export interface Goal {
   status: string;
   createdAt: string;
   updatedAt: string;
+  completedObjectives: number;
+  activeObjectives: number;
 }

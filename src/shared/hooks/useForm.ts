@@ -17,7 +17,6 @@ export const useForm = <T>({
   const { validate, errors } = useValidation({
     validator,
   });
-  const [loading, setLoading] = useState(false);
 
   const getConvertedValue = (value: string, valueType?: string) => {
     if (valueType === 'integer') return parseInt(value);
@@ -62,9 +61,7 @@ export const useForm = <T>({
   const handleSubmit = async () => {
     const isValid = validate(values, keysList);
     if (!isValid) return;
-    setLoading(true);
     await onSubmit(values);
-    setLoading(false);
   };
 
   return {
@@ -74,7 +71,6 @@ export const useForm = <T>({
     onChangeMultipleValues,
     handleSubmit,
     onSelectChange,
-    loading,
     setValue,
   };
 };
