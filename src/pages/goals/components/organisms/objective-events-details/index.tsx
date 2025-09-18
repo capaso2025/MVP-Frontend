@@ -1,4 +1,4 @@
-import { useGetObjectiveEvents } from "@/features/objectives-event/hooks/use-get-objective-events";
+// import { useGetObjectiveEvents } from "@/features/objectives-event/hooks/use-get-objective-events";
 import { Progress, Typography } from "@/shared/ui";
 import Badge from "@/shared/ui/atoms/Badge";
 import { Checkbox } from "@/shared/ui/atoms/Checkbox";
@@ -7,7 +7,8 @@ import { useState } from "react";
 
 function ObjectiveEventsDetails(props: { objectiveId: string }) {
   const { objectiveId } = props;
-  const { data: objectiveEvents } = useGetObjectiveEvents(objectiveId);
+  console.log("🏝️ ~ ObjectiveEventsDetails ~ objectiveId:", objectiveId)
+  // const { data: objectiveEvents } = useGetObjectiveEvents(objectiveId);
 
   // Estado temporal para los eventos - esto debería venir de la API
   const [events, setEvents] = useState([
