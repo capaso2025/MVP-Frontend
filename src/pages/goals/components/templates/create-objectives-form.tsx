@@ -78,7 +78,6 @@ function CreateObjectivesForm(props: { goalId: string }) {
         e.preventDefault();
         handleSubmit();
       }}
-      className='h-[60vh]'
     >
       <Input
         label="Titulo"
