@@ -7,30 +7,31 @@ function Categories<T>(props: {
   nameCategoryKey: keyof T;
   progressKey: keyof T;
 }) {
-  const { data, nameCategoryKey, progressKey } = props;
+  console.log(props)
+  // const { data, nameCategoryKey, progressKey } = props;
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
       {Object.values(CATEGORIES_CONFIG).map(({ icon, label, progressClass, id }) => {
-        const filteredElements = data?.filter(
-          (el) => el[nameCategoryKey] === id,
-        );
-        const value = filteredElements?.length
-          ? Math.round(
-            filteredElements.reduce(
-              (acc, el) => acc + +(el[progressKey] || 0),
-              0,
-            ) / filteredElements.length,
-          )
-          : 0;
+        // const filteredElements = data?.filter(
+        //   (el) => el[nameCategoryKey] === id,
+        // );
+        // const value = filteredElements?.length
+        //   ? Math.round(
+        //     filteredElements.reduce(
+        //       (acc, el) => acc + +(el[progressKey] || 0),
+        //       0,
+        //     ) / filteredElements.length,
+        //   )
+        //   : 0;
         return (
-          <Card key={label} className="flex-1">
+          <Card key={id} className="flex-1">
             <div className="flex items-center justify-between gap-2">
               {icon}
-              <Typography>{value}%</Typography>
+              <Typography>{0}%</Typography>
             </div>
             <Spacer size="sm" />
             <Typography>{label}</Typography>
-            <Progress value={value} className={progressClass} />
+            <Progress value={0} className={progressClass} />
           </Card>
         );
       })}
