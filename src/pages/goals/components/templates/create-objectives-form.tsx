@@ -137,16 +137,16 @@ function CreateObjectivesForm(props: { goalId: string }) {
           className="mb-4"
         />
       </div>
-      {/* <Input
-          label="Repetir cada"
-          name="repeatEvery"
-          value={values.repeatEvery}
-          onChange={onChange}
-          errors={errors}
-          type="number"
-          placeholder="Ej: 1, 2, 3..."
-          containerClassName="mb-4"
-        /> */}
+      <Input
+        label="Repetir cada"
+        name="repeatEvery"
+        value={values.repeatEvery}
+        onChange={onChange}
+        errors={errors}
+        type="number"
+        placeholder="Ej: 1, 2, 3..."
+        containerClassName="mb-4"
+      />
       <Typography variant="body2" className="mb-2 text-gray-500">
         Repetir los días
       </Typography>

@@ -5,6 +5,7 @@ import Spinner from '@/shared/ui/atoms/Spinner';
 import { format } from 'date-fns';
 import { Calendar, Circle, PlusIcon } from 'lucide-react';
 import CreateObjectivesForm from '../../templates/create-objectives-form';
+import ObjectiveEventsDetails from '../objective-events-details';
 
 function Objectives(props: { show: boolean; goalId: string }) {
   const { show, goalId } = props;
@@ -18,6 +19,14 @@ function Objectives(props: { show: boolean; goalId: string }) {
       children: <CreateObjectivesForm goalId={goalId} />,
     });
   };
+
+  const handleOpenObjectiveEventsDetails = (objectiveId: string) => {
+    setModalData({
+      containerClassName: 'bg-white h-[71vh]',
+      children: <ObjectiveEventsDetails objectiveId={objectiveId} />,
+    })
+  }
+
 
   if (!show) return <></>;
 
@@ -44,7 +53,8 @@ function Objectives(props: { show: boolean; goalId: string }) {
         objectives?.map((objective) => (
           <div
             key={objective.id}
-            className="border border-primary-light/15 mb-2 flex items-start gap-4 rounded-lg p-4"
+            className="border cursor-pointer hover:bg-primary/10 transition-all duration-200 border-primary-light/15 mb-2 flex items-start gap-4 rounded-lg p-4"
+            onClick={() => handleOpenObjectiveEventsDetails(objective.id)}
           >
             <Circle size={20} />
             <div>
@@ -70,4 +80,4 @@ function Objectives(props: { show: boolean; goalId: string }) {
   );
 }
 
-export default Objectives;
+export default Objectives

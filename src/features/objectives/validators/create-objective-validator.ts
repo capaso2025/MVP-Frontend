@@ -8,6 +8,9 @@ export const createObjectiveValidator = (data: ObjectivesFormInputs) => {
   if (!data.difficulty) errors.difficulty = 'La dificultad es obligatoria';
   if (!data.startDate) errors.startDate = 'La fecha de inicio es obligatoria';
   if (!data.repeats) errors.repeats = 'La frecuencia es obligatoria';
+  if (data.repeats && (!data.repeatEvery || +data.repeatEvery < 1)) {
+    errors.repeatEvery = 'El valor debe ser mayor que 0';
+  }
   return {
     isValid: Object.keys(errors).length === 0,
     errors,
