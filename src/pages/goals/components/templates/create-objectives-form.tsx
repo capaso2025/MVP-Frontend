@@ -1,6 +1,6 @@
 import { useGetGoals } from '@/features/goals/hooks/use-get-goals';
-import { createObjetiveValidator } from '@/features/objetives/validators/create-objetive-validator';
-import { useCreateObjetive } from '@/features/objetives/hooks/use-create-objetive';
+import { createObjectiveValidator } from '@/features/objectives/validators/create-objective-validator';
+import { useCreateObjective } from '@/features/objectives/hooks/use-create-objective';
 import { useForm } from '@/shared/hooks/useForm';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Checkbox, Typography } from '@/shared/ui';
@@ -8,9 +8,10 @@ import Input from '@/shared/ui/atoms/Input/Input';
 import Select from '@/shared/ui/molecules/Select';
 import { WeekDays } from '@/shared/enums/week-days';
 import { useTranslation } from 'react-i18next';
-import { ObjetivesFormInputs } from '../../types/objetives-form-inputs';
+import { ObjectivesFormInputs } from '../../types/objectives-form-inputs';
+import { toast } from 'react-toastify';
 
-const KEYS_LIST: (keyof ObjetivesFormInputs)[] = [
+const KEYS_LIST: (keyof ObjectivesFormInputs)[] = [
   'title',
   'notes',
   'checklist',
@@ -22,14 +23,14 @@ const KEYS_LIST: (keyof ObjetivesFormInputs)[] = [
   'tags',
 ];
 
-function CreateObjetivesForm(props: { goalId: string }) {
+function CreateObjectivesForm(props: { goalId: string }) {
   const { goalId } = props;
-  const { mutate, isPending } = useCreateObjetive();
+  const { mutate, isPending } = useCreateObjective();
   const { t } = useTranslation();
   const closeModal = useRenderStore((state) => state.closeModal);
   const { refetch: refetchGoals } = useGetGoals();
 
-  function onSubmit(data: ObjetivesFormInputs) {
+  function onSubmit(data: ObjectivesFormInputs) {
     mutate(
       {
         notes: data['notes'],
@@ -39,17 +40,17 @@ function CreateObjetivesForm(props: { goalId: string }) {
         title: data['title'],
         difficulty: data['difficulty'],
         startDate: data['startDate'],
-        repeatEvery: Number(data.repeatEvery),
+        repeatEvery: Number(data.repeatEvery || 1),
         repeats: data['repeats'],
         repeatOn: data['repeatOn'] ? data['repeatOn'].split(',').map(item => item.trim() as WeekDays) : [],
       },
       {
         onSuccess: () => {
-          console.log('Objetivo registrado:', data);
           closeModal();
           refetchGoals();
         },
         onError: (error) => {
+          toast.error(error.message || 'Error al registrar el objetivo');
           console.error('Error al registrar el objetivo:', error);
         },
       },
@@ -58,7 +59,7 @@ function CreateObjetivesForm(props: { goalId: string }) {
   const { errors, onChange, handleSubmit, onSelectChange, values } =
     useForm({
       onSubmit,
-      validator: createObjetiveValidator,
+      validator: createObjectiveValidator,
       keysList: KEYS_LIST
     });
   const checkboxChange = (day: WeekDays) => {
@@ -185,10 +186,10 @@ function CreateObjetivesForm(props: { goalId: string }) {
         type="submit"
         isLoading={isPending}
       >
-        Registrar meta
+        Registrar objetivo
       </Button>
     </form>
   );
 }
 
-export default CreateObjetivesForm;
+export default CreateObjectivesForm;

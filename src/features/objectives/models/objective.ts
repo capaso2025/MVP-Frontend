@@ -1,14 +1,19 @@
 import { Difficulty } from '@/shared/enums/difficult';
 import { Frequency } from '@/shared/enums/frequency';
+import { WeekDays } from '@/shared/enums/week-days';
 
-export type ObjetivesFormInputs = {
+export interface Objective {
+  id: string;
+  goalId: string;
   title: string;
   notes: string;
-  checklist: string;
+  checklist: string[];
   difficulty: Difficulty;
   startDate: string;
   repeats: Frequency;
   repeatEvery: number;
-  repeatOn: string;
-  tags: string;
-};
+  repeatOn: WeekDays[];
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+}

@@ -1,6 +1,6 @@
-import { ObjetivesFormInputs } from '@/pages/goals/types/objetives-form-inputs';
+import { ObjectivesFormInputs } from '@/pages/goals/types/objectives-form-inputs';
 
-export const createObjetiveValidator = (data: ObjetivesFormInputs) => {
+export const createObjectiveValidator = (data: ObjectivesFormInputs) => {
   const errors: Record<string, string> = {};
   if (!data.title) errors.title = 'El título es obligatorio';
   if (!data.notes) errors.notes = 'Las notas son obligatorias';

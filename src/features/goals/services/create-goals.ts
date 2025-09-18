@@ -8,7 +8,7 @@ export const createGoals = async (
     const response = await apiClient.post<CreateGoalResponse>('/goal', data);
     return response;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return null;
   }
 };

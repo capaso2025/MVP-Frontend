@@ -67,7 +67,7 @@ function Modal() {
             {description}
           </Typography>
         )}
-        <div className='overflow-y-auto py-4 px-2 scrollbar-hide'>
+        <div className='h-[76vh] overflow-y-auto py-4 px-2'>
           {children}
         </div>
       </div>

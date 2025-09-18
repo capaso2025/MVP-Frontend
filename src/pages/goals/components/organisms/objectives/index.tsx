@@ -1,21 +1,21 @@
-import { useGetObjetives } from '@/features/objetives/hooks/use-get-objetives';
+import { useGetObjectives } from '@/features/objectives/hooks/use-get-objectives';
 import { useRenderStore } from '@/shared/store/render-store';
 import { Button, Typography } from '@/shared/ui';
 import Spinner from '@/shared/ui/atoms/Spinner';
 import { format } from 'date-fns';
 import { Calendar, Circle, PlusIcon } from 'lucide-react';
-import CreateObjetivesForm from '../../templates/create-objetives-form';
+import CreateObjectivesForm from '../../templates/create-objectives-form';
 
-function Objetives(props: { show: boolean; goalId: string }) {
+function Objectives(props: { show: boolean; goalId: string }) {
   const { show, goalId } = props;
   const setModalData = useRenderStore((state) => state.setModalData);
-  const { data: objectives, isLoading } = useGetObjetives(goalId);
+  const { data: objectives, isLoading } = useGetObjectives(goalId);
 
-  const handleAddObjetives = () => {
+  const handleAddObjectives = () => {
     setModalData({
       containerClassName: 'bg-white',
       title: 'Crear objetivo específico',
-      children: <CreateObjetivesForm goalId={goalId} />,
+      children: <CreateObjectivesForm goalId={goalId} />,
     });
   };
 
@@ -31,7 +31,7 @@ function Objetives(props: { show: boolean; goalId: string }) {
     <>
       <div className="flex items-center justify-between">
         <Typography variant="body2">Objetivos específicos</Typography>
-        <Button onClick={handleAddObjetives} variant="ghost">
+        <Button onClick={handleAddObjectives} variant="ghost">
           <PlusIcon size={20} />
           <Typography variant="body2">Añadir</Typography>
         </Button>
@@ -70,4 +70,4 @@ function Objetives(props: { show: boolean; goalId: string }) {
   );
 }
 
-export default Objetives;
+export default Objectives;
